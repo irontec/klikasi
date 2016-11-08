@@ -1,0 +1,170 @@
+---
+component : izena eman
+---
+
+<!-- Modal -->
+<div class="modal fade" id="tab-izenaeman" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div id="izenaeman" class="modal-content">
+			<div class="modal-header">
+				<!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button> -->
+				<button class="itxi" type="button" data-dismiss="modal" aria-hidden="true">×</button>
+				<h3>Izena eman Klikasin</h3>
+				<!-- <h4 class="modal-title" id="myModalLabel">Modal title</h4> -->
+			</div>
+			<ul class="nav nav-tabs">
+				{{#each izena-eman-data}}
+					<li class="{{#if active}}active{{/if}}">
+						<a href="#{{id}}" data-toggle="tab">{{number}}</a>
+					</li>
+				{{/each}}
+			</ul>
+			<div class="color-border"></div>
+			<div class="tab-content">
+				{{#each izena-eman-data}}
+				<div class="tab-pane {{#if active}}active{{/if}}" id="{{id}}">
+						<div class="modal-body">
+							<div class="inner">
+								<form>
+									{{#each inputs}}	
+									<input id="{{input-id}}" class="{{input-class}}" type="{{input-type}}" placeholder="{{input-placeholder}}">
+									{{/each}}
+
+									{{#if izenaeman1}}
+								    <div class=" datepicker input-group input-append date" id="dp3" data-date="12-02-2012" data-date-format="yyyy-mm-dd">
+    									<span class="input-group-addon add-on"><i class="glyphicon glyphicon-calendar"></i></span>
+    									<input class="form-control" size="16" type="text" placeholder="2000-01-24">		
+    								</div>
+
+  									{{> alert alert-danger-data }}
+
+    								
+    								{{/if}}
+
+									{{#if izenaeman2}}
+									<div class="help-block">
+										<p>Argazki bat igo.</p>
+									</div>
+								    <div class="fileinput fileinput-new" data-provides="fileinput">
+										<div class="fileinput-new thumbnail">
+									    	<img src="http://placehold.it/400x400">
+									  	</div>
+									  	<div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 150px; max-height: 150px;"></div>
+								    	<span class="btn btn-default btn-file">
+								    		<span class="fileinput-new">Select image</span>
+								    		<span class="fileinput-exists">Change</span>
+								    		<input type="file" name="...">
+								    	</span>
+								    	<a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+									</div>
+									<div class="col-xs-6 col-xs-offset-3 horizontal-divider"></div>
+									<div class="help-block">
+										<p>Hurrengoko argazkietatik aukeratu.</p>
+									</div>
+
+									<ul class = 'perfil-picker'>
+										<li>
+											<span class="naranja perfil perfil-ikasle"></span>
+										</li>
+										<li>
+											<span class="verde perfil perfil-ikasle"></span>
+										</li>
+										<li>
+											<span class="morado perfil perfil-ikasle"></span>
+										</li>
+									</ul>
+
+									<!--<select class="image-picker show-html">
+									  <option data-img-src="images/frodo.png" value="1">  Page 1  </option>
+									  <option data-img-src="images/frodo.png" value="2">  Page 2  </option>
+									  <option data-img-src="images/frodo.png" value="3">  Page 3  </option>
+									</select>-->
+									{{/if}}
+
+
+									{{#if izenaeman3}}
+									<div class="help-block">
+										<p>¡Registro completado!</p>
+										<p>Para terminar de activar tu cuenta haz click en el link que encontrarás en el email que te hemos enviado.</p>
+									</div>
+									{{/if}}
+
+									{{#if izenaeman4}}
+									<div class="help-block">
+										<p>¡Cuenta verificada!</p>
+										<p>Completa tu perfil.</p>
+										<p>Y establece la relación con un centro.</p>
+									</div>
+									{{/if}}
+
+									{{#if izenaeman5}}
+									<div class="checkbox">
+									    	<input type="checkbox" name="optionsRadios" id="trabajocentro" value="trabajocentro" checked>
+									    	Trabajo en el centro.
+									</div>
+									<div class="checkbox">
+											<input type="checkbox" name="optionsRadios" id="colaborocentro" value="colaborocentro">
+									    	Colaboro con el centro.
+									</div>
+									<div class="checkbox">
+											<input type="checkbox" name="optionsRadios" id="estudiocentro" value="estudiocentro">
+									    	Soy estudainate del centro.
+									</div>
+
+
+									<span class="select"><i class="fa fa-chevron-down"></i>
+										{{#each options-ikastegiak}}
+										<select class="form-control">
+											<option>{{option}}</option>
+											<option>{{option1}}</option>
+										    <option>{{option2}}</option>
+										    <option>{{option3}}</option>
+										    <option>{{option4}}</option>
+										</select>
+										{{/each}}
+									</span>
+
+									<span class="select"><i class="fa fa-chevron-down"></i>
+										{{#each options-irakasleak}}
+										<select class="form-control">
+											<option>{{option}}</option>
+											<option>{{option1}}</option>
+										    <option>{{option2}}</option>
+										    <option>{{option3}}</option>
+										    <option>{{option4}}</option>
+										</select>
+										{{/each}}
+									</span>
+
+									<button data-target="#tab-izenaeman" data-toggle="modal" class="bg-red light">Izena eman</button>
+									{{/if}}
+
+									<div class="form-actions">
+										<!-- <button class="bg-red light">Izena eman</button> -->
+										<ul class="pager">
+										  {{#if prev}}<li class="prev"><a href="#{{prev}}" data-toggle="tab">« Aurrekoa</a></li>{{/if}}
+										  {{#if next}}<li class="next"><a href="#{{next}}" data-toggle="tab">Hurrengoa »</a></li>{{/if}}
+										</ul>
+
+									</div>
+								</form>
+								{{#if izenaeman1}}
+								<div class="info">
+									<p>Al hacer clic en registrarme certifico que tengo 13 años o más, y que acepto las <a href="/es/terms">Condiciones de Uso</a> y la <a href="/es/privacy">Política de Privacidad</a>.</p>
+								</div>
+								{{/if}}
+							</div>
+						</div>
+						{{#if izenaeman1}}
+						<div class="modal-footer">
+							<p>¿Ya estás registrado? <a href="#sartu" data-toggle="modal" data-target="#sartu" data-dismiss="modal" class="link-primary">Entrar</a></p>
+						</div>
+						{{/if}}
+
+						
+				</div>
+				{{/each}}
+			</div>
+		</div>
+	</div>
+</div>

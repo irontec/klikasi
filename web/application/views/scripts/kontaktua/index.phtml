@@ -1,0 +1,83 @@
+<?php
+    $request = Zend_Controller_Front::getInstance()->getRequest();
+?>
+
+
+<div class="container">
+    <div class="col-xs-12 subheader bg-standard-grey">
+        <h1>Kontaktua</h1>
+    </div>
+
+    <header class="content">
+        <small>Klikasi plataforma <a href="http://www.azkuefundazioa.eus/">Azkue Fundazioak</a> garatu du eta berak kudeatzen du ere.</small>
+    </header>
+    <div class="row">
+        <div class="col-xs-12 col-sm-10">
+            <p>Plataformaren inguruan zalantza, iradokizun edo erabilpenarekin lotutako arazoren bat baduzu, jar zaitez gurekin harremanetan inprimaki hau betez:</p>
+        </div>
+    </div>
+</div>
+
+<div class="container kontaktua">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="color-border"></div>
+        </div>
+    </div>
+
+    <div class = 'row'>
+        <div class = 'col-xs-12 col-sm-6'>
+            <?php
+                echo $this->alertMessage(
+                        $this->erroreMezuak,
+                        $this->flashmezuak,
+                        $this->alertWarning
+                     );
+
+                $izena = '';
+                $posta = '';
+                $gaia = '';
+                $mezua = '';
+                $nondik = '';
+
+                if (!($this->success)) {
+
+                    $izena = $request->getParam("izena");
+                    $posta = $request->getParam("posta");
+                    $gaia  = $request->getParam("gaia");
+                    $mezua = $request->getParam("mezua");
+                    $nondik = $request->getParam("nondik");
+                }
+            ?>
+            <form role="form" class="form-horizontal kontaktua" method="POST" action="<?php echo $this->url(); ?>">
+                <input type="text" name="izena" class="form-control" id="izena"
+                 value="<?php echo $izena; ?>" placeholder="Izen- Abizenak*" />
+                <input type="text" name="nondik" class="form-control" id="nondik"
+                 value="<?php echo $nondik; ?>" placeholder="Nondik idazten duzu (ikastexea, elkartea…)" />
+
+                <input type="text" name="posta" class="form-control" id="mail"
+                 value="<?php echo $posta; ?>" placeholder="Zure posta elektronikoko helbidea*" />
+                <input type="text" name="gaia" class="form-control" id="gaia"
+                 value="<?php echo $gaia; ?>" placeholder="Gaia" />
+                 <select name="gaia" class="form-control">
+                     <option selected disabled style="display:none;">Zure mezua zein gaiarekin lotuta dago?*</option>
+                     <option value="Kontua sortu">Kontua sortu</option>
+                     <option value="Edukiak igo">Edukiak igo</option>
+                     <option value="Nire kontua kudeatu">Nire kontua kudeatu</option>
+                     <option value="Zalantza">Zalantza</option>
+                     <option value="Iradokizuna">Iradokizuna</option>
+
+                 </select>
+
+                <textarea class="form-control" name="mezua" id="mezua" rows="8" placeholder="Idatzi zure mezua*"><?php echo $mezua; ?></textarea>
+                <p>&nbsp;</p>
+                <?php echo $this->captcha->render(); ?>
+                <input type="hidden" name="kamchatka[id]" value="<?php echo $this->captcha->getId(); ?>" id="kamchatka-id">
+                <input name="kamchatka[input]" placeholder="captcha*" class="form-control" />
+
+                <button class="btn-bidali bg-red light">Bidali</button>
+            </form>
+            <p>* Betetzeko eremuak</p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+production: 
+  class: \Klikasi\Model\Kontaktua
+  fields: 
+    izena: 
+      title: _('Izena')
+      type: text
+      required: true
+      maxLength: 140
+      default: true
+    posta: 
+      title: _('Posta')
+      type: text
+      required: true
+      maxLength: 140
+    gaia: 
+      title: _('Gaia')
+      type: text
+      required: true
+      maxLength: 140
+    nondik: 
+      title: _('Nondik')
+      type: text
+      maxLength: 140
+    mezua: 
+      title: _('Mezua')
+      type: textarea
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production

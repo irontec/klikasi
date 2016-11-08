@@ -1,0 +1,99 @@
+<?php
+$url = $this->baseUrl('jakinarazpenak/index/mota/');
+
+$formUrl = $this->url(
+    array(
+        'controller' => 'jakinarazpenak',
+        'action' => 'zeregin',
+    ),
+    'default',
+    true
+);
+
+if (empty($this->notification)) {
+    ?>
+    <div class="col-xs-12 aire">
+        <strong>Jakinarazpenik ez</strong>
+    </div>
+    <?php
+} else {
+
+    $motaTypes = array(
+        'kolaborazioEskaera' => 'Kolaborazio Eskaera',
+        'ikasleEskaera' => 'Ikasle Eskaera',
+        'edukiBerria' => 'Eduki Berria',
+        'iruzkinBerria' => 'Iruzkin Berria',
+        'edukiariSalaketa' => 'Edukiari Salaketa',
+        'iradokizunBerria' => 'Iradokizun Berria',
+        'gustokoBerria' => 'Gustoko Berria',
+        'ikastegiakBerria' => 'Ikastegiak Berria',
+        'atseginDut' => 'Atsegin Dut',
+        'irakasleEskaera' => 'Irakasle Eskaera',
+        'irakasleEskaeraIkastegia' => 'Irakasle Eskaera Ikastegia'
+    );
+
+    ?>
+    <section id="tab-recursos" class="tab-recursos col-xs-12 aire">
+        <ul class="nav nav-tabs col-xs-12">
+            <?php
+            $liCount = 0;
+            foreach ($motaTypes as $type => $name) {
+                if (!empty($this->$type)) {
+                    $liCount++;
+                    ?>
+                    <li
+                        class="no-mar-l <?php echo ($liCount === 1 ? 'active' : '');?> col-xs-12 col-sm-4"
+                        style="margin: 0px !important;"
+                        >
+                        <a
+                            href="#<?php echo $type; ?>"
+                            data-toggle="tab"
+                            ><?php echo $name . ' (' . sizeof($this->$type) . ')'; ?><i class="fa fa-bars visible-xs pull-right"></i></a>
+                    </li>
+                    <?php
+                }
+            }
+            ?>
+        </ul>
+
+        <div class="tab-content col-xs-12">
+            <?php
+            $divCount = 0;
+            foreach ($motaTypes as $type => $name) {
+                if (!empty($this->$type)) {
+                    $divCount++;
+                    ?>
+                    <div
+                        class="tab-pane <?php echo ($divCount === 1 ? 'active' : '');?>"
+                        id="<?php echo $type; ?>">
+                        <?php
+                        echo $this->partial(
+                            '/jakinarazpenak/' . $type . '.phtml',
+                            array(
+                                $type => $this->$type
+                            )
+                        );
+                        ?>
+                    </div>
+                    <?php
+                }
+            }
+            ?>
+        </div>
+
+    </section>
+
+<?php
+
+    echo $this->partial(
+        '/jakinarazpenak/sendMessage.phtml',
+        array()
+    );
+
+    echo $this->partial(
+        '/jakinarazpenak/blokeatutaEdukiak.phtml',
+        array()
+    );
+
+}
+?>

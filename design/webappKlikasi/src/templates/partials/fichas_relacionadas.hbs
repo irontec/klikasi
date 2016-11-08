@@ -1,0 +1,13 @@
+---
+component : fichas-relacionadas
+---
+
+<div class = 'fichas-relacionadas row'>
+	<h3>{{title}}</h3>
+
+	{{#each fichas}}
+		{{>resumen_ficha}}
+	{{/each}}
+
+	<button class = 'bg-red light visible-xs'>Gehiago</button>
+</div>

@@ -1,0 +1,67 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+
+production: 
+  main: 
+    module: klearMatrix
+    defaultScreen: ikastegiGaiakList_screen
+  screens: 
+    ikastegiGaiakList_screen: &ikastegiGaiakList_screenLink 
+      controller: list
+      pagination: 
+        items: 25
+      <<: *IkastegiGaiak
+      title: _("List of %s %2s", ngettext('Ikastegi gaiak', 'Ikastegi gaiak(s)', 0), "[format| (%parent%)]")
+      fields: 
+        blacklist:
+          url: true
+        options: 
+          title: _("Options")
+          screens: 
+            ikastegiGaiakEdit_screen: true
+          dialogs: 
+            ikastegiGaiakDel_dialog: true
+          default: ikastegiGaiakEdit_screen
+      options: 
+        title: _("Options")
+        screens: 
+          ikastegiGaiakNew_screen: true
+        dialogs: 
+          ikastegiGaiakDel_dialog: true
+    ikastegiGaiakNew_screen: &ikastegiGaiakNew_screenLink 
+      <<: *IkastegiGaiak
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Add %s", ngettext('Ikastegi gaiak', 'Ikastegi gaiak(s)', 1))
+      fields: 
+        blacklist: 
+          url: true
+    ikastegiGaiakEdit_screen: &ikastegiGaiakEdit_screenLink 
+      <<: *IkastegiGaiak
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      title: _("Edit %s %2s", ngettext('Ikastegi gaiak', 'Ikastegi gaiak(s)', 1), "[format| (%item%)]")
+      fields:
+        blacklist:
+          url: true
+  dialogs: 
+    ikastegiGaiakDel_dialog: 
+      <<: *IkastegiGaiak
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('Ikasgaiak', 'Ikasgaiak', 1))
+      description: _("Do you want to delete this %s?", ngettext('Ikasgaiak', 'Ikasgaiak', 1))
+      message: _("%s successfully deleted.", ngettext('Ikasgaiak', 'Ikasgaiak', 1))
+      labelOnList: true
+      multiItem: true
+
+testing: 
+  _extends: production
+staging: 
+  _extends: production
+development: 
+  _extends: production

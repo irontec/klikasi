@@ -1,0 +1,65 @@
+production: 
+  class: \Klikasi\Model\Kexa
+  fields: 
+    erabiltzaileaId: 
+      default: true
+      title: _('Erabiltzailea')
+      type: ghost
+      dirty: true
+      source:
+        field: edukiaId
+        class: \Klikasi\Klear\Ghost\KexaErabiltzailea
+        method: getData
+
+    edukiaId: 
+      title: _('Edukia')
+      type: ghost
+      dirty: true
+      source:
+        field: edukiaId
+        class: \Klikasi\Klear\Ghost\KexaEdukia
+        method: getData
+
+    kexa: 
+      title: _('Kexa')
+      type: textarea
+      source:
+        control: Tinymce
+        template: simple
+      required: true
+    ikusita: 
+      title: _('Ikusita')
+      type: select
+      defaultValue: 0
+      source: 
+        data: inline
+        values: 
+          '0': 
+            title: _("No")
+          '1': 
+            title: _("Yes")
+    konponduta: 
+      title: _('Konponduta')
+      type: select
+      defaultValue: 0
+      source: 
+        data: inline
+        values: 
+          '0': 
+            title: _("No")
+          '1': 
+            title: _("Yes")
+    sortzeData: 
+      title: _('Sortze data')
+      type: picker
+      defaultValue: CURRENT_TIMESTAMP
+      source: 
+        control: datetime
+        settings: 
+          disabled: 'false'
+testing: 
+  _extends: production
+staging: 
+  _extends: production
+development: 
+  _extends: production

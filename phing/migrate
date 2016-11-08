@@ -1,0 +1,1 @@
+phing migrate -De=production -Dk=/opt/klear -Da=../web/application

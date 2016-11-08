@@ -1,0 +1,158 @@
+production:
+  main:
+    log:
+      writerName: "Null"
+      writerParams:
+    sitename: Klikasi
+    logo: img/logo-klear.png
+    year: 2014
+    lang: eu
+    langs:
+      eu:
+        title: Euskara
+        language: eu
+        locale: eu_ES
+    jqueryUI:
+      theme: smoothness
+    raw:
+      css:
+        - "css/klear.css"
+    actionHelpers:
+    defaultCustomConfiguration:
+      optionCollectionPlacement: both
+    auth:
+      adapter: Klear_Auth_Adapter_Basic
+      title: _("Access denied")
+      description: _("Insert your username")
+    timezone: Europe/Madrid
+
+  menu:
+    Estatikoak:
+      title: _("Lekuaren kudeaketa")
+      description: _("Lekuaren kudeaketa")
+      submenus:
+        KexaList:
+          title: _("Kexak")
+          class: ui-silk-weather-lightning
+          description: _("Kexen zerrenda")
+        KontaktuaList:
+          title: _("Kontaktua")
+          class: ui-silk-weather-lightning
+          description: _("Kontaktu zerrenda")
+        KlearUsersList:
+          title: ngettext('Klear erabiltzailea', 'Klear erabiltzaileak', 0)
+          class: ui-silk-user-gray
+          description: _("List of %s", ngettext('Klear user', 'Klear users', 0))
+        Dashboard:
+          default: true
+          title: _("Kontrol gunea")
+          class: ui-silk-bricks
+        # LaguntzaList:
+          # title: _("Laguntzen kudeaketa")
+          # description: _("Laguntzen kudeaketa")
+          # class: ui-silk-help
+        NotifikazioaList:
+          title: _("Notifikazioak")
+          class: ui-silk-email
+          description: _("Notifikazioen kudeaketa")
+        ErabiltzaileenIrudiakList:
+          title: _("Erabiltzaileen irudiak")
+          class: ui-silk-photo
+          description: _("Erabiltzaileen irudien kudeaketa")
+        HomePageList:
+          title: _('Home Page')
+          class: ui-silk-application-home
+          description: _('Home Page')
+        NewsletterList:
+          title: _('Newsletter')
+          class: ui-silk-email
+          description: _('Newsletter')
+        LiteralesList:
+          title: _('Itzulpenak')
+          class: ui-silk-email
+          description: _('Itzulpenak')
+
+    Edukiak:
+      title: _("Edukien kudeaketa")
+      description: _("Edukien kudeaketa")
+      submenus:
+        EdukiaList:
+          title: ngettext('Edukia', 'Edukiak', 0)
+          class: ui-silk-layout-content
+          description: _("List of %s", ngettext('Edukia', 'Edukia', 0))
+        EtiketaList:
+          title: _("Etiketak")
+          class: ui-silk-tag-blue
+          description: _("Etiketen kudeaketa")
+        KategoriaMultzoakList:
+          title: _("Kategoria multzoak")
+          class: ui-silk-application-view-tile
+          description: _("Kategoria multzoen kudeaketa")
+        KategoriaList:
+          title: _("Kategoriak")
+          class: ui-silk-color-swatch
+          description: _("Kategorien kudeaketa")
+        MailaList:
+          title: _("Mailak")
+          class: ui-silk-medal-gold-1
+          description: _("Mailen kudeaketa")
+
+    Kontuak:
+      title: _("Kontuen kudeaketa")
+      description: _("Kontuen kudeaketa")
+      submenus:
+        ErabiltzaileaList:
+          title: _("Erabiltzaileak")
+          class: ui-silk-group
+          description: _("List of %s", ngettext('Erabiltzailea', 'Erabiltzailea', 0))
+        IkastegiList:
+          title: _("Ikastegiak")
+          class: ui-silk-building
+          description: _("List of %s", ngettext('Ikastegi', 'Ikastegi', 0))
+
+    # Ikastegiak:
+      # title: _("Ikastegien konfigurazioa")
+      # description: _("Ikastegien konfigurazioen kudeaketa")
+      # submenus:
+        # IkastegiGaiakList:
+          # title: _("Ikasgaiak")
+          # class: ui-silk-page-green
+          # description: _("Ikasgaien zerrenda")
+        # IkastegiMotaList:
+          # title: _("Ikastegi motak")
+          # class: ui-silk-brick
+          # description: _("Ikastegi moten zerrenda")
+
+    Orriak:
+      title: _("Orriak eta Kanpainak")
+      description: _("Orrialde estatiko, dinamikoen eta kanpainen kudeaketa")
+      submenus:
+        KanpainaList:
+          title: _("Kanpainak")
+          class: ui-silk-calendar
+          description: _("Kanpainen kudeaketa")
+        OrrialdeDinamikoakList:
+          title: _("Orrialde dinamikoak")
+          class: ui-silk-layout
+          description: _("Orrialde dinamikoen kudeaketa")
+        OrrialdeaList:
+          title: _("Orrialde estatikoak")
+          class: ui-silk-page
+          description: _("Orrialde estatikoen kudeaketa")
+    
+    Statistics:
+      title: _("Statistics")
+      description: _("Statistics")
+      submenus:
+        Statistics:
+          default: true
+          title: _("Statistics Google Analytics")
+          class: ui-silk-chart-bar
+          description: _('Statistics Google Analytics')
+          
+testing:
+  _extends: production
+staging:
+  _extends: production
+development:
+  _extends: production

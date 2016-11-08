@@ -1,0 +1,83 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+
+fixedPositions:
+  - &fixedUser
+    fixedPositions:
+      group:
+        label: _("Datuak");
+        fields:
+          login: true
+          email: true
+          active: true
+      group1:
+        label: _("Pasahitza");
+        fields:
+          pass: 1
+
+production: 
+  main: 
+    module: klearMatrix
+    defaultScreen: klearUsersList_screen
+  screens: 
+    klearUsersList_screen: &klearUsersList_screenLink 
+      controller: list
+      pagination: 
+        items: 25
+      <<: *KlearUsers
+      title: _("List of %s", ngettext('Klear user', 'Klear users', 0))
+      fields: 
+        options: 
+          title: _("Options")
+          screens: 
+            klearUsersEdit_screen: true
+          dialogs: 
+            klearUsersDel_dialog: true
+          default: klearUsersEdit_screen
+      options: 
+        title: _("Options")
+        screens: 
+          klearUsersNew_screen: true
+        dialogs: 
+          klearUsersDel_dialog: true
+
+    klearUsersNew_screen: &klearUsersNew_screenLink 
+      <<: *KlearUsers
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Add %s", ngettext('Klear user', 'Klear users', 1))
+      fields: 
+        blacklist: 
+          createdOn: true
+      <<: *fixedUser
+      
+    klearUsersEdit_screen: &klearUsersEdit_screenLink 
+      <<: *KlearUsers
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      title: _("Edit %s", ngettext('Klear user', 'Klear users', 1))
+      <<: *fixedUser
+      fields: 
+        blacklist: 
+          createdOn: true
+  dialogs: 
+    klearUsersDel_dialog: 
+      <<: *KlearUsers
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('Klear user', 'Klear users', 1))
+      description: _("Do you want to delete this %s?", ngettext('Klear user', 'Klear users', 1))
+      message: _("%s successfully deleted.", ngettext('Klear user', 'Klear users', 1))
+      labelOnList: true
+      multiItem: true
+
+testing: 
+  _extends: production
+staging: 
+  _extends: production
+development: 
+  _extends: production

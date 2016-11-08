@@ -1,0 +1,14 @@
+production: 
+  class: \Klikasi\Model\Etiketa
+  fields: 
+    izena: 
+      title: _('Izena')
+      type: text
+      required: true
+      default: true
+testing: 
+  _extends: production
+staging: 
+  _extends: production
+development: 
+  _extends: production

@@ -1,0 +1,1026 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html class="   ">
+  <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# object: http://ogp.me/ns/object# article: http://ogp.me/ns/article# profile: http://ogp.me/ns/profile#">
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    
+    <title>fancyapps/fancyBox · GitHub</title>
+    <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="GitHub" />
+    <link rel="fluid-icon" href="https://github.com/fluidicon.png" title="GitHub" />
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-114.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-144.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144.png" />
+    <meta property="fb:app_id" content="1401488693436528"/>
+
+      <meta content="@github" name="twitter:site" /><meta content="summary" name="twitter:card" /><meta content="fancyapps/fancyBox" name="twitter:title" /><meta content="fancyBox is a tool that offers a nice and elegant way to add zooming functionality for images, html content and multi-media on your webpages." name="twitter:description" /><meta content="https://avatars3.githubusercontent.com/u/1055589?s=400" name="twitter:image:src" />
+<meta content="GitHub" property="og:site_name" /><meta content="object" property="og:type" /><meta content="https://avatars3.githubusercontent.com/u/1055589?s=400" property="og:image" /><meta content="fancyapps/fancyBox" property="og:title" /><meta content="https://github.com/fancyapps/fancyBox" property="og:url" /><meta content="fancyBox is a tool that offers a nice and elegant way to add zooming functionality for images, html content and multi-media on your webpages." property="og:description" />
+
+    <link rel="assets" href="https://github.global.ssl.fastly.net/">
+    <link rel="conduit-xhr" href="https://ghconduit.com:25035/">
+    <link rel="xhr-socket" href="/_sockets" />
+
+    <meta name="msapplication-TileImage" content="/windows-tile.png" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta name="selected-link" value="repo_source" data-pjax-transient />
+    <meta content="collector.githubapp.com" name="octolytics-host" /><meta content="collector-cdn.github.com" name="octolytics-script-host" /><meta content="github" name="octolytics-app-id" /><meta content="5555B313:5DB5:1A8EB36:533C3AE9" name="octolytics-dimension-request_id" />
+    
+
+    
+    
+    <link rel="icon" type="image/x-icon" href="https://github.global.ssl.fastly.net/favicon.ico" />
+
+    <meta content="authenticity_token" name="csrf-param" />
+<meta content="X1R7uc4hn22FW37/fJMZBtNZpbYVuyKGi20BKTX6+EA=" name="csrf-token" />
+
+    <link href="https://github.global.ssl.fastly.net/assets/github-927f0bd30c92b2f1f72bead5d0086b25492d8375.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="https://github.global.ssl.fastly.net/assets/github2-db8f6f9bbe1b0e611d0e24fc905420b0c99729f2.css" media="all" rel="stylesheet" type="text/css" />
+    
+
+
+        <script crossorigin="anonymous" src="https://github.global.ssl.fastly.net/assets/frameworks-dca097f6f454ee06b43ea4817a154392e3caf824.js" type="text/javascript"></script>
+        <script async="async" crossorigin="anonymous" src="https://github.global.ssl.fastly.net/assets/github-8f50ef8d73fe0d7e132fe0703ddfb1928cf847fa.js" type="text/javascript"></script>
+        
+        
+      <meta http-equiv="x-pjax-version" content="f69f05f1dc5a6f45a089ae04efd636e9">
+
+      
+  <meta name="description" content="fancyBox is a tool that offers a nice and elegant way to add zooming functionality for images, html content and multi-media on your webpages." />
+
+  <meta content="1055589" name="octolytics-dimension-user_id" /><meta content="fancyapps" name="octolytics-dimension-user_login" /><meta content="2715671" name="octolytics-dimension-repository_id" /><meta content="fancyapps/fancyBox" name="octolytics-dimension-repository_nwo" /><meta content="true" name="octolytics-dimension-repository_public" /><meta content="false" name="octolytics-dimension-repository_is_fork" /><meta content="2715671" name="octolytics-dimension-repository_network_root_id" /><meta content="fancyapps/fancyBox" name="octolytics-dimension-repository_network_root_nwo" />
+  <link href="https://github.com/fancyapps/fancyBox/commits/master.atom" rel="alternate" title="Recent Commits to fancyBox:master" type="application/atom+xml" />
+
+  </head>
+
+
+  <body class="logged_out  env-production  vis-public">
+    <a href="#start-of-content" tabindex="1" class="accessibility-aid js-skip-to-content">Skip to content</a>
+    <div class="wrapper">
+      
+      
+      
+      
+
+
+      
+      <div class="header header-logged-out">
+  <div class="container clearfix">
+
+    <a class="header-logo-wordmark" href="https://github.com/">
+      <span class="mega-octicon octicon-logo-github"></span>
+    </a>
+
+    <div class="header-actions">
+        <a class="button primary" href="/join">Sign up</a>
+      <a class="button signin" href="/login?return_to=%2Ffancyapps%2FfancyBox">Sign in</a>
+    </div>
+
+    <div class="command-bar js-command-bar  in-repository">
+
+      <ul class="top-nav">
+          <li class="explore"><a href="/explore">Explore</a></li>
+        <li class="features"><a href="/features">Features</a></li>
+          <li class="enterprise"><a href="https://enterprise.github.com/">Enterprise</a></li>
+          <li class="blog"><a href="/blog">Blog</a></li>
+      </ul>
+        <form accept-charset="UTF-8" action="/search" class="command-bar-form" id="top_search_form" method="get">
+
+<div class="commandbar">
+  <span class="message"></span>
+  <input type="text" data-hotkey="/ s" name="q" id="js-command-bar-field" placeholder="Search or type a command" tabindex="1" autocapitalize="off"
+    
+    
+      data-repo="fancyapps/fancyBox"
+      data-branch="master"
+      data-sha="ddbd0dbaabce561ac39668ae1a41ae486b007385"
+  >
+  <div class="display hidden"></div>
+</div>
+
+    <input type="hidden" name="nwo" value="fancyapps/fancyBox" />
+
+    <div class="select-menu js-menu-container js-select-menu search-context-select-menu">
+      <span class="minibutton select-menu-button js-menu-target" role="button" aria-haspopup="true">
+        <span class="js-select-button">This repository</span>
+      </span>
+
+      <div class="select-menu-modal-holder js-menu-content js-navigation-container" aria-hidden="true">
+        <div class="select-menu-modal">
+
+          <div class="select-menu-item js-navigation-item js-this-repository-navigation-item selected">
+            <span class="select-menu-item-icon octicon octicon-check"></span>
+            <input type="radio" class="js-search-this-repository" name="search_target" value="repository" checked="checked" />
+            <div class="select-menu-item-text js-select-button-text">This repository</div>
+          </div> <!-- /.select-menu-item -->
+
+          <div class="select-menu-item js-navigation-item js-all-repositories-navigation-item">
+            <span class="select-menu-item-icon octicon octicon-check"></span>
+            <input type="radio" name="search_target" value="global" />
+            <div class="select-menu-item-text js-select-button-text">All repositories</div>
+          </div> <!-- /.select-menu-item -->
+
+        </div>
+      </div>
+    </div>
+
+  <span class="help tooltipped tooltipped-s" aria-label="Show command bar help">
+    <span class="octicon octicon-question"></span>
+  </span>
+
+
+  <input type="hidden" name="ref" value="cmdform">
+
+</form>
+    </div>
+
+  </div>
+</div>
+
+
+
+      <div id="start-of-content" class="accessibility-aid"></div>
+          <div class="site" itemscope itemtype="http://schema.org/WebPage">
+    
+    <div class="pagehead repohead instapaper_ignore readability-menu">
+      <div class="container">
+        
+
+<ul class="pagehead-actions">
+
+
+  <li>
+    <a href="/login?return_to=%2Ffancyapps%2FfancyBox"
+    class="minibutton with-count js-toggler-target star-button tooltipped tooltipped-n"
+    aria-label="You must be signed in to star a repository" rel="nofollow">
+    <span class="octicon octicon-star"></span>Star
+  </a>
+
+    <a class="social-count js-social-count" href="/fancyapps/fancyBox/stargazers">
+      2,329
+    </a>
+
+  </li>
+
+    <li>
+      <a href="/login?return_to=%2Ffancyapps%2FfancyBox"
+        class="minibutton with-count js-toggler-target fork-button tooltipped tooltipped-n"
+        aria-label="You must be signed in to fork a repository" rel="nofollow">
+        <span class="octicon octicon-git-branch"></span>Fork
+      </a>
+      <a href="/fancyapps/fancyBox/network" class="social-count">
+        626
+      </a>
+    </li>
+</ul>
+
+        <h1 itemscope itemtype="http://data-vocabulary.org/Breadcrumb" class="entry-title public">
+          <span class="repo-label"><span>public</span></span>
+          <span class="mega-octicon octicon-repo"></span>
+          <span class="author">
+            <a href="/fancyapps" class="url fn" itemprop="url" rel="author"><span itemprop="title">fancyapps</span></a>
+          </span>
+          <span class="repohead-name-divider">/</span>
+          <strong><a href="/fancyapps/fancyBox" class="js-current-repository js-repo-home-link">fancyBox</a></strong>
+
+          <span class="page-context-loader">
+            <img alt="Octocat-spinner-32" height="16" src="https://github.global.ssl.fastly.net/images/spinners/octocat-spinner-32.gif" width="16" />
+          </span>
+
+        </h1>
+      </div><!-- /.container -->
+    </div><!-- /.repohead -->
+
+    <div class="container">
+      <div class="repository-with-sidebar repo-container new-discussion-timeline js-new-discussion-timeline with-full-navigation ">
+        <div class="repository-sidebar clearfix">
+            
+
+<div class="sunken-menu vertical-right repo-nav js-repo-nav js-repository-container-pjax js-octicon-loaders">
+  <div class="sunken-menu-contents">
+    <ul class="sunken-menu-group">
+      <li class="tooltipped tooltipped-w" aria-label="Code">
+        <a href="/fancyapps/fancyBox" aria-label="Code" class="selected js-selected-navigation-item sunken-menu-item" data-gotokey="c" data-pjax="true" data-selected-links="repo_source repo_downloads repo_commits repo_tags repo_branches /fancyapps/fancyBox">
+          <span class="octicon octicon-code"></span> <span class="full-word">Code</span>
+          <img alt="Octocat-spinner-32" class="mini-loader" height="16" src="https://github.global.ssl.fastly.net/images/spinners/octocat-spinner-32.gif" width="16" />
+</a>      </li>
+
+        <li class="tooltipped tooltipped-w" aria-label="Issues">
+          <a href="/fancyapps/fancyBox/issues" aria-label="Issues" class="js-selected-navigation-item sunken-menu-item js-disable-pjax" data-gotokey="i" data-selected-links="repo_issues /fancyapps/fancyBox/issues">
+            <span class="octicon octicon-issue-opened"></span> <span class="full-word">Issues</span>
+            <span class='counter'>235</span>
+            <img alt="Octocat-spinner-32" class="mini-loader" height="16" src="https://github.global.ssl.fastly.net/images/spinners/octocat-spinner-32.gif" width="16" />
+</a>        </li>
+
+      <li class="tooltipped tooltipped-w" aria-label="Pull Requests">
+        <a href="/fancyapps/fancyBox/pulls" aria-label="Pull Requests" class="js-selected-navigation-item sunken-menu-item js-disable-pjax" data-gotokey="p" data-selected-links="repo_pulls /fancyapps/fancyBox/pulls">
+            <span class="octicon octicon-git-pull-request"></span> <span class="full-word">Pull Requests</span>
+            <span class='counter'>28</span>
+            <img alt="Octocat-spinner-32" class="mini-loader" height="16" src="https://github.global.ssl.fastly.net/images/spinners/octocat-spinner-32.gif" width="16" />
+</a>      </li>
+
+
+    </ul>
+    <div class="sunken-menu-separator"></div>
+    <ul class="sunken-menu-group">
+
+      <li class="tooltipped tooltipped-w" aria-label="Pulse">
+        <a href="/fancyapps/fancyBox/pulse" aria-label="Pulse" class="js-selected-navigation-item sunken-menu-item" data-pjax="true" data-selected-links="pulse /fancyapps/fancyBox/pulse">
+          <span class="octicon octicon-pulse"></span> <span class="full-word">Pulse</span>
+          <img alt="Octocat-spinner-32" class="mini-loader" height="16" src="https://github.global.ssl.fastly.net/images/spinners/octocat-spinner-32.gif" width="16" />
+</a>      </li>
+
+      <li class="tooltipped tooltipped-w" aria-label="Graphs">
+        <a href="/fancyapps/fancyBox/graphs" aria-label="Graphs" class="js-selected-navigation-item sunken-menu-item" data-pjax="true" data-selected-links="repo_graphs repo_contributors /fancyapps/fancyBox/graphs">
+          <span class="octicon octicon-graph"></span> <span class="full-word">Graphs</span>
+          <img alt="Octocat-spinner-32" class="mini-loader" height="16" src="https://github.global.ssl.fastly.net/images/spinners/octocat-spinner-32.gif" width="16" />
+</a>      </li>
+
+      <li class="tooltipped tooltipped-w" aria-label="Network">
+        <a href="/fancyapps/fancyBox/network" aria-label="Network" class="js-selected-navigation-item sunken-menu-item js-disable-pjax" data-selected-links="repo_network /fancyapps/fancyBox/network">
+          <span class="octicon octicon-git-branch"></span> <span class="full-word">Network</span>
+          <img alt="Octocat-spinner-32" class="mini-loader" height="16" src="https://github.global.ssl.fastly.net/images/spinners/octocat-spinner-32.gif" width="16" />
+</a>      </li>
+    </ul>
+
+
+  </div>
+</div>
+
+              <div class="only-with-full-nav">
+                
+
+  
+
+<div class="clone-url open"
+  data-protocol-type="http"
+  data-url="/users/set_protocol?protocol_selector=http&amp;protocol_type=clone">
+  <h3><strong>HTTPS</strong> clone URL</h3>
+  <div class="clone-url-box">
+    <input type="text" class="clone js-url-field"
+           value="https://github.com/fancyapps/fancyBox.git" readonly="readonly">
+
+    <span aria-label="copy to clipboard" class="js-zeroclipboard url-box-clippy minibutton zeroclipboard-button" data-clipboard-text="https://github.com/fancyapps/fancyBox.git" data-copied-hint="copied!"><span class="octicon octicon-clippy"></span></span>
+  </div>
+</div>
+
+  
+
+<div class="clone-url "
+  data-protocol-type="subversion"
+  data-url="/users/set_protocol?protocol_selector=subversion&amp;protocol_type=clone">
+  <h3><strong>Subversion</strong> checkout URL</h3>
+  <div class="clone-url-box">
+    <input type="text" class="clone js-url-field"
+           value="https://github.com/fancyapps/fancyBox" readonly="readonly">
+
+    <span aria-label="copy to clipboard" class="js-zeroclipboard url-box-clippy minibutton zeroclipboard-button" data-clipboard-text="https://github.com/fancyapps/fancyBox" data-copied-hint="copied!"><span class="octicon octicon-clippy"></span></span>
+  </div>
+</div>
+
+
+<p class="clone-options">You can clone with
+      <a href="#" class="js-clone-selector" data-protocol="http">HTTPS</a>
+      or <a href="#" class="js-clone-selector" data-protocol="subversion">Subversion</a>.
+  <span class="help tooltipped tooltipped-n" aria-label="Get help on which URL is right for you.">
+    <a href="https://help.github.com/articles/which-remote-url-should-i-use">
+    <span class="octicon octicon-question"></span>
+    </a>
+  </span>
+</p>
+
+
+
+                <a href="/fancyapps/fancyBox/archive/master.zip"
+                   class="minibutton sidebar-button"
+                   aria-label="Download fancyapps/fancyBox as a zip file"
+                   title="Download fancyapps/fancyBox as a zip file"
+                   rel="nofollow">
+                  <span class="octicon octicon-cloud-download"></span>
+                  Download ZIP
+                </a>
+              </div>
+        </div><!-- /.repository-sidebar -->
+
+        <div id="js-repo-pjax-container" class="repository-content context-loader-container" data-pjax-container>
+          
+
+<span id="js-show-full-navigation"></span>
+
+<div class="repository-meta js-details-container ">
+    <div class="repository-description js-details-show">
+      <p>fancyBox is a tool that offers a nice and elegant way to add zooming functionality for images, html content and multi-media on your webpages.</p>
+    </div>
+
+    <div class="repository-website js-details-show">
+      <p><a href="http://fancyapps.com/fancybox/" rel="nofollow">http://fancyapps.com/fancybox/</a></p>
+    </div>
+
+
+</div>
+
+<div class="capped-box overall-summary ">
+
+  <div class="stats-switcher-viewport js-stats-switcher-viewport">
+    <div class="stats-switcher-wrapper">
+    <ul class="numbers-summary">
+      <li class="commits">
+        <a data-pjax href="/fancyapps/fancyBox/commits/master">
+            <span class="num">
+              <span class="octicon octicon-history"></span>
+              185
+            </span>
+            commits
+        </a>
+      </li>
+      <li>
+        <a data-pjax href="/fancyapps/fancyBox/branches">
+          <span class="num">
+            <span class="octicon octicon-git-branch"></span>
+            1
+          </span>
+          branch
+        </a>
+      </li>
+
+      <li>
+        <a data-pjax href="/fancyapps/fancyBox/releases">
+          <span class="num">
+            <span class="octicon octicon-tag"></span>
+            9
+          </span>
+          releases
+        </a>
+      </li>
+
+      <li>
+        
+  <a href="/fancyapps/fancyBox/graphs/contributors">
+    <span class="num">
+      <span class="octicon octicon-organization"></span>
+      19
+    </span>
+    contributors
+  </a>
+      </li>
+    </ul>
+
+      <div class="repository-lang-stats">
+        <ol class="repository-lang-stats-numbers">
+          <li>
+              <a href="/fancyapps/fancyBox/search?l=javascript">
+                <span class="color-block language-color" style="background-color:#f15501;"></span>
+                <span class="lang">JavaScript</span>
+                <span class="percent">88.3%</span>
+              </a>
+          </li>
+          <li>
+              <a href="/fancyapps/fancyBox/search?l=css">
+                <span class="color-block language-color" style="background-color:#1f085e;"></span>
+                <span class="lang">CSS</span>
+                <span class="percent">11.7%</span>
+              </a>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+  <div class="tooltipped tooltipped-s" aria-label="Show language statistics">
+    <a href="#"
+     class="repository-lang-stats-graph js-toggle-lang-stats"
+     style="background-color:#1f085e">
+  <span class="language-color" style="width:88.3%; background-color:#f15501;" itemprop="keywords">JavaScript</span><span class="language-color" style="width:11.7%; background-color:#1f085e;" itemprop="keywords">CSS</span>
+    </a>
+  </div>
+
+
+
+<div class="file-navigation in-mid-page">
+    <a href="/fancyapps/fancyBox/compare" aria-label="Compare, review, create a pull request" class="minibutton compact primary tooltipped tooltipped-s" aria-label="Compare &amp; review" data-pjax>
+      <span class="octicon octicon-git-compare"></span>
+    </a>
+
+  
+
+<div class="select-menu js-menu-container js-select-menu" >
+  <span class="minibutton select-menu-button js-menu-target" data-hotkey="w"
+    data-master-branch="master"
+    data-ref="master"
+    role="button" aria-label="Switch branches or tags" tabindex="0" aria-haspopup="true">
+    <span class="octicon octicon-git-branch"></span>
+    <i>branch:</i>
+    <span class="js-select-button">master</span>
+  </span>
+
+  <div class="select-menu-modal-holder js-menu-content js-navigation-container" data-pjax aria-hidden="true">
+
+    <div class="select-menu-modal">
+      <div class="select-menu-header">
+        <span class="select-menu-title">Switch branches/tags</span>
+        <span class="octicon octicon-remove-close js-menu-close"></span>
+      </div> <!-- /.select-menu-header -->
+
+      <div class="select-menu-filters">
+        <div class="select-menu-text-filter">
+          <input type="text" aria-label="Filter branches/tags" id="context-commitish-filter-field" class="js-filterable-field js-navigation-enable" placeholder="Filter branches/tags">
+        </div>
+        <div class="select-menu-tabs">
+          <ul>
+            <li class="select-menu-tab">
+              <a href="#" data-tab-filter="branches" class="js-select-menu-tab">Branches</a>
+            </li>
+            <li class="select-menu-tab">
+              <a href="#" data-tab-filter="tags" class="js-select-menu-tab">Tags</a>
+            </li>
+          </ul>
+        </div><!-- /.select-menu-tabs -->
+      </div><!-- /.select-menu-filters -->
+
+      <div class="select-menu-list select-menu-tab-bucket js-select-menu-tab-bucket" data-tab-filter="branches">
+
+        <div data-filterable-for="context-commitish-filter-field" data-filterable-type="substring">
+
+
+            <div class="select-menu-item js-navigation-item selected">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/fancyapps/fancyBox/tree/master"
+                 data-name="master"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text js-select-button-text css-truncate-target"
+                 title="master">master</a>
+            </div> <!-- /.select-menu-item -->
+        </div>
+
+          <div class="select-menu-no-results">Nothing to show</div>
+      </div> <!-- /.select-menu-list -->
+
+      <div class="select-menu-list select-menu-tab-bucket js-select-menu-tab-bucket" data-tab-filter="tags">
+        <div data-filterable-for="context-commitish-filter-field" data-filterable-type="substring">
+
+
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/fancyapps/fancyBox/tree/v2.1.5"
+                 data-name="v2.1.5"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text js-select-button-text css-truncate-target"
+                 title="v2.1.5">v2.1.5</a>
+            </div> <!-- /.select-menu-item -->
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/fancyapps/fancyBox/tree/v2.1.4"
+                 data-name="v2.1.4"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text js-select-button-text css-truncate-target"
+                 title="v2.1.4">v2.1.4</a>
+            </div> <!-- /.select-menu-item -->
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/fancyapps/fancyBox/tree/v2.1.3"
+                 data-name="v2.1.3"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text js-select-button-text css-truncate-target"
+                 title="v2.1.3">v2.1.3</a>
+            </div> <!-- /.select-menu-item -->
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/fancyapps/fancyBox/tree/v2.1.2"
+                 data-name="v2.1.2"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text js-select-button-text css-truncate-target"
+                 title="v2.1.2">v2.1.2</a>
+            </div> <!-- /.select-menu-item -->
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/fancyapps/fancyBox/tree/v2.1.1"
+                 data-name="v2.1.1"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text js-select-button-text css-truncate-target"
+                 title="v2.1.1">v2.1.1</a>
+            </div> <!-- /.select-menu-item -->
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/fancyapps/fancyBox/tree/v2.1.0"
+                 data-name="v2.1.0"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text js-select-button-text css-truncate-target"
+                 title="v2.1.0">v2.1.0</a>
+            </div> <!-- /.select-menu-item -->
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/fancyapps/fancyBox/tree/v2.0.6"
+                 data-name="v2.0.6"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text js-select-button-text css-truncate-target"
+                 title="v2.0.6">v2.0.6</a>
+            </div> <!-- /.select-menu-item -->
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/fancyapps/fancyBox/tree/v2.0.5"
+                 data-name="v2.0.5"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text js-select-button-text css-truncate-target"
+                 title="v2.0.5">v2.0.5</a>
+            </div> <!-- /.select-menu-item -->
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/fancyapps/fancyBox/tree/v2.0.4"
+                 data-name="v2.0.4"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text js-select-button-text css-truncate-target"
+                 title="v2.0.4">v2.0.4</a>
+            </div> <!-- /.select-menu-item -->
+        </div>
+
+        <div class="select-menu-no-results">Nothing to show</div>
+      </div> <!-- /.select-menu-list -->
+
+    </div> <!-- /.select-menu-modal -->
+  </div> <!-- /.select-menu-modal-holder -->
+</div> <!-- /.select-menu -->
+
+
+  <div class="breadcrumb"><span class='repo-root js-repo-root'><span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/fancyapps/fancyBox" data-branch="master" data-direction="back" data-pjax="true" itemscope="url"><span itemprop="title">fancyBox</span></a></span></span><span class="separator"> / </span><form action="/login?return_to=%2Ffancyapps%2FfancyBox" aria-label="Sign in to make or propose changes" class="js-new-blob-form tooltipped tooltipped-e new-file-link" method="post"><span aria-label="Sign in to make or propose changes" class="js-new-blob-submit octicon octicon-file-add" data-test-id="create-new-git-file" role="button"></span></form></div>
+</div>
+
+
+
+<a href="/fancyapps/fancyBox/find/master"
+  data-hotkey="t" class="js-show-file-finder" style="display:none" data-pjax>Show File Finder</a>
+<div class="bubble files-bubble">
+
+  
+  <div class="commit commit-tease js-details-container" >
+    <p class="commit-title ">
+        <a href="/fancyapps/fancyBox/commit/1546099d6c4fa0570bba637f141ea7e3f5aabf41" class="message" data-pjax="true" title="Merge pull request #837 from dwieeb/master
+
+object has no method 'html' -- not having a title crashes the opening of fancybox">Merge pull request</a> <a href="https://github.com/fancyapps/fancyBox/pull/837" class="issue-link" title="object has no method 'html' -- not having a title crashes the opening of fancybox">#837</a> <a href="/fancyapps/fancyBox/commit/1546099d6c4fa0570bba637f141ea7e3f5aabf41" class="message" data-pjax="true" title="Merge pull request #837 from dwieeb/master
+
+object has no method 'html' -- not having a title crashes the opening of fancybox">from dwieeb/master</a>
+        <span class="hidden-text-expander inline"><a href="#" class="js-details-target">…</a></span>
+    </p>
+      <div class="commit-desc"><pre>object has no method 'html' -- not having a title crashes the opening of fancybox</pre></div>
+    <div class="commit-meta">
+      <span aria-label="Copy SHA" class="js-zeroclipboard zeroclipboard-link" data-clipboard-text="1546099d6c4fa0570bba637f141ea7e3f5aabf41" data-copied-hint="copied!"><span class="octicon octicon-clippy"></span></span>
+      <a href="/fancyapps/fancyBox/commit/1546099d6c4fa0570bba637f141ea7e3f5aabf41" class="sha-block" data-pjax>latest commit <span class="sha">1546099d6c</span></a>
+
+      <div class="authorship">
+        <img alt="Jānis Skarnelis" class="gravatar js-avatar" data-user="1055589" height="20" src="https://avatars0.githubusercontent.com/u/1055589?s=140" width="20" />
+        <span class="author-name"><a href="/fancyapps" data-skip-pjax="true" rel="author">fancyapps</a></span>
+        authored <time class="js-relative-date updated" data-title-format="YYYY-MM-DD HH:mm:ss" datetime="2014-03-17T10:12:30+02:00" title="2014-03-17 04:12:30">March 17, 2014</time>
+
+      </div>
+    </div>
+  </div>
+
+  <table class="files" data-pjax>
+
+    
+<tbody class=""
+  data-url="/fancyapps/fancyBox/file-list/master">
+    <tr>
+      <td class="icon">
+        <span class="octicon octicon-file-directory"></span>
+        <img alt="Octocat-spinner-32" class="spinner" height="16" src="https://github.global.ssl.fastly.net/images/spinners/octocat-spinner-32.gif" width="16" />
+      </td>
+      <td class="content">
+        <span class="css-truncate css-truncate-target"><a href="/fancyapps/fancyBox/tree/master/demo" class="js-directory-link" id="fe01ce2a7fbac8fafaed7c982a04e229-d9c955c7c4222f34e56666386230b0fc6fce84c9" title="demo">demo</a></span>
+      </td>
+      <td class="message">
+        <span class="css-truncate css-truncate-target"><a href="/fancyapps/fancyBox/commit/fbc8accfa389b7c9123db0823587e0ee38d68e53" class="message" data-pjax="true" title="Fix title entities, slideshow">Fix title entities, slideshow</a></span>
+      </td>
+      <td class="age"><span class="css-truncate css-truncate-target"><time class="js-relative-date" data-title-format="YYYY-MM-DD HH:mm:ss" datetime="2013-09-20T15:16:46+03:00" title="2013-09-20 12:16:46">September 20, 2013</time></span></td>
+    </tr>
+    <tr>
+      <td class="icon">
+        <span class="octicon octicon-file-directory"></span>
+        <img alt="Octocat-spinner-32" class="spinner" height="16" src="https://github.global.ssl.fastly.net/images/spinners/octocat-spinner-32.gif" width="16" />
+      </td>
+      <td class="content">
+        <span class="css-truncate css-truncate-target"><a href="/fancyapps/fancyBox/tree/master/lib" class="js-directory-link" id="e8acc63b1e238f3255c900eed37254b8-ff6189b300a008332124bc926fc431ff9f7e610f" title="lib">lib</a></span>
+      </td>
+      <td class="message">
+        <span class="css-truncate css-truncate-target"><a href="/fancyapps/fancyBox/commit/4c2a31abfb0760da65a7cec2c8478ea4c165ec35" class="message" data-pjax="true" title="Minor updates">Minor updates</a></span>
+      </td>
+      <td class="age"><span class="css-truncate css-truncate-target"><time class="js-relative-date" data-title-format="YYYY-MM-DD HH:mm:ss" datetime="2013-08-13T15:31:21+03:00" title="2013-08-13 12:31:21">August 13, 2013</time></span></td>
+    </tr>
+    <tr>
+      <td class="icon">
+        <span class="octicon octicon-file-directory"></span>
+        <img alt="Octocat-spinner-32" class="spinner" height="16" src="https://github.global.ssl.fastly.net/images/spinners/octocat-spinner-32.gif" width="16" />
+      </td>
+      <td class="content">
+        <span class="css-truncate css-truncate-target"><a href="/fancyapps/fancyBox/tree/master/source" class="js-directory-link" id="36cd38f49b9afa08222c0dc9ebfe35eb-f8faf6dbb35b86a67f8c849a6abba19f7f19d22a" title="source">source</a></span>
+      </td>
+      <td class="message">
+        <span class="css-truncate css-truncate-target"><a href="/fancyapps/fancyBox/commit/18b1e607f9c0aa2cad95b288b1cca0d31ec7fb52" class="message" data-pjax="true" title="falling back to empty string so text() returns the jQuery object, not th...
+
+...e innerText of the object">falling back to empty string so text() returns the jQuery object, not…</a></span>
+      </td>
+      <td class="age"><span class="css-truncate css-truncate-target"><time class="js-relative-date" data-title-format="YYYY-MM-DD HH:mm:ss" datetime="2014-03-16T17:48:00-05:00" title="2014-03-16 22:48:00">March 16, 2014</time></span></td>
+    </tr>
+    <tr>
+      <td class="icon">
+        <span class="octicon octicon-file-text"></span>
+        <img alt="Octocat-spinner-32" class="spinner" height="16" src="https://github.global.ssl.fastly.net/images/spinners/octocat-spinner-32.gif" width="16" />
+      </td>
+      <td class="content">
+        <span class="css-truncate css-truncate-target"><a href="/fancyapps/fancyBox/blob/master/.gitattributes" class="js-directory-link" id="fc723d30b02a4cca7a534518111c1a66-f6bb280a0b2c68256a8e906b35c6976c80c1b3be" title=".gitattributes">.gitattributes</a></span>
+      </td>
+      <td class="message">
+        <span class="css-truncate css-truncate-target"><a href="/fancyapps/fancyBox/commit/4df1448e8edd9fe6f78dbacbb45912f42f8a412e" class="message" data-pjax="true" title="adding gitattributes file">adding gitattributes file</a></span>
+      </td>
+      <td class="age"><span class="css-truncate css-truncate-target"><time class="js-relative-date" data-title-format="YYYY-MM-DD HH:mm:ss" datetime="2012-08-13T14:27:18+03:00" title="2012-08-13 11:27:18">August 13, 2012</time></span></td>
+    </tr>
+    <tr>
+      <td class="icon">
+        <span class="octicon octicon-file-text"></span>
+        <img alt="Octocat-spinner-32" class="spinner" height="16" src="https://github.global.ssl.fastly.net/images/spinners/octocat-spinner-32.gif" width="16" />
+      </td>
+      <td class="content">
+        <span class="css-truncate css-truncate-target"><a href="/fancyapps/fancyBox/blob/master/CHANGELOG.md" class="js-directory-link" id="4ac32a78649ca5bdd8e0ba38b7006a1e-b0d847e256b2253b2950aa4c9da8e4fce27e03d2" title="CHANGELOG.md">CHANGELOG.md</a></span>
+      </td>
+      <td class="message">
+        <span class="css-truncate css-truncate-target"><a href="/fancyapps/fancyBox/commit/e2248f468dc4b45f5b1ef1776bde958b2b52775d" class="message" data-pjax="true" title="Updated to v2.1.5">Updated to v2.1.5</a></span>
+      </td>
+      <td class="age"><span class="css-truncate css-truncate-target"><time class="js-relative-date" data-title-format="YYYY-MM-DD HH:mm:ss" datetime="2013-06-14T12:12:29+03:00" title="2013-06-14 09:12:29">June 14, 2013</time></span></td>
+    </tr>
+    <tr>
+      <td class="icon">
+        <span class="octicon octicon-file-text"></span>
+        <img alt="Octocat-spinner-32" class="spinner" height="16" src="https://github.global.ssl.fastly.net/images/spinners/octocat-spinner-32.gif" width="16" />
+      </td>
+      <td class="content">
+        <span class="css-truncate css-truncate-target"><a href="/fancyapps/fancyBox/blob/master/README.md" class="js-directory-link" id="04c6e90faac2675aa89e2176d2eec7d8-943489378ba53dbd4b82f77f78417147b00cb0dc" title="README.md">README.md</a></span>
+      </td>
+      <td class="message">
+        <span class="css-truncate css-truncate-target"><a href="/fancyapps/fancyBox/commit/f4bf52369341a6de73cf7b35785b5c236a32ac8c" class="message" data-pjax="true" title="Updated to v2.1.1">Updated to v2.1.1</a></span>
+      </td>
+      <td class="age"><span class="css-truncate css-truncate-target"><time class="js-relative-date" data-title-format="YYYY-MM-DD HH:mm:ss" datetime="2012-10-01T17:38:40+03:00" title="2012-10-01 14:38:40">October 01, 2012</time></span></td>
+    </tr>
+    <tr>
+      <td class="icon">
+        <span class="octicon octicon-file-text"></span>
+        <img alt="Octocat-spinner-32" class="spinner" height="16" src="https://github.global.ssl.fastly.net/images/spinners/octocat-spinner-32.gif" width="16" />
+      </td>
+      <td class="content">
+        <span class="css-truncate css-truncate-target"><a href="/fancyapps/fancyBox/blob/master/bower.json" class="js-directory-link" id="0a08a7565aba4405282251491979bb6b-fda9e053eceea55adee529fee26f4e76fe2b141a" title="bower.json">bower.json</a></span>
+      </td>
+      <td class="message">
+        <span class="css-truncate css-truncate-target"><a href="/fancyapps/fancyBox/commit/e066d78c4e539c0a9b40527e1c5dccea425108e5" class="message" data-pjax="true" title="Create bower.json">Create bower.json</a></span>
+      </td>
+      <td class="age"><span class="css-truncate css-truncate-target"><time class="js-relative-date" data-title-format="YYYY-MM-DD HH:mm:ss" datetime="2013-09-14T22:23:50+08:00" title="2013-09-14 14:23:50">September 14, 2013</time></span></td>
+    </tr>
+    <tr>
+      <td class="icon">
+        <span class="octicon octicon-file-text"></span>
+        <img alt="Octocat-spinner-32" class="spinner" height="16" src="https://github.global.ssl.fastly.net/images/spinners/octocat-spinner-32.gif" width="16" />
+      </td>
+      <td class="content">
+        <span class="css-truncate css-truncate-target"><a href="/fancyapps/fancyBox/blob/master/fancybox.jquery.json" class="js-directory-link" id="3ec3a7eb22a312c3806711e9871e7de7-a32e45f54fcda6c542bded84278591614a48e7c0" title="fancybox.jquery.json">fancybox.jquery.json</a></span>
+      </td>
+      <td class="message">
+        <span class="css-truncate css-truncate-target"><a href="/fancyapps/fancyBox/commit/4e1c57f518f3b6c36584f662b37767a0b9244105" class="message" data-pjax="true" title="Fixed #644">Fixed</a> <a href="https://github.com/fancyapps/fancyBox/issues/644" class="issue-link" title="Close the Dialog,The window will scroll to the top  in IE 7">#644</a></span>
+      </td>
+      <td class="age"><span class="css-truncate css-truncate-target"><time class="js-relative-date" data-title-format="YYYY-MM-DD HH:mm:ss" datetime="2013-07-08T17:15:42+03:00" title="2013-07-08 14:15:42">July 08, 2013</time></span></td>
+    </tr>
+    <tr>
+      <td class="icon">
+        <span class="octicon octicon-file-text"></span>
+        <img alt="Octocat-spinner-32" class="spinner" height="16" src="https://github.global.ssl.fastly.net/images/spinners/octocat-spinner-32.gif" width="16" />
+      </td>
+      <td class="content">
+        <span class="css-truncate css-truncate-target"><a href="/fancyapps/fancyBox/blob/master/sprite.psd" class="js-directory-link" id="4d73c9cb9ad324e05a45101b5dd78bab-6f2032db60b78d7858a42f3ce7c8578dfd5639fc" title="sprite.psd">sprite.psd</a></span>
+      </td>
+      <td class="message">
+        <span class="css-truncate css-truncate-target"><a href="/fancyapps/fancyBox/commit/f8b0bcfeef4b7297e3131fce68820c850c86ba97" class="message" data-pjax="true" title="Adding retina sprite images">Adding retina sprite images</a></span>
+      </td>
+      <td class="age"><span class="css-truncate css-truncate-target"><time class="js-relative-date" data-title-format="YYYY-MM-DD HH:mm:ss" datetime="2013-04-02T21:45:34-05:00" title="2013-04-03 02:45:34">April 02, 2013</time></span></td>
+    </tr>
+</tbody>
+
+  </table>
+</div>
+
+  <div id="readme" class="clearfix announce instapaper_body md">
+    <span class="name">
+      <span class="octicon octicon-book"></span>
+      README.md
+    </span>
+
+    <article class="markdown-body entry-content" itemprop="mainContentOfPage"><h1>
+<a name="fancybox" class="anchor" href="#fancybox"><span class="octicon octicon-link"></span></a>fancyBox</h1>
+
+<p>fancyBox is a tool that offers a nice and elegant way to add zooming functionality for images, html content and multi-media on your webpages.</p>
+
+<p>More information and examples: <a href="http://www.fancyapps.com/fancybox/">http://www.fancyapps.com/fancybox/</a></p>
+
+<p>License: <a href="http://www.fancyapps.com/fancybox/#license">http://www.fancyapps.com/fancybox/#license</a></p>
+
+<p>Copyright (c) 2012 Janis Skarnelis - <a href="mailto:janis@fancyapps.com">janis@fancyapps.com</a></p>
+
+<h2>
+<a name="how-to-use" class="anchor" href="#how-to-use"><span class="octicon octicon-link"></span></a>How to use</h2>
+
+<p>To get started, download the plugin, unzip it and copy files to your website/application directory.
+Load files in the </p> section of your HTML document. Make sure you also add the jQuery library.
+
+<pre><code>&lt;head&gt;
+    &lt;script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"&gt;&lt;/script&gt;
+    &lt;link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css" media="screen" /&gt;
+    &lt;script type="text/javascript" src="/fancybox/jquery.fancybox.pack.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+</code></pre>
+
+<p>Create your links with a <code>title</code> if you want a title to be shown, and add a class:</p>
+
+<pre><code>&lt;a href="large_image.jpg" class="fancybox" title="Sample title"&gt;&lt;img src="small_image.jpg" /&gt;&lt;/a&gt;
+</code></pre>
+
+<p>If you have a set of related items that you would like to group,
+additionally include a group name in the <code>rel</code> (or <code>data-fancybox-group</code>) attribute:</p>
+
+<pre><code>&lt;a href="large_1.jpg" class="fancybox" rel="gallery" title="Sample title 1"&gt;&lt;img src="small_1.jpg" /&gt;&lt;/a&gt;
+&lt;a href="large_2.jpg" class="fancybox" rel="gallery" title="Sample title 1"&gt;&lt;img src="small_2.jpg" /&gt;&lt;/a&gt;
+</code></pre>
+
+<p>Initialise the script like this:</p>
+
+<pre><code>&lt;script&gt;
+    $(document).ready(function() {
+        $('.fancybox').fancybox();
+    });
+&lt;/script&gt;
+</code></pre>
+
+<p>May also be passed an optional options object which will extend the default values. Example:</p>
+
+<pre><code>&lt;script&gt;
+    $(document).ready(function() {
+        $('.fancybox').fancybox({
+            padding : 0,
+            openEffect  : 'elastic'
+        });
+    });
+&lt;/script&gt;
+</code></pre>
+
+<p>Tip: Automatically group and apply fancyBox to all images:</p>
+
+<pre><code>$("a[href$='.jpg'],a[href$='.jpeg'],a[href$='.png'],a[href$='.gif']").attr('rel', 'gallery').fancybox();
+</code></pre>
+
+<p>Script uses the <code>href</code> attribute of the matched elements to obtain the location of the content and to figure out content type you want to display.
+You can specify type directly by adding classname (fancybox.image, fancybox.iframe, etc) or <code>data-fancybox-type</code> attribute:</p>
+
+<pre><code>//Ajax:
+&lt;a href="/example.html" class="fancybox fancybox.ajax"&gt;Example&lt;/a&gt;
+//or
+&lt;a href="/example.html" class="fancybox" data-fancybox-type="ajax"&gt;Example&lt;/a&gt;
+
+//Iframe:
+&lt;a href="example.html" class="fancybox fancybox.iframe"&gt;Example&lt;/a&gt;
+
+//Inline (will display an element with `id="example"`)
+&lt;a href="#example" class="fancybox"&gt;Example&lt;/a&gt;
+
+//SWF:
+&lt;a href="example.swf" class="fancybox"&gt;Example&lt;/a&gt;
+
+//Image:
+&lt;a href="example.jpg" class="fancybox"&gt;Example&lt;/a&gt;
+</code></pre>
+
+<p>Note, ajax requests are subject to the <a href="http://en.wikipedia.org/wiki/Same_origin_policy">same origin policy</a>.
+If fancyBox will not be able to get content type, it will try to guess based on 'href' and will quit silently if would not succeed.
+(this is different from previsous versions where 'ajax' was used as default type or an error message was displayed).</p>
+
+<h2>
+<a name="advanced" class="anchor" href="#advanced"><span class="octicon octicon-link"></span></a>Advanced</h2>
+
+<h3>
+<a name="helpers" class="anchor" href="#helpers"><span class="octicon octicon-link"></span></a>Helpers</h3>
+
+<p>Helpers provide a simple mechanism to extend the capabilities of fancyBox. There are two built-in helpers - 'overlay' and 'title'.
+You can disable them, set custom options or enable other helpers. Examples:</p>
+
+<pre><code>//Disable title helper
+$(".fancybox").fancybox({
+    helpers:  {
+        title:  null
+    }
+});
+
+//Disable overlay helper
+$(".fancybox").fancybox({
+    helpers:  {
+        overlay : null
+    }
+});
+
+//Change title position and overlay color
+$(".fancybox").fancybox({
+    helpers:  {
+        title : {
+            type : 'inside'
+        },
+        overlay : {
+            css : {
+                'background' : 'rgba(255,255,255,0.5)'
+            }
+        }
+    }
+});
+
+//Enable thumbnail helper and set custom options
+$(".fancybox").fancybox({
+    helpers:  {
+        thumbs : {
+            width: 50,
+            height: 50
+        }
+    }
+});
+</code></pre>
+
+<h3>
+<a name="api" class="anchor" href="#api"><span class="octicon octicon-link"></span></a>API</h3>
+
+<p>Also available are event driven callback methods.  The <code>this</code> keyword refers to the current or upcoming object (depends on callback method). Here is how you can change title:</p>
+
+<pre><code>$(".fancybox").fancybox({
+    beforeLoad : function() {
+        this.title = 'Image ' + (this.index + 1) + ' of ' + this.group.length + (this.title ? ' - ' + this.title : '');
+
+        /*
+            "this.element" refers to current element, so you can, for example, use the "alt" attribute of the image to store the title:
+            this.title = $(this.element).find('img').attr('alt');
+        */
+    }
+});
+</code></pre>
+
+<p>It`s possible to open fancyBox programmatically in various ways:</p>
+
+<pre><code>//HTML content:
+$.fancybox( '&lt;div&gt;&lt;h1&gt;Lorem Lipsum&lt;/h1&gt;&lt;p&gt;Lorem lipsum&lt;/p&gt;&lt;/div&gt;', {
+    title : 'Custom Title'
+});
+
+//DOM element:
+$.fancybox( $("#inline"), {
+    title : 'Custom Title'
+});
+
+//Custom object:
+$.fancybox({
+    href: 'example.jpg',
+    title : 'Custom Title'
+});
+
+//Array of objects:
+$.fancybox([
+    {
+        href: 'example1.jpg',
+        title : 'Custom Title 1'
+    },
+    {
+        href: 'example2.jpg',
+        title : 'Custom Title 2'
+    }
+], {
+    padding: 0
+});
+</code></pre>
+
+<p>There are several methods that allow you to interact with and manipulate fancyBox, example:</p>
+
+<pre><code>//Close fancybox:
+$.fancybox.close();
+</code></pre>
+
+<p>There is a simply way to access wrapping elements using JS:</p>
+
+<pre><code>$.fancybox.wrap
+$.fancybox.skin
+$.fancybox.outer
+$.fancybox.inner
+</code></pre>
+
+<p>You can override CSS to customize the look. For example, make navigation arrows always visible,
+change width and move them outside of area (use this snippet after including fancybox.css):</p>
+
+<pre><code>.fancybox-nav span {
+    visibility: visible;
+}
+
+.fancybox-nav {
+    width: 80px;
+}
+
+.fancybox-prev {
+    left: -80px;
+}
+
+.fancybox-next {
+    right: -80px;
+}
+</code></pre>
+
+<p>In that case, you might want to increase space around box:</p>
+
+<pre><code>$(".fancybox").fancybox({
+    margin : [20, 60, 20, 60]
+});
+</code></pre>
+
+<h2>
+<a name="bug-tracker" class="anchor" href="#bug-tracker"><span class="octicon octicon-link"></span></a>Bug tracker</h2>
+
+<p>Have a bug? Please create an issue on GitHub at <a href="https://github.com/fancyapps/fancyBox/issues">https://github.com/fancyapps/fancyBox/issues</a></p></article>
+  </div>
+
+
+        </div>
+
+      </div><!-- /.repo-container -->
+      <div class="modal-backdrop"></div>
+    </div><!-- /.container -->
+  </div><!-- /.site -->
+
+
+    </div><!-- /.wrapper -->
+
+      <div class="container">
+  <div class="site-footer">
+    <ul class="site-footer-links right">
+      <li><a href="https://status.github.com/">Status</a></li>
+      <li><a href="http://developer.github.com">API</a></li>
+      <li><a href="http://training.github.com">Training</a></li>
+      <li><a href="http://shop.github.com">Shop</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/about">About</a></li>
+
+    </ul>
+
+    <a href="/">
+      <span class="mega-octicon octicon-mark-github" title="GitHub"></span>
+    </a>
+
+    <ul class="site-footer-links">
+      <li>&copy; 2014 <span title="0.03624s from github-fe120-cp1-prd.iad.github.net">GitHub</span>, Inc.</li>
+        <li><a href="/site/terms">Terms</a></li>
+        <li><a href="/site/privacy">Privacy</a></li>
+        <li><a href="/security">Security</a></li>
+        <li><a href="/contact">Contact</a></li>
+    </ul>
+  </div><!-- /.site-footer -->
+</div><!-- /.container -->
+
+
+    <div class="fullscreen-overlay js-fullscreen-overlay" id="fullscreen_overlay">
+  <div class="fullscreen-container js-fullscreen-container">
+    <div class="textarea-wrap">
+      <textarea name="fullscreen-contents" id="fullscreen-contents" class="js-fullscreen-contents" placeholder="" data-suggester="fullscreen_suggester"></textarea>
+    </div>
+  </div>
+  <div class="fullscreen-sidebar">
+    <a href="#" class="exit-fullscreen js-exit-fullscreen tooltipped tooltipped-w" aria-label="Exit Zen Mode">
+      <span class="mega-octicon octicon-screen-normal"></span>
+    </a>
+    <a href="#" class="theme-switcher js-theme-switcher tooltipped tooltipped-w"
+      aria-label="Switch themes">
+      <span class="octicon octicon-color-mode"></span>
+    </a>
+  </div>
+</div>
+
+
+
+    <div id="ajax-error-message" class="flash flash-error">
+      <span class="octicon octicon-alert"></span>
+      <a href="#" class="octicon octicon-remove-close close js-ajax-error-dismiss"></a>
+      Something went wrong with that request. Please try again.
+    </div>
+
+  </body>
+</html>
+

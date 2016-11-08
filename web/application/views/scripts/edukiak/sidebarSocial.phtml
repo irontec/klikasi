@@ -1,0 +1,36 @@
+<div class="bloque-sidebar col-xs-12">
+
+    <h3 class="no-border">PARTEKATU</h3>
+
+    <div class="social">
+
+        <div class="row shareSocials">
+            {{#socialList}}
+                <span class="col-xs-4 text-center">
+                    <a href="#" title="{{socialName}}" data-url="{{socialUrl}}" data-name="{{socialName}}">
+                        <i class="fa {{socialClass}}"></i>
+                    </a>
+                </span>
+            {{/socialList}}
+        </div>
+
+        <hr/>
+
+        <button class="button-icon {{atseginDutClass}}" id="{{atseginDutId}}" data-url="{{atseginDutUrl}}?format=json">
+            <span class="fa {{atseginDutIcon}}"> </span>
+            {{atseginDutText}}
+        </button>
+        <button class="button-icon {{gogokoenetaraClass}}" id="{{gogokoenetaraId}}" data-url="{{gogokoenetaraUrl}}?format=json">
+            <span class="fa {{gogokoenetaraIcon}}"> </span>
+            {{gogokoenetaraText}}
+        </button>
+
+        <hr/>
+
+        <button class="button-icon salatu pull-right {{salatuClass}}" id="{{salatuId}}">
+            <i class="fa fa-exclamation-triangle"> </i>Salatu
+        </button>
+
+    </div>
+
+</div>

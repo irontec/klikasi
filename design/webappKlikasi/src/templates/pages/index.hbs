@@ -1,0 +1,289 @@
+---
+title: Home
+
+data-destacado-top:
+  title : "Klikasi. Sortu. Partekatu. Ikasi."
+  title-size : "h2"
+  class : "col-md-6 col-md-offset-3 text-center light p-top-4 p-bottom-4 aire"
+  text : "<p>Klikasi, euskaraz sarean daude eduki eta baliabideak partekatzen dituen plataforma da. Bertan beste erabiltzaileek partekatutako edukiak ikus ditzakezu eta zuk ere zure gustokoak direnak argitaratu. Guztion artean elikatutako edukien gunea izango da Klikasi. Testu, audio edo bideo fitxategiak, aurkezpenak, irudi edo argazkiak eta estekak aurkituko dituzu bertan.</p><p>Ezagutu nahi duzu Klikasi?</p>"
+  button : "Batu"
+  button-class : "bg-red light"
+  fondo-imagen : "background : url('images/destacada_home.png') 50% 50%; background-size: cover; -webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;"
+  izena-eman-data :
+    - id : "izenaeman1"
+      number : 1
+      izenaeman1 : 1
+      active : 1
+      next : "izenaeman2"
+      alert-danger-data :
+        mode : "danger"
+        class : "m-top-2"
+        icon : "fa fa-bullhorn"
+        text : "<span>Erabiltzailearen izena ez da zuzena.</span>"
+      inputs :
+        - input-id : "user-name"
+          input-class : "form-control"
+          input-type : "text"
+          input-placeholder : "Erabiltzaile-izena"
+        - input-id : "email"
+          input-class : "form-control"
+          input-type : "email"
+          input-placeholder : "Email"
+        - input-id : "pasahitza"
+          input-class : "form-control"
+          input-type : "password"
+          input-placeholder : "Pasahitza"
+
+    - id : "izenaeman2"
+      number : 2
+      izenaeman2 : 1
+      active : 0
+      prev : "izenaeman1"
+      next : "izenaeman3"
+      inputs :
+        - input-id : "name"
+          input-class : "form-control"
+          input-type : "text"
+          input-placeholder : "Izena"
+        - input-id : "surname"
+          input-class : "form-control"
+          input-type : "text"
+          input-placeholder : "Abizena"
+    - id : "izenaeman3"
+      number : 3
+      izenaeman3 : 1
+      active : 0
+      prev : "izenaeman2"
+      next : "izenaeman4"
+    - id : "izenaeman4"
+      number : 4
+      izenaeman4 : 1
+      active : 0
+      prev : "izenaeman3"
+      next : "izenaeman5"
+    - id : "izenaeman5"
+      number : 5
+      izenaeman5 : 1
+      active : 0
+      prev : "izenaeman4"
+      options-ikastegiak :
+        - option : "Deustuko Ikastola"
+          option1 : "Lauro Ikastola"
+          option2 : "Andra Mari Ikastola"
+          option3 : "Gorlizko Ikastetxea"
+          option4 : "I.E.S. Uribe Kosta"
+      options-irakasleak :
+        - option : "Irakasle 1 - Deustuko Ikastola"
+          option1 : "Irakasle 2 - Lauro Ikastola"
+          option2 : "Irakasle 3 - Andra Mari Ikastola"
+          option3 : "Irakasle 4 - Gorlizko Ikastetxea"
+          option4 : "Irakasle 5 - I.E.S. Uribe Kosta"
+
+sartu-data :
+  inputs :
+        - input-id : "user-name"
+          input-class : "form-control"
+          input-type : "text"
+          input-placeholder : "Erabiltzaile-izena"
+        - input-id : "pasahitza"
+          input-class : "form-control"
+          input-type : "password"
+          input-placeholder : "Pasahitza"
+
+
+data-destacado-bottom:
+  title : "Guztion artean osatzen dugu Klikasi!"
+  title-size : "h2"
+  class : ""
+  fondo-color : "bg-grey aire"
+  fondo-imagen : "background : url('images/trama_tricot.png') repeat"
+  parallax : 0
+  subtitle : "Edukiak partekatu, zabaldu eta ikasi"
+  media : "<img src = 'images/universo.jpg' alt = 'Universo'/>"
+
+
+data-destacado-ezagutu:
+  title : "Ezagutu"
+  subtitle : "Euskarazko edukiak bildu eta partekatzeko multimedia gunearen sarean sartu."
+  title-size : "h2"
+  button : "Batu"
+  button-class : "bg-red light"
+  has-bloques-interiores : 1
+  bloques :
+    - class : "col-sm-4 text-center"
+      title : "Edukiak ikusi nahi dituzu?"
+      description : "Sarean dauden euskarazko edukiak bilatu!"
+      image : "images/home_bottom_1.png"
+    - class : "col-sm-4 text-center"
+      title : "Ikastegia zara?"
+      description : Beste ikastetxe, ikastegi eta abarretatik partekatutako baliabide didaktikoak ezagutzeko aukera izango duzu eta zurean sortzen direnak zabaldu baita ere!
+      image : "images/home_bottom_2.png"
+    - class : "col-sm-4 text-center"
+      title : Sailtzailea zara eta euskarazko edukiak partekatu nahi dituzu?
+      description : Zure edukiak beste erabiltzaile, batzuekin partekatzeko aukera duzu. Hamaika kategoria daude eta edozein gaiko baliabideak aukeran.
+      image : "images/home_bottom_3.png"
+
+datos-fichas-destacadas :
+  title : "Baliabide nabarituak"
+  fichas :
+    - width : "col-xs-12 col-sm-4 col-md-3"
+      image : "images/universo.jpg"
+      alt : "Universo"
+      class-caption : "bg-blue"
+      icons-list :
+        - icon : "fa-folder"
+        - icon : "fa-desktop"
+        - icon : "fa-volume-up"
+      categoria : "Natur zientziak"
+      title : "Izenburua Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      edad-min : "11"
+      edad-max : "14"
+      curso : "D.B.H. 2"
+      autor : "Egilearen izena"
+      centro : "Deustuko Ikastola"
+      num-leido : 102
+      num-megusta : 102
+      num-comentario : 1233
+    - width : "col-xs-12 col-sm-4 col-md-3"
+      image : "images/universo.jpg"
+      alt : "Universo"
+      class-caption : "bg-yellow"
+      icons-list :
+        - icon : "fa-folder"
+        - icon : "fa-desktop"
+        - icon : "fa-volume-up"
+      categoria : "Natur zientziak"
+      title : "Izenburua Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      edad-min : "11"
+      edad-max : "14"
+      curso : "D.B.H. 2"
+      autor : "Egilearen izena"
+      centro : "Deustuko Ikastola"
+      num-leido : 102
+      num-megusta : 102
+      num-comentario : 1233
+    - width : "col-xs-12 col-sm-4 col-md-3"
+      image : "images/universo.jpg"
+      alt : "Universo"
+      class-caption : "bg-grey"
+      icons-list :
+        - icon : "fa-folder"
+        - icon : "fa-desktop"
+        - icon : "fa-volume-up"
+      categoria : "Natur zientziak"
+      title : "Izenburua Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      edad-min : "11"
+      edad-max : "14"
+      curso : "D.B.H. 2"
+      autor : "Egilearen izena"
+      centro : "Deustuko Ikastola"
+      num-leido : 102
+      num-megusta : 102
+      num-comentario : 1233
+    - width : "col-xs-12 col-sm-4 col-md-3"
+      image : "images/universo.jpg"
+      alt : "Universo"
+      class-caption : "bg-brown"
+      icons-list :
+        - icon : "fa-folder"
+        - icon : "fa-desktop"
+        - icon : "fa-volume-up"
+      categoria : "Natur zientziak"
+      title : "Izenburua Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      edad-min : "11"
+      edad-max : "14"
+      curso : "D.B.H. 2"
+      autor : "Egilearen izena"
+      centro : "Deustuko Ikastola"
+      num-leido : 102
+      num-megusta : 102
+      num-comentario : 1233
+    - width : "hidden-xs col-sm-4 col-md-3"
+      image : "images/universo.jpg"
+      alt : "Universo"
+      class-caption : "bg-blue"
+      icons-list :
+        - icon : "fa-folder"
+        - icon : "fa-desktop"
+        - icon : "fa-volume-up"
+      categoria : "Natur zientziak"
+      title : "Izenburua Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      edad-min : "11"
+      edad-max : "14"
+      curso : "D.B.H. 2"
+      autor : "Egilearen izena"
+      centro : "Deustuko Ikastola"
+      num-leido : 102
+      num-megusta : 102
+      num-comentario : 1233
+    - width : "hidden-xs col-sm-4 col-md-3"
+      image : "images/universo.jpg"
+      alt : "Universo"
+      class-caption : "bg-yellow"
+      icons-list :
+        - icon : "fa-folder"
+        - icon : "fa-desktop"
+        - icon : "fa-volume-up"
+      categoria : "Natur zientziak"
+      title : "Izenburua Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      edad-min : "11"
+      edad-max : "14"
+      curso : "D.B.H. 2"
+      autor : "Egilearen izena"
+      centro : "Deustuko Ikastola"
+      num-leido : 102
+      num-megusta : 102
+      num-comentario : 1233
+    - width : "hidden-xs col-sm-4 col-md-3"
+      image : "images/universo.jpg"
+      alt : "Universo"
+      class-caption : "bg-blue"
+      icons-list :
+        - icon : "fa-folder"
+        - icon : "fa-desktop"
+        - icon : "fa-volume-up"
+      categoria : "Natur zientziak"
+      title : "Izenburua Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      edad-min : "11"
+      edad-max : "14"
+      curso : "D.B.H. 2"
+      autor : "Egilearen izena"
+      centro : "Deustuko Ikastola"
+      num-leido : 102
+      num-megusta : 102
+      num-comentario : 1233
+    - width : "hidden-xs col-sm-4 col-md-3"
+      image : "images/universo.jpg"
+      alt : "Universo"
+      class-caption : "bg-yellow"
+      icons-list :
+        - icon : "fa-folder"
+        - icon : "fa-desktop"
+        - icon : "fa-volume-up"
+      categoria : "Natur zientziak"
+      title : "Izenburua Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      edad-min : "11"
+      edad-max : "14"
+      curso : "D.B.H. 2"
+      autor : "Egilearen izena"
+      centro : "Deustuko Ikastola"
+      num-leido : 102
+      num-megusta : 102
+      num-comentario : 1233
+
+---
+
+{{> bloque_destacado data-destacado-top}}
+
+{{> esquema_home }}
+
+<div class = 'container'>
+	{{> fichas_relacionadas datos-fichas-destacadas}}
+</div>
+
+
+{{> bloque_destacado data-destacado-ezagutu }}
+
+
+
+

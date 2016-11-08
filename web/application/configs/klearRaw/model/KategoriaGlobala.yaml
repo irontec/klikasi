@@ -1,0 +1,70 @@
+production: 
+  class: \Klikasi\Model\KategoriaGlobala
+  fields: 
+    izena: 
+      title: _('Izena')
+      type: text
+      required: true
+      maxLength: 350
+      default: true
+    url: 
+      title: _('Url')
+      type: text
+      required: true
+      maxLength: 350
+    className: 
+      title: _('Class name')
+      type: text
+      maxLength: 25
+    irudia: 
+      title: _('Irudia')
+      type: file
+      source: 
+        data: fso
+        size_limit: 20M
+        options: 
+          download: 
+            external: true
+            type: command
+            target: kategoriaGlobalaIrudiaDownload_command
+            icon: ui-silk-bullet-disk
+            title: _("Download file")
+            onNull: hide
+          upload: 
+            type: command
+            target: kategoriaGlobalaIrudiaUpload_command
+            title: _("Upload file")
+            class: qq-uploader
+            onNull: show
+          preview: 
+            target: kategoriaGlobalaIrudiaPreview_command
+            type: command
+            class: filePreview
+            external: 1
+            props: 
+              width: 150
+              height: 150
+              crop: false
+            onNull: hide
+          previewList: 
+            target: kategoriaGlobalaIrudiaPreview_command
+            type: command
+            class: filePreview
+            listController: 1
+            external: 1
+            props: 
+              width: 30
+              height: 30
+              crop: false
+            onNull: hide
+          delete: 
+            type: setNullFso
+            icon: ui-silk-bin
+            title: _("Delete file")
+            onNull: hide
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production

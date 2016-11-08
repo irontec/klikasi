@@ -1,0 +1,50 @@
+production: 
+  class: \Klikasi\Model\ErabiltzaileaRelIrakaslea
+  fields: 
+    erabiltzaileaId: 
+      title: _('Erabiltzailea')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Klikasi\Mapper\Sql\Erabiltzailea
+          fieldName: 
+            fields: 
+              - izena
+              - abizena
+              - abizena2
+            template: '%izena% %abizena% %abizena2%' 
+          order: izena
+      decorators:
+        autocomplete:
+          command: autocompleteErabiltzailea_command
+    irakasleaId: 
+      title: _('Irakaslea id')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Klikasi\Mapper\Sql\Erabiltzailea
+          fieldName: 
+            fields: 
+              - izena
+            template: '%izena%'
+          order: izena
+      default: true
+    egoera: 
+      title: _('Egoera')
+      type: select
+      defaultValue: onartzeko
+      source: 
+        data: inline
+        values: 
+          'onartzeko': _('Onartzeko zain')
+          'onartua': _('Onartua')
+testing: 
+  _extends: production
+staging: 
+  _extends: production
+development: 
+  _extends: production

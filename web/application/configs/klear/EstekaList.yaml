@@ -1,0 +1,84 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+
+fixedPositions:
+  - &fixedEsteka
+    fixedPositions:
+      group:
+        label: _("Datuak")
+        colsPerRow: 4
+        fields: 
+          titulua: 2
+          url: 4
+
+production: 
+  main: 
+    module: klearMatrix
+    defaultScreen: estekaList_screen
+  screens: 
+    estekaList_screen: &estekaList_screenLink 
+      controller: list
+      pagination: 
+        items: 25
+      <<: *Esteka
+      title: _("List of %s", ngettext('Esteka', 'Esteka(s)', 0))
+      fields: 
+        blacklist:
+          sortzeData: true
+          klikKopurua: true
+        options: 
+          title: _("Options")
+          screens: 
+            estekaEdit_screen: true
+          dialogs: 
+            estekaDel_dialog: true
+          default: estekaEdit_screen
+      options: 
+        title: _("Options")
+        screens: 
+          estekaNew_screen: true
+        dialogs: 
+          estekaDel_dialog: true
+          
+    estekaNew_screen: &estekaNew_screenLink 
+      <<: *Esteka
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Add %s", ngettext('Esteka', 'Esteka(s)', 1))
+      <<: *fixedEsteka
+      fields: 
+        blacklist: 
+          sortzeData: true
+          klikKopurua: true
+    estekaEdit_screen: &estekaEdit_screenLink 
+      <<: *Esteka
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      title: _("Edit %s", ngettext('Esteka', 'Esteka(s)', 1))
+      <<: *fixedEsteka
+      fields: 
+        blacklist: 
+          sortzeData: true
+        readOnly:
+          klikKopurua: true
+  dialogs: 
+    estekaDel_dialog: &estekaDel_dialogLink 
+      <<: *Esteka
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('Esteka', 'Esteka(s)', 1))
+      description: _("Do you want to delete this %s?", ngettext('Esteka', 'Esteka(s)', 1))
+      message: _("%s successfully deleted.", ngettext('Esteka', 'Esteka(s)', 1))
+      labelOnList: true
+      multiItem: true
+
+testing: 
+  _extends: production
+staging: 
+  _extends: production
+development: 
+  _extends: production

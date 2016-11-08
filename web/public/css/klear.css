@@ -1,0 +1,95 @@
+@CHARSET "UTF-8";
+body {
+    background: rgb(230,230,230);
+    color: #333;
+}
+
+#header {
+    background: #F3F3F3;
+    border-bottom: 2px solid #fff;
+    margin-bottom: 15px;
+    height: 110px;
+}
+
+.klearMatrix_form legend {
+    background: #333;
+    border:1px solid #333;
+    color: #FFF;
+}
+
+#canvasWrapper ul.tabs, .ui-widget-header {
+    background: #ccc;
+    border: none;
+}
+
+.klearMatrixDashboard h1.ui-state-active.ui-corner-all,
+.klearMatrixFiltering {
+	background: whitesmoke;
+	border-color: #ccc;
+}
+
+#sidebar h2,
+.ui-widget-content {
+	border-color: #ccc;
+}
+
+.klearMatrixDashboard fieldset,
+#sidebar h2.ui-state-active {
+	background: whitesmoke;
+}
+.klearMatrixDashboard fieldset legend.ui-state-active.ui-corner-all {
+    background: #999;
+    color: #fff;
+}
+
+.ui-widget-header,
+table.kMatrix th {
+	color: #333;
+}
+
+#canvas table.kMatrix th,
+#canvas table.kMatrix td {
+	padding: 4px;
+	border: none;
+	border-bottom: 1px solid #ccc;
+}
+
+table.kMatrix caption.ui-state-active.ui-priority-primary {
+	background: whitesmoke;
+	border-color: #ccc;
+}
+
+.klearMatrixFilteringForm .preconfigureFilters {
+	background: #fff;
+}
+
+#applicationLogo {
+	float: left;
+	position: absolute;
+	top: 0;
+}
+
+.klearMatrix_form fieldset.superContainer legend {
+	background: #999;
+	color: #fff;
+	border-color: #ccc;
+}
+
+.klearMatrix_form fieldset {
+	background: rgb(230,230,230); 
+}
+.klearMatrix_form fieldset fieldset.superContainer {
+    background: white; 
+}
+
+.kanpainakoEdukiaRel,
+.kexaEdukiaRel {
+	font-size: 0.7em;
+	margin-left: 10px;
+}
+form .kexaEdukiaRel {
+	font-size: 0.7em;
+	margin-left: 10px;
+	position: absolute;
+	margin-top: -10px;
+}

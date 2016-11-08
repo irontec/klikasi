@@ -1,0 +1,91 @@
+<?php
+$path = '/edukiak-administrazioan/';
+?>
+<section id="tab-recursos" data-url="<?php echo $this->edukia->getUrl(); ?>" class="tab-recursos col-xs-12" style="margin:0; padding:0;">
+    <div class="container" style="padding:15px;">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs">
+            <li
+                class="active no-mar-l col-xs-12 col-sm-4"
+                style="margin: 0px!important;"
+                >
+                <a
+                    href="#edukia"
+                    data-toggle="tab"
+                    >Edukia<i class="fa fa-bars visible-xs pull-right"></i></a>
+            </li>
+            <li
+                class="col-xs-12 col-sm-4"
+                style="margin: 0px!important;"
+                >
+                <a
+                    href="#laguntzaileak"
+                    data-toggle="tab"
+                    >Laguntzaileak<i class="fa fa-bars visible-xs pull-right"></i></a>
+            </li>
+            <li
+                class="col-xs-12 col-sm-4"
+                style="margin: 0px!important;"
+                >
+                <a
+                    href="#hobekuntzak"
+                    data-toggle="tab"
+                    >Hobekuntzak<i class="fa fa-bars visible-xs pull-right"></i></a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div class="tab-pane active" id="edukia">
+            <?php
+            echo $this->partial(
+                $path . 'edukia-content.phtml',
+                $this->getVars()
+                /*array(
+                    'edukia' => $this->edukia,
+                    'kanpainaKodea' => $this->kanpainaKodea,
+                    'kategoriakGlobala' => $this->kategoriakGlobala,
+                    'mailak' => $this->mailak,
+                    'eskolak' => $this->eskolak,
+                    'currentKolaboratzaileak' => $this->currentKolaboratzaileak,
+                    'currentEtiketak' => $this->currentEtiketak,
+                    'currentMaila' => $this->currentMaila,
+                    'currentKategoriak' => $this->currentKategoriak,
+                    'currentEskola' => $this->currentEskola,
+                )*/
+            );
+            ?>
+        </div>
+        <div class="tab-pane container" id="laguntzaileak" style="padding-bottom: 30px;">
+            <?php
+            echo $this->partial(
+                $path . 'laguntzaileak.phtml',
+                array(
+                    'edukia' => $this->edukia,
+                )
+            );
+            ?>
+        </div>
+        <div class="tab-pane container" id="hobekuntzak" style="padding-bottom: 30px;">
+            <?php
+            echo $this->partial(
+                $path . 'hobekuntzak.phtml',
+                array(
+                    'edukia' => $this->edukia,
+                )
+            );
+            ?>
+        </div>
+    </div>
+
+    <?php
+    echo $this->partial(
+        $path . 'sendMessageDialog.phtml',
+        array(
+            'edukia' => $this->edukia,
+        )
+    );
+    ?>
+
+</section>

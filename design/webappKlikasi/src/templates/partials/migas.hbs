@@ -1,0 +1,11 @@
+---
+component : breadcrumbs
+---
+
+<ol class="breadcrumb">
+  <li><a href="#">Home</a></li>
+  {{#each elements}}
+  	<li><a href="#">{{ miga }}</a></li>
+  {{/each}}
+  <li class="active">{{title}}</li>
+</ol>

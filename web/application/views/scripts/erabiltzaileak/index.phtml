@@ -1,0 +1,17 @@
+<?php if ($this->erabiltzaileak) : ?>
+    <div class="erabiltzaileak">
+        <ul>
+            <?php foreach ($this->erabiltzaileak as $erabiltzaile) : ?>
+                <li>
+                    <a href="<?php echo $this->url(array(
+                            'controller' => 'erabiltzaileak',
+                            'action' => 'ikusi',
+                            'erabiltzailea' => $erabiltzaile->getUrl()
+                        ), '', true); ?>">
+                        <?php echo $erabiltzaile->getCompletName(); ?>
+                    </a>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    </div><!-- END .erabiltzaileak -->
+<?php endif; ?>

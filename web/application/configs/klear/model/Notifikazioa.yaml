@@ -1,0 +1,29 @@
+production: 
+  class: \Klikasi\Model\Notifikazioa
+  fields: 
+    titulua: 
+      title: _('Titulua')
+      type: text
+      required: true
+      default: true
+    edukiaHtml: 
+      title: _('Edukia html')
+      type: textarea
+      required: true
+      source: 
+        control: tinymce
+        template: debug
+    edukiaText: 
+      title: _('Edukia text')
+      type: textarea
+      required: true
+    identifikatzailea: 
+      title: _('Identifikatzailea')
+      type: text
+      required: true
+testing: 
+  _extends: production
+staging: 
+  _extends: production
+development: 
+  _extends: production

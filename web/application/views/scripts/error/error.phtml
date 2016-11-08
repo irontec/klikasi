@@ -1,0 +1,27 @@
+<section class="col-xs-12 aire">
+
+    <h2>Ops! Akatsen bat gertatu da</h2>
+
+    <?php
+    if ($this->message) {
+        echo '<h3>' . $this->message . '</h3>';
+    }
+
+    if (isset($this->exception)) {
+        ?>
+
+        <div class="col-xs-12">
+
+            <h4>Akatsaren informazioa:</h4>
+
+            <div class="alert alert-danger">
+              <strong>Mezua:</strong> <?php echo $this->exception->getMessage() ?>
+            </div>
+
+        </div>
+
+        <?php
+    }
+    ?>
+
+</section>

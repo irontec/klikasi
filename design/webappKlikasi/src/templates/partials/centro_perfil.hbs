@@ -1,0 +1,19 @@
+---
+component : centro-perfil
+---
+
+<div class = 'scroll-parallax centro-ficha {{fondo-color}}' data-speed="4" data-type="background" {{#if image}}style ='{{fondo-imagen}}'{{/if}}>
+	<div class="pattern aire">
+		<div class = 'container  centro text-center'>
+			<div class='col-xs-12 col-xs-offset-0 col-sm-6 col-sm-offset-3'>
+				<figure><img class="img-circle" src = '{{image}}' alt = '{{alt}}'/></figure>
+				<h1>{{nombre}}</h1>
+				<ul class="list-unstyled list-inline">
+				<li>{{autores}} autore</li>
+				<li>{{recursos}} baliabide</li>
+				</ul>
+				<p>{{text}}</p>
+			</div>
+		</div>
+	</div>
+</div>

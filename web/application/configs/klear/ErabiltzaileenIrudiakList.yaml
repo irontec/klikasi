@@ -1,0 +1,87 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+
+production: 
+  main: 
+    module: klearMatrix
+    defaultScreen: erabiltzaileenIrudiakList_screen
+  screens: 
+    erabiltzaileenIrudiakList_screen: &erabiltzaileenIrudiakList_screenLink 
+      controller: list
+#      forcedValues:
+#        partekatua: "0"
+      pagination: 
+        items: 5
+      <<: *ErabiltzaileenIrudiak
+      title: _("List of %s %2s", ngettext('Erabiltzaileen irudiak', 'Erabiltzaileen irudiak(s)', 0), "[format| (%parent%)]")
+      fields: 
+        blacklist: 
+          iden: true
+        options: 
+          title: _("Options")
+          screens: 
+            erabiltzaileenIrudiakEdit_screen: true
+          dialogs: 
+            erabiltzaileenIrudiakDel_dialog: true
+          default: erabiltzaileenIrudiakEdit_screen
+      options: 
+        title: _("Options")
+        screens: 
+          erabiltzaileenIrudiakNew_screen: true
+        dialogs: 
+          erabiltzaileenIrudiakDel_dialog: true
+    erabiltzaileenIrudiakNew_screen: &erabiltzaileenIrudiakNew_screenLink 
+      <<: *ErabiltzaileenIrudiak
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Add %s", ngettext('Erabiltzaileen irudiak', 'Erabiltzaileen irudiak(s)', 1))
+      forcedValues:
+        partekatua: 1
+      fields: 
+        blacklist: 
+          iden: true
+    erabiltzaileenIrudiakEdit_screen: &erabiltzaileenIrudiakEdit_screenLink 
+      <<: *ErabiltzaileenIrudiak
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      title: _("Edit %s %2s", ngettext('Erabiltzaileen irudiak', 'Erabiltzaileen irudiak(s)', 1), "[format| (%item%)]")
+      forcedValues:
+        partekatua: 1
+  dialogs: 
+    erabiltzaileenIrudiakDel_dialog: 
+      <<: *ErabiltzaileenIrudiak
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('Erabiltzaileen irudiak', 'Erabiltzaileen irudiak(s)', 1))
+      description: _("Do you want to delete this %s?", ngettext('Erabiltzaileen irudiak', 'Erabiltzaileen irudiak(s)', 1))
+      message: _("%s successfully deleted.", ngettext('Erabiltzaileen irudiak', 'Erabiltzaileen irudiak(s)', 1))
+      labelOnList: true
+      multiItem: true
+
+
+  commands: 
+    IrudiaDownload_command: 
+      <<: *ErabiltzaileenIrudiak
+      controller: File
+      action: force-download
+      mainColumn: irudia
+    IrudiaUpload_command: 
+      <<: *ErabiltzaileenIrudiak
+      controller: File
+      action: upload
+      mainColumn: irudia
+    IrudiaPreview_command: 
+      <<: *ErabiltzaileenIrudiak
+      controller: File
+      action: preview
+      mainColumn: irudia
+testing: 
+  _extends: production
+staging: 
+  _extends: production
+development: 
+  _extends: production

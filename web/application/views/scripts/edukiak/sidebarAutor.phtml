@@ -1,0 +1,42 @@
+<div class="bloque-sidebar col-xs-12">
+
+    <h3 class="no-border">EGILEA</h3>
+
+    <div class="row text-center autor">
+        <figure class="rounded">
+            {{#avatarIrudia}}
+                <img src="{{autorIrudiaUrl}}" alt="{{autorIzena}}"/>
+            {{/avatarIrudia}}
+
+            {{^avatarIrudia}}
+                <span class="{{color}} perfil {{classProfila}}"></span>
+            {{/avatarIrudia}}
+        </figure>
+        <a href="{{autorUrl}}" title="{{autorIzena}}">
+            <span class="autor-name">{{autorIzena}}</span>
+        </a>
+    </div>
+
+    {{#kolaboratzaileak}}
+    <div class="row autor-block">
+        <label>Beste egileak: </label>
+            <a href="{{kolaboratzaileakUrl}}" title="{{kolaboratzaileakIzena}}">
+                    {{kolaboratzaileakIzena}}
+            </a>
+    </div>
+    {{/kolaboratzaileak}}
+    
+    {{#ikastegiak}}
+    <div class="row autor-block">
+        <label>Ikastegia:</label>
+        <a href="{{ikastegiaUrl}}" title="{{ikastegiaIzena}}"> {{ikastegiaIzena}}</a>
+    </div>
+    {{/ikastegiak}}
+
+    {{#autorProfila}}
+    <div class="row autor-block">
+        <label>Harremanetan jarri <a href="{{autorUrl}}" title="{{autorIzena}}">{{autorProfila}}</a>-(r)ekin</label>
+    </div>
+    {{/autorProfila}}
+
+</div>

@@ -1,0 +1,121 @@
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th colspan="5">
+                    <a
+                        href="<?php echo $this->baseUrl('jakinarazpenak/index/mota/edukiari-salaketa/');?>"
+                        title="Edukiari Salaketa"
+                        >Edukiari Salaketa</a>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            foreach ($this->edukiariSalaketa as $jakinarazpena) {
+
+                $thatUser = $jakinarazpena->getThatUser();
+                $zendDate = $jakinarazpena->getSortzeData(true);
+                $zendDate->setTimezone('Europe/Madrid');
+                
+                $trClass = '';
+
+                if ($jakinarazpena->getEgoera() == 'onartua') {
+                    $trClass = ' success';
+                } elseif ($jakinarazpena->getEgoera() == 'ezOnartua') {
+                    $trClass = ' danger';
+                }
+                $kexa = new \Klikasi\Mapper\Sql\Kexa();
+                $kexa = $kexa->find($jakinarazpena->getIdKanpotarra());
+
+                if (empty($kexa)) {
+                    $jakinarazpena->delete();
+                    continue;
+                }
+
+                $edukia = $kexa->getEdukia();
+
+                ?>
+                <tr
+                    class="<?php echo $jakinarazpena->getIkusita() == 0 ? 'isNew' : 'isView'; echo $trClass; ?>"
+                    data-jakinarazpena="<?php echo $jakinarazpena->getId(); ?>"
+                    >
+                    <td class="izena-thatUser" data-thatUser="<?php echo $thatUser->getId(); ?>">
+                        <a
+                            href="<?php echo $thatUser->urlProfile(); ?>"
+                            title="<?php echo $thatUser->getCompletName(); ?>"
+                            ><?php echo $this->ErabiltzaileIrudia($thatUser, 22, true);?>  <?php echo $thatUser->getCompletName(); ?></a>
+                    </td>
+                    <td>
+                        <a
+                            href="<?php echo $edukia->edukiaUrl(); ?>"
+                            title="<?php echo $edukia->getTitulua(); ?>"
+                            ><?php echo $edukia->getTitulua(); ?> <i class="fa fa-external-link"></i></a>
+                    </td>
+                    <td>
+                        <?php echo $zendDate->toString("y'eko' MMMM'ren' dd'a' HH:mm:ss", "eu"); ?>
+                    </td>
+                    <td>
+                        <p>
+                            <?php echo $kexa->getKexa(); ?>
+                        </p>
+                    </td>
+                    <td>
+
+                        <button
+                            data-action="contactPersonal"
+                            data-instance="edukiariSalaketa"
+                            data-jakinarazpena="<?php echo $jakinarazpena->getId(); ?>"
+                            class="btn btn-default"
+                            title="<?php echo $this->translate('[es] Contacto Personal'); ?>"
+                            ><i class="fa fa-envelope-o" style="position: static;"></i></button>
+
+                        <?php
+                        if ($edukia->getEgoera() != 'blokeatuta') {
+                            ?>
+                            <button
+                                data-action="locked"
+                                data-instance="edukiariSalaketa"
+                                data-jakinarazpena="<?php echo $jakinarazpena->getId(); ?>"
+                                class="btn btn-default"
+                                title="<?php echo $this->translate('[es] Bloquear Recurso'); ?>"
+                                ><i class="fa fa-lock text-danger" style="position: static;"></i></button>
+                            <?php
+                        }
+                        ?>
+
+                        <button
+                            data-action="viewContent"
+                            data-instance="edukiariSalaketa"
+                            data-jakinarazpena="<?php echo $jakinarazpena->getId(); ?>"
+                            class="btn btn-default"
+                            title="<?php echo $this->translate('[es] Ver Contenido'); ?>"
+                            ><i class="fa fa-external-link" style="position: static;"></i></button>
+                        <button
+                            data-action="deleteNotification"
+                            data-instance="edukiariSalaketa"
+                            data-jakinarazpena="<?php echo $jakinarazpena->getId(); ?>"
+                            class="btn btn-default"
+                            title="<?php echo $this->translate('[es] Eliminar Notificación');?>"
+                            ><i class="fa fa-trash-o" style="position: static;"></i></button>
+                        <?php
+                        if ($jakinarazpena->getIkusita() == 0) {
+                            ?>
+                            <button
+                                data-action="markView"
+                                data-instance="edukiariSalaketa"
+                                data-jakinarazpena="<?php echo $jakinarazpena->getId(); ?>"
+                                class="btn btn-default"
+                                title="<?php echo $this->translate('[es] Marcar como vista'); ?>"
+                                ><i class="fa fa-eye" style="position: static;"></i></button>
+                            <?php
+                        }
+                        ?>
+                    </td>
+                </tr>
+                <?php
+            }
+            ?>
+        </tbody>
+    </table>
+</div>

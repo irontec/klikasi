@@ -1,0 +1,50 @@
+<div class="bloque-sidebar col-xs-12">
+    <h3 class="stronger">BALIABIDEAREN FITXA</h3>
+
+        <ul class="icon-list list-inline">
+            {{#icon-list}}
+                <li>
+                    <a href="{{edukiaUrl}}#{{iconIzena}}" title="{{iconIzena}}">
+                        <i class="fa {{icon}}"></i>
+                    </a>
+                </li>
+            {{/icon-list}}
+        </ul>
+
+        <div class="row">
+            <span class="punto-cat {{kategoriaGlobalaClassName}}"></span>
+            <span class="sidebar-cat">{{categoria}}</span>
+        </div>
+
+        <div class="row">
+            <label class="col-xs-12">Adina:</label>
+        </div>
+        <div class="row">
+            <span class="sel-edad col-xs-12">
+            <span class="edad-min" data-toggle="tooltip" data-original-title="Default tooltip">
+                <span class="edad"><strong>{{edukiaUrteakNoiztik}}</strong> urtetik</span>
+                <span class="punto-cat"></span>
+            </span>
+            <span class="edad-max" data-toggle="tooltip" data-original-title="Default tooltip">
+                <span class="edad"><strong>{{edukiaUrteakNoizarte}}</strong> urtera</span>
+                <span class="punto-cat"></span>
+            </span>
+            <hr class="edad"/>
+            </span>
+        </div>
+
+        <div class="row">
+            <label>Ikasturtea: {{mailaIzena}}</label>
+        </div>
+
+        {{#tags}}
+            <div class="row tag">
+                <span><span class="punto-cat"></span>{{tagIzena}}</span>
+            </div>
+        {{/tags}}
+
+        <div class="row">
+            <span id="{{attributeActionId}}" style="cursor: pointer;">Hobekuntzak proposatu</span>
+        </div>
+
+</div>

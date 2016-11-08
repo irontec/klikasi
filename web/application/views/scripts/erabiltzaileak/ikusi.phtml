@@ -1,0 +1,186 @@
+<section class="bloque-egilea aire col-xs-12" id="ikusi-erabiltzailea" data-izena="<?php echo $this->isIzenaEman; ?>">
+
+    <div class="col-xs-12 col-sm-10">
+
+        <figure class="col-xs-6 col-sm-4 col-md-3 col-xs-offset-3 col-sm-offset-0 text-center">
+            <?php echo $this->erabiltzaileIrudia($this->erabiltzailea, 200); ?>
+        </figure>
+
+        <div class="col-xs-12 col-sm-8 col-md-9">
+            <h1><?php echo $this->erabiltzailea->getCompletName(); ?></h1>
+            <ul>
+                <?php
+                    $profila = $this->erabiltzailea->getProfila();
+                ?>
+                <li class="no-pad-l italic">
+                <?php
+                    switch (strtolower($profila)) {
+                        case 'ikasle':
+                            echo "Ikaslea";
+                            break;
+                        case 'irakasle':
+                            echo "Irakaslea";
+                            break;
+                        case 'otros':
+                            echo "Sortzailea";
+                            break;
+                    }
+                ?>
+                </li>
+                <?php
+                    $ikastegiaName = '';
+                    $relIkastegia = $this->erabiltzailea->getErabiltzaileaRelIkastegia('egoera="onartua"', 'jabea');
+                    foreach ($relIkastegia as $relIkastegiBat) {
+
+                        $ikastegia = $relIkastegiBat->getIkastegia();
+                        if ($ikastegia) {
+                            $ikastegiaName = $ikastegia->getIzena();
+                            break;
+                        }
+                    }
+                ?>
+                <li class="no-border"><?php echo $ikastegiaName; ?></li>
+            </ul>
+            <?php echo '<p>' . $this->erabiltzailea->deskribapena . '</p>'; ?>
+            <?php
+            if ($this->trophy) {
+            ?>
+                <p>
+                    <a href="<?php echo $this->baseUrl('orriak/kanpainak/orria/' . $this->trophy->getUrl()); ?>"
+                       title="<?php echo $this->translate("[es] Última campaña ganada"); ?>" >
+                        <i class="fa fa-trophy"></i>
+                        <?php echo $this->trophy->getIzena(); ?>
+                    </a>
+                </p>
+            <?php
+            } //end if
+            ?>
+        </div>
+
+        <div class="col-xs-12 col-sm-8 col-md-9">
+            <?php
+            $erabiltzailea = $this->erabiltzailea;
+
+            $networks = array(
+                'getTwitter' => array('Twitter', 'fa-twitter'),
+                'getFacebook' => array('Facebook', 'fa-facebook'),
+                'getGoogle' => array('Google +', 'fa-google-plus'),
+                'getLinkedin' => array('LinkedIn', 'fa-linkedin'),
+                'getPinterest' => array('Pinterest', 'fa-pinterest'),
+                'getFlickr' => array('Flickr', 'fa-flickr'),
+                'getYouTube' => array('YouTube', 'fa-youtube'),
+                'getInstagram' => array('Instagram', 'fa-instagram')
+            );
+
+            foreach ($networks as $key => $val) {
+                if (trim($erabiltzailea->$key()) != '') {
+                    ?>
+                    <a
+                        href="<?php echo $erabiltzailea->$key(); ?>"
+                        target="_blank"
+                        title="<?php echo $val[0]; ?>"
+                        ><i style="padding: 15px 10px; color: #777; font-size: 25px;" class="fa <?php echo $val[1]; ?>"></i></a>
+                    <?php
+                }
+            }
+            ?>
+
+        </div>
+
+    </div>
+
+    <div class="actions col-xs-12 col-sm-2 pull-right">
+        <?php
+        if ($this->currentUser) {
+            if ($this->isProfileJabea !== true) {
+                ?>
+                    <button
+                        class="button-icon"
+                        id="kontaktatu"
+                        ><i class="fa fa-envelope"></i>Kontaktatu</button>
+                <?php
+            } else {
+                ?>
+                    <button
+                        class="button-icon"
+                        id="editatu"
+                        ><i class="fa fa-pencil"></i>Editatu</button>
+                <?php
+            }
+        }
+        ?>
+    </div>
+
+</section>
+
+<section id="tab-recursos" class="tab-recursos col-xs-12">
+
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs col-xs-12">
+        <li
+            class="active no-mar-l col-xs-12 col-sm-4"
+            style="margin: 0px!important;"
+            data-tab="rec"
+            >
+            <a
+                href="#rec"
+                data-toggle="tab"
+                >Nire baliabideak (<?php echo sizeof($this->nireEdukiak); ?>)<i class="fa fa-bars visible-xs pull-right"></i></a>
+        </li>
+        <li
+            class="col-xs-12 col-sm-4"
+            style="margin: 0px!important;"
+            data-tab="rValidados"
+            >
+            <a
+                href="#rValidados"
+                data-toggle="tab"
+                >Kolaboratzaile naizen balibideak (<?php echo sizeof($this->kolaboratzaileak); ?>)<i class="fa fa-bars visible-xs pull-right"></i></a>
+        </li>
+        <li
+            class="col-xs-12 col-sm-4"
+            style="margin: 0px!important;"
+            data-tab="rFavoritos"
+            >
+            <a
+                href="#rFavoritos"
+                data-toggle="tab"
+                >Gogokoen baliabideak (<?php echo sizeof($this->gustokoak); ?>)<i class="fa fa-bars visible-xs pull-right"></i></a>
+        </li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div class="tab-pane active" id="rec">
+                <div class="container-filter rec">
+                    <?php
+                    if (sizeof($this->nireEdukiak) > 0) {
+                        foreach ($this->nireEdukiak as $nireEdukia) {
+                            echo $nireEdukia;
+                        }
+                    }
+                    ?>
+            </div>
+        </div>
+        <div class="tab-pane" id="rValidados">
+              <?php
+              if (sizeof($this->kolaboratzaileak) > 0) {
+                  foreach ($this->kolaboratzaileak as $kolaboratzailea) {
+                      echo $kolaboratzailea;
+                  }
+              }
+              ?>
+        </div>
+        <div class="tab-pane" id="rFavoritos">
+            <div class="container-filter rFavoritos">
+              <?php
+              if  (sizeof($this->gustokoak) > 0) {
+                  foreach ($this->gustokoak as $gustokoa) {
+                      echo $gustokoa;
+                  }
+              }
+              ?>
+            </div>
+        </div>
+    </div>
+</section>

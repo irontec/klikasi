@@ -1,0 +1,92 @@
+</div>
+<footer>
+    <div class="container">
+        <img src="images/logo_footer_klikasi.png" alt="Klikasi. Sortu. Partekatu. Ikasi." class="pull-left">
+        <nav class="pull-right list-inline">
+            <ul class="list-unstyled list-inline">
+                <li>
+                    <a href="<?php echo $this->baseUrl('orriak/honi-buruz');?>" title="Honi buruz">Honi buruz</a>
+                </li>
+                <li>
+                    <a href="<?php echo $this->baseUrl('kontaktua');?>" title="Kontaktua">Kontaktua</a>
+                </li>
+                <li>
+                    <a href="<?php echo $this->baseUrl('orriak/baldintzak-pribatutasun-politika');?>" title="Baldintzak eta pribatutasun politika">Baldintzak eta pribatutasun politika</a>
+                </li>
+
+                <li>
+                    <a href="<?php echo $this->baseUrl('lizentziak');?>" title="Lizentziak">Lizentziak</a>
+                </li>
+
+            </ul>
+            <ul id="cc" class="list-unstyled list-inline">
+                <li>
+                    <a class="cc-icons" href="http://es.creativecommons.org/" title="Creative Commons"><span>c</span></a>
+                </li>
+                <li>
+                    <a class="cc-icons" href="http://es.creativecommons.org/" title="Creative Commons"><span>b</span></a>
+                </li>
+                <li>
+                    <a class="cc-icons" href="http://es.creativecommons.org/" title="Creative Commons"><span>a</span></a>
+                </li>
+             </ul>
+         </nav>
+      </div>
+</footer>
+<?php
+
+    $this->headScript()->appendFile($this->baseUrl('/scripts/init.scripts.min.js'));
+//         ->appendFile($this->baseUrl('/scripts/vendor.js'))
+//         ->appendFile($this->baseUrl('/scripts/vendor/modernizr.js'))
+//         ->appendFile($this->baseUrl('/js/avatarSelector.plugin.js'))
+//         ->appendFile($this->baseUrl('/js/jquery.Jcrop.min.js'))
+//         ->appendFile($this->baseUrl('/js/ikastokiSelector.plugin.js'))
+//         ->appendFile($this->baseUrl('/js/gmaps.plugin.js'))
+//         ->appendFile($this->baseUrl('/js/klikasi.funtzioak.js'))
+//         ->appendFile($this->baseUrl('/bower/bootstrap-datepicker/js/bootstrap-datepicker.js'))
+//         ->appendFile($this->baseUrl('/js/bootstrap.datepicker-eu.js'))
+
+// 	$this->headScript()
+//         ->prependFile($this->baseUrl('/js/bootstrap.datepicker-eu.js'))
+//         ->prependFile($this->baseUrl('/bower/bootstrap/dist/js/bootstrap.js'))
+//         ->prependFile($this->baseUrl('/bower/jquery-placeholder/jquery.placeholder.js'))
+//         ->appendFile($this->baseUrl('/bower/bootstrap-slider/bootstrap-slider.js'))
+//         ->prependFile($this->baseUrl('/bower/holderjs/holder.js'))
+//         ->prependFile($this->baseUrl('/js/jquery-1.11.0.min.js'))
+//         ->appendFile($this->baseUrl('/js/avatarSelector.plugin.js'))
+//         ->appendFile($this->baseUrl('/js/jquery.Jcrop.min.js'))
+//         ->appendFile($this->baseUrl('/js/ikastokiSelector.plugin.js'))
+//         ->appendFile($this->baseUrl('/js/gmaps.plugin.js'))
+//         ->appendFile($this->baseUrl('/js/klikasi.funtzioak.js'))
+//         ->appendFile($this->baseUrl('/js/klikasi.search.js'))
+//         ->appendFile($this->baseUrl('/bower_components/select2/select2.js'))
+//         ->appendFile($this->baseUrl('/bower_components/get-style-property/get-style-property.js'))
+//         ->appendFile($this->baseUrl('/bower_components/get-size/get-size.js'))
+//         ->appendFile($this->baseUrl('/bower_components/matches-selector/matches-selector.js'))
+//         ->appendFile($this->baseUrl('/bower_components/eventie/eventie.js'))
+//         ->appendFile($this->baseUrl('/bower_components/doc-ready/doc-ready.js'))
+//         ->appendFile($this->baseUrl('/bower_components/eventEmitter/EventEmitter.js'))
+//         ->appendFile($this->baseUrl('/bower_components/jquery-bridget/jquery.bridget.js'))
+//         ->appendFile($this->baseUrl('/bower_components/outlayer/item.js'))
+//         ->appendFile($this->baseUrl('/bower_components/outlayer/outlayer.js'))
+//         ->appendFile($this->baseUrl('/bower_components/isotope/dist/isotope.pkgd.min.js'))
+//         ->appendFile($this->baseUrl('/bower_components/bootstrap-tabcollapse/bootstrap-tabcollapse.js'))
+//         ->appendFile($this->baseUrl('/bower_components/hammerjs/hammer.min.js'))
+//         ->appendFile($this->baseUrl('/bower_components/jasny-bootstrap/dist/js/jasny-bootstrap.js'))
+//         ->appendFile($this->baseUrl('/scripts/main.min.js'));
+
+    if ($this->appendJs) {
+        foreach ($this->appendJs as $appendJs) {
+            $this->headScript()
+            ->appendFile(
+                $this->baseUrl(
+                    $appendJs
+                )
+            );
+        }
+    }
+    echo $this->headScript()->setIndent(4);
+
+    echo $this->render('izena-eman.phtml');
+    echo $this->render('kontaktatu.phtml');
+?>

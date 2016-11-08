@@ -1,0 +1,298 @@
+<?php
+$ikastegia = $this->ikastegia;
+?>
+<form
+    role="form"
+    class="form-horizontal edukiak-igo"
+    autocomplete="off"
+    method="POST"
+    id="ikastegia-edit-form"
+    >
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col-xs-12 col-sm-5 pull-left">
+
+                <input
+                    type="hidden"
+                    name="ikastegiaId"
+                    value="<?php echo $ikastegia->getId(); ?>"
+                    />
+
+                <input
+                    type="hidden"
+                    name="url"
+                    value="<?php echo $ikastegia->getUrl(); ?>"
+                    />
+
+                <div class="element-group">
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="izena"
+                        name="izena"
+                        placeholder="Izena"
+                        value="<?php echo $ikastegia->getIzena(); ?>"
+                        />
+                </div>
+
+                <div class="element-group">
+                    <textarea
+                        class="form-control"
+                        id="deskribapenLaburra"
+                        placeholder="Deskribapen laburra"
+                        name="deskribapenLaburra"
+                        rows="3"
+                        ><?php echo $ikastegia->getDeskribapenLaburra(); ?></textarea>
+
+                        <span
+                            class="help-block msg">
+                            Labur itzazu <span class="countCharactes"></span> karakteretan baliabidearen gaia.
+                            </span>
+                </div>
+
+                <div class="element-group">
+                    <textarea
+                        class="form-control"
+                        id="deskribapena"
+                        placeholder="Deskribapena"
+                        name="deskribapena"
+                        rows="7"
+                        ><?php echo $ikastegia->getDeskribapena(); ?></textarea>
+                </div>
+
+                <div class="element-group">
+                    <span class="select"><i class="fa fa-chevron-down"></i>
+                        <select class="form-control" id="mota" name="mota">
+                            <option
+                                value="bestelakoa"
+                                <?php echo ($ikastegia->getMota() == 'bestelakoa' ? 'selected="selected"' : ''); ?>
+                                >Bestelakoa</option>
+                            <option
+                                value="ikastetxea"
+                                <?php echo ($ikastegia->getMota() == 'ikastetxea' ? 'selected="selected"' : ''); ?>
+                                >Ikastegia</option>
+                        </select>
+                    </span>
+                </div>
+
+                <div class="element-group">
+                    <span class="select"><i class="fa fa-chevron-down"></i>
+                        <select class="form-control" id="ikastegimota" name="ikastegimota">
+                            <optgroup label="Mota">
+                                <?php
+                                    $selected =  $this->currentIkastegiMota ? "selected" : "";
+                                ?>
+                                <option disabled <?php echo $selected; ?>  style='display:none;'>--</option>
+                                <?php
+                                foreach ($this->ikastegiMota as $mota) {
+
+                                    $selected = "";
+                                    if ($this->currentIkastegiMota == $mota->getId()) {
+                                        $selected = "selected";
+                                    }
+                                ?>
+                                    <option value="<?php echo $mota->getId(); ?>" <?php echo $selected; ?>>
+                                        <?php echo $mota->getIzena(); ?>
+                                    </option>
+                                <?php
+                                } //end foreach
+                                ?>
+                            </optgroup>
+                        </select>
+                    </span>
+                </div>
+
+                <div>
+                <?php
+                $networks = array(
+                    'getTwitter' => array(
+                        'title'=> 'Twitter',
+                        'class' => 'fa-twitter',
+                        'iden' => 'twitter'
+                    ),
+                    'getFacebook' => array(
+                        'title'=> 'Facebook',
+                        'class' => 'fa-facebook',
+                        'iden' => 'facebook'
+                    ),
+                    'getGoogle' => array(
+                        'title'=> 'Google +',
+                        'class' => 'fa-google-plus',
+                        'iden' => 'googlePlus'
+                    ),
+                    'getLinkedin' => array(
+                        'title'=> 'LinkedIn',
+                        'class' => 'fa-linkedin',
+                        'iden' => 'linkedin'
+                    ),
+                    'getPinterest' => array(
+                        'title'=> 'Pinterest',
+                        'class' => 'fa-pinterest',
+                        'iden' => 'pinterest'
+                    ),
+                    'getFlickr' => array(
+                        'title'=> 'Flickr',
+                        'class' => 'fa-flickr',
+                        'iden' => 'flickr'
+                    ),
+                    'getYouTube' => array(
+                        'title'=> 'YouTube',
+                        'class' => 'fa-youtube',
+                        'iden' => 'youtube'
+                    ),
+                    'getInstagram' => array(
+                        'title'=> 'Instagram',
+                        'class' => 'fa-instagram',
+                        'iden' => 'instagram'
+                    )
+                );
+
+                foreach ($networks as $key => $val) {
+                    ?>
+                    <div
+                        class="element-group">
+                        <label
+                            for="<?php echo $val['iden']; ?>"
+                            class="col-sm-4 control-label"
+                            style="padding-top: 20px;"
+                            ><?php echo $val['title']; ?></label>
+
+                        <div
+                            class="col-sm-8"
+                            style="padding-right: 0;padding-top: 10px;">
+                            <div class="input-group">
+                                <div class="input-group-addon"><i style="width: 15px;" class="fa <?php echo $val['class']; ?>"></i></div>
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="<?php echo $val['iden']; ?>"
+                                    name="<?php echo $val['iden']; ?>"
+                                    value="<?php echo $ikastegia->$key(); ?>"
+                                    placeholder="<?php echo $val['title']; ?>"
+                                    style="margin-top: 0;"
+                                    />
+                            </div>
+                        </div>
+                    </div>
+                    <?php
+                }
+                ?>
+
+                </div>
+
+            </div><!-- .col-xs-12.col-sm-6.pull-left -->
+
+            <div class="col-xs-12 col-sm-6">
+
+                <div class="element-group">
+
+                    <div id="irudia-custom">
+
+                        <?php
+                            $irudiaUrl = 'http://placehold.it/200x200';
+
+                            if (!empty($ikastegia->ikastegiaIrudiaUrl('profile'))) {
+                                $irudiaUrl = $ikastegia->ikastegiaIrudiaUrl('profile');
+                            }
+                            ?>
+                            <div id="changeCustomAvatar">
+                                <div id="avatarPreview">
+                                    <div id="previewContent" class="col-xs-6">
+                                        <img
+                                            id="cropimage"
+                                            alt=""
+                                            src="<?php echo $irudiaUrl; ?>"
+                                            />
+                                    </div>
+
+                                    <div id="actionContent" class="col-xs-6">
+                                        <input
+                                            type="file"
+                                            name="avatar"
+                                            id="avatar"
+                                            class="hide"
+                                            />
+
+                                        <button
+                                            id="button-file-avatar"
+                                            class="btn btn-default"
+                                            ><?php echo $this->translate('[es] Seleccionar Avatar'); ?></button>
+                                    </div>
+
+                                    <div id="results-avatar" class="hide">
+
+                                        <input
+                                            type="hidden"
+                                            name="changeAvatar"
+                                            id="changeAvatar"
+                                            value="false"
+                                            />
+
+                                        <input
+                                            type="hidden"
+                                            name="tmpName"
+                                            id="tmpName"
+                                            />
+
+                                        <input
+                                            type="hidden"
+                                            name="cropX"
+                                            class="cropX"
+                                            />
+                                        <input
+                                            type="hidden"
+                                            name="cropY"
+                                            class="cropX"
+                                            />
+
+                                        <input
+                                            type="hidden"
+                                            name="cropW"
+                                            class="cropW"
+                                            />
+
+                                        <input
+                                            type="hidden"
+                                            name="cropH"
+                                            class="cropH"
+                                            />
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <?php
+                        ?>
+                    </div>
+
+                </div>
+
+                <div class="element-group col-xs-12">
+                    <input
+                        type="hidden"
+                        class="form-control"
+                        id="kokapena"
+                        name="kokapena"
+                        placeholder="Kokapena"
+                        data-plugin="gmaps"
+                        value="<?php echo $ikastegia->getKokapena(); ?>"
+                        />
+                </div>
+
+            </div><!-- .col-xs-12.col-sm-6 -->
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 text-center aire">
+                    <button
+                        class="btn btn-default"
+                        id="ikastegiaBerria-submit"
+                        >Bidali</button>
+                </div>
+            </div>
+
+        </div><!-- .row -->
+    </div><!-- .container -->
+
+</form>

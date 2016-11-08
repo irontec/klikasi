@@ -1,0 +1,15 @@
+production: 
+  class: \Klikasi\Model\Etiketa
+  fields: 
+    izena: 
+      title: _('Izena')
+      type: text
+      required: true
+      maxLength: 250
+      default: true
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production

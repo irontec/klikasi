@@ -1,0 +1,416 @@
+<div class="form-balibideak row">
+      <?php
+        echo $this->partial('edukiak-igo/contentEsqueleton.phtml');
+      ?>
+      <div id="itemEsqueleton" class="item" style="display:none;">
+          <input type="hidden" name="" value="" />
+          <figure class="col-xs-12">
+          </figure>
+          <div class="col-xs-12">
+              <button class="btn bg-red light remove">Ezabatu</button>
+          </div>
+      </div>
+
+      <div class="container">
+          <div class="form-group">
+              <div class="row">
+                  <div class="col-xs-12">
+                  <h3>Bideoak <small>YouTube edo Vimeoko bideoaren iframe kopiatu eta itsatsi.</small></h3>
+                  </div>
+              </div>
+              <div class="row">
+                  <span class="col-xs-12 col-sm-6">
+                      <span class="row balibidea-submit">
+                          <span class="col-xs-9 col-sm-10 col-md-10 col-lg-11">
+                              <div class="input-group balibide-input">
+                                  <span class="input-group-addon"><i class="fa fa-youtube"></i></span>
+                                  <input type="text" class="form-control" data-name="bideoa" data-filter="iframe" data-type="youtube" placeholder="< iframe..."
+                                  data-exameple='<iframe width="560" height="315" src="//www.youtube.com/embed/UXZSS39dmFI" frameborder="0" allowfullscreen></iframe>'
+                                  >
+                              </div>
+                          </span>
+                          <span class="col-xs-3 col-sm-2 col-md-2 col-lg-1">
+                              <button type="submit" class="pull-right btn btn-default btn-plus"><i class="fa fa-plus"></i></button>
+                          </span>
+                      </span>
+                      <?php
+                      if (isset($this->edukia)) {
+                          foreach ($this->edukia->getBideoa() as $bideoa) {
+
+                                if ($bideoa->getMota() != 'youtube') {
+                                    continue;
+                                }
+
+                                echo $this->partial('edukiak-igo/contentEsqueleton.phtml', array(
+                                    'visible' => true,
+                                    'name' => 'bideoa_'. $bideoa->getMota() .'[]',
+                                    'content' => $bideoa->getUrl()
+                                ));
+                          }
+                      }
+                      ?>
+                  </span>
+                  <div class="vertical-divider hidden-xs"></div>
+                  <div class="horizontal-divider hidden-sm hidden-md hidden-lg"></div>
+                      <span class="col-xs-12 col-sm-6">
+                          <span class="row balibidea-submit">
+                              <span class="col-xs-9 col-sm-10 col-md-10 col-lg-11">
+                                  <div class="input-group balibide-input">
+                                      <span class="input-group-addon"><i class="fa fa-vimeo-square"></i></span>
+                                      <input type="text" class="form-control" data-name="bideoa" data-filter="iframe" data-type="vimeo" placeholder="< iframe..."
+                                      data-exameple='<iframe src="//player.vimeo.com/video/98270731" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> <p><a href="http://vimeo.com/98270731">Delivery</a> from <a href="http://vimeo.com/noweather">NO WEATHER</a> on <a href="https://vimeo.com">Vimeo</a>.</p>'
+                                      >
+                                  </div>
+                              </span>
+                              <span class="col-xs-3 col-sm-2 col-md-2 col-lg-1">
+                                  <button type="submit" class="pull-right btn btn-default btn-plus"><i class="fa fa-plus"></i></button>
+                              </span>
+                          </span>
+                          <?php
+                          if (isset($this->edukia)) {
+                              foreach ($this->edukia->getBideoa() as $bideoa) {
+
+                                    if ($bideoa->getMota() != 'vimeo') {
+                                        continue;
+                                    }
+
+                                    echo $this->partial('edukiak-igo/contentEsqueleton.phtml', array(
+                                        'visible' => true,
+                                        'name' => 'bideoa_'. $bideoa->getMota() .'[]',
+                                        'content' => $bideoa->getUrl()
+                                    ));
+                              }
+                          }
+                          ?>
+                      </span>
+                  <div class="vertical-divider hidden-xs"></div>
+                  <div class="horizontal-divider hidden-sm hidden-md hidden-lg"></div>
+              </div>
+          </div>
+
+          <div class="form-group">
+              <div class="row">
+                  <div class="col-xs-12">
+                  <h3>Argazkiak <small>Flickr edo Pinterest argazkien URLa kopiatu eta itsatsi.</small></h3>
+                  </div>
+              </div>
+              <div class="row">
+                  <span class="col-xs-12 col-sm-6">
+                      <span class="row balibidea-submit">
+                          <span class="col-xs-9 col-sm-10 col-md-10 col-lg-11">
+                              <div class="input-group balibide-input">
+                                  <span class="input-group-addon"><i class="fa fa-flickr"></i></span>
+                                  <input type="text" data-name="irudia" data-filter="" data-type="flickr" class="form-control" placeholder="http://..."
+                                  data-example="https://www.flickr.com/photos/50566514@N02/14695424104/in/explore-2014-07-20" >
+                              </div>
+                          </span>
+                          <span class="col-xs-3 col-sm-2 col-md-2 col-lg-1">
+                              <button type="submit" class="pull-right btn btn-default btn-plus"><i class="fa fa-plus"></i></button>
+                          </span>
+                      </span>
+                      <?php
+                      if (isset($this->edukia)) {
+                          foreach ($this->edukia->getIrudia() as $irudia) {
+                                if ($irudia->getMota() != 'flickr') {
+                                    continue;
+                                }
+
+                                $embed = '<img src="'. $irudia->getUrl() .'" />';
+                                echo $this->partial('edukiak-igo/contentEsqueleton.phtml', array(
+                                    'visible' => true,
+                                    'name' => 'irudia_'. $irudia->getMota() .'[]',
+                                    'content' => $irudia->getUrl(),
+                                    'embed' => $embed
+                                ));
+                          }
+                      }
+                      ?>
+                  </span>
+                  <div class="vertical-divider hidden-xs"></div>
+                  <div class="horizontal-divider hidden-sm hidden-md hidden-lg"></div>
+
+                  <span class="col-xs-12 col-sm-6">
+                      <span class="row balibidea-submit">
+                          <span class="col-xs-9 col-sm-10 col-md-10 col-lg-11">
+                              <div class="input-group balibide-input">
+                                  <span class="input-group-addon"><i class="fa fa-pinterest-square"></i></span>
+                                  <input type="text" data-name="irudia" data-filter="" data-type="pinterest" class="form-control" placeholder="http://..."
+                                  data-example="http://www.pinterest.com/pin/113364115595682029/"
+                                  data-success="//assets.pinterest.com/js/pinit.js"
+                                  data-trigger="doBuild" >
+                              </div>
+                          </span>
+                          <span class="col-xs-3 col-sm-2 col-md-2 col-lg-1">
+                              <button type="submit" class="pull-right btn btn-default btn-plus"><i class="fa fa-plus"></i></button>
+                          </span>
+                      </span>
+                      <?php
+                      if (isset($this->edukia)) {
+                          $pinCount = 0;
+                          foreach ($this->edukia->getIrudia() as $irudia) {
+
+                                if ($irudia->getMota() != 'pinterest') {
+                                    continue;
+                                }
+
+                                $pinCount++;
+
+                                //$embed = '<a href="'. $irudia->getUrl() .'" />' . $irudia->getUrl() . '</a>';
+                                echo $this->partial('edukiak-igo/contentEsqueleton.phtml', array(
+                                    'visible' => true,
+                                    'name' => 'irudia_'. $irudia->getMota() .'[]',
+                                    'content' => $irudia->getUrl(),
+                                    'embed' => $irudia->getUrl()
+                                ));
+                          }
+
+                          if ($pinCount) {
+								echo '<script type="text/javascript" async="" src="//assets.pinterest.com/js/pinit_main.js"></script>';
+                          }
+                      }
+                      ?>
+                  </span>
+              </div>
+          </div>
+
+          <div class="form-group">
+              <div class="row">
+                  <div class="col-xs-12">
+                  <h3>Fitxategiak <small>Mega edo Google Drive fitxategien URLa kopiatu eta itsatsi.</small></h3>
+                  </div>
+              </div>
+              <div class="row">
+                  <span class="col-xs-12 col-sm-6">
+                      <span class="row balibidea-submit">
+                          <span class="col-xs-9 col-sm-10 col-md-10 col-lg-11">
+                              <div class="input-group balibide-input">
+                                  <span class="input-group-addon"><i class="fa fa-cloud-download"></i></span>
+                                  <input type="text" data-name="fitxategia" data-filter="" data-type="mega" class="form-control" placeholder="http://..."
+                                  data-example="https://mega.co.nz/#!TJgCQJib!J0PGyI-iiVmM0oIJPK0a1seo9zsSwCumIhrakrK_Cfc" >
+                              </div>
+                          </span>
+                          <span class="col-xs-3 col-sm-2 col-md-2 col-lg-1">
+                              <button type="submit" class="pull-right btn btn-default btn-plus"><i class="fa fa-plus"></i></button>
+                          </span>
+                      </span>
+                      <?php
+                      if (isset($this->edukia)) {
+                          foreach ($this->edukia->getFitxategia() as $fitxategia) {
+
+                                if ($fitxategia->getMota() != 'mega') {
+                                    continue;
+                                }
+
+                                $embed = '<a href="'. $fitxategia->getUrl() .'">'. $fitxategia->getUrl() .'</a>';
+                                echo $this->partial('edukiak-igo/contentEsqueleton.phtml', array(
+                                    'visible' => true,
+                                    'name' => 'fitxategia_'. $fitxategia->getMota() .'[]',
+                                    'content' => $fitxategia->getUrl(),
+                                    'embed' => $embed
+                                ));
+                          }
+                      }
+                      ?>
+                  </span>
+                  <div class="vertical-divider hidden-xs"></div>
+                  <div class="horizontal-divider hidden-sm hidden-md hidden-lg"></div>
+
+                  <span class="col-xs-12 col-sm-6">
+                      <span class="row balibidea-submit">
+                          <span class="col-xs-9 col-sm-10 col-md-10 col-lg-11">
+                              <div class="input-group balibide-input">
+                                  <span class="input-group-addon"><i class="fa fa-google"></i></span>
+                                  <input type="text" data-name="fitxategia" data-filter="" data-type="bestelakoak" class="form-control" class="form-control" placeholder="http://..."
+                                  data-example="https://docs.google.com/uc?export=download&id=0B3b6MFUtZc42bGJLR3RZUGRZZWc">
+                              </div>
+                          </span>
+                          <span class="col-xs-3 col-sm-2 col-md-2 col-lg-1">
+                              <button type="submit" class="pull-right btn btn-default btn-plus"><i class="fa fa-plus"></i></button>
+                          </span>
+                      </span>
+                      <?php
+                      if (isset($this->edukia)) {
+                          foreach ($this->edukia->getFitxategia() as $fitxategia) {
+
+                                if ($fitxategia->getMota() != 'bestelakoak') {
+                                    continue;
+                                }
+
+                                $embed = '<a href="'. $fitxategia->getUrl() .'">'. $fitxategia->getUrl() .'</a>';
+                                echo $this->partial('edukiak-igo/contentEsqueleton.phtml', array(
+                                    'visible' => true,
+                                    'name' => 'fitxategia_'. $fitxategia->getMota() .'[]',
+                                    'content' => $fitxategia->getUrl(),
+                                    'embed' => $embed
+                                ));
+                          }
+                      }
+                      ?>
+                  </span>
+              </div>
+          </div>
+          <div class="form-group">
+              <div class="row">
+                  <div class="col-xs-12">
+                  <h3>Aurkezpenak <small>Slideshare edo ISSUU aurkezpenen URLa kopiatu eta itsatsi.</small></h3>
+                  </div>
+              </div>
+              <div class="row">
+                  <span class="col-xs-12 col-sm-6">
+                      <span class="row balibidea-submit">
+                          <span class="col-xs-9 col-sm-10 col-md-10 col-lg-11">
+                              <div class="input-group balibide-input">
+                                  <span class="input-group-addon"><i class="fa fa-slideshare"></i></span>
+                                  <input type="text" data-name="aurkezpena" data-filter="iframe" data-type="slideshare" class="form-control" placeholder="<iframe..."
+                                  data-exameple='<iframe src="//www.slideshare.net/slideshow/embed_code/33417090" width="427" height="356" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px 1px 0; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="https://www.slideshare.net/Mandalah_Global/from-social-media-to-social-impact-33417090" title="From Social Media to Social Impact" target="_blank">From Social Media to Social Impact</a> </strong> from <strong><a href="http://www.slideshare.net/Mandalah_Global" target="_blank">Mandalah</a></strong> </div>'
+                                  >
+                              </div>
+                          </span>
+                          <span class="col-xs-3 col-sm-2 col-md-2 col-lg-1">
+                              <button type="submit" class="pull-right btn btn-default btn-plus"><i class="fa fa-plus"></i></button>
+                          </span>
+                      </span>
+                      <?php
+                      if (isset($this->edukia)) {
+                          foreach ($this->edukia->getAurkezpena() as $aurkezpena) {
+
+                                if ($aurkezpena->getMota() != 'slideshare') {
+                                    continue;
+                                }
+
+                                echo $this->partial('edukiak-igo/contentEsqueleton.phtml', array(
+                                    'visible' => true,
+                                    'name' => 'aurkezpena_'. $aurkezpena->getMota() .'[]',
+                                    'content' => $aurkezpena->getUrl()
+                                ));
+                          }
+                      }
+                      ?>
+                  </span>
+
+                  <div class="vertical-divider hidden-xs"></div>
+                  <div class="horizontal-divider hidden-sm hidden-md hidden-lg"></div>
+
+                  <span class="col-xs-12 col-sm-6">
+                      <span class="row balibidea-submit">
+                          <span class="col-xs-9 col-sm-10 col-md-10 col-lg-11">
+                              <div class="input-group balibide-input">
+                                  <span class="input-group-addon">
+                                      <img src="<?php echo $this->baseUrl("/images/issuu_white.png"); ?>" />
+                                      <!-- <i class="fa fa-file-powerpoint-o"></i> -->
+                                  </span>
+                                  <input type="text" data-name="aurkezpena" data-filter="div,script" data-type="issuu" class="form-control" placeholder="http://..."
+                                  data-exameple='http://issuu.com/txlopez/docs/anornogabeak'
+                                  >
+                              </div>
+                          </span>
+                          <span class="col-xs-3 col-sm-2 col-md-2 col-lg-1">
+                              <button type="submit" class="pull-right btn btn-default btn-plus"><i class="fa fa-plus"></i></button>
+                          </span>
+                      </span>
+                      <?php
+                      if (isset($this->edukia)) {
+                          foreach ($this->edukia->getAurkezpena() as $aurkezpena) {
+
+                                if ($aurkezpena->getMota() != 'issuu') {
+                                    continue;
+                                }
+
+                                echo $this->partial('edukiak-igo/contentEsqueleton.phtml', array(
+                                    'visible' => true,
+                                    'name' => 'aurkezpena_'. $aurkezpena->getMota() .'[]',
+                                    'content' => $aurkezpena->getUrl()
+                                ));
+                          }
+                      }
+                      ?>
+                  </span>
+              </div>
+          </div>
+
+          <div class="form-group">
+              <div class="row">
+                  <div class="col-xs-12">
+                  <h3>Soinuak <small>Soiunuen URLa kopiatu eta itsatsi.</small></h3>
+                  </div>
+              </div>
+              <div class="row">
+                  <span class="col-xs-12 col-sm-6">
+                      <span class="row balibidea-submit">
+                          <span class="col-xs-9 col-sm-10 col-md-10 col-lg-11">
+                              <div class="input-group balibide-input">
+                                  <span class="input-group-addon"><i class="fa fa-file-sound-o"></i></span>
+                                  <input type="text" data-name="esteka" data-filter="" data-type="audio" class="form-control" placeholder="http://..."
+                                  data-example="http://www.tonycuffe.com/mp3/tailtoddle_lo.mp3">
+                              </div>
+                          </span>
+                          <span class="col-xs-3 col-sm-2 col-md-2 col-lg-1">
+                              <button type="submit" class="pull-right btn btn-default btn-plus"><i class="fa fa-plus"></i></button>
+                          </span>
+                      </span>
+                      <?php
+                      if (isset($this->edukia)) {
+                          foreach ($this->edukia->getEsteka() as $esteka) {
+
+                                if ($esteka->getMota() != 'audio') {
+                                    continue;
+                                }
+
+                                $embed = '<a href="'. $esteka->getUrl() .'">'. $esteka->getUrl() .'</a>';
+                                echo $this->partial('edukiak-igo/contentEsqueleton.phtml', array(
+                                    'visible' => true,
+                                    'name' => 'esteka_'. $esteka->getMota() .'[]',
+                                    'content' => $esteka->getUrl(),
+                                    'embed' => $embed
+                                ));
+                          }
+                      }
+                      ?>
+                  </span>
+              </div>
+          </div>
+          
+
+          <div class="form-group">
+              <div class="row">
+                  <div class="col-xs-12">
+                  <h3>Estekak <small> </small></h3>
+                  </div>
+              </div>
+              <div class="row">
+                  <span class="col-xs-12 col-sm-6">
+                      <span class="row balibidea-submit">
+                          <span class="col-xs-9 col-sm-10 col-md-10 col-lg-11">
+                              <div class="input-group balibide-input">
+                                  <span class="input-group-addon"><i class="fa fa-link"></i></span>
+                                  <input type="text" data-name="esteka" data-filter="" data-type="link" class="form-control" placeholder="http://..."
+                                  data-example="http://www.wikipedia.com">
+                              </div>
+                          </span>
+                          <span class="col-xs-3 col-sm-2 col-md-2 col-lg-1">
+                              <button type="submit" class="pull-right btn btn-default btn-plus"><i class="fa fa-plus"></i></button>
+                          </span>
+                      </span>
+                      <?php
+                      if (isset($this->edukia)) {
+                          foreach ($this->edukia->getEsteka() as $esteka) {
+
+                                if ($esteka->getMota() != 'link') {
+                                    continue;
+                                }
+
+                                $embed = '<a href="'. $esteka->getUrl() .'">'. $esteka->getUrl() .'</a>';
+                                echo $this->partial('edukiak-igo/contentEsqueleton.phtml', array(
+                                    'visible' => true,
+                                    'name' => 'esteka_'. $esteka->getMota() .'[]',
+                                    'content' => $esteka->getUrl(),
+                                    'embed' => $embed
+                                ));
+                          }
+                      }
+                      ?>
+                  </span>
+              </div>
+          </div>
+      </div>
+  </div>

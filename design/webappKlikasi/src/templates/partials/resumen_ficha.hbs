@@ -1,0 +1,54 @@
+---
+component : resumen-ficha
+---
+
+<div class = 'resumen-ficha {{ width }} {{classFilterIsotope}}'>
+	<figure>
+		<img src = '{{image}}' alt = '{{alt}}'/>
+		<figcaption class = 'col-xs-12'>
+			<div class = 'top-block {{class-caption}}'>
+				{{> icon-list}}
+			</div>
+			<div class = 'bottom-block {{class-caption}}'>
+				<span class="category"><a href="#">{{categoria}}</a></span>
+			</div>
+		</figcaption>
+	</figure>
+	<div class = 'content'>
+		<span class = 'text-ficha'>
+			<h3>{{title}}</h3>
+
+			{{{text}}}
+
+			<div class = 'p-top-1'>
+				<label>Adina:</label>
+				<span class="sel-edad col-xs-9 pull-right">
+				<span class="edad-min" data-toggle="tooltip" data-original-title="Default tooltip">
+					<a href="#">
+						<span class = 'edad'><strong>{{edad-min}}</strong></span>
+						<span class = 'punto-cat'></span>
+					</a>
+				</span>
+				<span class="edad-max" data-toggle="tooltip" data-original-title="Default tooltip">
+					<a href="#">
+						<span class = 'edad'><strong>{{edad-max}}</strong></span>
+						<span class = 'punto-cat'></span>
+					</a>
+				</span>
+					<hr class = 'edad'/>
+				</span>
+			</div>
+
+			<div>
+				<label>Ikasturtea: {{curso}}</label> 
+			</div>
+			<span class="ficha-links">
+				<a href=''>{{autor}}</a>
+				<a href=''>{{centro}}</a>
+			</span>
+		</span>
+		<span class = 'info-ficha {{class-caption}}'>
+			{{> info_ficha}}
+		</span>
+	</div>
+</div>

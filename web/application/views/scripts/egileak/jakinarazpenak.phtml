@@ -1,0 +1,82 @@
+<?php
+$erabiltzailea = $this->erabiltzailea;
+?>
+<form class="form-horizontal col-sm-8 col-sm-offset-2" method="POST" id="jakinarazpenak-form">
+    <div class="form-group">
+
+        <h3>Zuzeneko jakinarazpenak</h3>
+
+        <?php
+        if ($this->privileges->getModerazioBerria()) {
+            echo $this->jakinarazpenakCheckbox(
+                $this->translate('[es] Nueva Moderación (Usuario, centro o recurso)'),
+                'moderazioBerria',
+                $this->settings->getModerazioBerria()
+            );
+        } //end if
+
+        if ($this->privileges->getIradokizunak()) {
+            echo $this->jakinarazpenakCheckbox(
+                    'Iradokizun berria',
+                    'iradokizunBerria',
+                    $this->settings->getIradokizunBerria()
+                );
+
+        } //end if
+
+        if ($this->privileges->getEdukiariSalaketa()) {
+            echo $this->jakinarazpenakCheckbox(
+                $this->translate('[es] Denuncia sobre un recurso'),
+                'edukiariSalaketa',
+                $this->settings->getEdukiariSalaketa()
+            );
+
+        } //end if
+        ?>
+    </div>
+
+    <div class="form-group">
+
+        <h3>Taldekako jakinarazpenak</h3>
+
+            <?php
+                echo $this->jakinarazpenakCheckbox(
+                        'Lankidetzarako eskaera (Ikastegia edo edukia)',
+                        'kolaborazioEskaer',
+                        $this->settings->getKolaborazioEskaera()
+                    );
+
+                if ($erabiltzailea->getProfila() == 'irakasle' || $erabiltzailea->getSuperErabiltzailea()) {
+                    echo $this->jakinarazpenakCheckbox(
+                        'Ikasle eskaera',
+                        'ikasleEskaera',
+                        $this->settings->getIkasleEskaera()
+                    );
+                }
+
+                echo $this->jakinarazpenakCheckbox(
+                    'Iruzkin berria',
+                    'iruzkinBerria',
+                    $this->settings->getIruzkinBerria()
+                );
+
+                echo $this->jakinarazpenakCheckbox(
+                    'Gogokoetan harpidetza berria',
+                    'gustokoBerria',
+                    $this->settings->getGustokoBerria()
+                );
+
+                echo $this->jakinarazpenakCheckbox(
+                    'Baliabideetan Atsegin dut ',
+                    'atseginDut',
+                    $this->settings->getAtseginDut()
+                );
+            ?>
+
+    </div>
+
+    <div class="form-group text-center">
+        <button type="submit" name="save" value="true" class="btn btn-success">Gorde</button>
+    </div>
+
+</form>

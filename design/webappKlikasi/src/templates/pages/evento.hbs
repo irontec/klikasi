@@ -1,0 +1,63 @@
+---
+title : Titulo del evento relacionado con Klikasi
+
+elements :
+  - miga : "Eventos"
+
+subheader-evento :
+  nombre : "Eventos"
+  class : "bg-standard-grey"
+
+
+evento-data :
+  title : "Titulo del evento relacionado con Klikasi"
+  image : "images/planta.png"
+  alt : "Imagen de prueba"
+  text : "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque iaculis sem. Sed at ligula turpis. Suspendisse malesuada viverra ultrices. Vestibulum tempor sapien sodales ornare imperdiet. Morbi nec ante dolor. Praesent at sodales tellus, ut convallis augue. Curabitur suscipit lacus vel metus scelerisque hendrerit. Donec interdum ante magna. Suspendisse potenti. Ut malesuada lorem malesuada semper pretium. Phasellus interdum pharetra dui, vel ultrices magna consequat eget. Etiam lobortis massa vitae turpis placerat, id feugiat velit venenatis. Aliquam a nulla semper, iaculis turpis eget, dictum dui. Etiam et accumsan neque.</p><p>Suspendisse non eleifend erat. Pellentesque quam tortor, lacinia et ultricies ut, cursus id sapien. Nunc commodo facilisis pretium. Donec non blandit est. Integer sapien nisl, tristique eget cursus sed, facilisis et nibh. Sed condimentum commodo massa nec tincidunt. Sed sodales, mi sagittis congue lacinia, nunc sapien mollis augue, et sollicitudin nulla mauris at felis. Curabitur fringilla, nulla at vehicula commodo, justo ante auctor odio, sed suscipit elit tellus non ligula. Proin ac turpis mollis, auctor felis eget, laoreet arcu. Vestibulum in odio elit. Mauris lacinia nisl nibh, id laoreet neque bibendum non. Nam condimentum nec quam non pretium. Vivamus in gravida tellus, sit amet venenatis sapien. Praesent viverra nisi nisi, in pharetra odio rhoncus nec.</p><p>Praesent at tempor orci. Curabitur adipiscing blandit orci quis luctus.</p>"
+
+carousel-data :
+  id : "eventos-relacionados"
+  class : "container aire"
+  slides :
+    - class : "active"
+      elems :
+        - class       : "col-sm-4 text-center"
+          active-xs   : "active"
+          type-image-text   : 1
+          title			  : "Froga argazki + testua"
+          description : "<p>Beste ikastetxetan sortzen dituzten baliabide didaktikoak ezagutzeko aukera izango duzu!</p>"
+          image       : "images/school.jpg"
+          alt         : "Planta"
+        - class       : "col-sm-4 text-center"
+          type-image  : 1
+          image       : "images/planta.png"
+          alt         : "Planta"
+        - class       : "col-sm-4 text-center"
+          type-image  : 1
+          image       : "images/universo.jpg"
+          alt         : "Universo"
+    - class : ""
+      elems :
+        - class       : "col-sm-4 text-center"
+          fondo       : "bg-light-grey"
+          type-text   : 1
+          title       : "Azken ikastetxea"
+          description : "<p>Beste ikastetxetan sortzen dituzten baliabide didaktikoak ezagutzeko aukera izango duzu!</p>"
+        - class       : "col-sm-4 text-center"
+          fondo       : "bg-green"
+          type-text   : 1
+          title       : "Azken ikastetxea"
+          description : "<p>Beste ikastetxetan sortzen dituzten baliabide didaktikoak ezagutzeko aukera izango duzu!</p>"
+
+---
+<div class = 'container principal'>
+
+    {{> subheader subheader-evento }}
+
+  {{> bloque_evento evento-data }}
+
+  <section>
+  	{{> carousel-multi carousel-data}}
+
+  </section>
+</div>

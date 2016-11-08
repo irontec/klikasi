@@ -1,0 +1,72 @@
+production: 
+  class: \Klikasi\Model\Newsletter
+  fields: 
+    title: 
+      title: _('Asunto')
+      type: text
+      required: true
+      default: true
+      
+    content: 
+      title: _('Contenido')
+      type: textarea
+      
+    active: 
+      title: _('Activo')
+      type: select
+      defaultValue: 0
+      source: 
+        data: inline
+        values: 
+          '0': 
+            title: _("No")
+          '1': 
+            title: _("Yes")
+            
+    send: 
+      title: _('Enviado')
+      type: select
+      defaultValue: 0
+      source: 
+        data: inline
+        values: 
+          '0': 
+            title: _("No")
+          '1': 
+            title: _("Yes")
+            
+    shippingDate: 
+      title: _('Fecha de Envío')
+      type: text
+      defaultValue: '0000-00-00 00:00:00'
+      
+    dateToSend: 
+      title: _('Enviar el día')
+      type: picker
+      required: true
+      source: 
+        control: datetime
+        settings: 
+          dateFormat: dd-mm-yy
+          timeFormat: hh:mm:ss
+          showSecond: false
+          
+    sent: 
+      title: _('Enviados')
+      type: number
+      defaultValue: 0
+      source: 
+        control: Spinner
+        
+    readBy: 
+      title: _('Leídos')
+      type: number
+      defaultValue: 0
+      source: 
+        control: Spinner
+testing: 
+  _extends: production
+staging: 
+  _extends: production
+development: 
+  _extends: production

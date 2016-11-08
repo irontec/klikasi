@@ -1,0 +1,100 @@
+<?php 
+    foreach ($this->sortzaileak as $sortzailea) {
+     $erabiltzailea = $sortzailea['erabiltzailea'];
+     $ikastegia = isset($sortzailea['ikastegia']) ? $sortzailea['ikastegia'] : null;
+     $trophy = isset($sortzailea['trophy']) ? $sortzailea['trophy'] : null;
+?>
+<section class="bloque-egilea aire col-xs-12" id="ikusi-erabiltzailea">
+    <div class="col-xs-12 col-sm-10">
+        <figure class="col-xs-6 col-sm-4 col-md-3 col-xs-offset-3 col-sm-offset-0 text-center" style="min-width: 160px;min-height: 160px;">
+            <?php echo $this->erabiltzaileIrudia($erabiltzailea, 200); ?>
+        </figure>
+
+        <div class="col-xs-12 col-sm-8 col-md-9">
+            <h1>
+                <?php
+                $urlErabiltzaile = '/erabiltzaileak/ikusi/erabiltzailea/' . $erabiltzailea->getUrl();
+                ?>
+                <a href="<?php echo $this->baseUrl($urlErabiltzaile); ?>">
+                    <?php echo $erabiltzailea->getCompletName(); ?>
+                </a>
+            </h1>
+            <ul>
+                <?php
+                    $profila = $erabiltzailea->getProfila();
+                ?>
+                <li class="no-pad-l italic">
+                <?php
+                    switch (strtolower($profila)) {
+                        case 'ikasle':
+                            echo "Ikaslea";
+                            break;
+                        case 'irakasle':
+                            echo "Irakaslea";
+                            break;
+                        case 'otros':
+                            echo "Sortzailea";
+                            break;
+                    }
+                ?>
+                </li>
+                <?php
+
+                    $ikastegiaLink = '';
+                    if ($ikastegia) {
+                        $href = $this->baseUrl("ikastegiak/ikusi/ikastegia/" . $ikastegia->getUrl());
+                        $ikastegiaLink = '<a href="'.$href.'">' . $ikastegia->getIzena() . '</a>';
+                    }
+
+                ?>
+                <li class="no-border">
+                     <?php echo $ikastegiaLink; ?>
+                </li>
+            </ul>
+            <?php echo '<p>' . $erabiltzailea->getDeskribapena() . '</p>'; ?>
+            <?php
+            if ($trophy) {
+            ?>
+                <p>
+                    <a href="<?php echo $this->baseUrl('orriak/kanpainak/orria/' . $trophy->getUrl()); ?>"
+                       title="<?php echo $this->translate("[es] Última campaña ganada"); ?>" >
+                        <i class="fa fa-trophy"></i>
+                        <?php echo $trophy->getIzena(); ?>
+                    </a>
+                </p>
+            <?php
+            } //end if
+            ?>
+        </div>
+        <div class="col-xs-12 col-sm-8 col-md-9">
+            <?php
+
+            $networks = array(
+                'getTwitter' => array('Twitter', 'fa-twitter'),
+                'getFacebook' => array('Facebook', 'fa-facebook'),
+                'getGoogle' => array('Google +', 'fa-google-plus'),
+                'getLinkedin' => array('LinkedIn', 'fa-linkedin'),
+                'getPinterest' => array('Pinterest', 'fa-pinterest'),
+                'getFlickr' => array('Flickr', 'fa-flickr'),
+                'getYouTube' => array('YouTube', 'fa-youtube'),
+                'getInstagram' => array('Instagram', 'fa-instagram')
+            );
+
+            foreach ($networks as $key => $val) {
+                if (trim($erabiltzailea->$key()) != '') {
+                    ?>
+                    <a
+                        href="<?php echo $erabiltzailea->$key(); ?>"
+                        target="_blank"
+                        title="<?php echo $val[0]; ?>"
+                        ><i style="padding: 15px 10px; color: #777; font-size: 25px;" class="fa <?php echo $val[1]; ?>"></i></a>
+                    <?php
+                }
+            }
+            ?>
+        </div>
+    </div>
+</section>
+<?php 
+     } //endforeach
+?>

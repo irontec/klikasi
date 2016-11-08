@@ -1,0 +1,113 @@
+---
+title : Kategoriak
+
+subheader-categorias :
+  nombre : "Kategoriak"
+  class : "bg-standard-grey"
+
+datos-resumen-categoria :
+  width : "col-xs-12 col-sm-4"
+  image : "images/natur.jpg"
+  alt : "Natur Zientziak"
+  class: "destacada"
+  class-caption : "bg-green"
+  categoria : "Natur zientziak"
+  recursos : "5321"
+
+datos-resumen-categoria1 :
+  width : "col-xs-12 col-sm-4"
+  image : "images/mate.jpg"
+  alt : "Matematika"
+  class: "destacada"
+  class-caption : "bg-yellow"
+  categoria : "Matematika"
+  recursos : "5321"
+
+datos-resumen-categoria2 :
+  width : "col-xs-12 col-sm-4"
+  image : "images/map.jpg"
+  alt : "Mapa Mundi"
+  class: "destacada"
+  class-caption : "bg-blue"
+  categoria : "Geografia"
+  recursos : "5321"
+
+datos-resumen-categoria3 :
+  width : "col-xs-12 col-sm-4 col-md-3"
+  image : "images/mate.jpg"
+  alt : "Universo"
+  class: ""
+  class-caption : "bg-brown"
+  categoria : "Natur zientziak"
+  recursos : "5321"
+
+datos-resumen-categoria4 :
+  width : "col-xs-12 col-sm-4 col-md-3"
+  image : "images/mate.jpg"
+  alt : "Universo"
+  class: ""
+  class-caption : "bg-orange"
+  categoria : "Natur zientziak"
+  recursos : "5321"
+
+datos-resumen-categoria5 :
+  width : "col-xs-12 col-sm-4 col-md-3"
+  image : "images/mate.jpg"
+  alt : "Universo"
+  class: ""
+  class-caption : "bg-grey"
+  categoria : "Natur zientziak"
+  recursos : "5321"
+
+datos-resumen-categoria6 :
+  width : "col-xs-12 col-sm-4 col-md-3"
+  image : "images/mate.jpg"
+  alt : "Universo"
+  class: ""
+  class-caption : "bg-pink"
+  categoria : "Natur zientziak"
+  recursos : "5321"
+
+datos-resumen-categoria7 :
+  width : "col-xs-12 col-sm-4 col-md-3"
+  image : "images/mate.jpg"
+  alt : "Universo"
+  class: ""
+  class-caption : "bg-yellow"
+  categoria : "Natur zientziak"
+  recursos : "5321"
+
+  datos-resumen-categoria8 :
+  width : "col-xs-12 col-sm-4 col-md-3"
+  image : "images/mate.jpg"
+  alt : "Universo"
+  class: ""
+  class-caption : "bg-blue"
+  categoria : "Natur zientziak"
+  recursos : "5321"
+
+---
+
+<div class="container principal">
+    {{> subheader subheader-categorias}}
+    <div class = 'filtro-categorias'>
+      {{> filtro_buscador}}
+    </div>
+    <div class="row cat-featured container-categorias ">
+        {{> resumen_categorias datos-resumen-categoria }}
+        {{> resumen_categorias datos-resumen-categoria1 }}
+        {{> resumen_categorias datos-resumen-categoria2 }}
+    </div>
+    <div class="row container-categorias ">
+        {{> resumen_categorias datos-resumen-categoria3 }}
+        {{> resumen_categorias datos-resumen-categoria4 }}
+        {{> resumen_categorias datos-resumen-categoria5 }}
+        {{> resumen_categorias datos-resumen-categoria6 }}
+        {{> resumen_categorias datos-resumen-categoria7 }}
+        {{> resumen_categorias datos-resumen-categoria8 }}
+        {{> resumen_categorias datos-resumen-categoria3 }}
+        {{> resumen_categorias datos-resumen-categoria4 }}
+        {{> resumen_categorias datos-resumen-categoria6 }}
+    </div>
+    {{> load}}
+</div>

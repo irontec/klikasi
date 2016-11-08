@@ -1,0 +1,313 @@
+---
+title : Edukiak igo
+
+elements :
+  - miga : "Kategoria"
+
+subheader-data :
+  nombre : "Edukiak igo"
+  class : "bg-standard-grey"
+
+help-text : "<a href='#'>Zerbitzu baldintzak</a> eta <a href='#'>Lizentzia</a> irakur itzazu edukiak igo baino lehen. <br>Laguntza behar duzu? <a href='#'>Gida</a> irakurri edo gurekin <a href='#'>harremanetan</a> jarri."
+
+autor-img : "images/perfil-sidebar.png"
+autor-alt : "Nire izena"
+autor-nombre : "Eguzki99"
+
+baliabide-form :
+  - title : "Bideoak"
+    help-block : "YouTube edo Vimeoko bideoaren iframe kopiatu eta itsatsi."
+    tipo :
+      - title : "Vimeo"
+        icon : "<i class='fa fa-vimeo-square'></i>"
+        separador : 1
+        recursos :
+          - iframe : "<iframe src='//www.youtube.com/embed/1efar958FAE?rel=0' frameborder='0' allowfullscreen></iframe>"
+          - iframe : "<iframe src='//www.youtube.com/embed/1efar958FAE?rel=0' frameborder='0' allowfullscreen></iframe>"
+        placeholder : "&lt; iframe..."
+      - title : "YouTube"
+        icon : "<i class='fa fa-youtube'></i>"
+        separador : 1
+        recursos :
+          - iframe : "<iframe src='//player.vimeo.com/video/91865898' width='500' height='281' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>"
+        placeholder : "&lt; iframe..."
+  - title : "Argazkiak"
+    help-block : "Flickr edo Pinterest argazkien URLa kopiatu eta itsatsi."
+    cant : "2"
+    tipo :
+      - title : "Vimeo"
+        icon : "<i class='fa fa-vimeo-square'></i>"
+        separador : 1
+        placeholder : "http://..."
+      - title : "YouTube"
+        icon : "<i class='fa fa-youtube'></i>"
+        placeholder : "http://..."
+  - title : "Fitxategiak"
+    help-block : "Media edo Google Drive fitxategien URLa kopiatu eta itsatsi."
+    cant : "2"
+    tipo :
+      - title : "Vimeo"
+        icon : "<i class='fa fa-vimeo-square'></i>"
+        separador : 1
+        placeholder : "http://..."
+      - title : "YouTube"
+        icon : "<i class='fa fa-youtube'></i>"
+        placeholder : "http://..."
+  - title : "Aurkezpenak"
+    help-block : "Slideshare edo ISSUU aurkezpenen URLa kopiatu eta itsatsi."
+    cant : "2"
+    tipo :
+      - title : "Vimeo"
+        icon : "<i class='fa fa-vimeo-square'></i>"
+        separador : 1
+        placeholder : "http://..."
+      - title : "YouTube"
+        icon : "<i class='fa fa-youtube'></i>"
+        placeholder : "http://..."
+  - title : "Soinuak"
+    help-block : "Soiunuen URLa kopiatu eta itsatsi."
+    tipo :
+      - title : "Vimeo"
+        icon : "<i class='fa fa-vimeo-square'></i>"
+        placeholder : "http://..."
+
+
+select-data :
+  - kategoria : 1
+    options :
+      - option : "Kategoria"
+        option1 : "Natur Zientziak"
+        option2 : "Geografia"
+        option3 : "Biologia"
+        option4 : "Matematika"
+  - ikastegia : 1
+    options :
+      - option : "Ikastegia"
+        option1 : "Desutuko Ikastola"
+        option2 : "Lauro Ikastola"
+        option3 : "Intxisu Ikastegia"
+  - ikasturtea : 1
+    options :
+      - option : "Ikasturtea"
+        option1 : "D.B.H.1"
+        option2 : "D.B.H.2"
+        option3 : "D.B.H.3"
+        option4 : "D.B.H.4"
+
+alert-danger-data:
+  mode : "danger"
+  class : "m-top-2"
+  icon : "fa fa-bullhorn"
+  text : "<span>Ezin izan dugu zure edukiak igo. Saiatu zaitez geroago.</span>"
+
+alert-success-data:
+  mode : "success"
+  class : "m-top-2"
+  icon : "fa fa-check"
+  text : "<span>Edukiak ondo igo dira.</span>"
+
+alert-warning-data:
+  mode : "warning"
+  class : "m-top-2"
+  icon : "fa fa-warning"
+  text : "<span>Oharpen bat daukazu.</span>"
+---
+
+<div class = 'principal'>
+	<div class="container">
+		{{> subheader subheader-data}}
+		<div class="ficha-content">
+			<header class="row">
+				<div class="col-md-8">
+					<h1 class="p-top-1 dis-in-bl">{{title}}</h1>
+					<p>{{{help-text}}}</p>
+				</div>
+			</header>
+		</div>
+	</div>
+	<form role="form" class="form-horizontal edukiak-igo">
+		<div class="container p-bottom-3">
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="color-border"></div>
+				</div>
+				<!-- <div class="col-xs-12 col-sm-4 pull-right">
+					<div id="sidebar-form" class="sidebar bg-standard-grey">
+						<div class="row text-center autor">
+							<figure class="rounded">
+								<img src="{{autor-img}}" alt="{{autor-alt}}">
+							</figure>
+							<span class="autor-name">{{autor-nombre}}</span>
+						</div>
+					</div>
+				</div> -->
+				<div class="col-xs-12 col-sm-6 pull-left">
+					<input type="text" class="col-xs-12 form-control" id="beste-egile" placeholder="Izenburua">
+					<span class = 'msg error'>Izenburua ezin da hutsik egon</span>
+
+					{{#each select-data}}
+						<!-- <label>{{clase}}</label> -->
+						{{#if kategoria}}
+						<span class="select"><i class="fa fa-chevron-down"></i>
+							{{#each options}}
+							<select class="form-control">
+								<option>{{option}}</option>
+								<option>{{option1}}</option>
+							    <option>{{option2}}</option>
+							    <option>{{option3}}</option>
+							    <option>{{option4}}</option>
+							</select>
+							{{/each}}
+						</span>
+						{{/if}}
+						{{/each}}
+
+					<div class="row">
+					<div class="col-xs-12 col-md-6 pull-left">
+						{{#each select-data}}
+						<!-- <label>{{clase}}</label> -->
+						{{#if ikasturtea}}
+						<span class="select"><i class="fa fa-chevron-down"></i>
+							{{#each options}}
+							<select class="form-control">
+								<option>{{option}}</option>
+								<option>{{option1}}</option>
+							    <option>{{option2}}</option>
+							    <option>{{option3}}</option>
+							    <option>{{option4}}</option>
+							</select>
+							{{/each}}
+						</span>
+						{{/if}}
+						{{/each}}
+					</div>
+					<div class="col-xs-12 col-md-6 pull-right">
+						<div class="adina">
+							<label class="" for="beste-egile">Adina</label>
+							<span class="sel-edad col-xs-12">
+					            <span class="edad-min" data-toggle="tooltip" data-original-title="Default tooltip">
+					              <a href="#">
+					                <span class="edad"><strong>11</strong> urtetik</span>
+					                <span class="punto-cat"></span>
+					              </a>
+					            </span>
+					            <span class="edad-max" data-toggle="tooltip" data-original-title="Default tooltip">
+					              <a href="#">
+					                <span class="edad"><strong>14</strong> urtera</span>
+					                <span class="punto-cat"></span>
+					              </a>
+					            </span>
+					            	<hr class="edad">
+				            	</span>
+				        </div>
+			         </div>
+			         </div>
+			         <textarea class="form-control" id="laburpen" rows="3" placeholder="Laburpena"></textarea>
+					<span class="help-block">Labur itzazu 140 karakteretan baliabidearen gaia.</span>
+					<span class = 'msg error'>Laburpena 140 karaktere baino gutxiago izan behar du.</span>
+
+					<textarea class="form-control" id="deskribapen" rows="8" placeholder="Deskribapena"></textarea>
+
+				</div>
+
+				<div class="col-xs-12 col-sm-6">
+
+					<input class="form-control" id="disabledInput" type="text" placeholder="Nire izena" disabled>
+
+					{{#each select-data}}
+					<!-- <label>{{clase}}</label> -->
+					{{#if ikastegia}}
+					<span class="select"><i class="fa fa-chevron-down"></i>
+						{{#each options}}
+						<select class="form-control">
+							<option>{{option}}</option>
+							<option>{{option1}}</option>
+						    <option>{{option2}}</option>
+						    <option>{{option3}}</option>
+						    <option>{{option4}}</option>
+						</select>
+						{{/each}}
+					</span>
+					{{/if}}
+					{{/each}}
+					<input type="text" class="col-sm-10 form-control" id="beste-egile" placeholder="Beste egileen izenak">
+					<span class="help-block">Komekin banatu.</span>
+					<span class = 'msg warning'>Gogora ezazu egileen izenak komekin banatu behar direla.</span>
+					<textarea class="form-control" id="etiketak" rows="3" placeholder="Etiketak"></textarea>
+					<span class="help-block">Komekin banatu.</span>
+				</div>
+
+				</div>
+			</div>
+			<div class="form-balibideak row">
+				<div class="container">
+					{{#each baliabide-form}}
+					<div class="form-group">
+						<div class="row">
+							<div class="col-xs-12">
+							<h3>{{title}} <small>{{help-block}}</small></h3>
+							</div>
+						</div>
+						<div class="row">
+							{{#each tipo}}
+								<span class="col-xs-12 col-sm-6">
+									<span class="row">
+										<span class="col-xs-9 col-sm-10 col-md-10 col-lg-11">
+											<div class="input-group balibide-input">
+												<span class="input-group-addon">{{{icon}}}</span>
+												<input type="text" class="form-control" placeholder="{{{placeholder}}}">
+											</div>
+										</span>
+										<span class="col-xs-3 col-sm-2 col-md-2 col-lg-1">
+											<button type="submit" class="pull-right btn btn-default btn-plus"><i class="fa fa-plus"></i></button>
+										</span>
+									</span>
+									{{#each recursos}}
+										<figure class = 'col-xs-12'>
+											{{{iframe}}}
+										</figure>
+										<div class = 'col-xs-12'>
+											<button class = 'btn bg-red light'>Ezabatu</button>
+										</div>
+									{{/each}}
+								</span>
+								{{#if separador}}
+									<div class="vertical-divider hidden-xs"></div>
+
+									<div class = 'horizontal-divider hidden-sm hidden-md hidden-lg'></div>
+								{{/if}}
+							{{/each}}
+						</div>
+					</div>
+					{{/each}}
+				</div>
+			</div>
+			<div class="container">
+				<div class="row checkbox">
+					<span class="col-xs-12">
+					    <label>
+					      <input type="checkbox">
+					      <a href="#">Zerbitzu baldintzak</a> eta <a href="#"> Lizentzia</a> irakurri ditut eta ados nago.
+					    </label>
+				    </span>
+				</div>
+
+
+				<div class = 'row'>
+					{{> alert alert-danger-data }}
+					{{> alert alert-success-data }}
+					{{> alert alert-warning-data }}
+				</div>
+				<span class="row text-center">
+					<span class="col-sm-4 col-sm-offset-4">
+			  			<button type="submit" class="btn-bidali bg-red light">Bidali</button>
+			  		</span>
+			  	</span>
+			  	<div class = 'row'>
+						<div class="color-border"></div>
+					</div>
+			</div>
+	</form>
+</div>
+
+

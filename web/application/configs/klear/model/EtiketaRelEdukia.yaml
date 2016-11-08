@@ -1,0 +1,42 @@
+production: 
+  class: \Klikasi\Model\EtiketaRelEdukia
+  fields: 
+    etiketaId: 
+      title: _('Etiketa')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Klikasi\Mapper\Sql\Etiketa
+          fieldName: 
+            fields: 
+              - izena
+            template: '%izena%'
+          order: izena
+      decorators:
+        autocomplete:
+          command: autocompleteEtiketa_command
+      options:
+        screens:
+          etiketaBerriaExternal_screen: true
+      default: true
+    edukiaId: 
+      title: _('Edukia id')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Klikasi\Mapper\Sql\Edukia
+          fieldName: 
+            fields: 
+              - titulua
+            template: '%titulua%'
+          order: titulua
+testing: 
+  _extends: production
+staging: 
+  _extends: production
+development: 
+  _extends: production

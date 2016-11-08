@@ -1,0 +1,70 @@
+production: 
+  class: \Klikasi\Model\Kexa
+  fields: 
+    erabiltzaileaId: 
+      title: _('Erabiltzailea id')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Klikasi\Mapper\Sql\Erabiltzailea
+          fieldName: 
+            fields: 
+              - izena
+            template: '%izena%'
+          order: izena
+      default: true
+    edukiaId: 
+      title: _('Edukia id')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Klikasi\Mapper\Sql\Edukia
+          fieldName: 
+            fields: 
+              - titulua
+            template: '%titulua%'
+          order: titulua
+    kexa: 
+      title: _('Kexa')
+      type: textarea
+      required: true
+    ikusita: 
+      title: _('Ikusita')
+      type: select
+      defaultValue: 0
+      source: 
+        data: inline
+        values: 
+          '0': 
+            title: _("No")
+          '1': 
+            title: _("Yes")
+    konponduta: 
+      title: _('Konponduta')
+      type: select
+      defaultValue: 0
+      source: 
+        data: inline
+        values: 
+          '0': 
+            title: _("No")
+          '1': 
+            title: _("Yes")
+    sortzeData: 
+      title: _('Sortze data')
+      type: picker
+      defaultValue: CURRENT_TIMESTAMP
+      source: 
+        control: datetime
+        settings: 
+          disabled: 'false'
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production

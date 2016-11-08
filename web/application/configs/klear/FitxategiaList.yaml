@@ -1,0 +1,105 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+
+fixedPositions:
+  - &fixedFitxategi
+    fixedPositions:
+      group:
+        label: _("Datuak")
+        colsPerRow: 4
+        fields: 
+          titulua: 2
+          url: 4
+          
+production: 
+  main: 
+    module: klearMatrix
+    defaultScreen: fitxategiaList_screen
+  screens: 
+    fitxategiaList_screen: &fitxategiaList_screenLink 
+      controller: list
+      pagination: 
+        items: 25
+      <<: *Fitxategia
+      title: _("List of %s", ngettext('Fitxategia', 'Fitxategia(s)', 0))
+      fields: 
+        blacklist:
+          sortzeData: true
+          fitxategia: true
+          klikKopurua: true
+        options: 
+          title: _("Options")
+          screens: 
+            fitxategiaEdit_screen: true
+          dialogs: 
+            fitxategiaDel_dialog: true
+          default: fitxategiaEdit_screen
+      options: 
+        title: _("Options")
+        screens: 
+          fitxategiaNew_screen: true
+        dialogs: 
+          fitxategiaDel_dialog: true
+          
+    fitxategiaNew_screen: &fitxategiaNew_screenLink 
+      <<: *Fitxategia
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Add %s", ngettext('Fitxategia', 'Fitxategia(s)', 1))
+      <<: *fixedFitxategi
+      fields: 
+        blacklist: 
+          sortzeData: true
+          klikKopurua: true
+        order:
+          titulua: true
+          
+    fitxategiaEdit_screen: &fitxategiaEdit_screenLink 
+      <<: *Fitxategia
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      title: _("Edit %s", ngettext('Fitxategia', 'Fitxategia(s)', 1))
+      <<: *fixedFitxategi
+      fields: 
+        blacklist: 
+          sortzeData: true
+        order:
+          titulua: true
+          
+  dialogs: 
+    fitxategiaDel_dialog: &fitxategiaDel_dialogLink
+      <<: *Fitxategia
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('Fitxategia', 'Fitxategia(s)', 1))
+      description: _("Do you want to delete this %s?", ngettext('Fitxategia', 'Fitxategia(s)', 1))
+      message: _("%s successfully deleted.", ngettext('Fitxategia', 'Fitxategia(s)', 1))
+      labelOnList: true
+      multiItem: true
+
+  commands: 
+    FitxategiaDownload_command: &FitxategiaDownload_commandLink
+      <<: *Fitxategia
+      controller: File
+      action: force-download
+      mainColumn: fitxategia
+    FitxategiaUpload_command: &FitxategiaUpload_commandLink
+      <<: *Fitxategia
+      controller: File
+      action: upload
+      mainColumn: fitxategia
+    FitxategiaPreview_command: &FitxategiaPreview_commandLink
+      <<: *Fitxategia
+      controller: File
+      action: preview
+      mainColumn: fitxategia
+testing: 
+  _extends: production
+staging: 
+  _extends: production
+development: 
+  _extends: production

@@ -1,0 +1,102 @@
+production: 
+  class: \Klikasi\Model\Orrialdea
+  fields: 
+    titulua: 
+      title: _('Titulua')
+      type: text
+      required: true
+      maxLength: 250
+      default: true
+    edukia: 
+      title: _('Edukia')
+      type: textarea
+      required: true
+      source: 
+        control: tinymce
+        template: simple
+    publikatua: 
+      title: _('Publikatua')
+      type: select
+      defaultValue: 0
+      source: 
+        data: inline
+        values: 
+          '0': _('0')
+          '1': _('1')
+    url: 
+      title: _('Url')
+      type: text
+      required: true
+      maxLength: 250
+    sortzeData: 
+      title: _('Sortze data')
+      type: picker
+      defaultValue: CURRENT_TIMESTAMP
+      source: 
+        control: datetime
+        settings: 
+          disabled: 'false'
+    metaTitle: 
+      title: _('Meta title')
+      type: text
+      maxLength: 255
+    metaDescription: 
+      title: _('Meta description')
+      type: text
+      maxLength: 500
+    metaKeywords: 
+      title: _('Meta keyword')
+      type: text
+      maxLength: 255
+    img: 
+      title: _('Img')
+      type: file
+      source: 
+        data: fso
+        size_limit: 20M
+        options: 
+          download: 
+            external: true
+            type: command
+            target: orrialdeaImgDownload_command
+            icon: ui-silk-bullet-disk
+            title: _("Download file")
+            onNull: hide
+          upload: 
+            type: command
+            target: orrialdeaImgUpload_command
+            title: _("Upload file")
+            class: qq-uploader
+            onNull: show
+          preview: 
+            target: orrialdeaImgPreview_command
+            type: command
+            class: filePreview
+            external: 1
+            props: 
+              width: 150
+              height: 150
+              crop: false
+            onNull: hide
+          previewList: 
+            target: orrialdeaImgPreview_command
+            type: command
+            class: filePreview
+            listController: 1
+            external: 1
+            props: 
+              width: 30
+              height: 30
+              crop: false
+            onNull: hide
+          delete: 
+            type: setNullFso
+            icon: ui-silk-bin
+            title: _("Delete file")
+            onNull: hide
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production

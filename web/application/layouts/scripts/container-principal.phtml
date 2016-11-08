@@ -1,0 +1,64 @@
+<?php echo $this->render("header.phtml"); ?>
+
+<body>
+
+<?php echo $this->render("menua.phtml"); ?>
+
+<div class="container principal">
+
+    <?php echo $this->layout()->content; ?>
+
+</div>
+
+<?php
+if ($this->isEdukia === true) {
+    ?>
+    <div class="comentarios col-xs-12" id="comentarios-iruzkinak">
+        <div class="container">
+            <h3>
+                <i class="fa fa-comments"></i>Iruzkinak<em>(<?php echo $this->edukia->iruzkinaCount();?>)</em>
+            </h3>
+
+            <?php
+            if (sizeof($this->iruzkinakListView) > 0) {
+                foreach ($this->iruzkinakListView as $iruzkinaView) {
+                    echo $iruzkinaView;
+                }
+            }
+
+            if ($this->sessionUser !== false) {
+                echo $this->addIruzkina;
+            }
+            ?>
+
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="fichas-relacionadas col-xs-12">
+            <?php
+            if (sizeof($this->edukiakRelated)) {
+                
+                echo '<h3>Erlazionatutako baliabideak</h3>';
+                
+                foreach ($this->edukiakRelated as $edukiakRelated) {
+                    echo $edukiakRelated;
+                }
+            }
+
+            if ($this->sessionUser !== false) {
+                echo $this->hobekuntzak;
+                echo $this->salatu;
+            }
+            ?>
+        </div>
+    </div>
+    <?php
+}
+
+echo $this->render("footer.phtml");
+echo $this->sartuDialog();
+?>
+
+</body>
+</html>

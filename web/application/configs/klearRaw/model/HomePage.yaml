@@ -1,0 +1,69 @@
+production: 
+  class: \Klikasi\Model\HomePage
+  fields: 
+    identifier: 
+      title: _('Identifier')
+      type: text
+      required: true
+      maxLength: 250
+      default: true
+    title: 
+      title: _('Title')
+      type: text
+      required: true
+      maxLength: 250
+    description: 
+      title: _('Description')
+      type: textarea
+    irudia: 
+      title: _('Irudia')
+      type: file
+      source: 
+        data: fso
+        size_limit: 20M
+        options: 
+          download: 
+            external: true
+            type: command
+            target: homePageIrudiaDownload_command
+            icon: ui-silk-bullet-disk
+            title: _("Download file")
+            onNull: hide
+          upload: 
+            type: command
+            target: homePageIrudiaUpload_command
+            title: _("Upload file")
+            class: qq-uploader
+            onNull: show
+          preview: 
+            target: homePageIrudiaPreview_command
+            type: command
+            class: filePreview
+            external: 1
+            props: 
+              width: 150
+              height: 150
+              crop: false
+            onNull: hide
+          previewList: 
+            target: homePageIrudiaPreview_command
+            type: command
+            class: filePreview
+            listController: 1
+            external: 1
+            props: 
+              width: 30
+              height: 30
+              crop: false
+            onNull: hide
+          delete: 
+            type: setNullFso
+            icon: ui-silk-bin
+            title: _("Delete file")
+            onNull: hide
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production

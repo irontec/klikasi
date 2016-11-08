@@ -1,0 +1,65 @@
+<?php echo $this->render("header.phtml"); ?>
+
+<body>
+
+<?php echo $this->render("menua.phtml"); ?>
+
+<div class="principal">
+
+    <div class="container">
+
+        <div class="col-xs-12 subheader bg-standard-grey">
+            <h1><?php echo $this->title; ?></h1>
+        </div>
+
+        <?php
+        if (isset($this->editEdukiak) && $this->editEdukiak === true) {
+        ?>
+        <div class="btn-group pull-right actions" style="margin-top: 8px;">
+            <button type="button" class="btn btn-default dropdown-toggle button-icon" data-toggle="dropdown">
+                <i class="glyphicon glyphicon-cog"></i>Aukerak <span class="caret"></span>
+            </button>
+
+            <ul class="dropdown-menu" role="menu">
+                <?php
+                foreach ($this->adminUrls as $adminUrl) {
+                    ?>
+                    <li>
+                        <a href="<?php echo $adminUrl['url']; ?>" title="<?php echo $adminUrl['name']; ?>">
+                            <?php echo $adminUrl['name']; ?>
+                        </a>
+                    </li>
+                    <?php
+                }
+                ?>
+            </ul>
+        </div>
+        <?php
+        }
+        ?>
+        <?php if (isset($this->edukiakHeader)) :?>
+        <div class="ficha-content">
+            <header class="row">
+                <div class="col-md-8 edukiak-igo-content">
+                    <p><a href="<?php echo $this->baseUrl('orriak/zerbitzu-baldintzak/')?>" title="Zerbitzu baldintzak" >Zerbitzu baldintzak</a> eta <a href="<?php echo $this->baseUrl('orriak/lizentzia/')?>" title="Lizentzia">Lizentzia</a> irakur itzazu edukiak igo baino lehen. <br>Laguntza behar duzu? <a href="<?php echo $this->baseUrl('orriak/gida/')?>" title="Gida">Gida</a> irakurri edo gurekin <a href="<?php echo $this->baseUrl('orriak/harremanetan/')?>" title="harremanetan">harremanetan</a> jarri.</p>
+                </div>
+            </header>
+
+        </div>
+        <?php endif; ?>
+
+
+        <?php echo $this->alertMessage($this->erroreMezuak, $this->flashmezuak, $this->alertSuccess); ?>
+        <div class="alert alert-danger hide" id="edukiak-errors"></div>
+        <div class="alert alert-success hide"id="edukiak-success"></div>
+
+    </div>
+
+    <?php echo $this->layout()->content; ?>
+
+</div>
+
+    <?php echo $this->render("footer.phtml"); ?>
+
+</body>
+</html>

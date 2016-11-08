@@ -1,0 +1,241 @@
+<?php
+$erabiltzailea = $this->erabiltzailea;
+
+$activeTabIrakasle = ($erabiltzailea->getProfila() == 'irakasle');
+$activeTabIkasle = ($erabiltzailea->getProfila() == 'ikasle');
+?>
+<section class="bloque-egilea aire col-xs-12" id="ikusi-erabiltzailea">
+
+    <div class="col-xs-12 col-sm-10">
+
+        <figure class="col-xs-6 col-sm-4 col-md-3 col-xs-offset-3 col-sm-offset-0 text-center">
+            <?php echo $this->erabiltzaileIrudia($this->erabiltzailea, 200); ?>
+        </figure>
+
+        <div class="col-xs-12 col-sm-8 col-md-9">
+            <h1><a
+                href="<?php echo $this->erabiltzailea->urlProfile();?>"
+                title="<?php echo $this->erabiltzailea->getCompletName(); ?>"
+                ><?php echo $this->erabiltzailea->getCompletName(); ?></a></h1>
+            <ul>
+                <?php
+                    $profila = $this->erabiltzailea->getProfila();
+                ?>
+                <li class="no-pad-l italic">
+                <?php
+                    $colSm = '-2';
+                    switch (strtolower($profila)) {
+                        case 'ikasle':
+                            echo 'Ikaslea';
+                            $colSm = '-2';
+                            break;
+                        case 'irakasle':
+                            echo 'Irakaslea';
+                            $colSm = '-2';
+                            break;
+                        case 'otros':
+                            echo 'Sortzailea';
+                            $colSm = '-2';
+                            break;
+                    }
+                ?>
+                </li>
+                <?php
+                    $ikastegiaName = '';
+                    $relIkastegia = $this->erabiltzailea->getErabiltzaileaRelIkastegia('egoera="onartua"', 'jabea');
+                    foreach ($relIkastegia as $relIkastegiBat) {
+
+                        $ikastegia = $relIkastegiBat->getIkastegia();
+                        if ($ikastegia) {
+                            $ikastegiaName = $ikastegia->getIzena();
+                            break;
+                        }
+                    }
+                ?>
+                <li class="no-border"><?php echo $ikastegiaName; ?></li>
+            </ul>
+            <?php echo $this->erabiltzailea->deskribapena?>
+        </div>
+    </div>
+
+</section>
+
+<section id="tab-recursos" class="tab-recursos col-xs-12">
+
+    <div class="alert alert-danger hide" id="errorMesagge"></div>
+    <div class="alert alert-success hide" id="successMessage"></div>
+
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs">
+        <li
+            class="active no-mar-l col-xs-12 col-sm<?php echo $colSm; ?>"
+            style="margin: 0px!important;"
+            >
+            <a
+                href="#datuPertsonalak"
+                data-toggle="tab"
+                >Datu pertsonalak<i class="fa fa-bars visible-xs pull-right"></i></a>
+        </li>
+        <li
+            class="no-mar-l col-xs-12 col-sm<?php echo $colSm; ?>"
+            style="margin: 0px!important;"
+            >
+            <a
+                href="#socialNetworks"
+                data-toggle="tab"
+                >Gizarte sareak<i class="fa fa-bars visible-xs pull-right"></i></a>
+        </li>
+        <li
+            class="col-xs-12 col-sm<?php echo $colSm; ?>"
+            style="margin: 0px!important;"
+            >
+            <a
+                href="#jakinarazpenak"
+                data-toggle="tab"
+                >Jakinarazpenak<i class="fa fa-bars visible-xs pull-right"></i></a>
+        </li>
+        <li
+            class="col-xs-12 col-sm<?php echo $colSm; ?>"
+            style="margin: 0px!important;"
+            >
+            <a
+                href="#nireEdukiak"
+                data-toggle="tab"
+                >Nire Edukiak<i class="fa fa-bars visible-xs pull-right"></i></a>
+        </li>
+        <li
+            class="col-xs-12 col-sm<?php echo $colSm; ?>"
+            style="margin: 0px!important;"
+            >
+            <a
+                href="#nireIkastegiak"
+                data-toggle="tab"
+                >Nire Ikastegiak<i class="fa fa-bars visible-xs pull-right"></i></a>
+        </li>
+        <?php
+        if ($activeTabIrakasle) {
+            ?>
+            <li
+                class="col-xs-12 col-sm<?php echo $colSm; ?>"
+                style="margin: 0px!important;"
+                >
+                <a
+                    href="#nireIkasle"
+                    data-toggle="tab"
+                    title="Nire Ikasle"
+                    >Nire Ikasleak<i class="fa fa-bars visible-xs pull-right"></i></a>
+            </li>
+            <?php
+        }
+
+        if ($activeTabIkasle) {
+            ?>
+            <li
+                class="col-xs-12 col-sm<?php echo $colSm; ?>"
+                style="margin: 0px!important;"
+                >
+                <a
+                    href="#nireIrakasleak"
+                    data-toggle="tab"
+                    title="Nire Irakasleak"
+                    >Nire Irakasleak<i class="fa fa-bars visible-xs pull-right"></i></a>
+            </li>
+            <?php
+        }
+        ?>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div class="tab-pane active" id="datuPertsonalak">
+            <?php
+            echo $this->partial(
+            '/egileak/profila.phtml',
+                array(
+                    'erabiltzailea' => $this->erabiltzailea
+                )
+            );
+           ?>
+        </div>
+        <div class="tab-pane" id="socialNetworks">
+            <?php
+            echo $this->partial(
+            '/egileak/socialNetworks.phtml',
+                array(
+                    'erabiltzailea' => $this->erabiltzailea
+                )
+            );
+           ?>
+        </div>
+        <div class="tab-pane" id="jakinarazpenak">
+            <?php
+            echo $this->partial(
+            '/egileak/jakinarazpenak.phtml',
+                array(
+                    'privileges' => $this->erabiltzailea->checkNotifikazioConfigPrivileges(),
+                    'erabiltzailea' => $this->erabiltzailea,
+                    'settings' => $this->settings
+                )
+            );
+           ?>
+        </div>
+        <div class="tab-pane" id="nireEdukiak">
+            <?php
+            echo $this->partial(
+            '/egileak/nireEdukiak.phtml',
+                array(
+                    'nireEdukiak' => $this->nireEdukiak,
+                )
+            );
+           ?>
+        </div>
+        <div class="tab-pane" id="nireIkastegiak">
+            <?php
+            echo $this->partial(
+            '/egileak/nireIkastegiak.phtml',
+                array(
+                    'nireIkastegiak' => $this->nireIkastegiak,
+                    'listIkastegia' => $this->listIkastegia
+                )
+            );
+           ?>
+        </div>
+
+        <?php
+
+        if ($activeTabIrakasle) {
+            ?>
+            <div class="tab-pane" id="nireIkasle">
+            <?php
+            echo $this->partial(
+            '/egileak/nireIkasle.phtml',
+                array(
+                    'nireIkasleakList' => $this->nireIkasleakList,
+                    'populateIrakasleak' => $this->populateIrakasleak,
+                    'nireIkasleak' => $this->nireIkasleak
+                )
+            );
+            ?>
+            </div>
+            <?php
+        }
+
+        if ($activeTabIkasle) {
+            ?>
+            <div class="tab-pane" id="nireIrakasleak">
+            <?php
+            echo $this->partial(
+            '/egileak/nireIrakasleak.phtml',
+                array(
+                    'nireIrakasleakList' => $this->nireIrakasleakList,
+                    'populateIrakasleak' => $this->populateIrakasleak,
+                    'irakasleakList' => $this->irakasleakList
+                )
+            );
+            ?>
+            </div>
+            <?php
+        }
+        ?>
+    </div>
+</section>

@@ -1,0 +1,18 @@
+production: 
+  class: \Klikasi\Model\Literales
+  fields: 
+    identificativo: 
+      title: _('Identificativo')
+      type: text
+      maxLength: 255
+      default: true
+    literaleu: 
+      title: _('Literaleu')
+      type: text
+      maxLength: 1000
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production

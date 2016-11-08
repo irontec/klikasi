@@ -1,0 +1,77 @@
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Izena</th>
+                <th>Ikastegia</th>
+                <th>Egoera</th>
+                <th>Aukerak</th>
+            </tr>
+        </thead>
+        <tbody id="nire-ikasle-tab">
+            <?php
+            if (!isset($this->nireIkasleakList) || empty($this->nireIkasleakList)) {
+                ?>
+                <tr>
+                    <td colspan="4">Ez duzu ikaslerik</td>
+                </tr>
+                <?php
+            } else {
+                foreach ($this->nireIkasleakList as $key => $ikaslea) {
+
+                    $eskola = $this->nireIkasleakList[$key]['ikastegia'];
+
+                    foreach ($this->nireIkasleakList[$key]['ikasleak'] as $ikasleaEtaEgoera) {
+                        $erabiltzailea = $ikasleaEtaEgoera['erabiltzailea'];
+                        $egoera = $ikasleaEtaEgoera['egoera'];
+                        $dataErabiltzailea = 'data-erabiltzailea="' . $erabiltzailea->getId() . '"';
+                        $dataIkastegia = 'data-ikastegia="' . $key . '"';
+                        ?>
+                        <tr <?php echo $dataErabiltzailea; ?>>
+                            <td>
+                                <a
+                                    href="<?php echo $erabiltzailea->urlProfile(); ?>"
+                                    title="<?php echo $erabiltzailea->getCompletName(); ?>"
+                                    ><i class="fa fa-external-link"></i> <?php echo $erabiltzailea->getCompletName(); ?></a>
+                            </td>
+                            <td>
+                                <a
+                                href="<?php echo $eskola->ikastegiaUrl(); ?>"
+                                title="<?php echo $eskola->getIzena() ; ?>"
+                                >
+                                    <i class="fa fa-external-link"></i>
+                                    <?php echo $eskola->getIzena() . ", " . $eskola->getHerria(); ?>
+                                </a>
+                            </td>
+                            <td class="egoera">
+                                <?php
+                                    if ($egoera == 'ezOnartua') {
+                                        echo 'ez onartua';
+                                    } else {
+                                        echo $egoera;
+                                    }
+                                ?>
+                            </td>
+                            <td>
+                                <button
+                                    class="btn btn-success <?php echo ($egoera == 'onartua' ? 'hide' : ''); ?>"
+                                    data-action="accept"
+                                    <?php echo $dataErabiltzailea; ?>
+                                    <?php echo $dataIkastegia; ?>
+                                    ><?php echo $this->translate('[es] Aceptar'); ?></button>
+                                <button
+                                    class="btn btn-danger <?php echo ($egoera == 'ezOnartua' ? 'hide' : '' ); ?>"
+                                    data-action="reject"
+                                    <?php echo $dataErabiltzailea; ?>
+                                    <?php echo $dataIkastegia; ?>
+                                    ><?php echo $this->translate('[es] Rechazar'); ?></button>
+                            </td>
+                        </tr>
+                    <?php
+                    }
+                } //end foreach
+            } // end if
+            ?>
+        </tbody>
+    </table>
+</div>

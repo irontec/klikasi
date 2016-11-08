@@ -1,0 +1,107 @@
+<?php
+    $request = Zend_Controller_Front::getInstance()->getRequest();
+?>
+<div class="col-xs-12">
+    <br />
+    <?php echo $this->alertMessage($this->erroreMezuak, $this->flashmezuak, $this->alertWarning); ?>
+</div>
+
+
+<?php
+if (sizeof($this->edukiaList) > 0) {
+?>
+    <div class="filtro-edukiak">
+        <div class="filtro-buscador edukiak col-xs-12">
+            <ul>
+                <li><strong>Ordenatu:</strong></li>
+                <li class="no-border">
+                    <a data-sort-by="moreIzena" data-ascending="false"
+                       href="<?php
+                                echo $this->url(array('order' => null));
+                                if ($_SERVER['QUERY_STRING']) {
+                                    echo '?' . $_SERVER['QUERY_STRING'];
+                                }
+                            ?>">
+                        <?php echo $this->strongWrap('Izena', $request->getParam('order') == ''); ?>
+
+                    </a>
+                </li>
+                <li>
+                    <a data-sort-by="moreUpdated" data-ascending="false"
+                       href="<?php
+                                echo $this->url(array('order' => 'updated'));
+                                if ($_SERVER['QUERY_STRING']) {
+                                    echo '?' . $_SERVER['QUERY_STRING'];
+                                }
+                            ?>">
+                        <?php echo $this->strongWrap($this->translate('[es] Updated'), $request->getParam('order') == 'updated'); ?>
+
+                    </a>
+                </li>
+                <li>
+                    <a data-sort-by="moreComments" data-ascending="false"
+                       href="<?php
+                                echo $this->url(array('order' => 'iruzkinak'));
+                                if ($_SERVER['QUERY_STRING']) {
+                                    echo '?' . $_SERVER['QUERY_STRING'];
+                                }
+                            ?>">
+                        <?php echo $this->strongWrap('Iruzkin kopurua', $request->getParam('order') == 'iruzkinak'); ?>
+
+                    </a>
+                </li>
+                <li>
+                    <a data-sort-by="moreKarma" data-ascending="false"
+                       href="<?php
+                                echo $this->url(array('order' => 'arrakasta')) . '?' . $_SERVER['QUERY_STRING']; ?>">
+                        <?php echo $this->strongWrap($this->translate('[es] Karma'), $request->getParam('order') == 'arrakasta'); ?>
+                    </a>
+                </li>
+                <?php
+                if ($this->isSearchQuery) {
+                ?>
+                <li class="no-border" style="float:right">
+                    <a href="<?php
+                        echo $this->url(array("controller" => "ikastegiak"));
+                        if (isset($_SERVER['QUERY_STRING']) && !empty($_SERVER['QUERY_STRING'])) {
+                            echo '?' . $_SERVER['QUERY_STRING'];
+                        }
+                    ?>">
+                        Ikastegiak bilatu
+                    </a>
+                </li>
+                <?php
+                }
+                ?>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container-filter">
+        <?php
+        foreach ($this->edukiaList as $edukia) {
+            echo $edukia;
+        }
+        ?>
+    </div>
+<?php
+} else {
+?>
+    <div class="container-filter"></div>
+<?php
+}
+
+if ($this->edukiakCount > count($this->edukiaList)) {
+?>
+<div class="row load">
+    <div class="col-xs-12 text-center">
+        <button
+            class="bg-red center-block loadMoreEdukiak"
+            data-page="1"
+            data-url="<?php echo $this->urlMoreAction; ?>?format=json&<?php echo $_SERVER['QUERY_STRING']; ?>"
+            data-itemcount="<?php echo $this->edukiakCount; ?>"
+            >Gehiago ikusi</button>
+    </div>
+</div>
+<?php
+}

@@ -1,0 +1,306 @@
+production: 
+  class: \Klikasi\Model\Kanpaina
+  fields: 
+    izena: 
+      title: _('Izena')
+      type: text
+      required: true
+      default: true
+    deskribapena: 
+      title: _('Deskribapena')
+      type: textarea
+      required: true
+      source: 
+        control: tinymce
+        template: html5
+    kodea: 
+      title: _('Kanpaina kodea')
+      type: text
+      required: true
+    irudia: 
+      title: _('Irudia')
+      type: file
+      source: 
+        data: fso
+        size_limit: 20M
+        options: 
+          hiddenName: true
+          download: 
+            external: true
+            type: command
+            target: IrudiaDownload_command
+            icon: ui-silk-bullet-disk
+            title: _("Download file")
+            onNull: hide
+          upload: 
+            type: command
+            target: IrudiaUpload_command
+            title: _("Upload file")
+            class: qq-uploader
+            onNull: show
+          preview: 
+            target: IrudiaPreview_command
+            type: command
+            class: filePreview
+            external: 1
+            props: 
+              height: 200
+            crop: 1
+            onNull: hide
+          previewList: 
+            target: IrudiaPreview_command
+            type: command
+            class: filePreview
+            listController: 1
+            external: 1
+            props: 
+              height: 90
+            crop: 1
+            onNull: hide
+    banerra: 
+      title: _('Banerra')
+      type: file
+      source: 
+        data: fso
+        size_limit: 20M
+        options: 
+          hiddenName: true
+          download: 
+            external: true
+            type: command
+            target: BanerraDownload_command
+            icon: ui-silk-bullet-disk
+            title: _("Download file")
+            onNull: hide
+          upload: 
+            type: command
+            target: BanerraUpload_command
+            title: _("Upload file")
+            class: qq-uploader
+            onNull: show
+          preview: 
+            target: BanerraPreview_command
+            type: command
+            class: filePreview
+            external: 1
+            props: 
+              height: 200
+            crop: 1
+            onNull: hide
+          previewList: 
+            target: BanerraPreview_command
+            type: command
+            class: filePreview
+            listController: 1
+            external: 1
+            props: 
+              height: 90
+            crop: 1
+            onNull: hide
+    egoera: 
+      title: _('Egoera')
+      type: select
+      defaultValue: 0
+      source: 
+        data: inline
+        values: 
+          '0': 
+            title: _("Ezgaitua")
+          '1': 
+            title: _("Gaitua")
+    kanpaina: 
+      title: _('Kanpaina')
+      type: select
+      defaultValue: 0
+      source: 
+        data: inline
+        values: 
+          '0': 
+            title: _("Ez")
+          '1': 
+            title: _("Bai")
+    hasiera: 
+      title: _('Hasiera')
+      type: picker
+      required: true
+      source: 
+        control: date
+        settings: 
+          disabled: 'false'
+    bukaera: 
+      title: _('Bukaera')
+      type: picker
+      required: true
+      source: 
+        control: date
+        settings: 
+          disabled: 'false'
+    widgetEdukiak: 
+      title: _('Edukien widget-a')
+      type: select
+      defaultValue: 0
+      source:
+       data: inline
+       values:
+         '0':
+           title: _("Ezgaitu")
+           visualFilter:
+             show: []
+             hide: ["KanpainaRelEdukiKategoriak", "widgetEdukiakOrdena"]
+         '1':
+           title: _("Gaitu")
+           visualFilter:
+              show: ["KanpainaRelEdukiKategoriak", "widgetEdukiakOrdena"]
+              hide: []
+
+    KanpainaRelEdukiKategoriak:
+      title: _('Edukien widget-aren kategoriak')
+      type: multiselect
+      source:
+        data: mapper
+        config:
+          relationMapper: \Klikasi\Mapper\Sql\KanpainaRelEdukiKategoriak
+          relatedMapperName: \Klikasi\Mapper\Sql\Kategoria
+          relatedFieldName: izena
+          relationProperty: Kategoria
+      decorators:
+        autocomplete:
+          command: autocompleteKategoria_command
+
+    widgetIkastegiak: 
+      title: _('Azken ikastegien widget-a')
+      type: select
+      defaultValue: 0
+      source:
+       data: inline
+       values:
+         '0':
+           title: _("Ezgaitu")
+           visualFilter:
+             show: []
+             hide: ["KanpainaRelIkastegiMota", "widgetIkastegiakOrdena"]
+         '1':
+           title: _("Gaitu")
+           visualFilter:
+              show: ["KanpainaRelIkastegiMota", "widgetIkastegiakOrdena"]
+              hide: []
+
+    KanpainaRelIkastegiMota:
+      title: _('Azken ikastegien widget-aren motak')
+      type: multiselect
+      source:
+        data: mapper
+        config:
+          relationMapper: \Klikasi\Mapper\Sql\KanpainaRelIkastegiMota
+          relatedMapperName: \Klikasi\Mapper\Sql\IkastegiMota
+          relatedFieldName: izena
+          relationProperty: IkastetxeMota
+      decorators:
+        autocomplete:
+          command: autocompleteIkastegiMota_command
+
+    widgetErabiltzaileak: 
+      title: _('Azken erabiltzaileen widget-a')
+      type: select
+      defaultValue: 0
+      source:
+       data: inline
+       values:
+         '0':
+           title: _("Ezgaitu")
+           visualFilter:
+             show: []
+             hide: ["widgetErabiltzaileakOrdena"]
+         '1':
+           title: _("Gaitu")
+           visualFilter:
+              show: ["widgetErabiltzaileakOrdena"]
+              hide: []
+
+    widgetKategoriak: 
+      title: _('Kategorien widget-a')
+      type: select
+      defaultValue: 0
+      source:
+       data: inline
+       values:
+         '0':
+           title: _("Ezgaitu")
+           visualFilter:
+             show: []
+             hide: ["KanpainaRelKategoria", "widgetKategoriakOrdena"]
+         '1':
+           title: _("Gaitu")
+           visualFilter:
+              show: ["KanpainaRelKategoria", "widgetKategoriakOrdena"]
+              hide: []
+       
+
+    widgetEdukiakOrdena: 
+      title: _('Edukien widget-aren ordena')
+      type: select
+      defaultValue: data
+      source: 
+        data: inline
+        values: 
+          'data': _('Data')
+          'karma': _('Karma')
+
+    widgetIkastegiakOrdena: 
+      title: _('Ikastegien widget-aren ordena')
+      type: select
+      defaultValue: karma
+      source: 
+        data: inline
+        values: 
+          'edukiKopurua': _('Eduki kopurua')
+          'data': _('Data')
+          'karma': _('Karma')
+          'erabiltzaileKopurua': _('Erabiltzaile kopurua')
+
+    widgetErabiltzaileakOrdena: 
+      title: _('Erabiltzaileen widget-aren ordena')
+      type: select
+      defaultValue: karma
+      source: 
+        data: inline
+        values: 
+          'edukiKopurua': _('Eduki kopurua')
+          'data': _('Data')
+          'karma': _('Karma')
+
+    widgetKategoriakOrdena: 
+      title: _('Kategorien widget-aren ordena')
+      type: select
+      defaultValue: karma
+      source: 
+        data: inline
+        values: 
+          'edukiKopurua': _('Eduki kopurua')
+          'data': _('Data')
+          'karma': _('Karma') 
+
+    url: 
+      title: _('Url')
+      type: text
+      required: true
+
+    KanpainaRelKategoria:
+      title: _('Kategorien widget-aren kategoriak')
+      type: multiselect
+      source:
+        data: mapper
+        config:
+          relationMapper: \Klikasi\Mapper\Sql\KanpainaRelKategoria
+          relatedMapperName: \Klikasi\Mapper\Sql\Kategoria
+          relatedFieldName: izena
+          relationProperty: Kategoria
+      decorators:
+        autocomplete:
+          command: autocompleteKategoria_command
+testing: 
+  _extends: production
+staging: 
+  _extends: production
+development: 
+  _extends: production

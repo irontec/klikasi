@@ -1,0 +1,65 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+
+production: 
+  main: 
+    module: klearMatrix
+    defaultScreen: jakinarazpenakList_screen
+  screens: 
+    jakinarazpenakList_screen: &jakinarazpenakList_screenLink 
+      controller: list
+      pagination: 
+        items: 25
+      <<: *Jakinarazpenak
+      title: _("List of %s", ngettext('Jakinarazpenak', 'Jakinarazpenak(s)', 0))
+      fields: 
+        options: 
+          title: _("Options")
+          screens: 
+            jakinarazpenakEdit_screen: true
+          dialogs: 
+            jakinarazpenakDel_dialog: true
+          default: jakinarazpenakEdit_screen
+      options: 
+        title: _("Options")
+        screens: 
+          jakinarazpenakNew_screen: true
+        dialogs: 
+          jakinarazpenakDel_dialog: true
+    jakinarazpenakNew_screen: &jakinarazpenakNew_screenLink 
+      <<: *Jakinarazpenak
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Add %s", ngettext('Jakinarazpenak', 'Jakinarazpenak(s)', 1))
+      fields: 
+        blacklist: 
+          sortzeData: true
+    jakinarazpenakEdit_screen: &jakinarazpenakEdit_screenLink 
+      <<: *Jakinarazpenak
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      title: _("Edit %s", ngettext('Jakinarazpenak', 'Jakinarazpenak(s)', 1))
+      fields: 
+        blacklist: 
+          sortzeData: true
+  dialogs: 
+    jakinarazpenakDel_dialog: 
+      <<: *Jakinarazpenak
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('Jakinarazpenak', 'Jakinarazpenak(s)', 1))
+      description: _("Do you want to delete this %s?", ngettext('Jakinarazpenak', 'Jakinarazpenak(s)', 1))
+      message: _("%s successfully deleted.", ngettext('Jakinarazpenak', 'Jakinarazpenak(s)', 1))
+      labelOnList: true
+      multiItem: true
+
+testing: 
+  _extends: production
+staging: 
+  _extends: production
+development: 
+  _extends: production

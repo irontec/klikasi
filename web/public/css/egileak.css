@@ -1,0 +1,54 @@
+@CHARSET "UTF-8";
+
+#irudia-default .help-block, #irudia-custom .help-block{
+    text-align: center;
+}
+
+#irudia-custom {
+    margin: 30px 10px 10px 10px;
+}
+
+.divider-avatar {
+    display: inline-block;
+    border-bottom: 1px solid #DDD;
+    padding-top: 2px;
+    height: 1px;
+    position: relative;
+    width: 80px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+
+#previewContent {
+    width: 210px;
+    height: 210px;
+    isplay: block;
+    padding: 4px;
+    margin-bottom: 20px;
+    line-height: 1.42857;
+    background-color: #FFF;
+    border: 1px solid #DDD;
+    border-radius: 4px;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+
+#actionContent {
+    width: 50%;
+    height: 50%;
+    overflow: auto;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+}
+
+#avatarPreview {
+    height: 200px;
+    position: relative;
+}

@@ -1,0 +1,105 @@
+<div id="{{id}}" class="carousel multi slide {{class}} hidden-xs" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    {{#each slides}}
+      {{#each elems}}
+        <li data-target="#{{ id }}" data-slide-to="{{@index}}" class="{{class}}"></li>
+      {{/each}}
+    {{/each}}
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+      {{#each slides}}
+        <div class="item {{class}}">
+          {{#each elems}}
+            <div class = 'elem {{class}}'>
+              <div class = 'content {{#if type-image}}type-image{{else}}{{#if type-image-text}}type-image-text{{else}}{{fondo}}{{/if}}{{/if}}'>
+                {{#if type-text }}
+                  <h4>{{title}}</h4>
+                  {{{description}}}
+                {{else}}
+                  {{#if type-image}}
+                    <figure>
+                      <img src = '{{image}}' alt = '{{alt}}' />
+                    </figure>
+                  {{else}}
+                    {{#if type-image-text}}
+                      <figure>
+                        <img src = '{{image }}' alt = '{{alt}}' />
+                        <figcaption>
+                          <h4>{{title}}</h4>
+                          {{{description}}}
+                        </figcaption>
+                      </figure>
+                    {{/if}}
+                  {{/if}}
+                {{/if}}
+              </div>
+            </div>
+          {{/each}}
+        </div>
+      {{/each}}
+  </div>
+
+  <!-- Controls -->
+  <a class="left carousel-control" href="#{{id}}" data-slide="prev">
+    <span class="fa fa-chevron-circle-left"></span>
+  </a>
+  <a class="right carousel-control" href="#{{id}}" data-slide="next">
+    <span class="fa fa-chevron-circle-right"></span>
+  </a>
+</div>
+
+<div id="{{id}}-xs" class="col-xs-12 carousel multi slide {{class}} hidden-sm hidden-md hidden-lg" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    {{#each slides}}
+      {{#each elems}}
+        <li data-target="#{{ id }}-xs" data-slide-to="{{@index}}" class="{{class-xs}}"></li>
+      {{/each}}
+    {{/each}}
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+      {{#each slides}}
+        {{#each elems}}
+          <div class="item {{active-xs}}">
+            <div class = 'elem {{class}}'>
+              <div class = 'content {{#if type-image}}type-image{{else}}{{#if type-image-text}}type-image-text{{else}}{{fondo}}{{/if}}{{/if}}'>
+                {{#if type-text }}
+                  <h4>{{title}}</h4>
+                  {{{description}}}
+                {{else}}
+                  {{#if type-image}}
+                    <figure>
+                      <img src = '{{image}}' alt = '{{alt}}' />
+                    </figure>
+                  {{else}}
+                    {{#if type-image-text}}
+                      <figure>
+                        <img src = '{{image }}' alt = '{{alt}}' />
+                        <figcaption>
+                          <h4>{{title}}</h4>
+                          {{{description}}}
+                        </figcaption>
+                      </figure>
+                    {{/if}}
+                  {{/if}}
+                {{/if}}
+              </div>
+            </div>
+          </div>
+        {{/each}}
+      {{/each}}
+  </div>
+
+  <!-- Controls -->
+  <a class="left carousel-control" href="#{{id}}-xs" data-slide="prev">
+    <span class="fa fa-chevron-circle-left"></span>
+  </a>
+  <a class="right carousel-control" href="#{{id}}-xs" data-slide="next">
+    <span class="fa fa-chevron-circle-right"></span>
+  </a>
+</div>

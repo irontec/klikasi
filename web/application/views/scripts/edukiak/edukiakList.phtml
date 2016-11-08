@@ -1,0 +1,69 @@
+<!-- resumen-ficha.hbs -->
+<div class="resumen-ficha col-xs-12 col-sm-6 col-md-4 Ikusienak" style="min-height:530px;">
+
+    <figure>
+        <img {{#fullImageWidth}} style="width:100%;" {{/fullImageWidth}} src="{{edukiaIrudiaUrl}}" alt="{{edukiaIzena}}" />
+
+        <figcaption class="col-xs-12">
+            <div class="top-block {{kategoriaGlobalaClassName}}">
+                <ul class="icon-list list-inline">
+                    {{#icon-list}}
+                        <li>
+                            <a href="{{edukiaUrl}}#{{iconIzena}}" title="{{iconIzena}}">
+                                <i class="fa {{icon}}"></i>
+                            </a>
+                        </li>
+                    {{/icon-list}}
+                </ul>
+            </div>
+            <div class="bottom-block {{kategoriaGlobalaClassName}}">
+                <span class="category">
+                    <a href="{{kategoriaUrl}}" title="{{kategoriaIzena}}">{{kategoriaIzena}}</a>
+                </span>
+            </div>
+        </figcaption>
+    </figure>
+
+    <div class="content">
+        <span class="text-ficha">
+            <h2>
+                <a href="{{edukiaUrl}}" title="{{edukiaIzena}}">
+                    {{edukiaIzena}}
+                </a>
+            </h2>
+
+            <div class="p-top-1">
+                <label>Adina:</label>
+                <span class="sel-edad col-xs-9 pull-right">
+                <span class="edad-min" data-toggle="tooltip" data-original-title="Default tooltip">
+                    <span class="edad"><strong>{{edukiaUrteakNoiztik}}</strong></span>
+                    <span class="punto-cat"></span>
+                </span>
+                <span class="edad-max" data-toggle="tooltip" data-original-title="Default tooltip">
+                    <span class="edad"><strong>{{edukiaUrteakNoizarte}}</strong></span>
+                    <span class="punto-cat"></span>
+                </span>
+                    <hr class="edad"/>
+                </span>
+            </div>
+
+            <div>
+                <label>Ikasturtea: {{mailaIzena}}</label>
+            </div>
+
+            <span class="ficha-links">
+                <a href="{{edukiaErabiltzaileaUrl}}" title="{{edukiaErabiltzaileaIzena}}">
+                    {{edukiaErabiltzaileaIzena}}
+                </a>
+                <a href="{{ikastegiaUrl}}" title="{{ikastegiaIzena}}">
+                    {{ikastegiaIzena}}
+                </a>
+            </span>
+        </span>
+
+        <span class="info-ficha {{kategoriaGlobalaClassName}}">
+            {{> infoEdukia}}
+        </span>
+
+    </div>
+</div>

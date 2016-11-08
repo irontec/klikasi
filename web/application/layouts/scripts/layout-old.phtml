@@ -1,0 +1,22 @@
+<?php echo $this->render("header.phtml"); ?>
+
+<body>
+
+    <?php echo $this->render("menua.phtml"); ?>
+
+    <?php
+    if ($this->isIkastegia) {
+        echo $this->render("headerIkastegia.phtml");
+    }
+    ?>
+
+    <div class="container principal">
+
+        <?php echo $this->layout()->content; ?>
+
+    </div><!-- END .container.principal -->
+
+
+    <?php echo $this->render("footer.phtml"); ?>
+</body>
+</html>

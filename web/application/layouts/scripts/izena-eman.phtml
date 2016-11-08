@@ -1,0 +1,571 @@
+<?php
+$session = new Zend_Session_Namespace(
+        'KlikasiNewUserSession'
+);
+
+?>
+
+<div
+    class="modal fade in"
+    id="tab-izenaeman"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="myModalLabel"
+    aria-hidden="false"
+    >
+    <div class="modal-dialog">
+        <div id="izenaeman" class="modal-content">
+
+            <div class="modal-header">
+                <button class="itxi" type="button" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3>Izena eman Klikasin</h3>
+            </div>
+
+            <div class="row text-center">
+                <ul class="nav nav-tabs">
+                    <?php
+                    if (is_null($session->erabiltzailea)) {
+                        ?>
+                        <li class="active">
+                            <a id="li-izenaeman1">1</a>
+                        </li>
+                        <li class="">
+                            <a id="li-izenaeman2">2</a>
+                        </li>
+                        <li class="">
+                            <a id="li-izenaeman3">3</a>
+                        </li>
+                        <?php
+                    } else {
+                        ?>
+                        <li class="">
+                            <a id="li-izenaeman4">4</a>
+                        </li>
+                        <li class="">
+                            <a id="li-izenaeman5">5</a>
+                        </li>
+                        <?php
+                    }
+                    ?>
+                </ul>
+            </div>
+
+
+            <div class="color-border"></div>
+
+            <div class="tab-content">
+
+                <div class="tab-pane active" id="izenaeman1">
+                    <div class="modal-body">
+
+                        <div class="inner">
+                            <h4>Zure datuak</h4>
+                            <form id="form-izenaeman1" action="" method="POST" autocomplete="off" >
+
+                                <div class="alert alert-danger hide" id="errors-izenaeman1"></div>
+
+                                <div class="input-group col-xs-12">
+                                    <input
+                                        name="erabiltzailea"
+                                        type="text"
+                                        id="user-name"
+                                        class="form-control"
+                                        placeholder="Erabiltzaile-izena"
+                                        />
+                                </div>
+
+                                <div class="input-group col-xs-12">
+                                    <input
+                                        name="posta"
+                                        type="email"
+                                        id="email"
+                                        class="form-control"
+                                        placeholder="Email"
+                                        />
+                                 </div>
+
+                                 <div class="input-group col-xs-12">
+                                     <input
+                                        name="pasahitza"
+                                        type="password"
+                                        id="pasahitza"
+                                        class="form-control"
+                                        placeholder="Pasahitza"
+                                        />
+                                 </div>
+
+                                <div class="progress hide">
+                                    <div class="progress-bar progress-bar-danger weak" style="width: 0%">
+                                        <span class="sr-only">29% Complete (danger)</span>
+                                    </div>
+                                    <div class="progress-bar progress-bar-warning good" style="width: 0%">
+                                        <span class="sr-only">30% Complete (warning)</span>
+                                    </div>
+
+                                    <div class="progress-bar progress-bar-success strong" style="width: 0%">
+                                        <span class="sr-only">40% Complete (success)</span>
+                                    </div>
+                                </div>
+
+                                 <div class="input-group col-xs-12">
+                                     <input
+                                        name="reply-pasahitza"
+                                        type="password"
+                                        id="reply-pasahitza"
+                                        class="form-control"
+                                        placeholder="Pasahitza errepikatu"
+                                        />
+                                 </div>
+
+                                <div class="datepicker input-group input-append date" id="izenaeman-edad" data-date-format="dd-mm-yyyy">
+                                    <span class="input-group-addon add-on"><i class="glyphicon glyphicon-calendar"></i></span>
+                                    <input name="jaiotzeData" class="form-control" size="16" type="text" placeholder="24-01-2014" />
+                                </div>
+
+                                <div class="form-actions">
+                                    <ul class="pager">
+                                      <li class="next">
+                                          <a href="#a-izenaeman1" id="a-izenaeman1" data-toggle="tab">Hurrengoa »</a>
+                                      </li>
+                                    </ul>
+                                </div>
+
+                            </form>
+
+                            <div class="info">
+                                <p class="text-center">Izena ematerakoan 13 urte edo gehiago ditudala baieztatzen dut eta  <a href="<?php echo $this->baseUrl('orriak/honi-buruz'); ?>" title="Honi Buruz">Erabilpenerako baldintzak</a> eta <a href="<?php echo $this->baseUrl('orriak/pribatutasun-politika'); ?>" title="Pribatutasun politika">Pribatutasun politika</a> onartzen ditut.</p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <p>Erabiltzailea zara jada? <a href="sartu" class="link-primary">Sartu</a></p>
+                    </div>
+
+                </div><!-- #izenaeman1 -->
+
+                <div class="tab-pane " id="izenaeman2">
+                    <div class="modal-body">
+                        <div class="inner">
+                            <h4>Zure datuak</h4>
+                            <form id="form-izenaeman2" action="" method="POST" autocomplete="off">
+
+                                <div class="alert alert-danger hide" id="errors-izenaeman2"></div>
+
+                                <input
+                                    name="erabiltzailea"
+                                    id="erabiltzailea-id"
+                                    type="hidden"
+                                    value=""
+                                    />
+
+                                <div class="input-group col-xs-12">
+                                    <input
+                                        id="izena"
+                                        name="izena"
+                                        class="form-control"
+                                        type="text"
+                                        placeholder="Izena"
+                                        />
+                                </div>
+
+                                <div class="input-group col-xs-12">
+                                    <input
+                                        id="abizena"
+                                        name="abizena"
+                                        class="form-control"
+                                        type="text"
+                                        placeholder="Abizena"
+                                        />
+                                </div>
+
+                                <div class="input-group col-xs-12">
+                                    <input
+                                        id="abizena-second"
+                                        name="abizena-second"
+                                        class="form-control"
+                                        type="text"
+                                        placeholder="Bigarren Abizena"
+                                        />
+                                </div>
+
+                                <div class="input-group col-xs-12">
+                                    <textarea
+                                        class="form-control"
+                                        id="deskribapena"
+                                        name="deskribapena"
+                                        placeholder="Deskribapena"
+                                        ></textarea>
+                                </div>
+
+                                <div
+                                    class="input-group col-xs-12"
+                                    style="margin-top: 15px; margin-bottom: 5px;">
+
+                                    <label
+                                        for="newsletter"
+                                        class="col-sm-4 control-label"
+                                        style="margin-top: 6px; font-weight: normal;"
+                                        >Gure berriak jaso nahi dituzu?</label>
+
+                                        <div class="col-sm-8">
+                                            <div class="btn-group pull-left" data-toggle="buttons">
+                                                <label
+                                                    class="btn btn-default active"
+                                                    >
+                                                    <input
+                                                        type="radio"
+                                                        name="newsletter"
+                                                        value="1"
+                                                        checked="checked"
+                                                        /> Bai</label>
+                                                <label
+                                                    class="btn btn-default"
+                                                    >
+                                                    <input
+                                                    type="radio"
+                                                    name="newsletter"
+                                                    value="0"
+                                                    /> Ez</label>
+                                            </div>
+                                        </div>
+                                </div>
+
+                                <div class="input-group col-xs-12">
+                                    <div class="radio">
+                                        <label>
+                                            <input
+                                                type="radio"
+                                                name="profila"
+                                                id="ikasle"
+                                                value="ikasle"
+                                                />Ikaslea naiz
+                                        </label>
+                                    </div>
+
+                                    <div class="radio">
+                                        <label>
+                                            <input
+                                                type="radio"
+                                                name="profila"
+                                                id="Irakaslea"
+                                                value="irakasle"
+                                                />
+                                                    Ikastetxe edo ikastegi batean lan egiten dut eta horrekin erlazioa osatu nahi dut
+                                                    <i>Klikasin argitaratzen dituzun baliabideak ikastetxe/ikastegi horretan agertuko dira</i>
+                                        </label>
+                                    </div>
+
+                                    <div class="radio">
+                                        <label>
+                                            <input
+                                                type="radio"
+                                                name="profila"
+                                                id="otros"
+                                                value="otros"
+                                                />Irakaslea naiz baina ez dut nahi ikastetxe/ikastegi zehatz batekin erlazioa osatu EDO baliabide eta edukien sortzailea naiz, edozein lanbidetakoa
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="form-actions">
+                                    <ul class="pager">
+                                      <li class="next">
+                                          <a href="#a-izenaeman2" id="a-izenaeman2" data-toggle="tab">Hurrengoa »</a>
+                                      </li>
+                                    </ul>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div><!-- #izenaeman2 -->
+
+                <div class="tab-pane " id="izenaeman3">
+                    <div class="modal-body">
+                        <div class="inner">
+                            <h4>Baieztapena. Ongi etorria!</h4>
+                            <form>
+                                <div class="help-block">
+                                    <p>Izena eman duzu!</p>
+                                    <p>Zure kontua erabiltzen hasteko bidali dizugun posta elektronikoan agertzen den esteka sakatu.</p>
+                                    <p>Ongi etorria!</p>
+                                </div>
+
+                                <div class="form-actions">
+                                    <ul class="pager">
+                                      <li class="next">
+                                          <button class="itxi bg-red light js-home-batu" type="button" data-dismiss="modal" aria-hidden="true">Ados</button>
+                                      </li>
+                                    </ul>
+                                </div>
+
+
+                            </form>
+                        </div>
+                    </div>
+                </div><!-- #izenaeman3 -->
+
+                <div class="tab-pane " id="izenaeman4">
+                    <div class="modal-body">
+                        <div class="inner">
+                            <?php
+
+
+                                $ikastegiak = true;
+                                $irakasleak = true;
+                                $texto1 = '';
+                                $texto2 = '';
+
+                                if ($session->erabiltzailea) {
+
+                                    $texto1 = "Osa ezazu zure profila.";
+                                    $texto2 = "Eta ikastetxe batekin harremana ezar dezakezu.";
+
+                                    if ($session->erabiltzailea->getProfila() == 'otros') {
+                                        $ikastegiak = false;
+                                        $irakasleak = false;
+                                        $texto2 = "";
+
+                                    } elseif ($session->erabiltzailea->getProfila() == 'irakasle') {
+                                        $irakasleak = false;
+                                    }
+                                }
+
+
+                            ?>
+                            <h4>Zure kontua baieztatu dugu</h4>
+                            <form>
+                                <div class="help-block">
+                                    <p><?php echo $texto1; ?></p>
+                                    <?php
+                                    if ($texto2 != "") {
+                                        echo "<p>{$texto2}</p>";
+                                    }
+                                    ?>
+                                </div>
+
+                                <div class="form-actions">
+                                    <ul class="pager">
+                                      <li class="next">
+                                          <a href="#a-izenaeman5" id="a-izenaeman5" data-toggle="tab">Hurrengoa »</a>
+                                      </li>
+                                    </ul>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div><!-- #izenaeman4 -->
+
+                <div class="tab-pane " id="izenaeman5">
+                        <div class="modal-body">
+                            <div class="inner">
+
+                                <h4>Iruditxoa eta harremanak</h4>
+                                <form id="form-izenaeman5" action="" method="POST">
+
+                                    <div class="alert alert-danger hide" id="errors-izenaeman5"></div>
+
+                                    <?php
+                                    if ($ikastegiak) {
+                                    ?>
+                                    <span class="select"><i class="fa fa-chevron-down"></i>
+                                        <?php
+                                        $ikastegiakMapper = new \Klikasi\Mapper\Sql\Ikastegia();
+                                        $ikastegiaWhere = 'aktibatua = "1"';
+                                        $ikastegiaOrder = 'izena';
+                                        $ikastegiakList = $ikastegiakMapper->fetchList(
+                                            $ikastegiaWhere,
+                                            $ikastegiaOrder
+                                        );
+                                        ?>
+                                        <select name="ikastegiak" class="form-control" id="ikastegiak-select">
+                                            <option value="" disabled selected>Eskola aukeratu</option>
+                                            <option value="new">Ikastegi berri bat proposatu</option>
+                                            <?php
+                                            foreach ($ikastegiakList as $ikastegia) {
+                                                ?>
+                                                <option
+                                                    value="<?php echo $ikastegia->getId(); ?>"
+                                                    ><?php echo $ikastegia->getIzena() . ', ' . $ikastegia->getHerria(); ?></option>
+                                                <?php
+                                            }
+                                            ?>
+                                        </select>
+                                    </span>
+                                    <?php
+                                    }
+
+                                    if ($irakasleak) {
+                                        ?>
+                                        <p class="aling-center hide" id="irakasleak-loading"><i class="fa fa-spinner fa-spin fa-stack-2x"></i></p>
+                                        <span class="select hide" id="irakasleak-content"><i class="fa fa-chevron-down"></i>
+                                            <select name="irakasle" class="form-control" id="irakasleak-select"></select>
+                                        </span>
+                                        <?php
+                                    }
+                                    ?>
+
+                                    <input
+                                        type="hidden"
+                                        name="typeAvatar"
+                                        value=""
+                                        />
+
+                                    <input
+                                        type="hidden"
+                                        name="irudiaDefault"
+                                        value=""
+                                        />
+
+                                    <?php
+
+                                    $isSenior = $session->erabiltzailea && $session->erabiltzailea->isSenior();
+
+                                    if ($isSenior) {
+                                        $irudiaUrl = 'http://placehold.it/200x200';
+                                        ?>
+
+                                        <div class="help-block">
+                                            <p style="font-size: 1.2em; font-weight: 100; margin-bottom: 15px; text-align: center;">Argazki bat igo.</p>
+                                        </div>
+
+                                        <div id="changeCustomAvatar">
+                                            <div id="avatarPreview">
+                                                <div id="previewContent" class="col-xs-6">
+                                                    <img
+                                                        id="cropimage"
+                                                        alt=""
+                                                        src="<?php echo $irudiaUrl; ?>"
+                                                        />
+                                                </div>
+
+                                                <div id="actionContent" class="col-xs-6">
+                                                    <input
+                                                        type="file"
+                                                        name="avatar"
+                                                        id="avatar"
+                                                        class="hide"
+                                                        />
+
+                                                    <button
+                                                        id="button-file-avatar"
+                                                        class="btn btn-default"
+                                                        ><?php echo $this->translate('[es] Seleccionar Avatar'); ?></button>
+                                                </div>
+
+                                                <div id="results-avatar" class="hide">
+
+                                                    <input
+                                                        type="hidden"
+                                                        name="tmpName"
+                                                        id="tmpName"
+                                                        />
+
+                                                    <input
+                                                        type="hidden"
+                                                        name="cropX"
+                                                        class="cropX"
+                                                        />
+                                                    <input
+                                                        type="hidden"
+                                                        name="cropY"
+                                                        class="cropX"
+                                                        />
+
+                                                    <input
+                                                        type="hidden"
+                                                        name="cropW"
+                                                        class="cropW"
+                                                        />
+
+                                                    <input
+                                                        type="hidden"
+                                                        name="cropH"
+                                                        class="cropH"
+                                                        />
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xs-6 col-xs-offset-3 horizontal-divider"></div>
+
+                                        <?php
+                                    }
+                                    ?>
+
+                                    <div class="help-block">
+                                        <p style="font-size: 1.2em; font-weight: 100; margin-bottom: 15px; text-align: center;">Hurrengoko argazkietatik aukeratu.</p>
+                                    </div>
+
+                                    <?php
+
+                                        $class = '';
+                                        $button = '';
+                                        if ($session->erabiltzailea) {
+
+                                            switch ($session->erabiltzailea->getProfila()) {
+                                                case 'irakasle':
+                                                    $class = 'perfil-irakasle';
+                                                    break;
+                                                case 'ikasle':
+                                                    $class = 'perfil-ikasle';
+                                                    break;
+                                                case 'otros':
+                                                    $class = 'perfil-ikastegi';
+                                                    break;
+                                            }
+                                            if ($session->erabiltzailea->getProfila() == 'otros') {
+                                                $button = 'Amaitu';
+                                            } else {
+                                                $button = 'Ikastegi berria proposatu';
+                                            }
+
+                                        }
+                                    ?>
+
+                                    <ul class="perfil-picker" id="irudia-default">
+                                        <li>
+                                            <span
+                                                class="naranja perfil <?php echo $class; ?>"
+                                                data-value="naranja"
+                                                ></span>
+                                        </li>
+                                        <li>
+                                            <span
+                                                class="verde perfil <?php echo $class; ?>"
+                                                data-value="verde"
+                                                ></span>
+                                        </li>
+                                        <li>
+                                            <span
+                                                class="morado perfil <?php echo $class; ?>"
+                                                data-value="morado"
+                                                ></span>
+                                        </li>
+                                    </ul>
+
+                                    <div class="text-center">
+                                        <button
+                                            data-target="#tab-izenaeman"
+                                            class="bg-red light"
+                                            id="izena-eman-finish"
+                                            style="display: initial;"
+                                            ><?php echo $button; ?></button>
+
+                                    </div>
+
+                                </form>
+
+                            </div>
+                        </div>
+
+                </div><!-- #izenaeman5 -->
+
+            </div><!-- .tab-content -->
+        </div>
+    </div><!-- #izenaeman -->
+</div><!-- #tab-izenaeman -->

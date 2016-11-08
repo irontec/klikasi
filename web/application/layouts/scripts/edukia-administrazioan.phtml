@@ -1,0 +1,28 @@
+<?php echo $this->render("header.phtml"); ?>
+
+<body>
+
+<?php echo $this->render("menua.phtml"); ?>
+
+<div class="principal">
+
+    <div class="container">
+
+        <div class="col-xs-12 subheader bg-standard-grey">
+            <h1><?php echo $this->title; ?>: <a href="<?php echo $this->baseUrl('edukiak/ikusi/edukia/' . $this->edukia->getUrl()); ?>" title="<?php echo $this->edukia->getTitulua(); ?>" id="edukia-url-view"><?php echo $this->edukia->getTitulua(); ?></a></h1>
+        </div>
+
+        <?php echo $this->alertMessage($this->erroreMezuak, $this->flashmezuak, $this->alertSuccess); ?>
+        <div class="alert alert-danger hide" id="edukiak-errors"></div>
+        <div class="alert alert-success hide"id="edukiak-success"></div>
+
+    </div>
+
+    <?php echo $this->layout()->content; ?>
+
+</div>
+
+    <?php echo $this->render("footer.phtml"); ?>
+
+</body>
+</html>

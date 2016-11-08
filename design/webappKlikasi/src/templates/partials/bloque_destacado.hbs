@@ -1,0 +1,35 @@
+---
+component : bloque-destacado
+---
+
+<div class = 'bloque-destacado row {{fondo-color}}' {{#if fondo-imagen}}style = '{{fondo-imagen}}'{{/if}}>
+	<div class = 'container  {{class}}'>
+		<header class = 'content aire'>
+			{{#if title-size }}<{{{title-size}}}>{{{title}}}</{{{title-size}}}>{{else}}<h1>{{{title}}}</h1>{{/if}}
+			{{#if subtitle }}<small>{{subtitle}}</small>{{/if}}
+		</header>
+		{{{ text }}}
+
+		
+		{{#if media }}{{{media}}}{{/if}}
+
+		{{#if has-carousel }}{{> carousel }}{{/if}}
+
+		{{#if has-bloques-interiores}}
+			<div class = 'row'>
+				{{#each bloques}}
+					{{> bloque_interior}}
+				{{/each}}
+			</div>
+		{{/if}}
+
+		{{#if button }}
+		<div class = 'text-center'>
+			<button class = '{{button-class}}' data-toggle="modal" data-target="#tab-izenaeman">{{button}}</button>
+		</div>
+		{{/if}}
+		{{> izena-eman}}
+
+
+	</div>
+</div>

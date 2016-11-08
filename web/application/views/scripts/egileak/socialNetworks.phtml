@@ -1,0 +1,182 @@
+<?php
+$erabiltzailea = $this->erabiltzailea;
+?>
+<form
+    role="form"
+    action=""
+    method="POST"
+    class="form-horizontal"
+    autocomplete="off"
+    id="socialNetworks-form"
+    >
+
+    <div class="form-group">
+        <label
+            for="twitter"
+            class="col-sm-2 control-label"
+            >Twitter</label>
+        <div class="col-sm-7">
+            <div class="input-group">
+                <div class="input-group-addon"><i style="width: 15px;" class="fa fa-twitter"></i></div>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="twitter"
+                    name="twitter"
+                    value="<?php echo $erabiltzailea->getTwitter(); ?>"
+                    placeholder="Twitter"
+                    />
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label
+            for="facebook"
+            class="col-sm-2 control-label"
+            >Facebook</label>
+        <div class="col-sm-7">
+            <div class="input-group">
+                <div class="input-group-addon"><i style="width: 15px;" class="fa fa-facebook"></i></div>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="facebook"
+                    name="facebook"
+                    value="<?php echo $erabiltzailea->getFacebook(); ?>"
+                    placeholder="Facebook"
+                    />
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label
+            for="google"
+            class="col-sm-2 control-label"
+            >Google +</label>
+        <div class="col-sm-7">
+            <div class="input-group">
+                <div class="input-group-addon"><i style="width: 15px;" class="fa fa-google-plus"></i></div>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="google"
+                    name="google"
+                    value="<?php echo $erabiltzailea->getGoogle(); ?>"
+                    placeholder="Google +"
+                    />
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label
+            for="linkedin"
+            class="col-sm-2 control-label"
+            >LinkedIn</label>
+        <div class="col-sm-7">
+            <div class="input-group">
+                <div class="input-group-addon"><i style="width: 15px;" class="fa fa-linkedin"></i></div>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="linkedin"
+                    name="linkedin"
+                    value="<?php echo $erabiltzailea->getLinkedin(); ?>"
+                    placeholder="LinkedIn"
+                    />
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label
+            for="pinterest"
+            class="col-sm-2 control-label"
+            >Pinterest</label>
+        <div class="col-sm-7">
+            <div class="input-group">
+                <div class="input-group-addon"><i style="width: 15px;" class="fa fa-pinterest"></i></div>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="pinterest"
+                    name="pinterest"
+                    value="<?php echo $erabiltzailea->getPinterest(); ?>"
+                    placeholder="Pinterest"
+                    />
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label
+            for="flickr"
+            class="col-sm-2 control-label"
+            >Flickr</label>
+        <div class="col-sm-7">
+            <div class="input-group">
+                <div class="input-group-addon"><i style="width: 15px;" class="fa fa-flickr"></i></div>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="flickr"
+                    name="flickr"
+                    value="<?php echo $erabiltzailea->getFlickr(); ?>"
+                    placeholder="Flickr"
+                    />
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label
+            for="youtube"
+            class="col-sm-2 control-label"
+            >YouTube</label>
+        <div class="col-sm-7">
+            <div class="input-group">
+                <div class="input-group-addon"><i style="width: 15px;" class="fa fa-youtube"></i></div>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="youtube"
+                    name="youtube"
+                    value="<?php echo $erabiltzailea->getFlickr(); ?>"
+                    placeholder="YouTube"
+                    />
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label
+            for="instagram"
+            class="col-sm-2 control-label"
+            >Instagram</label>
+        <div class="col-sm-7">
+            <div class="input-group">
+                <div class="input-group-addon"><i style="width: 15px;" class="fa fa-instagram"></i></div>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="instagram"
+                    name="instagram"
+                    value="<?php echo $erabiltzailea->getInstagram(); ?>"
+                    placeholder="Instagram"
+                    />
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-xs-12 text-center">
+            <button
+                id="bidali-socialNetworks"
+                class="btn btn-success"
+                >Gorde</button>
+        </div>
+    </div>
+
+</form>

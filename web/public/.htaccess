@@ -1,0 +1,68 @@
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} -s [OR]
+RewriteCond %{REQUEST_FILENAME} -l [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^.*$ - [NC,L]
+RewriteRule ^.*$ index.php [NC,L]
+
+## require a2enmod deflate expires headers
+
+# charset
+AddDefaultCharset UTF-8
+
+AddType application/font-woff .woff
+AddType application/x-font-truetype .ttf
+AddType application/x-font-opentype .otf
+AddType application/vnd.ms-fontobject .eot
+
+Header set Access-Control-Allow-Methods "GET, PUT, POST, OPTIONS, DELETE"
+Header set Access-Control-Allow-Credentials "true"
+Header set Access-Control-Allow-Headers "Authorization, Origin, Content-Type, X-CSRF-Token, page, Request-Date, totalItems"
+Header set Access-Control-Expose-Headers "totalItems"
+Header set Access-Control-Allow-Origin "*"
+
+
+<IfModule mod_deflate.c>
+AddOutputFilterByType DEFLATE text/plain
+AddOutputFilterByType DEFLATE text/html
+AddOutputFilterByType DEFLATE text/xml
+AddOutputFilterByType DEFLATE text/css
+AddOutputFilterByType DEFLATE text/javascript
+AddOutputFilterByType DEFLATE application/xml
+AddOutputFilterByType DEFLATE application/json
+AddOutputFilterByType DEFLATE application/xhtml+xml
+AddOutputFilterByType DEFLATE application/rss+xml
+AddOutputFilterByType DEFLATE application/atom_xml
+AddOutputFilterByType DEFLATE application/javascript
+AddOutputFilterByType DEFLATE application/x-javascript
+AddOutputFilterByType DEFLATE application/x-shockwave-flash
+AddOutputFilterByType DEFLATE image/svg+xml
+
+AddOutputFilterByType DEFLATE application/x-font-truetype
+AddOutputFilterByType DEFLATE application/font-woff
+AddOutputFilterByType DEFLATE application/x-font-opentype
+AddOutputFilterByType DEFLATE application/vnd.ms-fontobject
+
+</IfModule>
+
+<IfModule mod_expires.c>
+ExpiresActive On
+ExpiresByType image/jpg "access 1 month"
+ExpiresByType image/jpeg "access 1 month"
+ExpiresByType image/gif "access 1 month"
+ExpiresByType image/png "access 1 month"
+ExpiresByType text/css "access 1 month"
+ExpiresByType text/html "access 1 month"
+ExpiresByType application/pdf "access 1 month"
+ExpiresByType text/x-javascript "access 1 month"
+ExpiresByType application/x-shockwave-flash "access 1 month"
+ExpiresByType image/x-icon "access 1 year"
+ExpiresDefault "access plus 1 month"
+</IfModule>
+
+<IfModule mod_headers.c>
+    <FilesMatch "\.(js|css|xml|gz|eot|svg|ttf|woff)$">
+        Header append Vary: Accept-Encoding
+        Header set Cache-Control "max-age=2592000, public"
+    </FilesMatch>
+</IfModule>

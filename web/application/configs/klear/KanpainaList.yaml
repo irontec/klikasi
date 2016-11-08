@@ -1,0 +1,391 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+
+fixedPositions:
+  - &fixedKanpaina
+    fixedPositions:
+      group:
+        label: _("Datu orokorrak")
+        colsPerRow: 4
+        fields: 
+          izena: 2
+          kodea: 2
+          deskribapena: 4
+      group1:
+        label: _("Datak eta aktibazioa")
+        colsPerRow: 4
+        fields:
+          hasiera: 2
+          bukaera: 2
+          egoera: 2
+          url: 2
+      group2:
+        label: _("Kanpainaren irudiak")
+        fields:
+          irudia: true
+          banerra: true
+      group3:
+        label: _("Widget-en konfigurazioa")
+        colsPerRow: 4
+        fields:
+          widgetEdukiak: 2
+          widgetEdukiakOrdena: 2
+          widgetIkastegiak: 2
+          widgetIkastegiakOrdena: 2
+          widgetErabiltzaileak: 2
+          widgetErabiltzaileakOrdena: 2
+          widgetKategoriak: 2
+          widgetKategoriakOrdena: 2
+          KanpainaRelEdukiKategoriak: 2
+          KanpainaRelIkastegiMota: 2
+          KanpainaRelKategoria: 2
+
+order:
+  - &orderKanpaina
+    order:
+      izena: true
+      deskribapena: true
+      egoera: true
+      irudia: true
+      banerra: true
+
+production: 
+  main: 
+    module: klearMatrix
+    defaultScreen: kanpainaList_screen
+  screens: 
+    kanpainaList_screen: &kanpainaList_screenLink 
+      <<: *Kanpaina
+      controller: list
+      forcedValues:
+        kanpaina: "1"
+      pagination: 
+        items: 25
+      title: _("Kanpaina(s)")
+      <<: *fixedKanpaina
+      fields: 
+        blacklist:
+          url: true
+          deskribapena: true
+          widgetEdukiak: true
+          widgetIkastegiak: true
+          widgetErabiltzaileak: true
+          widgetKategoriak: true
+          KanpainaRelEdukiKategoriak: true
+          KanpainaRelIkastegiMota: true
+          KanpainaRelKategoria: true
+          widgetEdukiakOrdena: true
+          widgetIkastegiakOrdena: true
+          widgetErabiltzaileakOrdena: true
+          widgetKategoriakOrdena: true
+        options:
+          title: _("Options")
+          screens: 
+            edukiakRel_screen: true
+            widgetEdukiak_screen: true
+            widgetIkastegiak_screen: true
+            widgetKategoriak_screen: true
+            kanpainaEdit_screen: true
+          dialogs: 
+            kanpainaDel_dialog: true
+          default: kanpainaEdit_screen
+      options: 
+        title: _("Options")
+        screens: 
+          kanpainaNew_screen: true
+        dialogs: 
+          kanpainaDel_dialog: true
+
+    kanpainaNew_screen: &kanpainaNew_screenLink 
+      <<: *Kanpaina
+      <<: *fixedKanpaina
+      forcedValues:
+        kanpaina: "1"
+      controller: new
+      class: ui-silk-add
+      label: true
+      forcedValues:
+        kanpaina: "1"
+      multiInstance: true
+      title: _("Add %s", ngettext('Kanpaina', 'Kanpaina(s)', 1))
+      fields: 
+        <<: *orderKanpaina
+        blacklist: 
+          url: true
+
+    kanpainaEdit_screen: &kanpainaEdit_screenLink 
+      <<: *Kanpaina
+      <<: *fixedKanpaina
+      forcedValues:
+        kanpaina: "1"
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      forcedValues:
+        kanpaina: "1"
+      title: _("Edit %s", ngettext('Kanpaina', 'Kanpaina(s)', 1))
+      fields:
+        <<: *orderKanpaina
+
+    edukiakRel_screen:
+      class: ui-silk-layout-content
+      <<: *EdukiaRelKanpaina
+      controller: list
+      pagination: 
+        items: 25
+      title: _('Edukiak "%s" kanpainan', "%parent%")
+      filterField: kanpainaId
+      parentOptionCustomizer:
+        - recordCount
+      fields: 
+        blacklist: 
+          edukiaId: true
+        options:
+          title: _("Options")
+          screens:
+            edukiaRelEdit_screen: true
+          dialogs: 
+            edukiaRelDel_dialog: true
+          default: edukiaRelEdit_screen
+      options: 
+        title: _("Options")
+        screens: 
+          edukiaRelNew_screen: true
+        dialogs: 
+          edukiaRelDel_dialog: true
+
+    edukiaRelNew_screen: 
+      <<: *EdukiaRelKanpaina
+      filterField: kanpainaId
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Erlazioa berria sortu")
+      fields: 
+        blacklist: 
+          edukia: true
+          irabazlea: true
+
+
+    edukiaRelEdit_screen: 
+      <<: *EdukiaRelKanpaina
+      controller: edit
+      class: ui-silk-pencil
+      label: true
+      fields: 
+        blacklist: 
+          edukia: true
+
+    widgetEdukiak_screen:
+      <<: *KanpainaRelEdukiKategoriak
+      filterField: kanpainaId
+      title: _('Eduki kategoriak "%s" kanpainan', '%parent%')
+      class: ui-silk-application-view-tile
+      controller: list
+      label: false
+      parentOptionCustomizer:
+        - \Klikasi\Klear\Customize\KanpainaWidget
+        - recordCount
+      fields: 
+        options:
+          title: _("Options")
+          dialogs: 
+            widgetEdukiakDel_dialog: true
+          default: widgetEdukiakDel_dialog
+      options: 
+        title: _("Options")
+        screens: 
+          widgetEdukiakNew_screen: true
+        dialogs: 
+          widgetEdukiakDel_dialog: true
+
+    widgetEdukiakNew_screen: 
+      <<: *KanpainaRelEdukiKategoriak
+      filterField: kanpainaId
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Kategoria berria sartu")
+
+    widgetIkastegiak_screen:
+      <<: *KanpainaRelIkastegiMota
+      filterField: kanpainaId
+      title: _('Ikastegi motak "%s" kanpainan', '%parent%')
+      class: ui-silk-building
+      controller: list
+      label: false
+      parentOptionCustomizer:
+        - \Klikasi\Klear\Customize\KanpainaWidget
+        - recordCount
+      fields: 
+        options:
+          title: _("Options")
+          dialogs: 
+            widgetIkastegiakDel_dialog: true
+          default: widgetIkastegiakDel_dialog
+      options: 
+        title: _("Options")
+        screens: 
+          widgetIkastegiakNew_screen: true
+        dialogs: 
+          widgetIkastegiakDel_dialog: true
+
+    widgetIkastegiakNew_screen: 
+      <<: *KanpainaRelIkastegiMota
+      filterField: kanpainaId
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Ikastegi mota berria sartu")
+
+    widgetKategoriak_screen:
+      <<: *KanpainaRelKategoria
+      filterField: kanpainaId
+      title: _('Kategoriak "%s" kanpainan', '%parent%')
+      class: ui-silk-color-swatch
+      controller: list
+      label: false
+      parentOptionCustomizer:
+        - \Klikasi\Klear\Customize\KanpainaWidget
+        - recordCount
+      fields: 
+        options:
+          title: _("Options")
+          dialogs: 
+            widgetKategoriakDel_dialog: true
+          default: widgetKategoriakDel_dialog
+      options: 
+        title: _("Options")
+        screens: 
+          widgetKategoriakNew_screen: true
+        dialogs: 
+          widgetKategoriakDel_dialog: true
+
+    widgetKategoriakNew_screen: 
+      <<: *KanpainaRelKategoria
+      filterField: kanpainaId
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Kategoria berria sartu")
+      
+    widgetIkastegiakNew_screen: 
+      <<: *KanpainaRelIkastegiMota
+      filterField: kanpainaId
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Ikastegi mota berria sartu")
+
+# DIALOGS
+  dialogs: 
+    kanpainaDel_dialog: 
+      <<: *Kanpaina
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('Kanpaina', 'Kanpaina(s)', 1))
+      description: _("Do you want to delete this %s?", ngettext('Kanpaina', 'Kanpaina(s)', 1))
+      message: _("%s successfully deleted.", ngettext('Kanpaina', 'Kanpaina(s)', 1))
+      labelOnList: true
+      multiItem: true
+
+    edukiaRelDel_dialog: 
+      <<: *EdukiaRelKanpaina
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Erlazioa ezabatu")
+      description: _("Ziur zaude erlazioa ezabatu nahi duzula?")
+      message: _("Erlazioa ezabatu da.")
+      labelOnList: true
+      multiItem: true
+
+    widgetIkastegiakDel_dialog: 
+      <<: *KanpainaRelEdukiKategoriak
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Erlazioa ezabatu")
+      description: _("Ziur zaude erlazioa ezabatu nahi duzula?")
+      message: _("Erlazioa ezabatu da.")
+      labelOnList: true
+      multiItem: true
+
+    widgetEdukiakDel_dialog: 
+      <<: *KanpainaRelEdukiKategoriak
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Erlazioa ezabatu")
+      description: _("Ziur zaude erlazioa ezabatu nahi duzula?")
+      message: _("Erlazioa ezabatu da.")
+      labelOnList: true
+      multiItem: true
+
+    widgetKategoriakDel_dialog: 
+      <<: *KanpainaRelKategoria
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Erlazioa ezabatu")
+      description: _("Ziur zaude erlazioa ezabatu nahi duzula?")
+      message: _("Erlazioa ezabatu da.")
+      labelOnList: true
+      multiItem: true
+
+#==========#
+# COMMANDS #
+#==========#
+
+  commands: 
+    autocompleteIkastegiMota_command:
+      <<: *autocompleteMotaCommand
+      <<: *IkastegiMota
+    autocompleteKategoria_command:
+      <<: *autocompleteKategoriaCommand
+      <<: *Kategoria
+    autocompleteEdukia_command:
+      <<: *autocompleteEdukiaCommand
+      <<: *Edukia
+    IrudiaDownload_command: 
+      <<: *Kanpaina
+      controller: File
+      action: force-download
+      mainColumn: irudia
+    IrudiaUpload_command: 
+      <<: *Kanpaina
+      controller: File
+      action: upload
+      mainColumn: irudia
+    IrudiaPreview_command: 
+      <<: *Kanpaina
+      controller: File
+      action: preview
+      mainColumn: irudia
+    BanerraDownload_command: 
+      <<: *Kanpaina
+      controller: File
+      action: force-download
+      mainColumn: banerra
+    BanerraUpload_command: 
+      <<: *Kanpaina
+      controller: File
+      action: upload
+      mainColumn: banerra
+    BanerraPreview_command: 
+      <<: *Kanpaina
+      controller: File
+      action: preview
+      mainColumn: banerra
+testing: 
+  _extends: production
+staging: 
+  _extends: production
+development: 
+  _extends: production

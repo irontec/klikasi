@@ -1,0 +1,88 @@
+<div class="col-xs-12 aire">
+
+    <?php
+    if (sizeof($this->mezuakList) > 0) {
+        ?>
+        <div class="panel-group" id="accordion">
+            <?php
+            $newNorkId = '';
+            foreach ($this->mezuakList as $mezuak) {
+
+                $collapse = 'collapse-mezuak-' . $mezuak->getId();
+                $nork = $mezuak->getNork();
+
+                $summary = strip_tags($mezuak->getMezua());
+                $summary = substr($summary, 0, 15);
+
+                ?>
+
+                <div class="panel panel-default" id="mezuak-container-<?php echo $mezuak->getId(); ?>">
+                    <div class="panel-heading">
+                        <h4 class="panel-title <?php echo ($mezuak->getIkusita() == 1 ? 'isNew' : ''); ?>">
+                            <a
+                                data-toggle="collapse"
+                                data-parent="#accordion"
+                                href="#<?php echo $collapse;?>">
+
+                                <div class="row">
+                                    <div class="col-xs-4">
+                                        <?php echo $this->ErabiltzaileIrudia($nork, 22, true); ?>
+                                            <?php echo $nork->getCompletName(); ?>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <?php echo $summary; ?>
+                                    </div>
+                                    <div class="col-xs-4 text-right">
+                                        <?php echo $mezuak->getSortzeData(); ?>
+                                    </div>
+                                </div>
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="<?php echo $collapse;?>" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <div class="">
+                                <p style="white-space: pre-line;">
+                                    <?php echo $mezuak->getMezua(); ?>
+                                </p>
+                            </div>
+                            <div class="">
+
+                                <div class="col-xs-8">
+                                    <textarea
+                                        name="mezua-reply"
+                                        id="mezua-reply-<?php echo $mezuak->getId(); ?>"
+                                        data-nork="<?php echo $nork->getId(); ?>"
+                                        class="form-control"
+                                        style="width: 100%;"
+                                        placeholder="<?php echo $this->translate('[es] Responder'); ?>"
+                                        ></textarea>
+                                </div>
+
+                                <div class="col-xs-4 pull-right mezuak-actions" data-mezuak="<?php echo $mezuak->getId(); ?>">
+                                    <button
+                                        class="btn btn-success"
+                                        id="reply-<?php echo $mezuak->getId(); ?>"
+                                        ><?php echo $this->translate('[es] Responder'); ?></button>
+                                    <button
+                                        class="btn btn-danger"
+                                        id="delete-<?php echo $mezuak->getId(); ?>"
+                                        ><?php echo $this->translate('[es] Eliminar'); ?></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <?php
+            }
+            ?>
+        </div>
+        <?php
+    } else {
+        ?>
+        <strong>Ez dituzu mezurik</strong>
+        <?php
+    }
+    //var_dump($this->mezuakList)?>
+
+</div>

@@ -1,0 +1,36 @@
+production: 
+  class: \Klikasi\Model\KanpainaRelKategoria
+  fields: 
+    kanpainaId: 
+      title: _('Kanpaina id')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Klikasi\Mapper\Sql\Kanpaina
+          fieldName: 
+            fields: 
+              - izena
+            template: '%izena%'
+          order: izena
+      default: true
+    kategoriaId: 
+      title: _('Kategoria')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Klikasi\Mapper\Sql\Kategoria
+          fieldName: 
+            fields: 
+              - izena
+            template: '%izena%'
+          order: izena
+testing: 
+  _extends: production
+staging: 
+  _extends: production
+development: 
+  _extends: production

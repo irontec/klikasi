@@ -1,0 +1,48 @@
+<?php
+if ($this->isSearchQuery) {
+?>    
+    <div class="filtro-edukiak">
+        <div class="filtro-buscador col-xs-12">
+            <ul>
+                <li class="no-border" style="float:right">
+                    <a href="<?php 
+                        echo $this->url(array("controller" => "edukiak"));                       
+                        if (isset($_SERVER['QUERY_STRING']) && !empty($_SERVER['QUERY_STRING'])) {
+                            echo '?' . $_SERVER['QUERY_STRING'];
+                        } 
+                    ?>">
+                        Edukiak bilatu
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+<?php       
+}
+?>
+
+<div class="col-xs-12">
+    <?php echo $this->alertMessage($this->erroreMezuak, $this->flashmezuak, $this->alertWarning); ?>
+</div>
+<?php
+foreach ($this->ikastegiaList as $ikastegi) {
+    echo $ikastegi;
+}
+
+
+$style = "";
+if ($this->ikastegiakCount <= count($this->ikastegiaList)) {
+    $style = 'display:none;';    
+}
+?>
+<div class="row load" style="<?php echo $style; ?>">
+    <div class="col-xs-12 text-center">
+        <button
+            class="bg-red center-block"
+            id="loadMoreIkastegiak"
+            data-page="1"
+            data-url="<?php echo $this->urlMoreAction; ?>?format=json"
+            data-itemcount="<?php echo $this->ikastegiakCount; ?>"
+            >Gehiago ikusi</button>
+    </div>
+</div>

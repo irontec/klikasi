@@ -1,0 +1,19 @@
+<div class="bloque-destacado row">
+    <div class="container">
+        <header class="content aire">
+            <h2>Ezagutu</h2>
+            <small>Euskarazko edukiak bildu eta partekatzeko multimedia gunearen sarean sartu.</small>
+        </header>
+
+        <div class="row">
+            {{#blocks}}
+                {{> blocks-home}}
+            {{/blocks}}
+        </div>
+        <div class="text-center">
+            {{#button}}<button data-url="{{batu}}" class="{{button-class}}">{{button}}</button>{{/button}}
+        </div>
+
+
+    </div>
+</div>

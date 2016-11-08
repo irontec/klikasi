@@ -1,0 +1,65 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+
+production: 
+  main: 
+    module: klearMatrix
+    defaultScreen: jakinarazpenakGroupList_screen
+  screens: 
+    jakinarazpenakGroupList_screen: &jakinarazpenakGroupList_screenLink 
+      controller: list
+      pagination: 
+        items: 25
+      <<: *JakinarazpenakGroup
+      title: _("List of %s %2s", ngettext('Jakinarazpenak group', 'Jakinarazpenak group(s)', 0), "[format| (%parent%)]")
+      fields: 
+        options: 
+          title: _("Options")
+          screens: 
+            jakinarazpenakGroupEdit_screen: true
+          dialogs: 
+            jakinarazpenakGroupDel_dialog: true
+          default: jakinarazpenakGroupEdit_screen
+      options: 
+        title: _("Options")
+        screens: 
+          jakinarazpenakGroupNew_screen: true
+        dialogs: 
+          jakinarazpenakGroupDel_dialog: true
+    jakinarazpenakGroupNew_screen: &jakinarazpenakGroupNew_screenLink 
+      <<: *JakinarazpenakGroup
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Add %s", ngettext('Jakinarazpenak group', 'Jakinarazpenak group(s)', 1))
+      shortcutOption: N
+      fields: 
+        blacklist: 
+          sortzeData: true
+    jakinarazpenakGroupEdit_screen: &jakinarazpenakGroupEdit_screenLink 
+      <<: *JakinarazpenakGroup
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      title: _("Edit %s %2s", ngettext('Jakinarazpenak group', 'Jakinarazpenak group(s)', 1), "[format| (%item%)]")
+      fields: 
+        blacklist: 
+          sortzeData: true
+  dialogs: 
+    jakinarazpenakGroupDel_dialog: 
+      <<: *JakinarazpenakGroup
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('Jakinarazpenak group', 'Jakinarazpenak group(s)', 1))
+      description: _("Do you want to delete this %s?", ngettext('Jakinarazpenak group', 'Jakinarazpenak group(s)', 1))
+      message: _("%s successfully deleted.", ngettext('Jakinarazpenak group', 'Jakinarazpenak group(s)', 1))
+      multiItem: 1
+      labelOnList: 1
+testing: 
+  _extends: production
+staging: 
+  _extends: production
+development: 
+  _extends: production

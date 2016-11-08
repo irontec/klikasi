@@ -1,0 +1,229 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+
+fixedPositions:
+  - &fixedUser
+    fixedPositions:
+      group1:
+        label: _("Kontuaren datuak")
+        colsPerRow: 4
+        fields:
+          erabiltzaileIzena: 2
+          posta: 2
+          mota: 2
+          pasahitza: 2
+          url: 2
+      group:
+        label: _("Datu pertsonalak")
+        colsPerRow: 4
+        fields:
+          izena: 2
+          jaiotzeData: 2
+          abizena: 2
+          abizena2: 2
+          deskribapena: 4
+      group2:
+        label: _("Baimenak")
+        colsPerRow: 6
+        fields:
+          superErabiltzailea: 3
+          egoera: 3
+          profila: 3
+
+production: 
+  main: 
+    module: klearMatrix
+    defaultScreen: erabiltzaileaList_screen
+  screens: 
+    erabiltzaileaList_screen: &erabiltzaileaList_screenLink 
+      controller: list
+      pagination: 
+        items: 25
+      <<: *Erabiltzailea
+      title: _("List of %s", ngettext('Erabiltzailea', 'Erabiltzailea(s)', 0))
+      fields: 
+        blacklist:
+          deskribapena: true
+          pasahitza: true
+          url: true
+          izena: true
+          abizena: true
+          erabiltzaileIzena: true
+          abizena2: true
+          jaiotzeData: true
+          hash: true
+          hashIraungiData: true
+          irudiaId: true
+          altaData: true
+          sortzeData: true
+          newsletter: true
+          irudiaDefault: true
+          typeAvatar: true
+          twitter: true
+          facebook: true
+          google: true
+          linkedin: true
+          pinterest: true
+          flickr: true
+          youtube: true
+          instagram: true
+          karma: true
+          irudiaDefault: true
+          typeAvatar: true
+          
+        options: 
+          title: _("Options")
+          screens: 
+            erabiltzaileakRel_screen: true
+            edukiaExternalLink_screen: true
+            erabiltzaileaEdit_screen: true
+          dialogs: 
+            erabiltzaileaDel_dialog: true
+          default: erabiltzaileaEdit_screen
+      options: 
+        title: _("Options")
+        screens: 
+          erabiltzaileaNew_screen: true
+        dialogs: 
+          erabiltzaileaDel_dialog: true
+    erabiltzaileaNew_screen: &erabiltzaileaNew_screenLink 
+      <<: *Erabiltzailea
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Erabiltzaile berria sortu")
+      <<: *fixedUser
+      fields: 
+        blacklist: 
+          url: true
+          sortzeData: true
+          altaData: true
+          izenOsoa: true
+          egoera: true
+          hash: true
+          hashIraungiData: true
+          irudiaId: true
+          karma: true
+          irudiaDefault: true
+          typeAvatar: true
+          
+    erabiltzaileaEdit_screen: &erabiltzaileaEdit_screenLink 
+      <<: *Erabiltzailea
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      title: _("Erabiltzailearen datuak aldatu")
+      <<: *fixedUser
+      options: 
+        screens: 
+          erabiltzaileakRel_screen: true
+          edukiaExternalLink_screen: true
+      fields: 
+        blacklist: 
+          sortzeData: true
+          altaData: true
+          izenOsoa: true
+          hash: true
+          hashIraungiData: true
+          irudiaId: true
+          karma: true
+          irudiaDefault: true
+          typeAvatar: true
+
+    # Irakasleari lotutako erabiltzaileen zerrenda
+    erabiltzaileakRel_screen:
+      <<: *ErabiltzaileaRelIrakaslea
+      controller: list
+      pagination: 
+        items: 25
+      title: _("%s-(r)en ikasleak","%parent%")
+      filterField: irakasleaId
+      class: ui-silk-group
+      parentOptionCustomizer:
+        - recordCount
+      fields:
+        options: 
+          title: _("Options")
+          screens: 
+            erlazioaEdit_screen: true
+          dialogs: 
+            erlazioaDel_dialog: true
+          default: erlazioaEdit_screen
+      options: 
+        title: _("Options")
+        screens: 
+          erlazioNew_screen: true
+        dialogs: 
+          erlazioaDel_dialog: true
+
+    erlazioNew_screen: 
+      <<: *ErabiltzaileaRelIrakaslea
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Ikasle berria")
+      filterField: irakasleaId
+
+    erlazioaEdit_screen: 
+      <<: *ErabiltzaileaRelIrakaslea
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      title: _("Edit %s", ngettext('Erabiltzailea', 'Erabiltzailea(s)', 1))
+      filterField: irakasleaId
+
+    # Lehio externala pertsona bakoitzaren edukien
+    # zerrenda ikusteko
+    edukiaExternalLink_screen:
+      class: ui-silk-layout-content
+      title: _("%s-(r)en edukien zerrenda", "%parent%")
+      label: false
+      external:
+        file: EdukiaList
+        screen: edukiaList_screen
+        searchby: erabiltzaileaId
+        noiden: true
+      showOnlyOnNotNull: true
+
+  ############
+  # COMMANDS #
+  ############
+  commands:
+    autocompleteErabiltzailea_command:
+      <<: *autocompleteErabiltzaileaCommand
+      <<: *Erabiltzailea
+
+
+  dialogs: 
+    erabiltzaileaDel_dialog: 
+      <<: *Erabiltzailea
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('Erabiltzailea', 'Erabiltzailea(s)', 1))
+      description: _("Do you want to delete this %s?", ngettext('Erabiltzailea', 'Erabiltzailea(s)', 1))
+      message: _("%s successfully deleted.", ngettext('Erabiltzailea', 'Erabiltzailea(s)', 1))
+      labelOnList: true
+      multiItem: true
+
+
+    # Erlazioa ezabatu
+    erlazioaDel_dialog: 
+      <<: *ErabiltzaileaRelIrakaslea
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Erlazioa ezabatu")
+      description: _("Ziur zaude erlazioa ezabatu nahi duzula?")
+      message: _("Erlazioa ezabatu da.")
+      labelOnList: true
+      multiItem: true
+
+testing: 
+  _extends: production
+staging: 
+  _extends: production
+development: 
+  _extends: production

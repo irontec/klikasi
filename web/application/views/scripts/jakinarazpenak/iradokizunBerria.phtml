@@ -1,0 +1,102 @@
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th colspan="6">
+                    <a
+                        href="<?php echo $this->baseUrl('jakinarazpenak/index/mota/iradokizun-berria/');?>"
+                        title="Iradokizun Berria"
+                        >Iradokizun Berria</a>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            foreach ($this->iradokizunBerria as $jakinarazpena) {
+
+                $thatUser = $jakinarazpena->getThatUser();
+                $zendDate = $jakinarazpena->getSortzeData(true);
+                $zendDate->setTimezone('Europe/Madrid');
+                
+                $trClass = '';
+                if ($jakinarazpena->getEgoera() == 'onartua') {
+                    $trClass = ' success';
+                } elseif ($jakinarazpena->getEgoera() == 'ezOnartua') {
+                    $trClass = ' danger';
+                }
+
+                $hobekuntzak = new \Klikasi\Mapper\Sql\Hobekuntzak();
+                $hobekuntzak = $hobekuntzak->find($jakinarazpena->getIdKanpotarra());
+
+                if (empty($hobekuntzak)) {
+                    $jakinarazpena->delete();
+                    continue;
+                }
+                $edukia = $hobekuntzak->getEdukia();
+
+                ?>
+                <tr
+                    class="<?php echo $jakinarazpena->getIkusita() == 0 ? 'isNew' : 'isView'; echo $trClass; ?>"
+                    data-jakinarazpena="<?php echo $jakinarazpena->getId(); ?>"
+                    >
+                    <td class="izena-thatUser" data-thatUser="<?php echo $thatUser->getId(); ?>">
+                        <a
+                            href="<?php echo $thatUser->urlProfile(); ?>"
+                            title="<?php echo $thatUser->getCompletName(); ?>"
+                            ><?php echo $this->ErabiltzaileIrudia($thatUser, 22, true);?>  <?php echo $thatUser->getCompletName(); ?></a>
+                    </td>
+                    <td>
+                        <a
+                            href="<?php echo $edukia->edukiaUrl(); ?>"
+                            title="<?php echo $edukia->getTitulua(); ?>"
+                            ><?php echo $edukia->getTitulua(); ?> <i class="fa fa-external-link"></i></a>
+                    </td>
+                    <td>
+                        <?php echo $hobekuntzak->getHobekuntzak(); ?>
+                    </td>
+                    <td>
+                        <?php echo $zendDate->toString("y'eko' MMMM'ren' dd'a' HH:mm:ss", "eu"); ?>
+                    </td>
+                    <td>
+                        <button
+                            data-action="reply"
+                            data-instance="iradokizunBerria"
+                            data-jakinarazpena="<?php echo $jakinarazpena->getId(); ?>"
+                            class="btn btn-default"
+                            title="<?php echo $this->translate('[es] Responder'); ?>"
+                            ><i class="fa fa-envelope-o" style="position: static;"></i></button>
+                        <button
+                            data-action="viewContent"
+                            data-instance="iradokizunBerria"
+                            data-jakinarazpena="<?php echo $jakinarazpena->getId(); ?>"
+                            class="btn btn-default"
+                            title="<?php echo $this->translate('[es] Ver Contenido'); ?>"
+                            ><i class="fa fa-external-link" style="position: static;"></i></button>
+                        <button
+                            data-action="deleteNotification"
+                            data-instance="iradokizunBerria"
+                            data-jakinarazpena="<?php echo $jakinarazpena->getId(); ?>"
+                            class="btn btn-default"
+                            title="<?php echo $this->translate('[es] Eliminar Notificación');?>"
+                            ><i class="fa fa-trash-o" style="position: static;"></i></button>
+                        <?php
+                        if ($jakinarazpena->getIkusita() == 0) {
+                            ?>
+                            <button
+                                data-action="markView"
+                                data-instance="iradokizunBerria"
+                                data-jakinarazpena="<?php echo $jakinarazpena->getId(); ?>"
+                                class="btn btn-default"
+                                title="<?php echo $this->translate('[es] Marcar como vista'); ?>"
+                                ><i class="fa fa-eye" style="position: static;"></i></button>
+                            <?php
+                        }
+                        ?>
+                    </td>
+                </tr>
+                <?php
+            }
+            ?>
+        </tbody>
+    </table>
+</div>

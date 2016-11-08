@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": ";;;;AAQA,yCAA2C;EACnC,WAAW,EAAE,CAAC;EACd,YAAY,EAAE,CAAC",
+"sources": ["../../../app/styles/temp.scss"],
+"names": [],
+"file": "temp.css"
+}

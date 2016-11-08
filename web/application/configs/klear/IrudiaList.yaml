@@ -1,0 +1,110 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+
+fixedPositions:
+  - &fixedIrudi
+    fixedPositions:
+      group:
+        label: _("Datuak")
+        colsPerRow: 4
+        fields: 
+          titulua: 2
+          url: 4
+
+production: 
+  main: 
+    module: klearMatrix
+    defaultScreen: irudiaList_screen
+  screens:
+   
+    irudiaList_screen: &irudiaList_screenLink 
+      controller: list
+      pagination: 
+        items: 10
+      <<: *Irudia
+      title: _("List of %s", ngettext('Irudia', 'Irudia(s)', 0))
+      fields: 
+        blacklist: 
+          sortzeData: true
+          fitxategia: true
+          klikKopurua: true
+        options: 
+          title: _("Options")
+          screens: 
+            irudiaEdit_screen: true
+          dialogs: 
+            irudiaDel_dialog: true
+          default: irudiaEdit_screen
+      options: 
+        title: _("Options")
+        screens: 
+          irudiaNew_screen: true
+        dialogs: 
+            irudiaDel_dialog: true
+          
+    irudiaNew_screen: &irudiaNew_screenLink 
+      <<: *Irudia
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Add %s", ngettext('Irudia', 'Irudia(s)', 1))
+      <<: *fixedIrudi
+      fields: 
+        blacklist: 
+          edukiaId: true
+          sortzeData: true
+          klikKopurua: true
+          fitxategia: true
+        order:
+          titulua: true
+          
+    irudiaEdit_screen: &irudiaEdit_screenLink 
+      <<: *Irudia
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      title: _("Edit %s", ngettext('Irudia', 'Irudia(s)', 1))
+      <<: *fixedIrudi
+      fields: 
+        blacklist: 
+          klikKopurua: true
+          sortzeData: true
+          fitxategia: true
+        order:
+          titulua: true
+  dialogs: 
+    irudiaDel_dialog: &irudiaDel_screenLink
+      <<: *Irudia
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('Irudia', 'Irudia(s)', 1))
+      description: _("Do you want to delete this %s?", ngettext('Irudia', 'Irudia(s)', 1))
+      message: _("%s successfully deleted.", ngettext('Irudia', 'Irudia(s)', 1))
+      labelOnList: true
+      multiItem: true
+
+  commands: 
+    IrudiaDownload_command: &IrudiaDownload_command 
+      <<: *Irudia
+      controller: File
+      action: force-download
+      mainColumn: fitxategia
+    IrudiaUpload_command: &IrudiaUpload_command
+      <<: *Irudia
+      controller: File
+      action: upload
+      mainColumn: fitxategia
+    IrudiaPreview_command: &IrudiaPreview_command
+      <<: *Irudia
+      controller: File
+      action: preview
+      mainColumn: fitxategia
+      
+testing: 
+  _extends: production
+staging: 
+  _extends: production
+development: 
+  _extends: production

@@ -1,0 +1,81 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+
+
+production: 
+  main: 
+    module: klearMatrix
+    defaultScreen: homePageList_screen
+  screens: &homePage_screensLink 
+    homePageList_screen: &homePageList_screenLink 
+      controller: list
+      pagination: 
+        items: 25
+      <<: *HomePage
+      class: ui-silk-text-list-bullets
+      title: _("List of %s %2s", ngettext('Home page', 'Home page(s)', 0), "[format| (%parent%)]")
+      fields: &homePage_fieldsLink 
+        options: 
+          title: _("Options")
+          screens: 
+            homePageEdit_screen: true
+          dialogs: 
+            homePageDel_dialog: true
+          default: homePageEdit_screen
+      options: 
+        title: _("Options")
+        screens: 
+          homePageNew_screen: true
+        dialogs: 
+          homePageDel_dialog: true
+    homePageNew_screen: &homePageNew_screenLink 
+      <<: *HomePage
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Add %s", ngettext('Home page', 'Home page(s)', 1), "[format| (%parent%)]")
+      shortcutOption: N
+      postActionOptions: 
+        screens: 
+          homePageEdit_screen: true
+    homePageEdit_screen: &homePageEdit_screenLink 
+      <<: *HomePage
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      labelOnPostAction: _("Edit %s %2s", ngettext('Home page', 'Home page(s)', 1), "[format| (%item%)]")
+      title: _("Edit %s %2s", ngettext('Home page', 'Home page(s)', 1), "[format| (%item%)]")
+  dialogs: &homePage_dialogsLink 
+    homePageDel_dialog: &homePageDel_dialogLink 
+      <<: *HomePage
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('Home page', 'Home page(s)', 1))
+      description: _("Do you want to delete this %s?", ngettext('Home page', 'Home page(s)', 1))
+      message: _("%s successfully deleted.", ngettext('Home page', 'Home page(s)', 1))
+      multiItem: 1
+      labelOnList: 1
+  commands: &homePage_commandsLink 
+    homePageIrudiaDownload_command: &homePageIrudiaDownload_commandLink 
+      <<: *HomePage
+      controller: File
+      action: force-download
+      mainColumn: irudia
+    homePageIrudiaUpload_command: &homePageIrudiaUpload_commandLink 
+      <<: *HomePage
+      controller: File
+      action: upload
+      mainColumn: irudia
+    homePageIrudiaPreview_command: &homePageIrudiaPreview_commandLink 
+      <<: *HomePage
+      controller: File
+      action: preview
+      mainColumn: irudia
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production

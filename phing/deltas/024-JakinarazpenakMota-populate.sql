@@ -1,0 +1,13 @@
+INSERT INTO JakinarazpenakMota VALUES (1, 'Kolaborazio eskaera', 'kolaborazio-eskaera');
+INSERT INTO JakinarazpenakMota VALUES (2, 'Ikasle eskaera', 'ikasle-eskaera');
+INSERT INTO JakinarazpenakMota VALUES (3, 'Lagun eskaera', 'lagun-eskaera');
+INSERT INTO JakinarazpenakMota VALUES (4, 'Eduki berria', 'eduki-berria');
+INSERT INTO JakinarazpenakMota VALUES (5, 'Iruzkin berria', 'iruzkin-berria');
+INSERT INTO JakinarazpenakMota VALUES (6, 'Mezu berria', 'mezu-berria');
+INSERT INTO JakinarazpenakMota VALUES (7, 'Iradokizun berria', 'iradokizun-berria');
+INSERT INTO JakinarazpenakMota VALUES (8, 'Moderazio berria', 'moderazio-berria');
+INSERT INTO JakinarazpenakMota VALUES (9, 'Gustoko berria', 'gustoko-berria');
+INSERT INTO JakinarazpenakMota VALUES (10, 'Ikastegiak berria', 'ikastegiak-berria');
+INSERT INTO JakinarazpenakMota VALUES (11, 'Atsegin dut', 'atsegin-dut');
+INSERT INTO JakinarazpenakMota VALUES (12, 'Edukiari salaketa', 'edukiari-4salaketa');
+INSERT INTO JakinarazpenakMota VALUES (13, 'Ikasle eskaera ikastegia', 'ikasle-eskaera-ikastegia');

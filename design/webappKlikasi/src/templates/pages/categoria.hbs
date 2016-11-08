@@ -1,0 +1,158 @@
+---
+title : Natur Zientziak
+
+elements :
+  - miga : "Kategoria"
+
+subheader-categoria :
+  nombre : "Natur zientziak <br class = 'hidden-sm hidden-md hidden-lg'/><span>4802 baliabide</span>"
+  class : "bg-green"
+
+categoria-ficha :
+  nombre : "Natur Zientziak"
+  class : "bg-green"
+  recursos : "4802"
+
+datos-resumen-ficha :
+  width : "col-xs-12 col-sm-6 col-md-4"
+  image : "images/universo.jpg"
+  alt : "Universo"
+  class-caption : "bg-green"
+  icons-list :
+    - icon : "fa-folder"
+    - icon : "fa-volume-up"
+  categoria : "Natur zientziak"
+  title : "Unibertsoa"
+  text : "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>"
+  edad-min : "11"
+  edad-max : "14"
+  curso : "D.B.H. 2"
+  autor : "Egilearen izena"
+  centro : "Deustuko Ikastola"
+  num-leido : 69
+  num-megusta : 40
+  num-comentario : 1233
+  classFilterIsotope: Ikusienak
+
+datos-resumen-ficha2 :
+  width : "col-xs-12 col-sm-6 col-md-4"
+  image : "images/universo.jpg"
+  alt : "Universo"
+  class-caption : "bg-green"
+  icons-list :
+    - icon : "fa-folder"
+    - icon : "fa-volume-up"
+  categoria : "Natur zientziak"
+  title : "Unibertsoa"
+  text : "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>"
+  edad-min : "11"
+  edad-max : "14"
+  curso : "D.B.H. 2"
+  autor : "Egilearen izena"
+  centro : "Deustuko Ikastola"
+  num-leido : 68
+  num-megusta : 41
+  num-comentario : 1233
+  classFilterIsotope: Ikusienak
+
+datos-resumen-ficha3 :
+  width : "col-xs-12 col-sm-6 col-md-4"
+  image : "images/universo.jpg"
+  alt : "Universo"
+  class-caption : "bg-green"
+  icons-list :
+    - icon : "fa-folder"
+    - icon : "fa-volume-up"
+  categoria : "Natur zientziak"
+  title : "Unibertsoa"
+  text : "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>"
+  edad-min : "11"
+  edad-max : "14"
+  curso : "D.B.H. 2"
+  autor : "Egilearen izena"
+  centro : "Deustuko Ikastola"
+  num-leido : 67
+  num-megusta : 42
+  num-comentario : 1233
+  classFilterIsotope: Ikusienak
+
+datos-resumen-ficha4 :
+  width : "col-xs-12 col-sm-6 col-md-4"
+  image : "images/universo.jpg"
+  alt : "Universo"
+  class-caption : "bg-green"
+  icons-list :
+    - icon : "fa-folder"
+    - icon : "fa-volume-up"
+  categoria : "Natur zientziak"
+  title : "Unibertsoa"
+  text : "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>"
+  edad-min : "11"
+  edad-max : "14"
+  curso : "D.B.H. 2"
+  autor : "Egilearen izena"
+  centro : "Deustuko Ikastola"
+  num-leido : 66
+  num-megusta : 43
+  num-comentario : 1233
+  classFilterIsotope: Ikusienak
+
+datos-resumen-ficha5 :
+  width : "col-xs-12 col-sm-6 col-md-4"
+  image : "images/universo.jpg"
+  alt : "Universo"
+  class-caption : "bg-green"
+  icons-list :
+    - icon : "fa-folder"
+    - icon : "fa-volume-up"
+  categoria : "Natur zientziak"
+  title : "Unibertsoa"
+  text : "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>"
+  edad-min : "11"
+  edad-max : "14"
+  curso : "D.B.H. 2"
+  autor : "Egilearen izena"
+  centro : "Deustuko Ikastola"
+  num-leido : 65
+  num-megusta : 44
+  num-comentario : 1233
+  classFilterIsotope: Ikusienak
+
+datos-resumen-ficha6 :
+  width : "col-xs-12 col-sm-6 col-md-4"
+  image : "images/universo.jpg"
+  alt : "Universo"
+  class-caption : "bg-green"
+  icons-list :
+    - icon : "fa-folder"
+    - icon : "fa-volume-up"
+  categoria : "Natur zientziak"
+  title : "Unibertsoa"
+  text : "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>"
+  edad-min : "11"
+  edad-max : "14"
+  curso : "D.B.H. 2"
+  autor : "Egilearen izena"
+  centro : "Ikastolaren izena"
+  num-leido : 64
+  num-megusta : 45
+  num-comentario : 1233
+  classFilterIsotope: Ikusienak
+
+---
+
+<div class="container principal">
+    {{> subheader subheader-categoria }}
+    {{> filtro_buscador}}
+
+      <div class="container-filter">
+          {{> resumen_ficha datos-resumen-ficha }}
+          {{> resumen_ficha datos-resumen-ficha2 }}
+          {{> resumen_ficha datos-resumen-ficha3 }}
+          {{> resumen_ficha datos-resumen-ficha4 }}
+          {{> resumen_ficha datos-resumen-ficha5 }}
+          {{> resumen_ficha datos-resumen-ficha6 }}
+      </div>
+      {{> load}}
+
+</div>

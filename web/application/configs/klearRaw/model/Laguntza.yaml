@@ -1,0 +1,27 @@
+production: 
+  class: \Klikasi\Model\Laguntza
+  fields: 
+    titulua: 
+      title: _('Titulua')
+      type: text
+      required: true
+      maxLength: 350
+      default: true
+    laguntza: 
+      title: _('Laguntza')
+      type: textarea
+      required: true
+      source: 
+        control: tinymce
+        template: simple
+    iden: 
+      title: _('Iden')
+      type: text
+      required: true
+      maxLength: 350
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production

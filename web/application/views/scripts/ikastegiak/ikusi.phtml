@@ -1,0 +1,174 @@
+<?php
+$request = Zend_Controller_Front::getInstance()->getRequest();
+?>
+<div
+    class="scroll-parallax centro-ficha bg-grey"
+    data-speed="4"
+    data-type="background"
+    style="background-image: url('<?php echo $this->ikastegia->ikastegiaIrudiaUrl('profile'); ?>'); background-attachment: fixed; background-position: 50% 0px; background-repeat: initial initial;"
+    >
+
+    <div class="pattern aire">
+        <div class="container centro text-center">
+            <div class='col-xs-12 col-xs-offset-0 col-sm-6 col-sm-offset-3'>
+
+                <figure>
+                    <img
+                        src="<?php echo $this->ikastegia->ikastegiaIrudiaUrl('profile'); ?>"
+                        alt="<?php echo $this->ikastegia->getIzena(); ?>"
+                        class="img-circle" />
+                </figure>
+
+                <h1><?php
+                    echo $this->ikastegia->getIzena();
+                    if ($this->isAdmin) {
+                        ?>
+                        <a
+                            href="ikastegia-administrazioan/index/ikastegia/<?php echo $this->ikastegia->getUrl(); ?>"
+                            title="Administrazioa"
+                            ><i class="fa fa-cog" style="font-size: 50%; vertical-align: middle;"></i></a>
+                        <?php
+                    }
+                    ?></h1>
+
+                <ul class="list-unstyled list-inline">
+                    <li>
+                       <?php 
+                            if (sizeof($this->ikastegia->erabiltzaileakOnartua()) > 0 && sizeof($this->ikastegia->edukiakOnartua()) > 0) {
+                       ?>
+                                <a href="<?php echo $this->ikastegia->egileakUrl(); ?>">
+                                   <?php echo sizeof($this->ikastegia->erabiltzaileakOnartua()); ?> Sortzaile
+                                </a>
+                       <?php
+                            } else {
+                       ?>
+                                0 Sortzaile
+                       <?php
+                            }
+                       ?> 
+                    </li>
+                    <li><?php echo sizeof($this->ikastegia->edukiakOnartua()); ?> Baliabide</li>
+                </ul>
+                <div class="col-xs-12">
+                    <?php
+                    $ikastegia = $this->ikastegia;
+
+                    $networks = array(
+                        'getTwitter' => array('Twitter', 'fa-twitter'),
+                        'getFacebook' => array('Facebook', 'fa-facebook'),
+                        'getGoogle' => array('Google +', 'fa-google-plus'),
+                        'getLinkedin' => array('LinkedIn', 'fa-linkedin'),
+                        'getPinterest' => array('Pinterest', 'fa-pinterest'),
+                        'getFlickr' => array('Flickr', 'fa-flickr'),
+                        'getYouTube' => array('YouTube', 'fa-youtube'),
+                        'getInstagram' => array('Instagram', 'fa-instagram')
+                    );
+
+                    foreach ($networks as $key => $val) {
+                        if (trim($ikastegia->$key()) != '') {
+                            ?>
+                            <a
+                                href="<?php echo $ikastegia->$key(); ?>"
+                                target="_blank"
+                                title="<?php echo $val[0]; ?>"
+                                ><i style="padding: 15px 10px; color: #777; font-size: 25px;" class="fa <?php echo $val[1]; ?>"></i></a>
+                            <?php
+                        }
+                    }
+                    ?>
+                </div>
+                <div class="col-xs-12">
+                    <p><?php echo $this->ikastegia->getDeskribapena(); ?></p>
+                    <?php
+                    if (!empty($this->trophy)) {
+                    ?>
+                        <p>
+                            <a href="<?php echo $this->baseUrl('orriak/kanpainak/orria/' . $this->trophy['kanpaina']->getUrl()); ?>"
+                               title="<?php echo $this->translate("[es] Última campaña ganada"); ?>" >
+                                <i class="fa fa-trophy"></i>
+                                <?php echo $this->trophy['kanpaina']->getIzena(); ?>
+                            </a>
+                            -
+                            <a href="<?php echo $this->baseUrl('erabiltzaileak/ikusi/erabiltzailea/' . $this->trophy['erabiltzailea']->getErabiltzaileIzena()); ?>">
+                                <?php echo $this->trophy['erabiltzailea']->getErabiltzaileIzena(); ?>
+                            </a>
+                        </p>
+                    <?php
+                    }
+                    ?>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container principal">
+    <div class="filtro-ikastegiak-edukia">
+<?php
+if (true || count($this->edukiaList) > 1) {
+?>
+        <div class="filtro-buscador col-xs-12">
+            <ul>
+                <li><strong>Ordenatu:</strong></li>
+                <li class="no-border">
+                    <a data-sort-by="moreIzena" data-ascending="false"
+                       href="<?php echo $this->url(array('order' => null)); ?>">
+                        <?php echo $this->strongWrap('Izena', $request->getParam('order') == ''); ?>
+
+                    </a>
+                </li>
+                <li>
+                    <a data-sort-by="moreUpdated" data-ascending="false"
+                       href="<?php echo $this->url(array('order' => 'updated')); ?>">
+                        <?php echo $this->strongWrap($this->translate('[es] Updated'), $request->getParam('order') == 'updated'); ?>
+
+                    </a>
+                </li>
+                <li>
+                    <a data-sort-by="moreComments" data-ascending="false"
+                       href="<?php echo $this->url(array('order' => 'iruzkinak')); ?>">
+                        <?php echo $this->strongWrap('Iruzkin kopurua', $request->getParam('order') == 'iruzkinak'); ?>
+
+                    </a>
+                </li>
+                <li>
+                    <a data-sort-by="moreKarma" data-ascending="false"
+                       href="<?php echo $this->url(array('order' => 'arrakasta')); ?>">
+                        <?php echo $this->strongWrap($this->translate('[es] Karma'), $request->getParam('order') == 'arrakasta'); ?>
+                    </a>
+                </li>
+            </ul>
+        </div>
+<?php
+}
+?>
+
+        <span class="countEdukiakIkastegia" style="display:none;"><?php echo $this->edukiakCount;?></span>
+    </div>
+    <div class="container-filter">
+    <?php
+        if (sizeof($this->edukiaList) > 0) {
+            foreach ($this->edukiaList as $edukia) {
+                echo $edukia;
+            }
+        } else {
+    ?>
+         <div class="alert alert-success"><ul><li>Baliabiderik ez</li></ul></div>
+    <?php
+        }
+    ?>
+    </div>
+
+    <div class="row load">
+        <div class="col-xs-12 text-center">
+            <button
+                class="bg-red center-block"
+                id="loadMoreEdukiak"
+                data-page="1"
+                data-ikastegia="<?php echo $this->ikastegia->getId(); ?>"
+                data-url="<?php echo $this->urlMoreAction; ?>?format=json"
+                >Gehiago ikusi</button>
+        </div>
+    </div>
+</div><!-- .container.principal -->

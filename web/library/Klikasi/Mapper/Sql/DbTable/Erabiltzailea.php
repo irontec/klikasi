@@ -1,0 +1,587 @@
+<?php
+
+/**
+ * Application Model DbTables
+ *
+ * @package Klikasi\Mapper\Sql\DbTable
+ * @subpackage DbTable
+ * @author Irontec
+ * @copyright ZF model generator
+ * @license http://framework.zend.com/license/new-bsd     New BSD License
+ */
+
+/**
+ * Table definition for Erabiltzailea
+ *
+ * @package Klikasi\Mapper\Sql\DbTable
+ * @subpackage DbTable
+ * @author Irontec
+ */
+
+namespace Klikasi\Mapper\Sql\DbTable;
+class Erabiltzailea extends TableAbstract
+{
+    /**
+     * $_name - name of database table
+     *
+     * @var string
+     */
+    protected $_name = 'Erabiltzailea';
+
+    /**
+     * $_id - this is the primary key name
+     *
+     * @var int
+     */
+    protected $_id = 'id';
+
+    protected $_rowClass = 'Klikasi\\Model\\Erabiltzailea';
+    protected $_rowMapperClass = 'Klikasi\\Mapper\\Sql\\Erabiltzailea';
+
+    protected $_sequence = true; // int
+    protected $_referenceMap = array(
+        'ErabiltzaileaIbfk1' => array(
+            'columns' => 'irudiaId',
+            'refTableClass' => 'Klikasi\\Mapper\\Sql\\DbTable\\ErabiltzaileenIrudiak',
+            'refColumns' => 'id'
+        )
+    );
+    protected $_dependentTables = array(
+        'Klikasi\\Mapper\\Sql\\DbTable\\AtseginDut',
+        'Klikasi\\Mapper\\Sql\\DbTable\\Edukia',
+        'Klikasi\\Mapper\\Sql\\DbTable\\EmailHistory',
+        'Klikasi\\Mapper\\Sql\\DbTable\\ErabiltzaileaRelEdukia',
+        'Klikasi\\Mapper\\Sql\\DbTable\\ErabiltzaileaRelIkastegia',
+        'Klikasi\\Mapper\\Sql\\DbTable\\ErabiltzaileaRelIrakaslea',
+        'Klikasi\\Mapper\\Sql\\DbTable\\ErabiltzaileaRelIrakaslea',
+        'Klikasi\\Mapper\\Sql\\DbTable\\ErabiltzaileaSettings',
+        'Klikasi\\Mapper\\Sql\\DbTable\\Gustokoa',
+        'Klikasi\\Mapper\\Sql\\DbTable\\Hobekuntzak',
+        'Klikasi\\Mapper\\Sql\\DbTable\\Iruzkina',
+        'Klikasi\\Mapper\\Sql\\DbTable\\Jakinarazpenak',
+        'Klikasi\\Mapper\\Sql\\DbTable\\Jakinarazpenak',
+        'Klikasi\\Mapper\\Sql\\DbTable\\JakinarazpenakGroup',
+        'Klikasi\\Mapper\\Sql\\DbTable\\Kexa',
+        'Klikasi\\Mapper\\Sql\\DbTable\\Lagunak',
+        'Klikasi\\Mapper\\Sql\\DbTable\\Lagunak',
+        'Klikasi\\Mapper\\Sql\\DbTable\\Mezuak',
+        'Klikasi\\Mapper\\Sql\\DbTable\\Mezuak',
+        'Klikasi\\Mapper\\Sql\\DbTable\\NewsletterHash'
+    );
+    protected $_metadata = array (
+	  'id' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'Erabiltzailea',
+	    'COLUMN_NAME' => 'id',
+	    'COLUMN_POSITION' => 1,
+	    'DATA_TYPE' => 'mediumint',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => false,
+	    'LENGTH' => NULL,
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => true,
+	    'PRIMARY' => true,
+	    'PRIMARY_POSITION' => 1,
+	    'IDENTITY' => true,
+	  ),
+	  'izena' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'Erabiltzailea',
+	    'COLUMN_NAME' => 'izena',
+	    'COLUMN_POSITION' => 2,
+	    'DATA_TYPE' => 'varchar',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => true,
+	    'LENGTH' => '250',
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => NULL,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'abizena' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'Erabiltzailea',
+	    'COLUMN_NAME' => 'abizena',
+	    'COLUMN_POSITION' => 3,
+	    'DATA_TYPE' => 'varchar',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => true,
+	    'LENGTH' => '250',
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => NULL,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'abizena2' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'Erabiltzailea',
+	    'COLUMN_NAME' => 'abizena2',
+	    'COLUMN_POSITION' => 4,
+	    'DATA_TYPE' => 'varchar',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => true,
+	    'LENGTH' => '250',
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => NULL,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'deskribapena' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'Erabiltzailea',
+	    'COLUMN_NAME' => 'deskribapena',
+	    'COLUMN_POSITION' => 5,
+	    'DATA_TYPE' => 'mediumtext',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => true,
+	    'LENGTH' => NULL,
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => NULL,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'erabiltzaileIzena' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'Erabiltzailea',
+	    'COLUMN_NAME' => 'erabiltzaileIzena',
+	    'COLUMN_POSITION' => 6,
+	    'DATA_TYPE' => 'varchar',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => false,
+	    'LENGTH' => '250',
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => NULL,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'pasahitza' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'Erabiltzailea',
+	    'COLUMN_NAME' => 'pasahitza',
+	    'COLUMN_POSITION' => 7,
+	    'DATA_TYPE' => 'varchar',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => false,
+	    'LENGTH' => '250',
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => NULL,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'posta' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'Erabiltzailea',
+	    'COLUMN_NAME' => 'posta',
+	    'COLUMN_POSITION' => 8,
+	    'DATA_TYPE' => 'varchar',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => false,
+	    'LENGTH' => '350',
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => NULL,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'egoera' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'Erabiltzailea',
+	    'COLUMN_NAME' => 'egoera',
+	    'COLUMN_POSITION' => 9,
+	    'DATA_TYPE' => 'varchar',
+	    'DEFAULT' => 'sortua',
+	    'NULLABLE' => false,
+	    'LENGTH' => '250',
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => NULL,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'url' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'Erabiltzailea',
+	    'COLUMN_NAME' => 'url',
+	    'COLUMN_POSITION' => 10,
+	    'DATA_TYPE' => 'varchar',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => false,
+	    'LENGTH' => '250',
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => NULL,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'jaiotzeData' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'Erabiltzailea',
+	    'COLUMN_NAME' => 'jaiotzeData',
+	    'COLUMN_POSITION' => 11,
+	    'DATA_TYPE' => 'date',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => false,
+	    'LENGTH' => NULL,
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => NULL,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'sortzeData' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'Erabiltzailea',
+	    'COLUMN_NAME' => 'sortzeData',
+	    'COLUMN_POSITION' => 12,
+	    'DATA_TYPE' => 'timestamp',
+	    'DEFAULT' => 'CURRENT_TIMESTAMP',
+	    'NULLABLE' => false,
+	    'LENGTH' => NULL,
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => NULL,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'altaData' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'Erabiltzailea',
+	    'COLUMN_NAME' => 'altaData',
+	    'COLUMN_POSITION' => 13,
+	    'DATA_TYPE' => 'timestamp',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => true,
+	    'LENGTH' => NULL,
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => NULL,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'superErabiltzailea' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'Erabiltzailea',
+	    'COLUMN_NAME' => 'superErabiltzailea',
+	    'COLUMN_POSITION' => 14,
+	    'DATA_TYPE' => 'tinyint',
+	    'DEFAULT' => '0',
+	    'NULLABLE' => false,
+	    'LENGTH' => NULL,
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => NULL,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'profila' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'Erabiltzailea',
+	    'COLUMN_NAME' => 'profila',
+	    'COLUMN_POSITION' => 15,
+	    'DATA_TYPE' => 'varchar',
+	    'DEFAULT' => 'otros',
+	    'NULLABLE' => false,
+	    'LENGTH' => '250',
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => NULL,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'hash' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'Erabiltzailea',
+	    'COLUMN_NAME' => 'hash',
+	    'COLUMN_POSITION' => 16,
+	    'DATA_TYPE' => 'varchar',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => true,
+	    'LENGTH' => '350',
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => NULL,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'hashIraungiData' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'Erabiltzailea',
+	    'COLUMN_NAME' => 'hashIraungiData',
+	    'COLUMN_POSITION' => 17,
+	    'DATA_TYPE' => 'datetime',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => true,
+	    'LENGTH' => NULL,
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => NULL,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'irudiaId' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'Erabiltzailea',
+	    'COLUMN_NAME' => 'irudiaId',
+	    'COLUMN_POSITION' => 18,
+	    'DATA_TYPE' => 'mediumint',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => true,
+	    'LENGTH' => NULL,
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => true,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'irudiaDefault' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'Erabiltzailea',
+	    'COLUMN_NAME' => 'irudiaDefault',
+	    'COLUMN_POSITION' => 19,
+	    'DATA_TYPE' => 'varchar',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => true,
+	    'LENGTH' => '25',
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => NULL,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'typeAvatar' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'Erabiltzailea',
+	    'COLUMN_NAME' => 'typeAvatar',
+	    'COLUMN_POSITION' => 20,
+	    'DATA_TYPE' => 'varchar',
+	    'DEFAULT' => 'default',
+	    'NULLABLE' => false,
+	    'LENGTH' => '25',
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => NULL,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'newsletter' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'Erabiltzailea',
+	    'COLUMN_NAME' => 'newsletter',
+	    'COLUMN_POSITION' => 21,
+	    'DATA_TYPE' => 'tinyint',
+	    'DEFAULT' => '0',
+	    'NULLABLE' => false,
+	    'LENGTH' => NULL,
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => NULL,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'twitter' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'Erabiltzailea',
+	    'COLUMN_NAME' => 'twitter',
+	    'COLUMN_POSITION' => 22,
+	    'DATA_TYPE' => 'varchar',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => true,
+	    'LENGTH' => '350',
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => NULL,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'facebook' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'Erabiltzailea',
+	    'COLUMN_NAME' => 'facebook',
+	    'COLUMN_POSITION' => 23,
+	    'DATA_TYPE' => 'varchar',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => true,
+	    'LENGTH' => '350',
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => NULL,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'google' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'Erabiltzailea',
+	    'COLUMN_NAME' => 'google',
+	    'COLUMN_POSITION' => 24,
+	    'DATA_TYPE' => 'varchar',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => true,
+	    'LENGTH' => '350',
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => NULL,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'linkedin' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'Erabiltzailea',
+	    'COLUMN_NAME' => 'linkedin',
+	    'COLUMN_POSITION' => 25,
+	    'DATA_TYPE' => 'varchar',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => true,
+	    'LENGTH' => '350',
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => NULL,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'pinterest' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'Erabiltzailea',
+	    'COLUMN_NAME' => 'pinterest',
+	    'COLUMN_POSITION' => 26,
+	    'DATA_TYPE' => 'varchar',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => true,
+	    'LENGTH' => '350',
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => NULL,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'flickr' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'Erabiltzailea',
+	    'COLUMN_NAME' => 'flickr',
+	    'COLUMN_POSITION' => 27,
+	    'DATA_TYPE' => 'varchar',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => true,
+	    'LENGTH' => '350',
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => NULL,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'youtube' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'Erabiltzailea',
+	    'COLUMN_NAME' => 'youtube',
+	    'COLUMN_POSITION' => 28,
+	    'DATA_TYPE' => 'varchar',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => true,
+	    'LENGTH' => '350',
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => NULL,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'instagram' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'Erabiltzailea',
+	    'COLUMN_NAME' => 'instagram',
+	    'COLUMN_POSITION' => 29,
+	    'DATA_TYPE' => 'varchar',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => true,
+	    'LENGTH' => '350',
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => NULL,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'karma' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'Erabiltzailea',
+	    'COLUMN_NAME' => 'karma',
+	    'COLUMN_POSITION' => 30,
+	    'DATA_TYPE' => 'int',
+	    'DEFAULT' => '0',
+	    'NULLABLE' => false,
+	    'LENGTH' => NULL,
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => NULL,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	);
+
+
+
+
+}

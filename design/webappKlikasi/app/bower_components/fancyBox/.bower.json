@@ -1,0 +1,14 @@
+{
+  "name": "fancyBox",
+  "_cacheHeaders": {
+    "ETag": "\"10832d298bf430c930b314e488116c46\"",
+    "Content-Length": "49508",
+    "Content-Type": "text/html; charset=utf-8"
+  },
+  "_release": "e-tag:10832d298",
+  "main": "index",
+  "_source": "https://github.com/fancyapps/fancyBox",
+  "_target": "*",
+  "_originalSource": "https://github.com/fancyapps/fancyBox",
+  "_direct": true
+}

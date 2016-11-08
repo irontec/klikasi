@@ -1,0 +1,39 @@
+production: 
+  class: \Klikasi\Model\NewsletterHash
+  fields: 
+    newsletterId: 
+      title: _('Newsletter id')
+      type: select
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Klikasi\Mapper\Sql\Newsletter
+          fieldName: 
+            fields: 
+              - title
+            template: '%title%'
+          order: title
+        'null': _("Unasigned")
+      default: true
+    erabiltzaileaId: 
+      title: _('Erabiltzailea id')
+      type: select
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Klikasi\Mapper\Sql\Erabiltzailea
+          fieldName: 
+            fields: 
+              - izena
+            template: '%izena%'
+          order: izena
+        'null': _("Unasigned")
+    hash: 
+      title: _('Hash')
+      type: textarea
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production

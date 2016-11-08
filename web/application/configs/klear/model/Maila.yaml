@@ -1,0 +1,30 @@
+production: 
+  class: \Klikasi\Model\Maila
+  fields: 
+    izena: 
+      title: _('Izena')
+      type: text
+      required: true
+      default: true
+    url: 
+      title: _('Url')
+      type: text
+      required: true
+    grupo: 
+      title: _('Grupo')
+      type: select
+      defaultValue: bestelakoak
+      source: 
+        data: inline
+        values: 
+          'bestelakoak': _('Bestelakoak')
+          'haurHezkuntza': _('Haur hezkuntza')
+          'LH': _('LH')
+          'DBH': _('DBH')
+          'Batxilergoa': _('Batxilergoa')
+testing: 
+  _extends: production
+staging: 
+  _extends: production
+development: 
+  _extends: production

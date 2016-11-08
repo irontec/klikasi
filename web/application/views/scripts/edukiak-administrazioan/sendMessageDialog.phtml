@@ -1,0 +1,65 @@
+<?php
+$edukia = $this->edukia;
+?>
+<div class="modal fade" id="sendMessage-dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title">Nori: <em></em></h4>
+            </div>
+
+            <form class="form-horizontal" role="form">
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <div class="alert alert-danger hide"></div>
+                        <div class="alert alert-success hide"></div>
+                    </div>
+
+                    <input
+                        type="hidden"
+                        name="hobekuntzakId"
+                        value=""
+                        />
+
+                    <input
+                        type="hidden"
+                        name="edukiaId"
+                        value="<?php echo $edukia->getId(); ?>"
+                        />
+
+                    <div class="form-group">
+                        <label
+                            class="col-sm-2 control-label"
+                            for="mezua-hobekuntzak-dialog"
+
+                            >Mezua:</label>
+                        <div class="col-sm-10 elementTextarea">
+                            <textarea
+                                class="form-control"
+                                id="mezua-hobekuntzak-dialog"
+                                rows="3"
+                                cols=""
+                                name="mezuak"
+                                placeholder="Mezua..."
+                                ></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button
+                        class="btn btn-success"
+                        data-action="send"
+                        ><?php echo $this->translate('[es] Enviar mensaje'); ?></button>
+                    <button
+                        class="btn btn-default"
+                        data-action="closed"
+                        ><?php echo $this->translate('[es] Salir'); ?></button>
+                </div>
+            </form>
+
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

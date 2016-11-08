@@ -1,0 +1,95 @@
+<?php
+$sections = array(
+    'ikastegia' => $this->translate('[es] Informacion General'),
+    'irakasleak' => $this->translate('[es] Profesores'),
+    'ikasleak' => $this->translate('[es] Estudiantes'),
+    'edukiak' => $this->translate('[es] Recursos'),
+);
+
+$ikastegia = $this->ikastegia;
+?>
+
+<div
+    class="scroll-parallax centro-ficha bg-grey"
+    data-speed="4"
+    data-type="background"
+    style="background-image: url('<?php echo $ikastegia->ikastegiaIrudiaUrl('profile'); ?>'); background-attachment: fixed; background-position: 50% 0px; background-repeat: initial initial;"
+    >
+
+    <div class="pattern aire">
+        <div class="container centro text-center">
+            <div class='col-xs-12 col-xs-offset-0 col-sm-6 col-sm-offset-3'>
+
+                <figure>
+                    <img
+                        src="<?php echo $ikastegia->ikastegiaIrudiaUrl('profile'); ?>"
+                        alt="<?php echo $ikastegia->getIzena(); ?>"
+                        class="img-circle" />
+                </figure>
+
+                <h1><a
+                    href="<?php echo $this->baseUrl('ikastegiak/ikusi/ikastegia/' . $ikastegia->getUrl()); ?>"
+                    title="<?php echo $ikastegia->getIzena(); ?>"
+                    ><?php echo $ikastegia->getIzena(); ?></a></h1>
+
+                <p><?php echo $this->ikastegia->getDeskribapena(); ?></p>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container principal">
+    <section id="tab-recursos" class="tab-recursos col-xs-12 aire">
+
+        <div class="alert alert-danger hide" id="errorMesagge"></div>
+        <div class="alert alert-success hide" id="successMessage"></div>
+
+        <ul class="nav nav-tabs">
+
+            <?php
+                $liCount = 0;
+                foreach ($sections as $type => $name) {
+                    $liCount++;
+
+                    ?>
+                    <li
+                        class="no-mar-l <?php echo ($liCount === 1 ? 'active' : '');?> col-xs-12 col-sm-3"
+                        style="margin: 0px!important;"
+                        >
+                        <a
+                            href="#<?php echo $type; ?>"
+                            data-toggle="tab"
+                            ><?php echo $name; ?><i class="fa fa-bars visible-xs pull-right"></i></a>
+                    </li>
+                    <?php
+                }
+                ?>
+
+        </ul>
+
+        <div class="tab-content">
+
+            <?php
+                $divCount = 0;
+                foreach ($sections as $type => $name) {
+                    $divCount++;
+                    ?>
+                    <div
+                        class="tab-pane <?php echo ($divCount === 1 ? 'active' : '');?>"
+                        id="<?php echo $type; ?>"
+                        style="padding-bottom: 30px;">
+                        <?php
+                        echo $this->partial(
+                            '/ikastegia-administrazioan/' . $type . '.phtml',
+                            $this->getVars()
+                        );
+                        ?>
+                    </div>
+                    <?php
+                }
+                ?>
+
+        </div>
+
+    </section>
+</div>

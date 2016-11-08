@@ -1,0 +1,25 @@
+<?php
+    $divClass = $this->layoutContentWrapperClass();
+
+    echo $this->render("header.phtml");
+?>
+<body data-izenaEmanShow="<?php echo $this->formIzenaEmanShow?>">
+
+    <?php
+        echo $this->render("menua.phtml");
+
+        if (!empty($divClass)) {
+            echo '<div class="' . $divClass . '">';
+        }
+
+        echo $this->layout()->content;
+
+        if (!empty($divClass)) {
+            echo '</div>';
+        }
+
+        echo $this->render("footer.phtml");
+    ?>
+
+</body>
+</html>

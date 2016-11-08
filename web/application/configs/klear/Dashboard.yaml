@@ -1,0 +1,21 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+
+production:
+  main:
+    module: klearMatrix
+    defaultScreen: Dashboard_screen
+
+  screens:
+    Dashboard_screen:
+      controller: dashboard
+      action: index
+      title: 
+        i18n:
+          eu: Jokoaren kontrol gunea
+      useExplain: true
+      
+testing: 
+  _extends: production
+development: 
+  _extends: production

@@ -1,0 +1,39 @@
+---
+component : comentarios
+---
+
+<div class = 'comentarios col-xs-12'>
+	<div class = 'container'>
+		<h3><i class = 'fa fa-comments'></i>Iruzkinak <em>(2)</em></h3>
+
+		{{#each comentarios}}
+			<div class = 'row'>
+				<div class = 'col-xs-3 col-sm-2'>
+					<figure class = 'rounded'>
+						<img src = '{{image}}'/>
+					</figure>
+				</div>
+
+				<div class = 'col-xs-8 col-xs-offset-1 col-sm-6 col-sm-offset-0 text-comentario'>
+					<span class="autor">{{{autor}}}</span>
+					<span class="date">{{{date}}}</span>
+					{{{text}}}
+				</div>
+			</div>
+		{{/each}}
+
+		<div class = 'row'>
+				<div class = 'col-xs-3 col-sm-2'>
+					<figure class = 'rounded'>
+						<img src = 'images/perfil-sidebar.png'/>
+					</figure>
+				</div>
+
+				<div class = 'col-xs-8 col-xs-offset-1 col-sm-6 col-sm-offset-0 input-comentario'>
+					<textarea class = 'col-xs-12'></textarea>
+
+					<button class="button-icon bg-red"><i class="fa fa-arrow-right hidden-xs"> </i>Iruzkina argitaratu</button>
+				</div>
+			</div>
+	</div>
+</div>

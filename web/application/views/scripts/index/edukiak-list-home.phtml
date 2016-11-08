@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="fichas-relacionadas col-xs-12">
+
+        <h3>Baliabide nabarituak</h3>
+        <div class="container-filter">
+            {{#edukiaList}}
+                {{> edukiakView}}
+            {{/edukiaList}}
+        </div>
+
+    </div>
+	<div class="row load">
+	    <div class="col-xs-12 text-center">
+	        <button
+	            class="bg-red center-block loadMoreEdukiak"
+	            data-page="1"
+	            data-url="index/edukiak-more?format=json"
+	            data-itemcount="8"
+	            >Gehiago ikusi</button>
+	    </div>
+	</div>
+</div>

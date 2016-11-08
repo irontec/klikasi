@@ -1,0 +1,90 @@
+---
+component : bloque-sidebar
+---
+
+<div class = 'bloque-sidebar col-xs-12'>
+	<h3 class = '{{title-class}}'>{{title}}</h3>
+
+	{{#if type-caracteristicas}}
+		{{>icon-list}}
+		<div class = 'row'>
+			<span class = 'punto-cat {{class-categoria}}'></span><span class="sidebar-cat">{{categoria}}</span>
+		</div>
+		<div class = 'row'>
+			<label class = 'col-xs-12'>Adina:</label>
+		</div>
+		<div class = 'row'>
+			<span class="sel-edad col-xs-12">
+			<span class="edad-min" data-toggle="tooltip" data-original-title="Default tooltip">
+				<a href="#">
+					<span class = 'edad'><strong>{{edad-min}}</strong> urtetik</span>
+					<span class = 'punto-cat'></span>
+				</a>
+			</span>
+			<span class="edad-max" data-toggle="tooltip" data-original-title="Default tooltip">
+				<a href="#">
+					<span class = 'edad'><strong>{{edad-max}}</strong> urtera</span>
+					<span class = 'punto-cat'></span>
+				</a>
+			</span>
+			<hr class = 'edad'/>
+			</span>
+		</div>
+
+		<div class = 'row'>
+			<label>Ikasturtea: {{curso}}</label>
+		</div>
+
+		{{#each tags}}
+			<div class = 'row tag'>
+				<span><span class="punto-cat"></span>{{tag}}</span>
+			</div>
+		{{/each}}
+
+		<div class = 'row'>
+			<a href="#">Hobekuntzak proposatu</a>
+		</div>
+	{{else}}
+		{{#if type-autor}}
+			<div class = 'row text-center autor'>
+				<figure class = 'rounded'>
+					<img src = '{{imagen}}'/>
+				</figure>
+				<span class="autor-name">{{autor}}</span>
+			</div>
+			<div class = 'row autor-block'>
+				{{#if otros_autores}}<label>Beste egileak: </label>{{#each otros_autores}}<a href = ''> {{nombre}}</a>{{/each}}{{/if}}
+			</div>
+			<div class = 'row autor-block'>
+				{{#if centro}}<label>Ikastegia:</label><a href = '#'> {{ centro }}</a>{{/if}}
+			</div>
+			<div class = 'row autor-block'>
+				<label>Harremanetan jarri <a href = '#'>{{autor}}</a>-(r)ekin</label>
+			</div>
+		{{else}}
+			{{#if type-social}}
+				<div class = 'social'>
+					<div class = 'row'>
+						{{#each icons-list}}
+							<span class = 'col-xs-4 text-center'><a href="#"><i class = 'fa {{icon}}'></i></a></span>
+						{{/each}}
+					</div>
+
+					<hr/>
+
+					<button class="button-icon bg-red"><span class="glyphicon glyphicon-heart-empty"> </span>Atsegin dut</button>
+					<button class="button-icon bg-grey-dark"><span class="glyphicon glyphicon-star"> </span>Gogokoenetara gehitu</button>
+
+					<hr/>
+					
+					<button class = 'button-icon salatu pull-right'><i class="fa fa-exclamation-triangle"> </i>Salatu</button>
+				</div>
+
+				
+
+
+			{{/if}}
+		{{/if}}
+	{{/if}}
+
+</div>

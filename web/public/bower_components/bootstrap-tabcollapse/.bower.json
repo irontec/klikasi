@@ -1,0 +1,34 @@
+{
+  "name": "bootstrap-tabcollapse",
+  "main": "bootstrap-tabcollapse.js",
+  "version": "0.2.2",
+  "homepage": "https://github.com/okendoken/bootstrap-tabcollapse",
+  "authors": [
+    "okendoken (http://flatlogic.com)"
+  ],
+  "description": "Bootstrap plugin that switches bootstrap tabs component to collapse component for small screens.",
+  "keywords": [
+    "bootstrap",
+    "tabs",
+    "collapse",
+    "responsive"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": ">= 3.0.0"
+  },
+  "ignore": [
+    "**/.*",
+    "bower_components"
+  ],
+  "_release": "0.2.2",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.2.2",
+    "commit": "475cb3e0fc4111643aaaae8163cb0a861a42751a"
+  },
+  "_source": "git://github.com/okendoken/bootstrap-tabcollapse.git",
+  "_target": "~0.2.2",
+  "_originalSource": "bootstrap-tabcollapse",
+  "_direct": true
+}

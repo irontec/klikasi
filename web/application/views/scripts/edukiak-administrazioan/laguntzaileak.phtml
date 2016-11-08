@@ -1,0 +1,85 @@
+<?php
+$where = array(
+    'edukiaId = ?' => $this->edukia->getId()
+);
+$nireLaguntzaileak = new \Klikasi\Mapper\Sql\ErabiltzaileaRelEdukia();
+$nireLaguntzaileak = $nireLaguntzaileak->fetchList($where);
+?>
+<div id="nire-laguntzaileak">
+    <div class="form-group">
+        <h2><?php echo $this->translate('[es] Colaboradores'); ?></h2>
+
+        <div class="col-xs-12" id="nireLaguntzaileak">
+            <?php
+            $noMoreLaguntzaileak = true;
+                if (!empty($nireLaguntzaileak)) {
+                    $noMoreLaguntzaileak = false;
+                    foreach ($nireLaguntzaileak as $relLaguntzaileak) {
+                        $erabiltzailea = $relLaguntzaileak->getErabiltzailea();
+                        ?>
+                        <div class="row notificationCustomRow" data-relation="<?php echo $relLaguntzaileak->getId(); ?>">
+
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-6 pull-left">
+                                    <a
+                                        href="<?php echo $this->baseUrl('erabiltzaileak/ikusi/erabiltzailea/' . $erabiltzailea->getUrl()); ?>"
+                                        title="<?php echo $erabiltzailea->getCompletName(); ?>"
+                                        ><?php echo $this->ErabiltzaileIrudia($erabiltzailea, 22, true); ?> <?php echo $erabiltzailea->getCompletName(); ?></a>
+                                </div>
+                                <div class="col-xs-6 col-sm-6 pull-right text-right">
+                                    <p class="egoera"><?php echo $relLaguntzaileak->getEgoera();?></p>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <p><?php echo $erabiltzailea->getDeskribapena(); ?></p>
+                                </div>
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-xs-6 col-sm-6 pull-left laguntzaileakModerationStatus"></div>
+
+                                <div class="col-xs-6 col-sm-6 pull-right text-right">
+                                <?php
+                                $egoera = $relLaguntzaileak->getEgoera();
+                                $accept = false;
+                                $reject = false;
+                                if ($egoera == 'onartzeko') {
+                                    $accept = true;
+                                    $reject = true;
+                                } elseif ($egoera == 'onartua') {
+                                    $reject = true;
+                                } elseif ($egoera == 'ezOnartua') {
+                                    $accept = true;
+                                }
+                                ?>
+
+                                <button
+                                    data-action="acceptLaguntzaileak"
+                                    data-relation="<?php echo $relLaguntzaileak->getId(); ?>"
+                                    class="btn btn-default <?php echo ($accept ? '' : 'hide');?>"
+                                    title="<?php echo $this->translate('[es] Aceptar Laguntzaileak'); ?>"
+                                    ><i class="fa fa-thumbs-o-up" style="position: static;"></i></button>
+                                <button
+                                    data-action="rejectLaguntzaileak"
+                                    data-relation="<?php echo $relLaguntzaileak->getId(); ?>"
+                                    class="btn btn-default <?php echo ($reject ? '' : 'hide');?>"
+                                    title="<?php echo $this->translate('[es] Rechazar Laguntzaileak'); ?>"
+                                    ><i class="fa fa-thumbs-o-down" style="position: static;"></i></button>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <?php
+                    }
+                }
+            ?>
+            <div class="col-xs-12 noMoreLaguntzaileak <?php echo (!$noMoreLaguntzaileak ? 'hide' : '') ?>" >
+                <p><?php echo $this->translate('[es] No hay Colaboradores'); ?></p>
+            </div>
+        </div>
+    </div>
+</div>

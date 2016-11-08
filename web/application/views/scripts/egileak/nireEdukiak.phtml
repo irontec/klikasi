@@ -1,0 +1,62 @@
+<div class="table-responsive">
+
+    <?php
+    if (sizeof($this->nireEdukiak) > 0) {
+        ?>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Izena</th>
+                    <th>Egoera</th>
+                    <th>Iruzkinak</th>
+                    <th><?php echo $this->translate('[es] Views'); ?></th>
+                    <th><?php echo $this->translate('[es] Favorites'); ?></th>
+                    <th><?php echo $this->translate('[es] Likes'); ?></th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                    foreach ($this->nireEdukiak as $edukia) {
+                    ?>
+                    <tr>
+                        <td>
+                            <a
+                                href="<?php echo $edukia->edukiaUrl(); ?>"
+                                title="<?php echo $edukia->getTitulua(); ?>"
+                                ><i class="fa fa-external-link"></i> <?php echo $edukia->getTitulua(); ?></a>
+                        </td>
+                        <td>
+                            <?php echo ucfirst($edukia->getEgoera()); ?>
+                        </td>
+                        <td>
+                            <?php echo $edukia->iruzkinaCount(); ?>
+                        </td>
+                        <td>
+                            <?php echo $edukia->getBisitaKopurua(); ?>
+                        </td>
+                        <td>
+                            <?php echo sizeof($edukia->getGustokoa());?>
+                        </td>
+                        <td>
+                            <?php echo sizeof($edukia->getAtseginDut());?>
+                        </td>
+                    </tr>
+                    <?php
+                    }
+                ?>
+            </tbody>
+        </table>
+        <?php
+    } else {
+        ?>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Ez dituzu baliabiderik</th>
+                </tr>
+            </thead>
+        </table>
+        <?php
+    }
+    ?>
+</div>

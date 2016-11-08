@@ -1,0 +1,59 @@
+<div class="row">
+    <div class="col-xs-3 col-sm-2">
+        <figure class="rounded">
+            <a href="{{authorUrl}}" title="{{authorName}}">
+                {{#avatarIrudia}}
+                    <img src="{{autorIrudiaUrl}}" alt="{{autorIzena}}"/>
+                {{/avatarIrudia}}
+
+                {{^avatarIrudia}}
+                    <span class="{{color}} perfil {{classProfila}}"></span>
+                {{/avatarIrudia}}
+            </a>
+        </figure>
+    </div>
+
+    <div class="col-xs-8 col-xs-offset-1 col-sm-6 col-sm-offset-0 text-comentario">
+        {{#needModeration}}
+            <div class="alert alert-warning" id="iruzkina-{{iruzkinaId}}">
+
+                <div class="text-left">
+                    <p>Iruzkina moderatzeko zain dago.</p>
+
+                    <button class="btn btn-success" id="iruzkinaModeration-accept" data-url="{{moderationUrl}}/button/accept/?format=json" >
+                        Onartu
+                    </button>
+
+                    <button class="btn btn-danger" id="iruzkinaModeration-reject" data-url="{{moderationUrl}}/button/reject/?format=json" >
+                        Ukatu
+                    </button>
+
+                </div>
+
+            </div>
+        {{/needModeration}}
+
+        <span class="autor">
+            <a href="{{authorUrl}}" title="{{authorName}}">
+                {{authorName}}
+            </a>
+        </span>
+        <span class="date">{{iruzkinaDate}}</span>
+
+        <p id="iruzkina-{{iruzkinaId}}">
+            {{iruzkinaIruzkin}}
+        </p>
+
+        {{#viewRespondComment}}
+        <span id="iruzkina-{{iruzkinaId}}" class="respond-comment">
+            <small>Erantzun <i class="fa fa-share-square fa-rotate-180"></i></small>
+        </span>
+        {{/viewRespondComment}}
+
+    </div>
+
+    {{#iruzkinaSon}}
+        {{> iruzkinaSon}}
+    {{/iruzkinaSon}}
+
+</div>

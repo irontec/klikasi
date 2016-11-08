@@ -1,0 +1,30 @@
+---
+component: ficha_content
+---
+
+<div class = 'col-xs-12 col-sm-8 ficha-content'>
+	<h1>{{title}}</h1>
+	<div class = 'date-info'>
+		<small>{{date}}</small>
+		{{> info_ficha}}
+	</div>
+	{{{text}}}
+
+	{{#each docs}}
+		<div class = 'adjunto col-xs-12'>
+			<span><i class="fa fa-file-o"></i>{{doc}}</span><span class = 'ext'>{{ext}}</span>
+		</div>
+	{{/each}}
+
+	{{#each images}}
+		<figure class = 'col-xs-12'>
+			<img src = '{{image}}' alt = '{{alt}}'/>
+		</figure>
+	{{/each}}
+
+	{{#each videos}}
+		<figure class = 'col-xs-12'>
+			{{{video}}}
+		</figure>
+	{{/each}}
+</div>

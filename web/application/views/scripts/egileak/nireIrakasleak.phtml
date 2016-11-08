@@ -1,0 +1,128 @@
+<section class="col-xs-12">
+<?php
+if ($this->populateIrakasleak) {
+    ?>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Izena</th>
+                    <th>Ikastegia</th>
+                    <th>Egoera</th>
+                    <th>Aukerak</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                if (sizeof($this->nireIrakasleakList) > 0) {
+                    foreach ($this->nireIrakasleakList as $irakasleaRel) {
+                        $irakaslea = $irakasleaRel->getIrakaslea();
+                        $ikastegia = $irakasleaRel->getIkastegia();
+                    ?>
+                    <tr>
+                        <td>
+                            <a
+                                href="<?php echo $irakaslea->urlProfile(); ?>"
+                                title="<?php echo $irakaslea->getCompletName(); ?>"
+                                ><i class="fa fa-external-link"></i> <?php echo $irakaslea->getCompletName(); ?></a>
+                        </td>
+                        <td>
+                            <a
+                                href="<?php echo $ikastegia->ikastegiaUrl(); ?>"
+                                title="<?php echo $ikastegia->getIzena(); ?>"
+                                ><i class="fa fa-external-link"></i> <?php echo $ikastegia->getIzena(); ?></a>
+                        </td>
+                        <td>
+                            <?php echo $irakasleaRel->getEgoera(); ?>
+                        </td>
+                        <td data-irakaslea="<?php echo $irakasleaRel->getId(); ?>">
+                            <?php
+                            if ($irakasleaRel->getEgoera() == 'onartzeko') {
+                                ?>
+                                <button
+                                    class="btn btn-warning cancelPetition"
+                                    data-irakaslea="<?php echo $irakasleaRel->getId(); ?>"
+                                    data-action="cancel"
+                                    >Cancelar petición</button>
+                                <?php
+                            } elseif ($irakasleaRel->getEgoera() == 'onartua'){
+                                ?>
+                                <button
+                                    class="btn btn-danger cancelPetition"
+                                    data-irakaslea="<?php echo $irakasleaRel->getId(); ?>"
+                                    data-action="delete"
+                                    >Ezabatu</button>
+                                <?php
+                            }
+                            ?>
+                        </td>
+                    </tr>
+                    <?php
+                    }
+                } else {
+                    ?>
+                        <tr>
+                            <td colspan="4">Ez daukazu irakaslerik</td>
+                        </tr>
+                    <?php
+                }
+                ?>
+            </tbody>
+        </table>
+    </div>
+<?php
+
+    if (sizeof($this->irakasleakList) > 0) {
+        ?>
+        <form
+            method="POST"
+            class=""
+            id="addIrakasleak-form">
+
+            <h3>Irakasleari eskaera bidali </h3>
+
+            <div class="form-group">
+                <div class="col-sm-6">
+                    <select name="irakasle" class="form-control">
+                        <?php
+                        foreach ($this->irakasleakList as $key => $irakasleakList) {
+
+                            echo '<optgroup label="' . $key . '">';
+
+                                foreach ($irakasleakList as $ikastegiId => $irakaslea) {
+                                    $erabiltzailea = $irakaslea->getErabiltzailea();
+                                    echo '<option value="' . $erabiltzailea->getId() . '_' . $ikastegiId . '">';
+                                    echo $erabiltzailea->getCompletName();
+                                    echo '</option>';
+                                }
+
+                            echo '</optgroup>';
+
+                        }
+                        ?>
+                    </select>
+                </div>
+
+                <div class="col-sm-6">
+                    <button
+                        id="addIrakasleak"
+                        class="btn btn-default"
+                        >Bidali</button>
+                </div>
+
+            </div>
+
+        </form>
+        <?php
+    }
+
+} else {
+    ?>
+    <div class="col-xs-12">
+        <br />
+        <p>Erlazionatutako eta onartutako ikastegi bat izan behar duzu</p>
+    </div>
+    <?php
+}
+?>
+</section>

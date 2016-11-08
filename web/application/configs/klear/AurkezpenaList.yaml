@@ -1,0 +1,83 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+
+fixedPositions:
+  - &fixedAurkezpen
+    fixedPositions:
+      group:
+        label: _("Datuak")
+        colsPerRow: 4
+        fields:
+          titulua: 2
+          url: 4
+
+production:
+  main:
+    module: klearMatrix
+    defaultScreen: aurkezpenaList_screen
+  screens:
+    aurkezpenaList_screen: &aurkezpenaList_screenLink
+      controller: list
+      pagination:
+        items: 25
+      <<: *Aurkezpena
+      title: _("List of %s", ngettext('Aurkezpena', 'Aurkezpena(s)', 0))
+      fields:
+        blacklist:
+          sortzeData: true
+          klikKopurua: true
+        options:
+          title: _("Options")
+          screens:
+            aurkezpenaEdit_screen: true
+          dialogs:
+            aurkezpenaDel_dialog: true
+          default: aurkezpenaEdit_screen
+      options:
+        title: _("Options")
+        screens:
+          aurkezpenaNew_screen: true
+        dialogs:
+          aurkezpenaDel_dialog: true
+    aurkezpenaNew_screen: &aurkezpenaNew_screenLink
+      <<: *Aurkezpena
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Add %s", ngettext('Aurkezpena', 'Aurkezpena(s)', 1))
+      <<: *fixedAurkezpen
+      fields:
+        blacklist:
+          sortzeData: true
+          klikKopurua: true
+    aurkezpenaEdit_screen: &aurkezpenaEdit_screenLink
+      <<: *Aurkezpena
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      title: _("Edit %s", ngettext('Aurkezpena', 'Aurkezpena(s)', 1))
+      <<: *fixedAurkezpen
+      fields:
+        blacklist:
+          sortzeData: true
+        readOnly:
+          klikKopurua: true
+  dialogs:
+    aurkezpenaDel_dialog: &aurkezpenaDel_dialogLink
+      <<: *Aurkezpena
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('Aurkezpena', 'Aurkezpena(s)', 1))
+      description: _("Do you want to delete this %s?", ngettext('Aurkezpena', 'Aurkezpena(s)', 1))
+      message: _("%s successfully deleted.", ngettext('Aurkezpena', 'Aurkezpena(s)', 1))
+      labelOnList: true
+      multiItem: true
+
+testing:
+  _extends: production
+staging:
+  _extends: production
+development:
+  _extends: production

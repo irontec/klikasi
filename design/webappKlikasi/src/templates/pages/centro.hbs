@@ -1,0 +1,161 @@
+---
+title : Deustuko Ikastola
+
+centro-ficha :
+  nombre : "Deustuko Ikastola"
+  image : "images/di.jpg"
+  alt : "Deustuko Ikastola"
+  autores : "17"
+  recursos : "78"
+  text : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+  fondo-color : "bg-grey"
+  fondo-imagen : "background : url('images/di.jpg') fixed"
+  parallax : 1
+
+datos-resumen-ficha :
+  width : "col-xs-12 col-sm-6 col-md-4"
+  image : "images/universo.jpg"
+  alt : "Universo"
+  class-caption : "bg-green"
+  icons-list :
+    - icon : "fa-folder"
+    - icon : "fa-volume-up"
+  categoria : "Natur zientziak"
+  title : "Unibertsoa"
+  text : "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>"
+  edad-min : "11"
+  edad-max : "14"
+  curso : "D.B.H. 2"
+  autor : "Egilearen izena"
+  centro : "Deustuko Ikastola"
+  num-leido : 69
+  num-megusta : 45
+  num-comentario : 1233
+  classFilterIsotope: Ikusienak
+
+datos-resumen-ficha2 :
+  width : "col-xs-12 col-sm-6 col-md-4"
+  image : "images/universo.jpg"
+  alt : "Universo"
+  class-caption : "bg-pink"
+  icons-list :
+    - icon : "fa-folder"
+    - icon : "fa-volume-up"
+  categoria : "Natur zientziak"
+  title : "Unibertsoa"
+  text : "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>"
+  edad-min : "11"
+  edad-max : "14"
+  curso : "D.B.H. 2"
+  autor : "Egilearen izena"
+  centro : "Deustuko Ikastola"
+  num-leido : 69
+  num-megusta : 45
+  num-comentario : 1233
+  classFilterIsotope: Ikusienak
+
+datos-resumen-ficha3 :
+  width : "col-xs-12 col-sm-6 col-md-4"
+  image : "images/universo.jpg"
+  alt : "Universo"
+  class-caption : "bg-yellow"
+  icons-list :
+    - icon : "fa-folder"
+    - icon : "fa-volume-up"
+  categoria : "Natur zientziak"
+  title : "Unibertsoa"
+  text : "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>"
+  edad-min : "11"
+  edad-max : "14"
+  curso : "D.B.H. 2"
+  autor : "Egilearen izena"
+  centro : "Deustuko Ikastola"
+  num-leido : 69
+  num-megusta : 45
+  num-comentario : 1233
+  classFilterIsotope: Ikusienak
+
+datos-resumen-ficha4 :
+  width : "col-xs-12 col-sm-6 col-md-4"
+  image : "images/universo.jpg"
+  alt : "Universo"
+  class-caption : "bg-blue"
+  icons-list :
+    - icon : "fa-folder"
+    - icon : "fa-volume-up"
+  categoria : "Natur zientziak"
+  title : "Unibertsoa"
+  text : "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>"
+  edad-min : "11"
+  edad-max : "14"
+  curso : "D.B.H. 2"
+  autor : "Egilearen izena"
+  centro : "Deustuko Ikastola"
+  num-leido : 69
+  num-megusta : 45
+  num-comentario : 1233
+  classFilterIsotope: Ikusienak
+
+datos-resumen-ficha5 :
+  width : "col-xs-12 col-sm-6 col-md-4"
+  image : "images/universo.jpg"
+  alt : "Universo"
+  class-caption : "bg-grey"
+  icons-list :
+    - icon : "fa-folder"
+    - icon : "fa-volume-up"
+  categoria : "Natur zientziak"
+  title : "Unibertsoa"
+  text : "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>"
+  edad-min : "11"
+  edad-max : "14"
+  curso : "D.B.H. 2"
+  autor : "Egilearen izena"
+  centro : "Deustuko Ikastola"
+  num-leido : 69
+  num-megusta : 45
+  num-comentario : 1233
+  classFilterIsotope: Ikusienak
+
+datos-resumen-ficha6 :
+  width : "col-xs-12 col-sm-6 col-md-4"
+  image : "images/universo.jpg"
+  alt : "Universo"
+  class-caption : "bg-brown"
+  icons-list :
+    - icon : "fa-folder"
+    - icon : "fa-volume-up"
+  categoria : "Natur zientziak"
+  title : "Unibertsoa"
+  text : "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>"
+  edad-min : "11"
+  edad-max : "14"
+  curso : "D.B.H. 2"
+  autor : "Egilearen izena"
+  centro : "Deustuko Ikastola"
+  num-leido : 69
+  num-megusta : 45
+  num-comentario : 1233
+  classFilterIsotope: Ikusienak
+
+subheader-data :
+  nombre : "Ikastegiak"
+  class : "bg-standard-grey"
+
+---
+<div class = 'container'>
+  {{> subheader subheader-data }}
+</div>
+{{> centro_perfil centro-ficha}}
+<div class="container principal">
+    {{> filtro_buscador}}
+    <div class="container-filter">
+        {{> resumen_ficha datos-resumen-ficha }}
+        {{> resumen_ficha datos-resumen-ficha2 }}
+        {{> resumen_ficha datos-resumen-ficha3 }}
+        {{> resumen_ficha datos-resumen-ficha4 }}
+        {{> resumen_ficha datos-resumen-ficha5 }}
+        {{> resumen_ficha datos-resumen-ficha6 }}
+    </div>
+    {{> load}}
+</div>

@@ -1,0 +1,25 @@
+production: 
+  class: \Klikasi\Model\Kontaktua
+  fields: 
+    izena: 
+      title: _('Izena')
+      type: text
+      required: true
+      default: true
+    posta: 
+      title: _('Posta')
+      type: text
+      required: true
+    gaia: 
+      title: _('Gaia')
+      type: text
+      required: true
+    mezua: 
+      title: _('Mezua')
+      type: textarea
+testing: 
+  _extends: production
+staging: 
+  _extends: production
+development: 
+  _extends: production

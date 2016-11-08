@@ -1,0 +1,195 @@
+configuration:
+  - &maxUploadSize
+    size_limit: 15M
+
+actions:
+  - &editAction
+    controller: edit
+    class: ui-silk-pencil
+    label: false
+    
+  - &delAction
+    class: ui-silk-bin
+    controller: delete
+    labelOption: false
+    
+  - &newAction
+    multiInstance: true
+    class: ui-silk-add
+    label: true
+    controller: new
+    
+  - &downloadAction
+    controller: file
+    action: download
+    
+  - &forceDownloadAction
+    controller: file
+    action: forcedw
+    
+  - &uploadAction
+    controller: file
+    action: upload
+    
+  - &audioPlayer
+    type: command
+    title: Subir un archivo
+    class: jmedia
+    onNull: hide
+
+  - &downloadCommand
+    type: command
+    external: true
+    icon: ui-silk-bullet-disk
+    title: _('Download file')
+    text: |
+      Descargar fichero:
+      Nombre del fichero: %name%
+      Tamaño del fichero: (%human_size%)
+      Mime-type: %mimetype%
+    onNull: hide
+
+  - &uploadCommand
+    type: command
+    title: Subir un archivo
+    class: qq-uploader
+    onNull: show
+    
+  - &previewCommandAction
+    controller: file
+    action: preview
+    
+  - &previewCommand
+    type: command
+    class: filePreview
+    external: true
+    props:
+      width: 200
+      height: 200
+      crop: true
+    onNull: hide
+  - &previewlistCommand
+    type: command
+    class: filePreview
+    listController: true
+    external: true
+    props:
+      width: 30
+      height: 30
+      crop: true
+    onNull: hide
+    
+  - &autocompleteEtiketaCommand
+    controller: field-decorator
+    action: index
+    autocomplete:
+      mapperName: \Klikasi\Mapper\Sql\Etiketa
+      limit: 10
+      order: izena ASC
+      fieldName: 
+        fields: 
+          - izena
+        template: '%izena%'
+    
+  - &autocompleteErabiltzaileaCommand
+    controller: field-decorator
+    action: index
+    autocomplete:
+      mapperName: \Klikasi\Mapper\Sql\Erabiltzailea
+      limit: 10
+      order: izena ASC
+      fieldName: 
+        fields: 
+          - izena
+          - abizena
+          - abizena2
+        template: '%izena% %abizena% %abizena2%'
+
+  - &autocompleteKolaboratzaileaCommand
+    controller: field-decorator
+    action: index
+    autocomplete:
+      mapperName: \Klikasi\Mapper\Sql\Erabiltzailea
+      limit: 10
+      order: izena ASC
+      label: izena
+      fieldName: 
+        fields: 
+          - izena
+          - abizena
+          - abizena2
+        template: '%izena% %abizena% %abizena2%'
+
+  - &autocompleteKategoriaCommand
+    controller: field-decorator
+    action: index
+    autocomplete:
+      mapperName: \Klikasi\Mapper\Sql\Kategoria
+      limit: 10
+      order: izena ASC
+      fieldName: 
+        fields: 
+          - izena
+        template: '%izena%'
+
+  - &autocompleteIkastegiaCommand
+    controller: field-decorator
+    action: index
+    autocomplete:
+      mapperName: \Klikasi\Mapper\Sql\Ikastegia
+      limit: 10
+      order: izena ASC
+      fieldName: 
+        fields: 
+          - izena
+          - herria
+        template: '<strong>%izena%</strong> (%herria%)'
+
+  - &autocompleteEdukiaCommand
+    controller: field-decorator
+    action: index
+    autocomplete:
+      mapperName: \Klikasi\Mapper\Sql\Edukia
+      limit: 10
+      order: titulua ASC
+      fieldName: 
+        fields: 
+          - titulua
+          - sortzeData
+        template: '<b>%titulua%</b> (%sortzeData%)'
+
+  - &autocompleteGaiaCommand
+    controller: field-decorator
+    action: index
+    autocomplete:
+      mapperName: \Klikasi\Mapper\Sql\IkastegiGaiak
+      limit: 10
+      order: izena ASC
+      fieldName: 
+        fields: 
+          - izena
+        template: '%izena%'
+
+  - &autocompleteMotaCommand
+    controller: field-decorator
+    action: index
+    autocomplete:
+      mapperName: \Klikasi\Mapper\Sql\IkastegiMota
+      limit: 10
+      order: izena ASC
+      fieldName: 
+        fields: 
+          - izena
+        template: '%izena%'
+
+  - &autocompleteMailaCommand
+    controller: field-decorator
+    action: index
+    autocomplete:
+      mapperName: \Klikasi\Mapper\Sql\Maila
+      limit: 10
+      order: izena ASC
+      fieldName: 
+        fields: 
+          - izena
+        template: '%izena%'

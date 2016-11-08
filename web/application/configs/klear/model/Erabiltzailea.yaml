@@ -1,0 +1,110 @@
+production: 
+  class: \Klikasi\Model\Erabiltzailea
+  fields: 
+    izena: 
+      title: _('Izena')
+      type: text
+      required: true
+    abizena: 
+      title: _('Abizena')
+      type: text
+      required: true
+    abizena2: 
+      title: _('Bigarren Abizena')
+      type: text
+
+    izenOsoa:
+      title: _("Izena")
+      type: ghost
+      source: 
+        predefined: concat
+        template:
+          izena:
+            literal: '%izena%'
+            checkEmpty: true
+          abizena:
+            literal: '&nbsp;%abizena%'
+            checkEmpty: true
+          abizena2:
+            literal: '&nbsp;%abizena2%'
+            checkEmpty: true
+          erabiltzaileIzena:
+            literal: '&nbsp;(<strong>%erabiltzaileIzena%</strong>)'
+            checkEmpty: true
+      
+    deskribapena: 
+      title: _('Deskribapena')
+      type: textarea
+    erabiltzaileIzena: 
+      title: _('Erabiltzaile izena')
+      type: text
+      required: true
+    pasahitza: 
+      title: _('Pasahitza')
+      type: password
+      required: true
+      adapter: Blowfish
+    posta: 
+      title: _('Posta')
+      type: text
+      required: true
+      default: true
+    egoera: 
+      title: _('Egoera')
+      type: select
+      defaultValue: sortua
+      source: 
+        data: inline
+        values: 
+          'sortua': _('Sortua')
+          'datuakSartuta': _('Profilaren alta datuak sartunda')
+          'aktibatua': _('Aktibatua')
+    url: 
+      title: _('Url')
+      type: text
+    jaiotzeData: 
+      title: _('Jaiotze data')
+      type: picker
+      required: true
+      source: 
+        control: date
+        settings: 
+          disabled: 'false'
+    sortzeData: 
+      title: _('Sortze data')
+      type: picker
+      defaultValue: CURRENT_TIMESTAMP
+      source: 
+        control: datetime
+        settings: 
+          disabled: 'false'
+    altaData: 
+      title: _('Alta data')
+      type: picker
+      defaultValue: "0000-00-00 00:00:00"
+      source: 
+        control: datetime
+        settings: 
+          disabled: 'false'
+          
+    superErabiltzailea: 
+      title: _('Super erabiltzailea')
+      type: checkbox
+      defaultValue: 0
+  
+    profila:
+       title: _('Profia')
+       type: select
+       source:
+         data: inline
+         values:
+            'otros': 'Otros'
+            'irakasle': 'Irakasle'
+            'ikasle': 'Ikasle'
+
+testing: 
+  _extends: production
+staging: 
+  _extends: production
+development: 
+  _extends: production

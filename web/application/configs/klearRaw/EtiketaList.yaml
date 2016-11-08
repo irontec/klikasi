@@ -1,0 +1,65 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+
+
+production: 
+  main: 
+    module: klearMatrix
+    defaultScreen: etiketaList_screen
+  screens: &etiketa_screensLink 
+    etiketaList_screen: &etiketaList_screenLink 
+      controller: list
+      pagination: 
+        items: 25
+      <<: *Etiketa
+      class: ui-silk-text-list-bullets
+      title: _("List of %s %2s", ngettext('Etiketa', 'Etiketa(s)', 0), "[format| (%parent%)]")
+      fields: &etiketa_fieldsLink 
+        options: 
+          title: _("Options")
+          screens: 
+            etiketaEdit_screen: true
+          dialogs: 
+            etiketaDel_dialog: true
+          default: etiketaEdit_screen
+      options: 
+        title: _("Options")
+        screens: 
+          etiketaNew_screen: true
+        dialogs: 
+          etiketaDel_dialog: true
+    etiketaNew_screen: &etiketaNew_screenLink 
+      <<: *Etiketa
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Add %s", ngettext('Etiketa', 'Etiketa(s)', 1), "[format| (%parent%)]")
+      shortcutOption: N
+      postActionOptions: 
+        screens: 
+          etiketaEdit_screen: true
+    etiketaEdit_screen: &etiketaEdit_screenLink 
+      <<: *Etiketa
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      labelOnPostAction: _("Edit %s %2s", ngettext('Etiketa', 'Etiketa(s)', 1), "[format| (%item%)]")
+      title: _("Edit %s %2s", ngettext('Etiketa', 'Etiketa(s)', 1), "[format| (%item%)]")
+  dialogs: &etiketa_dialogsLink 
+    etiketaDel_dialog: &etiketaDel_dialogLink 
+      <<: *Etiketa
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('Etiketa', 'Etiketa(s)', 1))
+      description: _("Do you want to delete this %s?", ngettext('Etiketa', 'Etiketa(s)', 1))
+      message: _("%s successfully deleted.", ngettext('Etiketa', 'Etiketa(s)', 1))
+      multiItem: 1
+      labelOnList: 1
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production

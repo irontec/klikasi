@@ -1,0 +1,69 @@
+production: 
+  class: \Klikasi\Model\Jakinarazpenak
+  fields: 
+    erabiltzaileaId: 
+      title: _('Erabiltzailea id')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Klikasi\Mapper\Sql\Erabiltzailea
+          fieldName: 
+            fields: 
+              - izena
+            template: '%izena%'
+          order: izena
+      default: true
+    idKanpotarra: 
+      title: _('Id kanpotarra')
+      type: number
+      required: true
+      source: 
+        control: Spinner
+    mota: 
+      title: _('Mota')
+      type: select
+      required: true
+      source: 
+        data: inline
+        values: 
+          'irakasle eskaera': _('irakasle eskaera')
+          'ikasle eskaera': _('ikasle eskaera')
+          'lagun eskaera': _('lagun eskaera')
+          'eduki berria': _('eduki berria')
+          'iruzkin berria': _('iruzkin berria')
+    egoera: 
+      title: _('Egoera')
+      type: select
+      defaultValue: ikusteko
+      source: 
+        data: inline
+        values: 
+          'ikusteko': _('ikusteko')
+          'ikusita': _('ikusita')
+    postazJakinarazi: 
+      title: _('Postaz jakinarazi')
+      type: select
+      defaultValue: 1
+      source: 
+        data: inline
+        values: 
+          '0': 
+            title: _("No")
+          '1': 
+            title: _("Yes")
+    sortzeData: 
+      title: _('Sortze data')
+      type: picker
+      defaultValue: CURRENT_TIMESTAMP
+      source: 
+        control: datetime
+        settings: 
+          disabled: 'false'
+testing: 
+  _extends: production
+staging: 
+  _extends: production
+development: 
+  _extends: production

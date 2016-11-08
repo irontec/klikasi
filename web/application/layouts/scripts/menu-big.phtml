@@ -1,0 +1,212 @@
+<?php
+$urlKategoriak = $this->baseUrl('kategoriak');
+$activeKategoriak = preg_match('/.*\/kategoriak.*/', $_SERVER['REQUEST_URI']) ? true : false;
+$urlIkastegiak = $this->baseUrl('ikastegiak');
+$activeIkastegiak = preg_match('/.*\/ikastegiak.*/', $_SERVER['REQUEST_URI']) ? true : false;
+$urlEdukiak = $this->baseUrl('edukiak-igo');
+$activeEdukiak = preg_match('/.*\/edukiak-igo.*/', $_SERVER['REQUEST_URI']) ? true : false;
+
+
+$request = Zend_Controller_Front::getInstance()->getRequest();
+$searchFormValues = $this->searchFormValues();
+?>
+<nav id="mega-menu" class="text-center nav-full" role="navigation">
+    <ul class="nav row">
+        <li class="logo-menu col-sm-3 hide">
+            <a href="<?php echo $this->baseUrl(); ?>" title="Klikasi. Sortu. Partekatu. Ikasi.">
+                <img src="<?php echo $this->baseUrl('images/logo_klikasi_scroll.png'); ?>" alt="Klikasi. Sortu. Partekatu. Ikasi.">
+            </a>
+        </li>
+        <li class="col-xs-6 col-sm-3" style="padding-left:0;">
+            <a <?php if ($activeKategoriak) echo 'class="active-menu"'; ?> href="<?php echo $urlKategoriak; ?>" title="Kategoriak">Kategoriak</a>
+        </li>
+        <li class="col-xs-6 col-sm-3">
+            <a <?php  if ($activeIkastegiak) echo 'class="active-menu"'; ?> href="<?php echo $urlIkastegiak; ?>" title="Ikastegiak">Ikastegiak</a>
+        </li>
+        <li class="col-xs-6 col-sm-3">
+            <a <?php if ($activeEdukiak) echo 'class="active-menu"'; ?> href="<?php echo $urlEdukiak; ?>" title="Edukiak igo">Edukiak igo <span class="glyphicon glyphicon-upload"></span></a>
+        </li>
+        <li class="bilatu col-xs-6 col-sm-3 dropdown mega-menu-fw">
+            <a href="#" class="color-border dropdown-toggle" data-toggle="dropdown">Bilatu <span class="glyphicon glyphicon-search"></span></a>
+            <div class="dropdown-menu mega-menu-content">
+            <form action="<?php echo $this->url(array('controller' => 'edukiak', 'action' => 'index'), null, true); ?>" method="get" class="search">
+                <div class="container aire">
+                    <div class="row big-search">
+                        <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 navbar-form navbar-left">
+                            <form class="navbar-form navbar-left" role="search">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="searchvalue" value="<?php echo $request->getParam('searchvalue'); ?>" placeholder="_____">
+                                    <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- .row.search -->
+
+                    <div class="row toggle" style="display:none;">
+                        <div class="col-sm-4">
+                            <div class="form-group select2-container select2-container-multi" style="width:100%;">
+                                <label>Kategoriak</label>
+                                <span class="search">
+                                    <!-- <i class="fa fa-chevron-down"></i> -->
+                                    <select multiple class="form-control" name="searchkategoria[]">
+                                        <option></option>
+                                        <?php
+                                        if (array_key_exists('kategoria', $searchFormValues))
+                                        foreach ($searchFormValues['kategoria'] as $kategoria) {
+                                            $id = $kategoria->getId();
+                                            $name = $kategoria->getizena();
+                                            $selected = $kategoria->getId() == $request->getParam('searchkategoria') ?  'selected' : '';
+
+                                            echo "<option value='$id' $selected>$name</option>";
+                                        }
+                                        ?>
+                                    </select>
+                                </span>
+                            </div>
+                        </div><!-- .col-sm-4 -->
+
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>Fitxategi mota</label>
+                                <span class="select"><i class="fa fa-chevron-down"></i>
+                                    <select class="form-control" name="searchfitxategia">
+                                        <option></option>
+                                        <?php
+                                        $values = array(
+                                            "Irudia" => 'Argazkia',
+                                            "Bideoa" => 'Bideoa',
+                                            "Aurkezpena" => 'Aurkezpena',
+                                            "Fitxategia" => 'Fitxategia',
+                                            "Esteka" => 'Soinuak'
+                                        );
+                                        foreach ($values as $id => $name) {
+                                            $selected = $id == $request->getParam('searchfitxategia') ?  'selected' : '';
+                                            echo "<option value='$id' $selected>$name</option>";
+                                        }
+                                        ?>
+                                    </select>
+                                </span>
+                            </div>
+                        </div><!-- .col-sm-4 -->
+
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>Data artean</label>
+                                <div class="clearfix"></div>
+                                <div class="row">
+                                    <div class="input-group col-sm-6 pull-right m-bottom-2">
+                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                        <input type="text" name="searchdateto" class="form-control" placeholder="datara" value="<?php echo date("Y-m-d");?>">
+                                    </div>
+                                    <div class="input-group col-sm-6 pull-right">
+                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                        <input type="text" name="searchdatefrom" class="form-control" placeholder="datatik" value="2014-01-01">
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- .col-sm-4 -->
+                    </div><!-- .row -->
+
+                    <hr class="toggle" style="display:none;">
+
+                    <div class="row toggle" style="display:none;">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>Ikastegia</label>
+                                <span class="select"><i class="fa fa-chevron-down"></i>
+                                    <select class="form-control" name="searchikastegia">
+                                        <option></option>
+                                        <?php
+                                        if (array_key_exists('ikastegia', $searchFormValues))
+                                        foreach ($searchFormValues['ikastegia'] as $kategoria) {
+                                            $id = $kategoria->getId();
+                                            $name = $kategoria->getIzena() . ", " . $kategoria->getHerria();
+                                            $selected = $id == $request->getParam('searchikastegia') ?  'selected' : '';
+
+                                            echo "<option value='$id' $selected>$name</option>";
+                                        }
+                                        ?>
+                                    </select>
+                                </span>
+                            </div>
+                        </div><!-- .col-sm-4 -->
+
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>Ikasturtea</label>
+                                <span class="select"><i class="fa fa-chevron-down"></i>
+                                    <select class="form-control" name="searchikasturtea">
+                                        <option></option>
+                                        <?php
+                                        if (array_key_exists('maila', $searchFormValues))
+                                        foreach ($searchFormValues['maila'] as $kategoria) {
+                                            $id = $kategoria->getId();
+                                            $name = $kategoria->getizena();
+                                            $selected = $id == $request->getParam('searchikasturtea') ?  'selected' : '';
+
+                                            echo "<option value='$id' $selected>$name</option>";
+                                        }
+                                        ?>
+                                    </select>
+                                </span>
+                            </div>
+                        </div><!-- .col-sm-4 -->
+
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>Adina</label>
+                                <?php
+                                    $adina = $request->getParam("searchadina", ',');
+                                    $adinaFrom = 0;
+                                    $adinaTo = 100;
+
+                                    list($adinaFromRequest, $adinaToRequest) = explode(",", $adina);
+                                    if (is_numeric($adinaFromRequest) && is_numeric($adinaToRequest)) {
+                                        $adinaFrom = $adinaFromRequest;
+                                        $adinaTo = $adinaToRequest;
+                                    }
+                                ?>
+                                <span class="sel-edad col-xs-12">
+                                    <div>
+                                        <input type="text" name="searchadina" value="<?php echo $adinaFrom; ?>,<?php echo $adinaTo; ?>"
+                                          data-slider-min="0" data-slider-max="100"
+                                          data-slider-step="1"
+                                          data-slider-value="[<?php echo $adinaFrom; ?>,<?php echo $adinaTo; ?>]"
+                                          id="search-adina"
+                                        />
+                                        <!-- <hr class="edad" /> -->
+                                    </div>
+                                    <div class="clearfix"></div>
+                                    <span class="edad-min" data-toggle="tooltip" data-original-title="Default tooltip">
+                                        <a href="#">
+                                            <span class="edad"><strong class="min-years"><?php echo $adinaFrom; ?></strong> urtetik</span>
+                                        </a>
+                                    </span>
+                                    <span class="edad-max" data-toggle="tooltip" data-original-title="Default tooltip">
+                                        <a href="#">
+                                            <span class="edad"><strong class="max-years"><?php echo $adinaTo; ?></strong> urtera</span>
+                                        </a>
+                                    </span>
+                                </span>
+                            </div>
+                        </div><!-- /.col-sm-4 -->
+                    </div><!-- .row -->
+
+                    <hr class="hr-button">
+
+                    <div class="pull-right search-formbutton">
+                        <a href="#" class="iragazi"><span class="button iragazi">Iragazi</span></a>
+                        <a href="#" class="refresh toggle" style="display:none;"><span><i class="fa fa-refresh"></i></span></a>
+                        <a href="#" class="angle" style="-moz-transform: rotate(180deg); -ms-transform: rotate(180deg); -o-transform: rotate(180deg); -webkit-transform: rotate(180deg); transform: rotate(180deg)">
+                            <span>
+                                <i class="fa fa-angle-up"></i>
+                            </span>
+                        </a>
+                    </div>
+                    </div><!-- .container.aire -->
+                </form>
+                </div><!-- .dropdown-menu.mega-menu-content -->
+        </li>
+    </ul>
+</nav><!--/.nav -->

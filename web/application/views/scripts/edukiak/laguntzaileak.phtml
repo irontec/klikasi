@@ -1,0 +1,79 @@
+<?php
+$edukia = $this->edukia;
+$formUrl = $this->baseUrl('edukiak/send-message-laguntzaileak?format=json');
+?>
+<div id="datuakLaguntzaileak">
+
+    <div class="col-xs-12">
+        <?php echo $this->alertMessage($this->erroreMezuak, $this->flashmezuak, $this->alertWarning); ?>
+    </div>
+
+    <h2>Laguntzaileak</h2>
+
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Perfil</th>
+                    <th>Estado</th>
+                    <th># Recursos</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                if (sizeof($this->laguntzaileakList) > 0) {
+                    foreach ($this->laguntzaileakList as $erabiltzaileaRel) {
+                        $erabiltzailea = $erabiltzaileaRel->getErabiltzailea();
+                        $relEdukia = reset($erabiltzailea->getErabiltzaileaRelEdukia());
+                        $relStatus = $relEdukia->getEgoera();
+                        ?>
+                        <tr class="erabiltzailea-<?php echo $erabiltzailea->getId() ?>">
+                            <td class="name"><?php echo $erabiltzailea->getCompletName(); ?></td>
+                            <td class="profila"><?php echo ucfirst($erabiltzailea->getProfila()); ?></td>
+                            <td class="status"><?php echo ucfirst($relStatus); ?></td>
+                            <td><?php echo sizeof($erabiltzailea->nireEdukiak()); ?></td>
+                            <td>
+                                <?php
+                                if ($relStatus != 'onartua') {
+                                    ?>
+                                    <a
+                                        href="<?php echo $this->currentUrl . '/acept-laguntzaileak/' . $erabiltzailea->getId(); ?>"
+                                        title=""
+                                        class="btn btn-success"
+                                        >Aceptar</a>
+                                    <?php
+                                }
+                                ?>
+                                <a
+                                    href="<?php echo $this->currentUrl . '/delete-laguntzaileak/' . $erabiltzailea->getId(); ?>"
+                                    title=""
+                                    class="btn btn-danger"
+                                    >Eliminar</a>
+                            </td>
+                        </tr>
+                        <?php
+                    }
+                } else {
+                    ?>
+                    <tr>
+                        <td colspan="6">No hay colaboradores</td>
+                    </tr>
+                    <?php
+                }
+                ?>
+            </tbody>
+        </table>
+
+        <?php echo $this->sendMessageDialog; ?>
+
+        <a
+            href="<?php echo $edukia->edukiaUrl(); ?>"
+            title=""
+            class="btn btn-default"
+            >Irten</a>
+
+    </div>
+
+</div>

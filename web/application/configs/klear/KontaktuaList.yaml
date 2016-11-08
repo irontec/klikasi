@@ -1,0 +1,76 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+
+fixedPositions:
+  - &fixedJatorria
+    fixedPositions:
+      group0:
+        label: _('Jatorria')
+        fields:
+          izena: true
+          posta: true
+
+production:
+  main:
+    module: klearMatrix
+    defaultScreen: kontaktuaList_screen
+  screens:
+    kontaktuaList_screen: &kontaktuaList_screenLink
+      controller: list
+      pagination:
+        items: 25
+      <<: *Kontaktua
+      title: _("List of %s %2s", ngettext('Kontaktua', 'Kontaktua(s)', 0), "[format| (%parent%)]")
+      fields:
+        options:
+          title: _("Options")
+          screens:
+            kontaktuaEdit_screen: true
+          dialogs:
+            kontaktuaDel_dialog: true
+          default: kontaktuaEdit_screen
+      options:
+        title: _("Options")
+        screens:
+          # kontaktuaNew_screen: true
+        dialogs:
+          kontaktuaDel_dialog: true
+    kontaktuaNew_screen: &kontaktuaNew_screenLink
+      <<: *Kontaktua
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Add %s", ngettext('Kontaktua', 'Kontaktua(s)', 1))
+      shortcutOption: N
+    kontaktuaEdit_screen: &kontaktuaEdit_screenLink
+      <<: *Kontaktua
+      controller: edit
+      fields:
+        readOnly:
+          izena: true
+          posta: true
+          gaia: true
+          mezua: true
+          nondik: true
+      class: ui-silk-pencil
+      label: false
+      title: _("Edit %s %2s", ngettext('Kontaktua', 'Kontaktua(s)', 1), "[format| (%item%)]")
+      <<: *fixedJatorria
+  dialogs:
+    kontaktuaDel_dialog:
+      <<: *Kontaktua
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('Kontaktua', 'Kontaktua(s)', 1))
+      description: _("Do you want to delete this %s?", ngettext('Kontaktua', 'Kontaktua(s)', 1))
+      message: _("%s successfully deleted.", ngettext('Kontaktua', 'Kontaktua(s)', 1))
+      multiItem: 1
+      labelOnList: 1
+testing:
+  _extends: production
+staging:
+  _extends: production
+development:
+  _extends: production

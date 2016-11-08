@@ -1,0 +1,38 @@
+<div class="row">
+    <form action="{{actionUrl}}" method="POST">
+
+        {{#isAuthor}}
+            <input type="hidden" name="isAthor" value="true" />
+        {{/isAuthor}}
+
+        <input type="hidden" name="edukiaId" value="{{edukiaId}}" />
+        <input type="hidden" name="responseIruzkina" value="" />
+
+        <div class="col-xs-3 col-sm-2">
+            <figure class="rounded">
+                {{#avatarIrudia}}
+                    <img src="{{irudiaUrl}}" alt="{{completName}}"/>
+                {{/avatarIrudia}}
+
+                {{^avatarIrudia}}
+                    <span class="{{color}} perfil {{classProfila}}"></span>
+                {{/avatarIrudia}}
+            </figure>
+        </div>
+
+        <div class="col-xs-8 col-xs-offset-1 col-sm-6 col-sm-offset-0 input-comentario">
+
+            <div class="alert alert-info hide">
+                <button class="close cancel-response" style="color: black !important;">×</button>
+                <strong>Iruzkina erantzun:</strong>
+                <small class="response-comment"></small>
+            </div>
+
+            <textarea name="comment" class="col-xs-12"></textarea>
+            <button class="button-icon bg-red">
+                <i class="fa fa-arrow-right hidden-xs"> </i>
+                Iruzkina argitaratu
+            </button>
+        </div>
+    </form>
+</div>

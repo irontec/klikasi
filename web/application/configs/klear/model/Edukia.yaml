@@ -1,0 +1,179 @@
+production: 
+  class: \Klikasi\Model\Edukia
+  fields: 
+    erabiltzaileaId: 
+      title: _('Edukiaren jabea')
+      type: select
+      source: 
+        data: mapper
+        'null': _("Unasigned")
+        config: 
+          mapperName: \Klikasi\Mapper\Sql\Erabiltzailea
+          fieldName: 
+            fields: 
+              - izena
+            template: '%izena%'
+          order: izena
+      decorators:
+        autocomplete:
+          command: autocompleteErabiltzailea_command
+      options:
+        screens:
+          erabiltzaileBerriaExternal_screen: true
+
+    ErabiltzaileaRelEdukia: 
+      title: _('Kolaboratzaileak')
+      type: multiselect
+      source:
+        data: mapper
+        config:
+          relationMapper: \Klikasi\Mapper\Sql\ErabiltzaileaRelEdukia
+          relatedMapperName: \Klikasi\Mapper\Sql\Erabiltzailea
+          relatedFieldName: izena
+          relationProperty: Erabiltzailea
+      decorators:
+        autocomplete:
+          command: autocompleteKolaboratzailea_command
+      options:
+        screens:
+          erabiltzaileBerriaExternal_screen: true
+
+    titulua: 
+      title: _('Titulua')
+      type: text
+      maxLength: 20
+      required: true
+      default: true
+    deskribapenLaburra: 
+      title: _('Deskribapen laburra')
+      type: textarea
+      maxLength: 100
+      required: true
+    deskribapena: 
+      title: _('Deskribapena')
+      type: textarea
+      required: true
+      maxLength: 20
+      source: 
+        control: tinymce
+        template: html5
+    bisitaKopurua: 
+      title: _('Bisita kopurua')
+      type: number
+      defaultValue: 0
+      source: 
+        control: Spinner
+    egoera: 
+      title: _('Egoera')
+      type: select
+      defaultValue: moderatzeko
+      source: 
+        data: inline
+        values: 
+          'onartzeko': _('Moderatzeko zain')
+          'onartua': _('Publikatua')
+    urteakNoiztik: 
+      title: _('Ze urtetatik')
+      type: number
+      source: 
+        control: Spinner
+    urteakNoizarte: 
+      title: _('Ze urterarte')
+      type: number
+      source: 
+        control: Spinner
+    url: 
+      title: _('Url')
+      type: text
+      required: true
+    sortzeData: 
+      title: _('Sortze data')
+      type: picker
+      defaultValue: CURRENT_TIMESTAMP
+      source: 
+        control: datetime
+        settings: 
+          disabled: 'false'
+
+    EdukiaRelKategoria: 
+      title: _("Kategoriak")
+      type: multiselect
+      source:
+        data: mapper
+        config:
+          relationMapper: \Klikasi\Mapper\Sql\EdukiaRelKategoria
+          relatedMapperName: \Klikasi\Mapper\Sql\Kategoria
+          relatedFieldName: izena
+          relationProperty: Kategoria
+      decorators:
+        autocomplete:
+          command: autocompleteKategoria_command
+      options:
+        screens:
+          kategoriaBerriaExternal_screen: true
+
+    EtiketaRelEdukia: 
+      title: _("Etiketak")
+      type: multiselect
+      source:
+        data: mapper
+        config:
+          relationMapper: \Klikasi\Mapper\Sql\EtiketaRelEdukia
+          relatedMapperName: \Klikasi\Mapper\Sql\Etiketa
+          relatedFieldName: izena
+          relationProperty: Etiketa
+      decorators:
+        autocomplete:
+          command: autocompleteEtiketa_command
+      options:
+        screens:
+          etiketaBerriaExternal_screen: true
+
+    EdukiaRelMaila: 
+      title: _("Maila")
+      type: multiselect
+      source:
+        data: mapper
+        config:
+          relationMapper: \Klikasi\Mapper\Sql\EdukiaRelMaila
+          relatedMapperName: \Klikasi\Mapper\Sql\Maila
+          relatedFieldName: izena
+          relationProperty: Maila
+      decorators:
+        autocomplete:
+          command: autocompleteMaila_command
+      options:
+        screens:
+          mailaBerriaExternal_screen: true
+
+    EdukiaRelIkastegia: 
+      title: _("Erlazionatutako ikastegiak")
+      type: multiselect
+      source:
+        data: mapper
+        config:
+          relationMapper: \Klikasi\Mapper\Sql\EdukiaRelIkastegia
+          relatedMapperName: \Klikasi\Mapper\Sql\Ikastegia
+          relatedFieldName: izena
+          relationProperty: Ikastegia
+      decorators:
+        autocomplete:
+          command: autocompleteIkastegia_command
+
+    EdukiaRelKanpaina: 
+      title: _("Kanpainak")
+      type: multiselect
+      source:
+        data: mapper
+        config:
+          relationMapper: \Klikasi\Mapper\Sql\EdukiaRelKanpaina
+          relatedMapperName: \Klikasi\Mapper\Sql\Kanpaina
+          relatedFieldName: izena
+          relationProperty: Kanpaina
+
+testing: 
+  _extends: production
+staging: 
+  _extends: production
+development: 
+  _extends: production

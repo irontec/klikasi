@@ -1,0 +1,143 @@
+<div class="table-responsive">
+    <table class="table table-bordered" id="nireIkastegiakTable">
+        <thead>
+            <tr>
+                <th>Izena</th>
+                <th>Aktibatuta</th>
+                <th>Administratzailea</th>
+                <th>Jabea</th>
+                <th>Egoera</th>
+                <th>Aukerak</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            if (!empty($this->nireIkastegiak)) {
+                foreach ($this->nireIkastegiak as $relIkastegia) {
+                    $ikastegia = $relIkastegia->getIkastegia();
+                    ?>
+                    <tr>
+                        <td>
+                            <a
+                            href="<?php echo $this->ikastegiaUrl($ikastegia); ?>"
+                            title="<?php echo $ikastegia->getIzena() ; ?>"
+                            >
+                                <i class="fa fa-external-link"></i>
+                                <?php echo $ikastegia->getIzena() . ", " . $ikastegia->getHerria(); ?>
+                            </a>
+                        </td>
+                        <td>
+                            <?php echo ($ikastegia->getAktibatua() == 1 ? 'Bai' : 'Ez')?>
+                        </td>
+                        <td>
+                            <?php echo ($relIkastegia->getAdministratzailea() == 1 ? 'Bai' : 'Ez')?>
+                        </td>
+                        <td>
+                            <?php echo ($relIkastegia->getJabea() == 1 ? 'Bai' : 'Ez')?>
+                        </td>
+                        <td>
+                            <?php
+                            if ($relIkastegia->getEgoera() == "onartzeko") {
+                                echo 'Zain';
+                            } elseif ($relIkastegia->getEgoera() == 'ezOnartua') {
+                                echo 'Ukatua';
+                            } else {
+                                echo 'Onartua';
+                            }
+                            ?>
+                        </td>
+                        <td>
+                            <?php
+                            if ($relIkastegia->getEgoera() == 'onartzeko') {
+                                ?>
+                                <button
+                                    class="btn btn-warning cancelPetition"
+                                    data-ikastegia="<?php echo $ikastegia->getId(); ?>"
+                                    >Eskaera ukatu</button>
+                                <?php
+                            } elseif ($relIkastegia->getEgoera() == 'onartua'){
+                                ?>
+                                <button
+                                    class="btn btn-danger leaveIkastegia"
+                                    data-ikastegia="<?php echo $ikastegia->getId(); ?>"
+                                    >Ikastegia utzi</button>
+                                <?php
+                            }
+                            ?>
+                        </td>
+                    </tr>
+                    <?php
+                }
+                } else {
+                    ?>
+                    <tr class="emptyTR">
+                        <th colspan="6">Ez dituzu erlazionatutako ikastegirik</th>
+                    </tr>
+                    <?php
+                }
+                ?>
+        </tbody>
+    </table>
+</div>
+
+<div class="col-xs-12">
+    <?php
+    if (sizeof($this->listIkastegia) > 0) {
+        ?>
+        <form method="POST" id="addRelIkastegia-form">
+
+            <h2>Ikastegiari eskaera bidali</h2>
+
+            <div class="form-group">
+
+                <select name="ikastegia" class="form-control">
+                    <?php
+                    $mota = '';
+                    $mote2 = true;
+
+                    foreach ($this->listIkastegia as $ikastegia) {
+                        if ($mota != ucfirst(strtolower($ikastegia->getMota()))) {
+                            $mota = ucfirst(strtolower($ikastegia->getMota()));
+                            echo "<optgroup label='" . $mota . "'>";
+                            $mote2 = false;
+                        }
+                        ?>
+                        <option
+                            value="<?php echo $ikastegia->getId(); ?>"><?php echo $ikastegia->getIzena() . ", " . $ikastegia->getHerria(); ?></option>
+                        <?php
+                        if ($mote2) {
+                            echo "</optgroup>";
+                        }
+                    }
+                    ?>
+                </select>
+
+            </div>
+
+            <div class="form-group">
+                <input
+                    type="submit"
+                    value="Bidali"
+                    class="btn btn-default"
+                    id="addRelIkastegiaInput"
+                    />
+            </div>
+        </form>
+        <?php
+    }
+    ?>
+</div>
+
+<div class="col-xs-12">
+
+    <h2>Ikastegi berria proposatu</h2>
+
+    <a
+        href="<?php echo $this->baseUrl('ikastegia-berria'); ?>"
+        title="Ikastegi berria proposatu"
+        class="btn btn-default"
+        >Ikastegi berria proposatu</a>
+
+</div>
+<p>&nbsp;</p>
+<!-- END .newIkastegiak -->

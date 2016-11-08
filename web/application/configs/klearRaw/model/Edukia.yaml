@@ -1,0 +1,83 @@
+production: 
+  class: \Klikasi\Model\Edukia
+  fields: 
+    erabiltzaileaId: 
+      title: _('Erabiltzailea id')
+      type: select
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Klikasi\Mapper\Sql\Erabiltzailea
+          fieldName: 
+            fields: 
+              - izena
+            template: '%izena%'
+          order: izena
+        'null': _("Unasigned")
+      default: true
+    titulua: 
+      title: _('Titulua')
+      type: text
+      required: true
+      maxLength: 350
+    deskribapenLaburra: 
+      title: _('Deskribapen laburra')
+      type: text
+      required: true
+      maxLength: 140
+    deskribapena: 
+      title: _('Deskribapena')
+      type: textarea
+      required: true
+    bisitaKopurua: 
+      title: _('Bisita kopurua')
+      type: number
+      defaultValue: 0
+      source: 
+        control: Spinner
+    urteakNoiztik: 
+      title: _('Urteak noiztik')
+      type: number
+      source: 
+        control: Spinner
+    urteakNoizarte: 
+      title: _('Urteak noizarte')
+      type: number
+      source: 
+        control: Spinner
+    egoera: 
+      title: _('Egoera')
+      type: select
+      defaultValue: onartzeko
+      source: 
+        data: inline
+        values: 
+          'onartzeko': _('onartzeko')
+          'onartua': _('onartua')
+          'ezOnartua': _('ezOnartua')
+          'blokeatuta': _('blokeatuta')
+    url: 
+      title: _('Url')
+      type: text
+      required: true
+      maxLength: 350
+    sortzeData: 
+      title: _('Sortze data')
+      type: picker
+      defaultValue: CURRENT_TIMESTAMP
+      source: 
+        control: datetime
+        settings: 
+          disabled: 'false'
+    karma: 
+      title: _('Karma')
+      type: number
+      defaultValue: 0
+      source: 
+        control: Spinner
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production

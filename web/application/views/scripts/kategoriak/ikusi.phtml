@@ -1,0 +1,64 @@
+<?php
+    $request = Zend_Controller_Front::getInstance()->getRequest();
+?>
+<div class="col-xs-12 subheader <?php echo $this->className; ?>">
+    <h1><?php echo $this->kategoria->getIzena(); ?></h1>
+</div>
+
+<div class="filtro-edukiak-kategoria">
+    <div class="filtro-buscador edukiak-kategoria col-xs-12">
+        <ul>
+            <li><strong>Ordenatu:</strong></li>
+            <li class="no-border">
+                <a data-sort-by="moreIzena" data-ascending="false"
+                   href="<?php echo $this->url(array('order' => null)); ?>">
+                    <?php echo $this->strongWrap('Izena', $request->getParam('order') == ''); ?>
+
+                </a>
+            </li>
+            <li>
+                <a data-sort-by="moreUpdated" data-ascending="false"
+                   href="<?php echo $this->url(array('order' => 'updated')); ?>">
+                    <?php echo $this->strongWrap($this->translate('[es] Updated'), $request->getParam('order') == 'updated'); ?>
+
+                </a>
+            </li>
+            <li>
+                <a data-sort-by="moreComments" data-ascending="false"
+                   href="<?php echo $this->url(array('order' => 'iruzkinak')); ?>">
+                    <?php echo $this->strongWrap('Iruzkin kopurua', $request->getParam('order') == 'iruzkinak'); ?>
+
+                </a>
+            </li>
+            <li>
+                <a data-sort-by="moreKarma" data-ascending="false"
+                   href="<?php echo $this->url(array('order' => 'arrakasta')); ?>">
+                    <?php echo $this->strongWrap($this->translate('[es] Karma'), $request->getParam('order') == 'arrakasta'); ?>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <span class="countEdukiakKategoria" style="display:none;"><?php echo $this->edukiaCount;?></span>
+</div>
+
+<div class="container-filter">
+    <?php
+    if (sizeof($this->edukia) > 0) {
+        foreach ($this->edukia as $edukia) {
+            echo $edukia;
+        }
+    }
+    ?>
+</div>
+
+<div class="row load">
+    <div class="col-xs-12 text-center">
+        <button
+            class="bg-red center-block loadMoreEdukiak"
+            data-page="1"
+            data-kategoria="<?php echo $this->kategorkiaUrl; ?>"
+            data-url="<?php echo $this->urlMoreAction; ?>?format=json"
+            >Gehiago ikusi</button>
+    </div>
+</div>

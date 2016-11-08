@@ -1,0 +1,276 @@
+<form
+    role="form"
+    class="form-horizontal edukiak-igo"
+    method="POST"
+    autocomplete="off"
+    >
+
+    <div class="container">
+        <div class="row edukiak-igo-form-row">
+
+            <div class="col-xs-12">
+                <div class="color-border"></div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 pull-left">
+
+                <div class="element-group">
+                    <input
+                        type="text"
+                        name="titulua"
+                        class="col-xs-12 form-control"
+                        id="titulua"
+                        placeholder="Izenburua"
+                        autofocus="autofocus"
+                        value=""
+                        />
+                </div>
+
+                <div class="element-group select2">
+                    <span class="select form-control"><i class="fa fa-chevron-down"></i>
+                        <select multiple class="form-control" id="kategoriak" name="kategoriak[]">
+                            <?php
+                            foreach ($this->kategoriakGlobala as $key => $val) {
+                                ?>
+                                <optgroup label="<?php echo $key; ?>">
+                                <?php
+                                foreach ($val as $kategoria) {
+                                    ?>
+                                    <option
+                                        value="<?php echo $kategoria->getId(); ?>"
+                                        ><?php echo $kategoria->getIzena(); ?></option>
+                                    <?php
+                                }
+                                ?>
+                                </optgroup>
+                                <?php
+                            }
+                            ?>
+                        </select>
+                    </span>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-xs-12 col-md-6 pull-left">
+                        <div class="element-group">
+                            <span class="select"><i class="fa fa-chevron-down"></i>
+                                <select class="form-control" id="maila" name="maila">
+                                    <?php
+                                    foreach ($this->mailak as $maila) {
+                                        ?>
+                                        <option
+                                            value="<?php echo $maila->getId(); ?>"
+                                            ><?php echo $maila->getIzena(); ?></option>
+                                        <?php
+                                    }
+                                    ?>
+                                </select>
+                            </span>
+                        </div>
+                    </div><!-- .col-xs-12.col-md-6.pull-left -->
+
+                    <div class="col-xs-12 col-md-6 pull-right">
+
+                        <div class="adina col-xs-12">
+
+                            <label class="col-xs-1" for="adina">Adina</label>
+                            <span class="sel-edad col-xs-11">
+
+                                <span class="edad-min" data-toggle="tooltip" data-original-title="Default tooltip">
+                                    <a>
+                                        <span class="edad"><strong class="min-years">10</strong> urtetik</span>
+                                    </a>
+                                </span>
+
+                                <span class="edad-max" data-toggle="tooltip" data-original-title="Default tooltip">
+                                    <a>
+                                        <span class="edad"><strong class="max-years">45</strong> urtera</span>
+                                    </a>
+                                </span>
+
+                                <input
+                                    type="text"
+                                    name="adina"
+                                    value="10,45"
+                                    data-slider-min="0"
+                                    data-slider-max="100"
+                                    data-slider-step="1"
+                                    data-slider-value="[10,45]"
+                                    id="adina"
+                                    />
+
+                            </span><!-- .sel-edad.col-xs-12 -->
+
+                        </div><!-- .adina -->
+                    </div><!-- .col-xs-12.col-md-6.pull-right -->
+
+                </div><!-- .row -->
+
+                <div class="element-group">
+                    <textarea
+                        name="deskribapenLaburra"
+                        id="deskribapenLaburra"
+                        class="form-control"
+                        rows="3"
+                        placeholder="Laburpena"
+                        ></textarea>
+
+                    <span class="help-block">Labur itzazu <span class="countCharactes"></span> karakteretan baliabidearen gaia.</span>
+
+                </div>
+
+                <div class="element-group">
+                    <textarea
+                        name="deskribapena"
+                        id="deskribapena"
+                        class="form-control"
+                        rows="8"
+                        placeholder="Deskribapena"
+                        ></textarea>
+                </div>
+
+            </div><!-- .col-xs-12.col-sm-6.pull-left -->
+
+            <div class="col-xs-12 col-sm-6">
+                <div class="element-group">
+                    <input
+                        class="form-control"
+                        id="disabledInput"
+                        type="text"
+                        placeholder="Nire izena"
+                        disabled
+                        />
+                </div>
+                <?php
+                    $autoselectEskola = $this->profila == "irakasle" || !$this->senior;
+                ?>
+                <div class="element-group ikastegia-select" <?php if (empty($this->eskolak)) { ?> style="display:none;" <?php } //endif ?>>
+                    <span class="select"><i class="fa fa-chevron-down"></i>
+                        <select class="form-control" id="eskola" name="eskola">
+                            <?php
+                                $selected = "";
+                                if (!$autoselectEskola) {
+                                    $selected = "selected";
+                                }
+                            ?>
+
+                            <option <?php echo $selected; ?> disabled style="display:none;">Ikastegi batekin erlazionatu</option>
+                            <option></option>
+                            <?php
+                            $kont = 0;
+                            foreach ($this->eskolak as $eskola) {
+                                $selected = $kont == 0 && $autoselectEskola ? "selected" : "";
+                            ?>
+                                <option <?php echo $selected; ?>
+                                    value="<?php echo $eskola->getId(); ?>"
+                                    ><?php echo $eskola->getIzena() . ', ' . $eskola->getHerria(); ?></option>
+                                <?php
+                                $kont++;
+                            }
+                            ?>
+                        </select>
+                    </span>
+                </div>
+
+                <div class="beste-egile-content">
+                    <input
+                        type="text"
+                        name="beste-egile"
+                        id="beste-egile"
+                        class=""
+                        autocomplete="off"
+                        autocorrect="off"
+                        autocapitalize="off"
+                        spellcheck="false"
+                        tabindex="0"
+                        placeholder="Lankideen izenak"
+                        style="width: 100%;"
+                        />
+
+                        <!--span class="help-block col-xs-12">Komekin banatu.</span-->
+                </div>
+
+                <div class="beste-egile-etiketak">
+                    <input
+                        type="text"
+                        name="etiketak"
+                        id="etiketak"
+                        class=""
+                        autocomplete="off"
+                        autocorrect="off"
+                        autocapitalize="off"
+                        spellcheck="false"
+                        tabindex="0"
+                        placeholder="Etiketak"
+                        style="width: 100%;"
+                        />
+
+                        <span class="help-block col-xs-12">Komekin banatu.</span>
+                </div>
+
+                <div class="element-group select2">
+                    <!--<input
+                        type="text"
+                        name="kanpaina"
+                        id="kanpaina"
+                        class="col-xs-12 form-control"
+                        placeholder="Kanpaina kodea"
+                        style="width: 100%;"
+                        />-->
+                    <?php
+                    if (! empty($this->kanpainaKodeak)) {
+                    ?>
+                    <select multiple class="form-control" id="kanpaina" name="kanpaina[]">
+                    <?php
+                    foreach ($this->kanpainaKodeak as $id => $name) {
+
+                        echo '<option value="'. $id .'">'. $name .'</option>';
+                    }
+                    ?>
+                    </select>
+                    <?php
+                    } //end if
+                    ?>
+                </div>
+
+            </div><!-- .col-xs-12.col-sm-6 -->
+
+        </div><!-- .row -->
+    </div><!-- .container -->
+
+
+    <?php
+        echo $this->partial("edukiak-igo/baliabideak.phtml");
+    ?>
+
+
+    <div class="container">
+        <div class="row checkbox">
+            <span class="col-xs-12">
+                <label>
+                    <input type="checkbox" name="acceptConditions" required />
+                    <p>
+                        <a
+                            href="<?php echo $this->baseUrl('orriak/zerbitzu-baldintzak/'); ?>"
+                            title="Zerbitzu baldintzak"
+                            >Zerbitzu baldintzak</a> eta <a
+                                                            href="<?php echo $this->baseUrl('orriak/lizentzia/'); ?>"
+                                                            title="Lizentzia"
+                                                            > Lizentzia</a> irakurri ditut eta ados nago.
+                    </p>
+                </label>
+            </span>
+        </div>
+
+        <span class="row text-center">
+            <span class="col-sm-4 col-sm-offset-4">
+                <button id="datuak-save" class="btn-bidali bg-red light">Bidali</button>
+            </span>
+        </span>
+        <div class="row">
+            <div class="color-border"></div>
+        </div>
+    </div>
+
+</form>

@@ -1,0 +1,407 @@
+<?php
+$erabiltzailea = $this->erabiltzailea;
+?>
+<form
+    role="form"
+    action=""
+    method="POST"
+    class="form-horizontal"
+    autocomplete="off"
+    id="erabiltzailea-form"
+    enctype="multipart/form-data"
+    >
+
+    <div class="form-group">
+        <label
+            for="url"
+            class="col-sm-2 control-label"
+            ></label>
+        <div class="col-sm-10">
+            <input
+                type="text"
+                class="form-control"
+                id="url"
+                name="url"
+                value="<?php echo $erabiltzailea->getUrl(); ?>"
+                disabled="disabled"
+                />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label
+            for="izena"
+            class="col-sm-2 control-label"
+            >Izena</label>
+        <div class="col-sm-10">
+            <input
+                type="text"
+                class="form-control"
+                id="izena"
+                name="izena"
+                placeholder="Izena"
+                value="<?php echo $erabiltzailea->getIzena(); ?>"
+                />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label
+            for="abizena"
+            class="col-sm-2 control-label"
+            >Abizena</label>
+        <div class="col-sm-10">
+            <input
+                type="text"
+                class="form-control"
+                id="abizena"
+                name="abizena"
+                placeholder="Abizena"
+                value="<?php echo $erabiltzailea->getAbizena(); ?>"
+                />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label
+            for="abizena2"
+            class="col-sm-2 control-label"
+            >Bigarren Abizena</label>
+        <div class="col-sm-10">
+            <input
+                type="text"
+                class="form-control"
+                id="abizena2"
+                name="abizena2"
+                placeholder="Bigarren Abizena"
+                value="<?php echo $erabiltzailea->getAbizena2(); ?>"
+                />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label
+            for="posta"
+            class="col-sm-2 control-label"
+            >Posta</label>
+        <div class="col-sm-10">
+            <input
+                type="email"
+                class="form-control"
+                id="posta"
+                name="posta"
+                placeholder="Posta elektronikoa"
+                value="<?php echo $erabiltzailea->getPosta(); ?>"
+                />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label
+            for="jaiotzeData"
+            class="col-sm-2 control-label"
+            >Jaiotze Data</label>
+        <div class="col-sm-10">
+            <div class="input-group" id="jaiotzeData">
+                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                <input
+                    type="text"
+                    name="jaiotzeData"
+                    class="form-control"
+                    placeholder="jaiotzeData"
+                    value="<?php echo $erabiltzailea->getJaiotzeData(); ?>">
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label
+            for="deskribapena"
+            class="col-sm-2 control-label"
+            >Deskribapena</label>
+        <div class="col-sm-10">
+            <textarea
+                class="form-control"
+                id="deskribapena"
+                name="deskribapena"
+                placeholder="Bigarren Abizena"
+                ><?php echo $erabiltzailea->getDeskribapena(); ?></textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+
+        <label
+            for="newsletter"
+            class="col-sm-2 control-label"
+            >Gure berriak jaso nahi dituzu?</label>
+
+            <div class="col-sm-10">
+                <div class="btn-group pull-left" data-toggle="buttons">
+                    <label
+                        class="btn btn-default <?php echo ($erabiltzailea->getNewsletter() === 1 ? 'active' : ''); ?>"
+                        >
+                        <input
+                            type="radio"
+                            name="newsletter"
+                            value="1"
+                            checked="<?php echo ($erabiltzailea->getNewsletter() === 1 ? 'checked' : ''); ?>"
+                            /> Bai</label>
+                    <label
+                        class="btn btn-default <?php echo ($erabiltzailea->getNewsletter() === 0 ? 'active' : ''); ?>"
+                        >
+                        <input
+                        type="radio"
+                        name="newsletter"
+                        value="0"
+                        checked="<?php echo ($erabiltzailea->getNewsletter() === 0 ? 'checked' : ''); ?>"
+                        /> Ez</label>
+                </div>
+            </div>
+    </div>
+
+    <div class="form-group">
+        <label
+            for="pasahitza"
+            class="col-sm-2 control-label"
+            >Pasahitza</label>
+        <div class="col-sm-10">
+            <input
+                type="password"
+                class="form-control"
+                id="pasahitza"
+                placeholder="Pasahitza"
+                name="pasahitza"
+                value=""
+                />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label
+            for="pasahitzaBaieztatu"
+            class="col-sm-2 control-label"
+            >Pasahitza Errepikatu</label>
+        <div class="col-sm-10">
+            <input
+                type="password"
+                class="form-control"
+                id="pasahitzaBaieztatu"
+                placeholder="Pasahitza errepikatu"
+                name="pasahitzaBaieztatu"
+                value=""
+                />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label
+            class="col-sm-2 control-label"
+            ><?php echo $this->translate('[es] Avatar'); ?></label>
+        <div class="col-sm-10">
+            <button
+                class="btn btn-default"
+                id="avatar-show"
+                ><?php echo $this->translate('[es] cambiar avatar'); ?></button>
+
+            <button
+                class="btn btn-default hide"
+                id="avatar-hide"
+                ><?php echo $this->translate('[es] No cambiar avatar'); ?></button>
+
+                <div id="izenaeman" class="hide">
+                    <?php
+                    $isSenior = $erabiltzailea->isSenior();
+
+                    switch ($erabiltzailea->getProfila()) {
+                        case 'irakasle':
+                            $class = 'perfil-irakasle';
+                            break;
+                        case 'ikasle':
+                            $class = 'perfil-ikasle';
+                            break;
+                        case 'otros':
+                            $class = 'perfil-ikastegi';
+                            break;
+                    }
+                    ?>
+
+                    <input
+                        type="hidden"
+                        name="typeAvatar"
+                        value="<?php echo $erabiltzailea->getTypeAvatar(); ?>"
+                        />
+
+                    <input
+                        type="hidden"
+                        name="irudiaDefault"
+                        value="<?php echo $erabiltzailea->getIrudiaDefault(); ?>"
+                        />
+
+                    <div id="irudia-default">
+
+                        <div class="help-block bloque-destacado">
+                            <p>Hurrengoko argazkietatik aukeratu.</p>
+                        </div>
+
+                        <ul class="perfil-picker">
+                            <li>
+                                <span
+                                    class="naranja perfil <?php echo $class; ?>"
+                                    data-value="naranja"
+                                    ></span>
+                            </li>
+                            <li>
+                                <span
+                                    class="verde perfil <?php echo $class; ?>"
+                                    data-value="verde"
+                                    ></span>
+                            </li>
+                            <li>
+                                <span
+                                    class="morado perfil <?php echo $class; ?>"
+                                    data-value="morado"
+                                    ></span>
+                            </li>
+                            <li>
+                                <span
+                                    class="morado perfil <?php echo $class; ?>"
+                                    data-value="morado"
+                                    ></span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-xs-12 horizontal-divider" style="margin: 0 !important;"></div>
+
+                    <div id="irudia-custom">
+
+                        <div class="help-block bloque-destacado">
+                            <p>Argazki bat igo.</p>
+                        </div>
+
+                        <?php
+                        if ($isSenior) {
+
+                            $irudiaUrl = 'http://placehold.it/200x200';
+
+                            if (!empty($erabiltzailea->getIrudiaId()) && !empty($erabiltzailea->getIrudia())) {
+                                $currentAvatar = $erabiltzailea->getIrudia();
+                                $irudiaUrl = $this->baseUrl(
+                                    '/multimedia/erabiltzaile-irudia/irudia/' . $currentAvatar->getIden()
+                                );
+                            }
+                            ?>
+
+                            <div id="changeCustomAvatar">
+                                <div id="avatarPreview">
+                                    <div id="previewContent" class="col-xs-6">
+                                        <img
+                                            id="cropimage"
+                                            alt=""
+                                            src="<?php echo $irudiaUrl; ?>"
+                                            />
+                                    </div>
+
+                                    <div id="actionContent" class="col-xs-6">
+                                        <input
+                                            type="file"
+                                            name="avatar"
+                                            id="avatar"
+                                            class="hide"
+                                            />
+
+                                        <button
+                                            id="button-file-avatar"
+                                            class="btn btn-default"
+                                            ><?php echo $this->translate('[es] Seleccionar Avatar'); ?></button>
+                                    </div>
+
+                                    <div id="results-avatar" class="hide">
+
+                                        <input
+                                            type="hidden"
+                                            name="changeAvatar"
+                                            id="changeAvatar"
+                                            value="false"
+                                            />
+
+                                        <input
+                                            type="hidden"
+                                            name="tmpName"
+                                            id="tmpName"
+                                            />
+
+                                        <input
+                                            type="hidden"
+                                            name="cropX"
+                                            class="cropX"
+                                            />
+                                        <input
+                                            type="hidden"
+                                            name="cropY"
+                                            class="cropX"
+                                            />
+
+                                        <input
+                                            type="hidden"
+                                            name="cropW"
+                                            class="cropW"
+                                            />
+
+                                        <input
+                                            type="hidden"
+                                            name="cropH"
+                                            class="cropH"
+                                            />
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <?php
+                        }
+                        ?>
+                    </div>
+                </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+
+            <button id="bidali" class="btn btn-success">Gorde</button>
+
+            <button
+                type="button"
+                class="btn btn-danger"
+                id="showDeleteAccount"
+                style="margin-bottom: 15px; float: right;"
+                ><?php echo  $this->translate('[es] Eliminar cuenta');?></button>
+
+        </div>
+    </div>
+
+    <div class="form-group">
+
+        <div class="col-sm-offset-2 col-sm-10">
+
+            <div
+                class="alert alert-danger fade in hide"
+                id="confirmationDeleteAccountMessage"
+                role="alert">
+                <p><?php echo $this->translate('[es] mensaje de advertencia, sobre la eliminación de la cuenta. '); ?></p>
+                <p>
+                    <button
+                        type="button"
+                        class="btn btn-danger"
+                        id="confirmationDeleteAccountButton"
+                        ><?php echo  $this->translate('[es] Si, Eliminar esta Cuenta');?></button>
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</form>

@@ -1,0 +1,69 @@
+production: 
+  class: \Klikasi\Model\ErabiltzaileenIrudiak
+  fields:
+  
+    iden: 
+      title: _('Iden')
+      type: text
+      default: true
+       
+    irudia: 
+      title: _('Irudia')
+      type: file
+      required: true
+      source: 
+        data: fso
+        size_limit: 20M
+        options:
+          hiddenName: true 
+          download: 
+            external: true
+            type: command
+            target: IrudiaDownload_command
+            icon: ui-silk-bullet-disk
+            title: _("Download file")
+            onNull: hide
+          upload: 
+            type: command
+            target: IrudiaUpload_command
+            title: _("Upload file")
+            class: qq-uploader
+            onNull: show
+          preview: 
+            target: IrudiaPreview_command
+            type: command
+            class: filePreview
+            external: 1
+            props: 
+              width: 250
+              crop: false
+            onNull: hide
+          previewList: 
+            target: IrudiaPreview_command
+            type: command
+            class: filePreview
+            listController: 1
+            external: 1
+            props: 
+              height: 80
+              crop: false
+            onNull: hide
+      
+    partekatua: 
+      title: _('Partekatua')
+      type: select
+      defaultValue: 0
+      source: 
+        data: inline
+        values: 
+          '0': 
+            title: _("No")
+          '1': 
+            title: _("Yes")
+
+testing: 
+  _extends: production
+staging: 
+  _extends: production
+development: 
+  _extends: production

@@ -1,0 +1,26 @@
+production: 
+  class: \Klikasi\Model\Kategoria
+  fields: 
+    izena: 
+      title: _('Izena')
+      type: text
+      required: true
+      maxLength: 250
+      default: true
+    url: 
+      title: _('Url')
+      type: text
+      required: true
+      maxLength: 250
+    karma: 
+      title: _('Karma')
+      type: number
+      defaultValue: 0
+      source: 
+        control: Spinner
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production

@@ -1,0 +1,25 @@
+production: 
+  class: \Klikasi\Model\JakinarazpenakMota
+  fields: 
+    izena: 
+      title: _('Izena')
+      type: text
+      required: true
+      maxLength: 250
+      default: true
+    url: 
+      title: _('Url')
+      type: text
+      required: true
+      maxLength: 250
+    deskripzioa: 
+      title: _('Deskripzioa')
+      type: text
+      defaultValue: 
+      maxLength: 500
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production

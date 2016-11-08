@@ -1,0 +1,111 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+#include ErabiltzaileaList.yaml
+
+fixedPositions:
+  - &fixedKexa
+    fixedPositions:
+      group1:
+        label: _("Edukiaren datuak")
+        colsPerRow: 6
+        fields:
+          erabiltzaileaId: 3
+          edukiaId: 3
+      group:
+        label: _("Kexaren informazioa")
+        fields:
+          ikusita: true 
+          konponduta: true
+      groupa:
+        label: _("Kexa")
+        fields:
+          kexa: true
+
+production: 
+  main: 
+    module: klearMatrix
+    defaultScreen: kexaList_screen
+  screens: 
+    kexaList_screen: &kexaList_screenLink 
+      controller: list
+      pagination: 
+        items: 25
+      <<: *Kexa
+      title: _("List of %s %2s", ngettext('Kexa', 'Kexa(s)', 0), "[format| (%parent%)]")
+      order:
+        field: 
+          ikusita: true
+          konponduta: true
+        type: asc
+      fields: 
+        blacklist:
+          kexa: false
+          sortzeData: true
+        options: 
+          title: _("Options")
+          screens: 
+            kexaEdit_screen: true
+          dialogs: 
+            kexaDel_dialog: true
+            kexaModeration_dialog: true
+          default: kexaEdit_screen
+      options:
+        label: _('Options')
+        dialogs: 
+          kexaDel_dialog: true
+
+    kexaEdit_screen: &kexaEdit_screenLink 
+      <<: *Kexa
+      controller: edit
+      class: ui-silk-zoom
+      label: false
+      title: _("Edit %s", ngettext('Kexa', 'Kexa(s)', 1))
+      <<: *fixedKexa
+      fields: 
+        order:
+          erabiltzaileaId: true
+          ikusita: true
+          kexa: true
+        blacklist: 
+          sortzeData: true
+        readOnly:
+          erabiltzaileaId: true
+          edukiaId: true
+          kexa: true
+
+    erabiltzaileIkusiExternal_screen:
+      <<: *erabiltzaileaEdit_screenLink
+      filterField: id
+
+  commands:
+    autocompleteErabiltzailea_command:
+      <<: *autocompleteErabiltzaileaCommand
+      <<: *Erabiltzailea
+
+  dialogs: 
+    kexaDel_dialog: 
+      <<: *Kexa
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('Kexa', 'Kexa(s)', 1))
+      description: _("Do you want to delete this %s?", ngettext('Kexa', 'Kexa(s)', 1))
+      message: _("%s successfully deleted.", ngettext('Kexa', 'Kexa(s)', 1))
+      labelOnList: true
+      multiItem: true
+      
+    kexaModeration_dialog:
+      <<: *Kexa
+      title: _('Contactar con informador.')
+      label: true
+      controller: klear-custom-moderation-kexak
+      action: moderation
+      class: ui-silk-email-go
+      module: default
+
+testing: 
+  _extends: production
+staging: 
+  _extends: production
+development: 
+  _extends: production

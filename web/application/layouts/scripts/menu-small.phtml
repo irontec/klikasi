@@ -1,0 +1,130 @@
+<?php
+$urlKategoriak = $this->baseUrl('kategoriak');
+$urlIkastegiak = $this->baseUrl('ikastegiak');
+$urlEdukiak = $this->baseUrl('edukiak-igo');
+?>
+<nav id="mega-menu" class="hidden-xs text-center scroll-menu" role="navigation">
+    <ul class="nav row">
+        <li class="logo-menu col-sm-3"><a href="<?php echo $this->baseUrl(); ?>" title="Klikasi. Sortu. Partekatu. Ikasi.">
+            <img class="" src="<?php echo $this->baseUrl('images/logo_klikasi_scroll.png'); ?>" alt="Klikasi. Sortu. Partekatu. Ikasi."></a>
+        </li>
+        <li class="active col-sm-3"><a href="<?php echo $urlKategoriak; ?>" title="Kategoriak">Kategoriak</a></li>
+        <li class="col-sm-3"><a href="<?php echo $urlIkastegiak; ?>" title="Ikastegiak">Ikastegiak</a></li>
+        <li class="col-sm-3"><a href="<?php echo $urlEdukiak; ?>" title="Edukiak igo">Edukiak igo <span class="glyphicon glyphicon-upload"></span></a></li>
+        <li class="bilatu col-xs-6 col-sm-3 dropdown mega-menu-fw">
+
+            <a href="#" class="color-border dropdown-toggle" data-toggle="dropdown">Bilatu <span class="glyphicon glyphicon-search"></span></a>
+
+            <div class="dropdown-menu mega-menu-content">
+            <div class="container aire">
+            <div class="row search">
+            <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+            <form class="navbar-form navbar-left" role="search">
+            <div class="form-group">
+            <input type="text" class="form-control" placeholder="_____">
+            <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+            </div>
+
+            </form>
+            </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-4">
+                <label>Kategoriak</label>
+                <span class="select"><i class="fa fa-chevron-down"></i>
+                  <select class="form-control">
+                    <option>Natur Zientziak</option>
+                    <option>Matematika</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </select>
+                </span>
+              </div><!-- /.col-sm-4 -->
+
+<div class="col-sm-4">
+<label>Fitxategi mota</label>
+  <span class="select"><i class="fa fa-chevron-down"></i>
+  <select class="form-control">
+    <option>Argazkiak</option>
+    <option>Bideoak</option>
+    <option>3</option>
+    <option>4</option>
+    <option>5</option>
+  </select>
+</span>
+</div><!-- /.col-sm-4 -->
+
+<div class="col-sm-4">
+  <label>Data artean</label>
+  <span class="select"><i class="fa fa-chevron-down"></i>
+  <select class="form-control">
+    <option>Natur Zientziak</option>
+    <option>Matematika</option>
+    <option>3</option>
+    <option>4</option>
+    <option>5</option>
+  </select>
+</span>
+</div><!-- /.col-sm-4 -->
+</div>
+<hr>
+<div class="row">
+  <div class="col-sm-4">
+    <label>Ikastegia</label>
+      <span class="select"><i class="fa fa-chevron-down"></i>
+      <select class="form-control">
+        <option>Deustuko Ikastola</option>
+        <option>Lauro Ikastola</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+      </select>
+    </span>
+  </div><!-- /.col-sm-4 -->
+
+<div class="col-sm-4">
+<label>Ikasturtea</label>
+  <span class="select"><i class="fa fa-chevron-down"></i>
+  <select class="form-control">
+    <option>D.B.H.1</option>
+    <option>D.B.H.2</option>
+    <option>3</option>
+    <option>4</option>
+    <option>5</option>
+  </select>
+</span>
+</div><!-- /.col-sm-4 -->
+
+<div class="col-sm-4">
+<label>Adina</label>
+  <span class="sel-edad col-xs-12">
+    <span data-original-title="Default tooltip" data-toggle="tooltip" class="edad-min">
+      <a href="#">
+        <span class="edad"><strong>11</strong> urtetik</span>
+        <span class="punto-cat"></span>
+      </a>
+    </span>
+    <span data-original-title="Default tooltip" data-toggle="tooltip" class="edad-max">
+      <a href="#">
+        <span class="edad"><strong>14</strong> urtera</span>
+        <span class="punto-cat"></span>
+      </a>
+    </span>
+    <hr class="edad">
+    </span>
+</span>
+</div><!-- /.col-sm-4 -->
+        </div>
+        <hr class="hr-button">
+        <div class="pull-right search-formbutton">
+          <a href="#"><span class="button">Iragazi</span></a>
+          <a href="#"><span><i class="fa fa-refresh"></i></span></a>
+          <a href="#"><span class="angle-up"><i class="fa fa-angle-up"></i></span></a>
+        </div>
+      </div>
+    </div>
+  </li>
+</ul>
+</nav><!--/.nav -->

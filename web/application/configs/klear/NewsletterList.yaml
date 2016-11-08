@@ -1,0 +1,133 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+
+fixedPositions:
+  - &fixedNewsletter
+    fixedPositions:
+      group:
+        label: _("Asunto")
+        fields: 
+          title: true
+      group0:
+        label: _("Contenido")
+        fields: 
+          Content: true
+      group1:
+        label: _("Estado")
+        fields: 
+          active: true
+          send: true
+      group2:
+        label: _("Fechas")
+        fields: 
+          shippingDate: true
+          dateToSend: true
+      group3:
+        label: _("Información")
+        fields: 
+          sent: true
+          readBy: true
+
+
+production: 
+  main: 
+    module: klearMatrix
+    defaultScreen: newsletterList_screen
+  screens: 
+    newsletterList_screen: &newsletterList_screenLink 
+      controller: list
+      pagination: 
+        items: 25
+      <<: *Newsletter
+      title: _("List of %s %2s", ngettext('Newsletter', 'Newsletter(s)', 0), "[format| (%parent%)]")
+      fields: 
+        blacklist: 
+          content: true
+          isEdukia: true
+          isIkastegia: true
+          edukiakSent: true
+          ikastegiakSent: true
+        options: 
+          title: _("Options")
+          screens: 
+            newsletterEdit_screen: true
+          dialogs: 
+            newsletterDel_dialog: true
+            newsletterSendNow_dialog: true
+          default: newsletterEdit_screen
+      options: 
+        title: _("Options")
+        screens: 
+          newsletterNew_screen: true
+        dialogs: 
+          newsletterDel_dialog: true
+          
+    newsletterNew_screen: &newsletterNew_screenLink 
+      <<: *Newsletter
+      <<: *fixedNewsletter
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Add %s", ngettext('Newsletter', 'Newsletter(s)', 1))
+      shortcutOption: N
+      fields: 
+        blacklist: 
+          sent: true
+          send: true
+          readBy: true
+          isEdukia: true
+          isIkastegia: true
+          edukiakSent: true
+          ikastegiakSent: true
+          shippingDate: true
+          
+    newsletterEdit_screen: &newsletterEdit_screenLink 
+      <<: *Newsletter
+      <<: *fixedNewsletter
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      title: _("Edit %s %2s", ngettext('Newsletter', 'Newsletter(s)', 1), "[format| (%item%)]")
+      fields: 
+        readOnly: 
+          sent: true
+          readBy: true
+          shippingDate: true
+          send: true
+        blacklist: 
+          isEdukia: true
+          isIkastegia: true
+          edukiakSent: true
+          ikastegiakSent: true
+          
+  dialogs: 
+    newsletterDel_dialog: 
+      <<: *Newsletter
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('Newsletter', 'Newsletter(s)', 1))
+      description: _("Do you want to delete this %s?", ngettext('Newsletter', 'Newsletter(s)', 1))
+      message: _("%s successfully deleted.", ngettext('Newsletter', 'Newsletter(s)', 1))
+      multiItem: 1
+      labelOnList: 1
+      
+    newsletterSendNow_dialog:
+      <<: *Newsletter
+      filterField: send
+      parentOptionCustomizer:
+        - \Klikasi\Klear\Customize\NewsletterOptionCustomizer
+      title: _('Enviar Newsletter')
+      label: true
+      controller: klear-custom-newsletter-send
+      action: send
+      class: ui-silk-email-go
+      module: default
+      
+testing: 
+  _extends: production
+staging: 
+  _extends: production
+development: 
+  _extends: production

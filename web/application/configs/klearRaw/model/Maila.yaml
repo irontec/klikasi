@@ -1,0 +1,32 @@
+production: 
+  class: \Klikasi\Model\Maila
+  fields: 
+    izena: 
+      title: _('Izena')
+      type: text
+      required: true
+      maxLength: 350
+      default: true
+    url: 
+      title: _('Url')
+      type: text
+      required: true
+      maxLength: 350
+    grupo: 
+      title: _('Grupo')
+      type: select
+      defaultValue: bestelakoak
+      source: 
+        data: inline
+        values: 
+          'bestelakoak': _('bestelakoak')
+          'haurHezkuntza': _('haurHezkuntza')
+          'LH': _('LH')
+          'DBH': _('DBH')
+          'Batxilergoa': _('Batxilergoa')
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production

@@ -1,0 +1,73 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+
+fixedPositions:
+  - &fixedLaguntza
+    fixedPositions:
+      group0:
+        label: _("Datuak")
+        colsPerRow: 4
+        fields:
+          titulua: 2
+          laguntza: 4
+
+production: 
+  main: 
+    module: klearMatrix
+    defaultScreen: laguntzaList_screen
+  screens: 
+    laguntzaList_screen: &laguntzaList_screenLink 
+      controller: list
+      pagination: 
+        items: 25
+      <<: *Laguntza
+      title: _("List of %s %2s", ngettext('Laguntza', 'Laguntza(s)', 0), "[format| (%parent%)]")
+      fields: 
+        blacklist:
+          laguntza: true
+        options: 
+          title: _("Options")
+          screens: 
+            laguntzaEdit_screen: true
+          dialogs: 
+            laguntzaDel_dialog: true
+          default: laguntzaEdit_screen
+      options: 
+        title: _("Options")
+        screens: 
+          laguntzaNew_screen: true
+        dialogs: 
+          laguntzaDel_dialog: true
+    laguntzaNew_screen: &laguntzaNew_screenLink 
+      <<: *Laguntza
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Add %s", ngettext('Laguntza', 'Laguntza(s)', 1))
+      <<: *fixedLaguntza
+    laguntzaEdit_screen: &laguntzaEdit_screenLink 
+      <<: *Laguntza
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      title: _("Edit %s %2s", ngettext('Laguntza', 'Laguntza(s)', 1), "[format| (%item%)]")
+      <<: *fixedLaguntza
+  dialogs: 
+    laguntzaDel_dialog: 
+      <<: *Laguntza
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('Laguntza', 'Laguntza(s)', 1))
+      description: _("Do you want to delete this %s?", ngettext('Laguntza', 'Laguntza(s)', 1))
+      message: _("%s successfully deleted.", ngettext('Laguntza', 'Laguntza(s)', 1))
+      labelOnList: true
+      multiItem: true
+
+testing: 
+  _extends: production
+staging: 
+  _extends: production
+development: 
+  _extends: production

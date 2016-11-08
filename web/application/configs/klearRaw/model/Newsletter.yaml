@@ -1,0 +1,98 @@
+production: 
+  class: \Klikasi\Model\Newsletter
+  fields: 
+    title: 
+      title: _('Title')
+      type: text
+      required: true
+      maxLength: 255
+      default: true
+    content: 
+      title: _('Content')
+      type: textarea
+    active: 
+      title: _('Active')
+      type: select
+      defaultValue: 0
+      source: 
+        data: inline
+        values: 
+          '0': 
+            title: _("No")
+          '1': 
+            title: _("Yes")
+    send: 
+      title: _('Send')
+      type: select
+      defaultValue: 0
+      source: 
+        data: inline
+        values: 
+          '0': 
+            title: _("No")
+          '1': 
+            title: _("Yes")
+    sent: 
+      title: _('Sent')
+      type: number
+      defaultValue: 0
+      source: 
+        control: Spinner
+    readBy: 
+      title: _('Read by')
+      type: number
+      defaultValue: 0
+      source: 
+        control: Spinner
+    dateToSend: 
+      title: _('Date to send')
+      type: picker
+      defaultValue: CURRENT_TIMESTAMP
+      source: 
+        control: datetime
+        settings: 
+          disabled: 'false'
+    shippingDate: 
+      title: _('Shipping date')
+      type: picker
+      defaultValue: 0000-00-00 00:00:00
+      source: 
+        control: datetime
+        settings: 
+          disabled: 'false'
+    isEdukia: 
+      title: _('Is edukia')
+      type: select
+      defaultValue: 0
+      source: 
+        data: inline
+        values: 
+          '0': 
+            title: _("No")
+          '1': 
+            title: _("Yes")
+    isIkastegia: 
+      title: _('Is ikastegia')
+      type: select
+      defaultValue: 0
+      source: 
+        data: inline
+        values: 
+          '0': 
+            title: _("No")
+          '1': 
+            title: _("Yes")
+    edukiakSent: 
+      title: _('Edukiak sent')
+      type: text
+      maxLength: 255
+    ikastegiakSent: 
+      title: _('Ikastegiak sent')
+      type: text
+      maxLength: 255
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production

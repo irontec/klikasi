@@ -1,0 +1,185 @@
+production: 
+  class: \Klikasi\Model\Erabiltzailea
+  fields: 
+    izena: 
+      title: _('Izena')
+      type: text
+      maxLength: 250
+      default: true
+    abizena: 
+      title: _('Abizena')
+      type: text
+      maxLength: 250
+    abizena2: 
+      title: _('Abizena2')
+      type: text
+      maxLength: 250
+    deskribapena: 
+      title: _('Deskribapena')
+      type: textarea
+    erabiltzaileIzena: 
+      title: _('Erabiltzaile izena')
+      type: text
+      required: true
+      maxLength: 250
+    pasahitza: 
+      title: _('Pasahitza')
+      type: password
+      required: true
+      adapter: Blowfish
+    posta: 
+      title: _('Posta')
+      type: text
+      required: true
+      maxLength: 350
+    egoera: 
+      title: _('Egoera')
+      type: select
+      defaultValue: sortua
+      source: 
+        data: inline
+        values: 
+          'sortua': _('sortua')
+          'datuakSartuta': _('datuakSartuta')
+          'aktibatua': _('aktibatua')
+    url: 
+      title: _('Url')
+      type: text
+      required: true
+      maxLength: 250
+    jaiotzeData: 
+      title: _('Jaiotze data')
+      type: picker
+      required: true
+      source: 
+        control: date
+        settings: 
+          disabled: 'false'
+    sortzeData: 
+      title: _('Sortze data')
+      type: picker
+      defaultValue: CURRENT_TIMESTAMP
+      source: 
+        control: datetime
+        settings: 
+          disabled: 'false'
+    altaData: 
+      title: _('Alta data')
+      type: picker
+      source: 
+        control: datetime
+        settings: 
+          disabled: 'false'
+    superErabiltzailea: 
+      title: _('Super erabiltzailea')
+      type: select
+      defaultValue: 0
+      source: 
+        data: inline
+        values: 
+          '0': 
+            title: _("No")
+          '1': 
+            title: _("Yes")
+    profila: 
+      title: _('Profila')
+      type: select
+      defaultValue: otros
+      source: 
+        data: inline
+        values: 
+          'irakasle': _('irakasle')
+          'otros': _('otros')
+          'ikasle': _('ikasle')
+    hash: 
+      title: _('Hash')
+      type: text
+      maxLength: 350
+    hashIraungiData: 
+      title: _('Hash iraungi data')
+      type: picker
+      source: 
+        control: datetime
+        settings: 
+          disabled: 'false'
+    irudiaId: 
+      title: _('Irudia id')
+      type: select
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Klikasi\Mapper\Sql\ErabiltzaileenIrudiak
+          fieldName: 
+            fields: 
+              - irudiaMimeType
+            template: '%irudiaMimeType%'
+          order: irudiaMimeType
+        'null': _("Unasigned")
+    irudiaDefault: 
+      title: _('Irudia default')
+      type: text
+      maxLength: 25
+    typeAvatar: 
+      title: _('Type avatar')
+      type: select
+      defaultValue: default
+      source: 
+        data: inline
+        values: 
+          'default': _('default')
+          'irudia': _('irudia')
+    newsletter: 
+      title: _('Newsletter')
+      type: select
+      defaultValue: 0
+      source: 
+        data: inline
+        values: 
+          '0': 
+            title: _("No")
+          '1': 
+            title: _("Yes")
+    twitter: 
+      title: _('Twitter')
+      type: text
+      maxLength: 350
+    facebook: 
+      title: _('Facebook')
+      type: text
+      maxLength: 350
+    google: 
+      title: _('Google')
+      type: text
+      maxLength: 350
+    linkedin: 
+      title: _('Linkedin')
+      type: text
+      maxLength: 350
+    pinterest: 
+      title: _('Pinterest')
+      type: text
+      maxLength: 350
+    flickr: 
+      title: _('Flickr')
+      type: text
+      maxLength: 350
+    youtube: 
+      title: _('Youtube')
+      type: text
+      maxLength: 350
+    instagram: 
+      title: _('Instagram')
+      type: text
+      maxLength: 350
+    karma: 
+      title: _('Karma')
+      type: number
+      defaultValue: 0
+      source: 
+        control: Spinner
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production

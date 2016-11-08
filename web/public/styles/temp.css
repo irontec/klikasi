@@ -1,0 +1,37 @@
+/*Colors*/
+/*___Generales___*/
+/*___Fin Generales___*/
+.edukiak-igo .form-balibideak .form-group {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+ .select2 .form-control,
+.search .form-control {
+    height:auto;
+}
+
+.select2 .form-control .select2-search-choice,
+.search .form-control .select2-search-choice {
+    overflow:hidden;
+}
+
+.select2 .form-control .select2-search-choice-close,
+.search .form-control .select2-search-choice-close {
+    padding:0!important;
+}
+
+.select2 .select2-container-multi .select2-choices, .search .select2-container-multi .select2-choices {
+    background: none;
+    border: none;
+    box-shadow: none !important;
+    float:left;
+    display: inline !important;
+    width: 100% !important;
+}
+
+
+/*Media Queries*/
+/* sm */
+
+/*# sourceMappingURL=temp.css.map */

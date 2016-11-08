@@ -1,0 +1,71 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+
+production: 
+  main: 
+    module: klearMatrix
+    defaultScreen: ikastegiMotaList_screen
+  screens: 
+    ikastegiMotaList_screen: &ikastegiMotaList_screenLink 
+      controller: list
+      pagination: 
+        items: 25
+      <<: *IkastegiMota
+      title: _("List of %s %2s", ngettext('Ikastegi mota', 'Ikastegi mota(s)', 0), "[format| (%parent%)]")
+      rawCondition: "`default` = 0"
+      fields:
+        blacklist:
+          url: true 
+          default: true
+        options: 
+          title: _("Options")
+          screens: 
+            ikastegiMotaEdit_screen: true
+          dialogs: 
+            ikastegiMotaDel_dialog: true
+          default: ikastegiMotaEdit_screen
+      options: 
+        title: _("Options")
+        screens: 
+          ikastegiMotaNew_screen: true
+        dialogs: 
+          ikastegiMotaDel_dialog: true
+    ikastegiMotaNew_screen: &ikastegiMotaNew_screenLink 
+      <<: *IkastegiMota
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Add %s", ngettext('Ikastegi mota', 'Ikastegi mota(s)', 1))
+      fields: 
+        blacklist: 
+          url: true
+          default: true
+    ikastegiMotaEdit_screen: &ikastegiMotaEdit_screenLink 
+      <<: *IkastegiMota
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      title: _("Edit %s %2s", ngettext('Ikastegi mota', 'Ikastegi mota(s)', 1), "[format| (%item%)]")
+      fields:
+        blacklist:
+          url: true
+          default: true
+  dialogs: 
+    ikastegiMotaDel_dialog: 
+      <<: *IkastegiMota
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('Ikastegi mota', 'Ikastegi mota(s)', 1))
+      description: _("Do you want to delete this %s?", ngettext('Ikastegi mota', 'Ikastegi mota(s)', 1))
+      message: _("%s successfully deleted.", ngettext('Ikastegi mota', 'Ikastegi mota(s)', 1))
+      labelOnList: true
+      multiItem: true
+
+testing: 
+  _extends: production
+staging: 
+  _extends: production
+development: 
+  _extends: production

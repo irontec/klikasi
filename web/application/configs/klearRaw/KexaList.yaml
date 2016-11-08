@@ -1,0 +1,71 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+
+
+production: 
+  main: 
+    module: klearMatrix
+    defaultScreen: kexaList_screen
+  screens: &kexa_screensLink 
+    kexaList_screen: &kexaList_screenLink 
+      controller: list
+      pagination: 
+        items: 25
+      <<: *Kexa
+      class: ui-silk-text-list-bullets
+      title: _("List of %s %2s", ngettext('Kexa', 'Kexa(s)', 0), "[format| (%parent%)]")
+      fields: &kexa_fieldsLink 
+        options: 
+          title: _("Options")
+          screens: 
+            kexaEdit_screen: true
+          dialogs: 
+            kexaDel_dialog: true
+          default: kexaEdit_screen
+      options: 
+        title: _("Options")
+        screens: 
+          kexaNew_screen: true
+        dialogs: 
+          kexaDel_dialog: true
+    kexaNew_screen: &kexaNew_screenLink 
+      <<: *Kexa
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Add %s", ngettext('Kexa', 'Kexa(s)', 1), "[format| (%parent%)]")
+      shortcutOption: N
+      postActionOptions: 
+        screens: 
+          kexaEdit_screen: true
+      fields: 
+        blacklist: 
+          sortzeData: true
+    kexaEdit_screen: &kexaEdit_screenLink 
+      <<: *Kexa
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      labelOnPostAction: _("Edit %s %2s", ngettext('Kexa', 'Kexa(s)', 1), "[format| (%item%)]")
+      title: _("Edit %s %2s", ngettext('Kexa', 'Kexa(s)', 1), "[format| (%item%)]")
+      fields: 
+        blacklist: 
+          sortzeData: true
+  dialogs: &kexa_dialogsLink 
+    kexaDel_dialog: &kexaDel_dialogLink 
+      <<: *Kexa
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('Kexa', 'Kexa(s)', 1))
+      description: _("Do you want to delete this %s?", ngettext('Kexa', 'Kexa(s)', 1))
+      message: _("%s successfully deleted.", ngettext('Kexa', 'Kexa(s)', 1))
+      multiItem: 1
+      labelOnList: 1
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production

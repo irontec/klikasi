@@ -1,0 +1,175 @@
+production: 
+  main: 
+    log: 
+      writerName: "Null"
+      writerParams: 
+    sitename: MyApp
+    logo: klear/images/klear.png
+    year: 2016
+    lang: eu
+    langs: 
+      eu: 
+        title: Euskara
+        language: eu
+        locale: eu_ES
+    jqueryUI: 
+      theme: redmond
+    cssExtended: 
+    actionHelpers: 
+    auth: 
+      adapter: Klear_Auth_Adapter_Basic
+      title: _("Access denied")
+      description: _("Insert your username")
+    timezone: Europe/Madrid
+  menu: 
+    General: 
+      title: _("Main management")
+      description: _("Main management")
+      submenus: 
+        Dashboard: 
+          default: true
+          title: 
+            i18n: 
+              es: Panel de control
+        AurkezpenaList: 
+          title: ngettext('Aurkezpena', 'Aurkezpena', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Aurkezpena', 'Aurkezpena', 0))
+        BideoaList: 
+          title: ngettext('Bideoa', 'Bideoa', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Bideoa', 'Bideoa', 0))
+        EdukiaList: 
+          title: ngettext('Edukia', 'Edukia', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Edukia', 'Edukia', 0))
+        EmailHistoryList: 
+          title: ngettext('Email history', 'Email history', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Email history', 'Email history', 0))
+        ErabiltzaileaList: 
+          title: ngettext('Erabiltzailea', 'Erabiltzailea', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Erabiltzailea', 'Erabiltzailea', 0))
+        ErabiltzaileaSettingsList: 
+          title: ngettext('Erabiltzailea setting', 'Erabiltzailea settings', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Erabiltzailea setting', 'Erabiltzailea settings', 0))
+        ErabiltzaileenIrudiakList: 
+          title: ngettext('Erabiltzaileen irudiak', 'Erabiltzaileen irudiak', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Erabiltzaileen irudiak', 'Erabiltzaileen irudiak', 0))
+        EstekaList: 
+          title: ngettext('Esteka', 'Esteka', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Esteka', 'Esteka', 0))
+        EtiketaList: 
+          title: ngettext('Etiketa', 'Etiketa', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Etiketa', 'Etiketa', 0))
+        FitxategiaList: 
+          title: ngettext('Fitxategia', 'Fitxategia', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Fitxategia', 'Fitxategia', 0))
+        HobekuntzakList: 
+          title: ngettext('Hobekuntzak', 'Hobekuntzak', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Hobekuntzak', 'Hobekuntzak', 0))
+        HomePageList: 
+          title: ngettext('Home page', 'Home page', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Home page', 'Home page', 0))
+        IkastegiGaiakList: 
+          title: ngettext('Ikastegi gaiak', 'Ikastegi gaiak', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Ikastegi gaiak', 'Ikastegi gaiak', 0))
+        IkastegiMotaList: 
+          title: ngettext('Ikastegi mota', 'Ikastegi mota', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Ikastegi mota', 'Ikastegi mota', 0))
+        IkastegiaList: 
+          title: ngettext('Ikastegia', 'Ikastegia', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Ikastegia', 'Ikastegia', 0))
+        IrudiaList: 
+          title: ngettext('Irudia', 'Irudia', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Irudia', 'Irudia', 0))
+        IruzkinaList: 
+          title: ngettext('Iruzkina', 'Iruzkina', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Iruzkina', 'Iruzkina', 0))
+        JakinarazpenakList: 
+          title: ngettext('Jakinarazpenak', 'Jakinarazpenak', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Jakinarazpenak', 'Jakinarazpenak', 0))
+        JakinarazpenakGroupList: 
+          title: ngettext('Jakinarazpenak group', 'Jakinarazpenak group', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Jakinarazpenak group', 'Jakinarazpenak group', 0))
+        JakinarazpenakMotaList: 
+          title: ngettext('Jakinarazpenak mota', 'Jakinarazpenak mota', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Jakinarazpenak mota', 'Jakinarazpenak mota', 0))
+        KanpainaList: 
+          title: ngettext('Kanpaina', 'Kanpaina', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Kanpaina', 'Kanpaina', 0))
+        KategoriaList: 
+          title: ngettext('Kategoria', 'Kategoria', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Kategoria', 'Kategoria', 0))
+        KategoriaGlobalaList: 
+          title: ngettext('Kategoria globala', 'Kategoria globala', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Kategoria globala', 'Kategoria globala', 0))
+        KexaList: 
+          title: ngettext('Kexa', 'Kexa', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Kexa', 'Kexa', 0))
+        KlearUsersList: 
+          title: ngettext('Klear user', 'Klear users', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Klear user', 'Klear users', 0))
+        KontaktuaList: 
+          title: ngettext('Kontaktua', 'Kontaktua', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Kontaktua', 'Kontaktua', 0))
+        LaguntzaList: 
+          title: ngettext('Laguntza', 'Laguntza', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Laguntza', 'Laguntza', 0))
+        MailaList: 
+          title: ngettext('Maila', 'Maila', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Maila', 'Maila', 0))
+        MezuakList: 
+          title: ngettext('Mezuak', 'Mezuak', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Mezuak', 'Mezuak', 0))
+        NewsletterList: 
+          title: ngettext('Newsletter', 'Newsletter', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Newsletter', 'Newsletter', 0))
+        NewsletterHashList: 
+          title: ngettext('Newsletter hash', 'Newsletter hash', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Newsletter hash', 'Newsletter hash', 0))
+        NotifikazioaList: 
+          title: ngettext('Notifikazioa', 'Notifikazioa', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Notifikazioa', 'Notifikazioa', 0))
+        OrrialdeaList: 
+          title: ngettext('Orrialdea', 'Orrialdea', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Orrialdea', 'Orrialdea', 0))
+        LiteralesList: 
+          title: ngettext('Literale', 'Literales', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Literale', 'Literales', 0))
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production

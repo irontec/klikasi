@@ -1,0 +1,69 @@
+<?php
+    $request = Zend_Controller_Front::getInstance()->getRequest();
+?>
+<div class="filtro-categorias">
+    <div class="filtro-buscador kategoriak col-xs-12">
+        <ul>
+            <li>
+                <strong>Ordenatu:</strong>
+            </li>
+            <li class="no-border">
+                <a href="<?php echo $this->baseUrl('kategoriak/index/order/izena'); ?>" data-sort-by="moreData" data-ascending="true">
+                    <?php echo $this->strongWrap('Izena', $request->getParam('order') == 'izena'); ?>
+                </a>
+            </li>
+            <li>
+                <a href="<?php echo $this->baseUrl('kategoriak/index/order/baliabideak'); ?>" data-sort-by="moreData" data-ascending="false">
+                    <?php echo $this->strongWrap('Baliabide Kopurua', $request->getParam('order') == 'baliabideak'); ?>
+                </a>
+            </li>
+            <li>
+                <a href="<?php echo $this->baseUrl('kategoriak/'); ?>" data-sort-by="moreData" data-ascending="false">
+                    <?php echo $this->strongWrap($this->translate('[es] Karma'), $request->getParam('order') == ''); ?>
+                </a>
+            </li>
+            <li>
+                <a href="<?php echo $this->baseUrl('kategoriak/index/order/bisitak'); ?>" data-sort-by="moreBisita" data-ascending="false">
+                    <?php echo $this->strongWrap('Ikustaldiak', $request->getParam('order') == 'bisitak'); ?>
+                </a>
+            </li>
+            <li>
+                <a href="<?php echo $this->baseUrl('kategoriak/index/order/update'); ?>" data-sort-by="moreUpdate" data-ascending="false">
+                    <?php echo $this->strongWrap($this->translate('[es] Updated'), $request->getParam('order') == 'update'); ?>
+               </a>
+            </li>
+        </ul>
+    </div>
+    <span class="countKategoriak" style="display:none;"><?php echo $this->kategoriakCount;?></span>
+</div>
+
+<div class="row cat-featured container-categorias">
+<?php
+if (sizeof($this->kategoriakDestacados) > 0) {
+    foreach ($this->kategoriakDestacados as $kategoria) {
+        echo $kategoria;
+    }
+}
+?>
+</div>
+
+<div class="row container-categorias" id="kategoriak-list">
+<?php
+if (sizeof($this->kategoriakSimple) > 0) {
+    foreach ($this->kategoriakSimple as $kategoria) {
+        echo $kategoria;
+    }
+}
+?>
+</div>
+
+<div class="row load">
+    <div class="col-xs-12 text-center">
+        <button
+            class="bg-red center-block loadMoreKategoriak"
+            data-page="1"
+            data-url="<?php echo $this->urlMoreAction; ?>?format=json"
+            data-itemcount="<?php echo $this->kategoriakCount; ?>"
+            >Gehiago ikusi</button>
+    </div>
+</div>

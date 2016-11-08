@@ -1,0 +1,83 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+
+production: 
+  main: 
+    module: klearMatrix
+    defaultScreen: ikastegiaList_screen
+  screens: 
+    ikastegiaList_screen: &ikastegiaList_screenLink 
+      controller: list
+      pagination: 
+        items: 25
+      <<: *Ikastegia
+      title: _("List of %s %2s", ngettext('Ikastegia', 'Ikastegia(s)', 0), "[format| (%parent%)]")
+      fields: 
+        options: 
+          title: _("Options")
+          screens: 
+            ikastegiaEdit_screen: true
+          dialogs: 
+            ikastegiaDel_dialog: true
+          default: ikastegiaEdit_screen
+      options: 
+        title: _("Options")
+        screens: 
+          ikastegiaNew_screen: true
+        dialogs: 
+          ikastegiaDel_dialog: true
+    ikastegiaNew_screen: &ikastegiaNew_screenLink 
+      <<: *Ikastegia
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Add %s", ngettext('Ikastegia', 'Ikastegia(s)', 1))
+      fields: 
+        blacklist: 
+          url: true
+          sortzeData: true
+    ikastegiaEdit_screen: &ikastegiaEdit_screenLink 
+      <<: *Ikastegia
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      title: _("Edit %s %2s", ngettext('Ikastegia', 'Ikastegia(s)', 1), "[format| (%item%)]")
+      fields: 
+        blacklist: 
+          sortzeData: true
+  dialogs: 
+    ikastegiaDel_dialog: 
+      <<: *Ikastegia
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('Ikastegia', 'Ikastegia(s)', 1))
+      description: _("Do you want to delete this %s?", ngettext('Ikastegia', 'Ikastegia(s)', 1))
+      message: _("%s successfully deleted.", ngettext('Ikastegia', 'Ikastegia(s)', 1))
+      labelOnList: true
+      multiItem: true
+
+
+  commands: 
+    IrudiaDownload_command: 
+      <<: *Ikastegia
+      controller: File
+      action: force-download
+      mainColumn: irudia
+    IrudiaUpload_command: 
+      <<: *Ikastegia
+      controller: File
+      action: upload
+      mainColumn: irudia
+    IrudiaPreview_command: 
+      <<: *Ikastegia
+      controller: File
+      action: preview
+      mainColumn: irudia
+testing: 
+  _extends: production
+staging: 
+  _extends: production
+development: 
+  _extends: production

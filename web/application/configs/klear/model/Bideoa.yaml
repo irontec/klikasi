@@ -1,0 +1,29 @@
+production: 
+  class: \Klikasi\Model\Bideoa
+  fields:
+  
+    titulua: 
+      title: _('Titulua')
+      type: text
+    
+    url: 
+      title: _('Url')
+      type: html5
+      source:
+        control: url
+      required: true
+      
+    sortzeData: 
+      title: _('Sortze data')
+      type: picker
+      defaultValue: CURRENT_TIMESTAMP
+      source: 
+        control: datetime
+        settings: 
+          disabled: 'false'
+testing: 
+  _extends: production
+staging: 
+  _extends: production
+development: 
+  _extends: production

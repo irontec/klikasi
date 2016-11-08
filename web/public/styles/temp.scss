@@ -1,0 +1,18 @@
+@import "variables";
+@import "mixins";
+
+/*___Generales___*/
+
+/*___Fin Generales___*/
+
+
+.edukiak-igo .form-balibideak  .form-group {
+        margin-left: 0;
+        margin-right: 0;
+      }
+
+/*Media Queries*/
+/* sm */
+@media (min-width: 768px) and (max-width: 991px) {
+
+}

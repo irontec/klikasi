@@ -1,0 +1,18 @@
+production: 
+  class: \Klikasi\Model\JakinarazpenakMota
+  fields: 
+    izena: 
+      title: _('Izena')
+      type: text
+      required: true
+      default: true
+    url: 
+      title: _('Url')
+      type: text
+      required: true
+testing: 
+  _extends: production
+staging: 
+  _extends: production
+development: 
+  _extends: production

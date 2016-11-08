@@ -1,0 +1,220 @@
+<?php
+$edukia = $this->edukia;
+$noiz = new Zend_Date($edukia->getSortzeData());
+?>
+<div class="col-xs-12 subheader <?php echo $this->edukia->kategoriaGlobala()->getClassName(); ?>">
+    <h2><?php echo $this->edukia->kategoriaFirst()->getIzena(); ?></h2>
+</div>
+
+<div class="col-xs-12 col-sm-8 ficha-content">
+
+    <h1><?php echo $edukia->getTitulua(); ?></h1>
+
+    <?php
+        $isAdmin = $this->isAdmin &&
+                   $this->sessionUser &&
+                   $this->sessionUser instanceof Klikasi\Model\Erabiltzailea &&
+                   ($this->sessionUser->getSuperErabiltzailea() || $this->sessionUser->getId() != $edukia->getErabiltzaileaId());
+
+        if ($edukia->getEgoera() == "onartzeko" && $isAdmin) {
+        ?>
+             <div class="alert alert-warning">
+                 <ul>
+                 <?php
+
+                     foreach ($this->erroreMezuak as $errorea) {
+                         echo '<li>' . $errorea . '</li>';
+                     }
+                 ?>
+                     <li id="edukiaModeration" class="text-right">
+                         <button class="btn btn-success"
+                                 data-url="<?php echo $this->url(array(
+                                    "edukia" => $edukia->getUrl(),
+                                    "egoera" => "onartua",
+                                    "controller" => "edukiak",
+                                    "action" => "moderate",
+                                 ), null, true); ?>?format=json">
+                            Onartu
+                         </button>
+                        <button class="btn btn-danger"
+                                data-url="<?php echo $this->url(array(
+                                    "edukia" => $edukia->getUrl(),
+                                    "egoera" => "ezOnartua",
+                                    "controller" => "edukiak",
+                                    "action" => "moderate",
+                                 ), null, true); ?>?format=json">
+                            Ukatu
+                        </button>
+                     </li>
+                 </ul>
+             </div>
+        <?php
+        } elseif ($edukia->getEgoera() == "blokeatuta" && $isAdmin) {
+            ?>
+            <div class="alert alert-warning">
+                <ul>
+                    <li id="edukiaModeration" class="text-right">
+                         <button class="btn btn-success"
+                                 data-url="<?php echo $this->url(array(
+                                    "edukia" => $edukia->getUrl(),
+                                    "egoera" => "onartua",
+                                    "controller" => "edukiak",
+                                    "action" => "moderate",
+                                 ), null, true); ?>?format=json">
+                            <?php echo $this->translate('[es] Reactivar recurso'); ?>
+                         </button>
+                     </li>
+                </ul>
+            </div>
+            <?php
+        } else {
+            echo $this->alertMessage($this->erroreMezuak, $this->flashmezuak, $this->alertSuccess);
+        }
+
+    ?>
+
+    <div class="date-info">
+        <small><?php echo $noiz->toString("y'eko' MMMM'ren' dd'a'", "eu"); ?></small>
+
+        <small class="info-ficha pull-right">
+            <span class="cont">
+                <i class="fa fa-eye"></i>
+                <span class="moreViews"><?php echo $edukia->getBisitaKopurua(); ?></span>
+            </span>
+            <span class="cont">
+                <span class="glyphicon glyphicon-heart-empty"></span>
+                <span class="moreLikes"><?php echo sizeof($edukia->getAtseginDut()); ?></span>
+            </span>
+            <span class="cont">
+                <i class="fa fa-comments"></i>
+                <span class="moreComments"><?php echo $edukia->iruzkinaCount(); ?></span>
+            </span>
+            <span class="cont">
+                <?php
+                if ($this->isAdmin) {
+                    ?>
+                    <a
+                        href="edukiak-administrazioan/index/edukia/<?php echo $edukia->getUrl(); ?>"
+                        title="Editatu"><i class="fa fa-cog"></i> Editatu
+                    </a>
+                    <?php
+                }
+                ?>
+            </span>
+        </small>
+
+    </div>
+
+    <p style="white-space: pre-line;">
+        <?php echo $edukia->getDeskribapena(); ?>
+    </p>
+
+    <?php
+    /**
+     * Fitxategia
+     */
+    if (sizeof($this->fitxategiaView) > 0) {
+        //echo '<a name="fitxategia"></a>';
+        foreach ($this->fitxategiaView as $fitxategia) {
+            ?>
+            <div class="adjunto col-xs-12">
+                <span>
+                    <i class="fa fa-cloud-download"></i>
+                    <a href="<?php echo $fitxategia->getUrl(); ?>"><?php echo $fitxategia->getUrl(); ?></a>
+
+                    <!--<a
+                        href="<?php echo $fitxategia->getUrl(); ?>"
+                        title="<?php echo $fitxategia->getUrl(); ?>"
+                        target="_blank"
+                        >
+                        <i class="fa fa-file-o"></i><?php echo $fitxategia->getUrl(); ?>
+                    </a>-->
+                </span>
+            </div>
+            <?php
+        }
+    }
+
+    /**
+     * Irudias
+     */
+    if (sizeof($this->irudiasView) > 0) {
+        $pinCount = 0;
+        foreach ($this->irudiasView as $irudia) {
+
+            if ($irudia ['type'] == 'pinterest') {
+                echo '<div class="pinterest-pin">'.$irudia["url"].'</div>';
+                $pinCount++;
+            } else {
+
+                $imgUrl = $irudia["url"];
+                $imgName = $irudia["titulua"];
+                ?>
+                <figure class="col-xs-12">
+                    <img src="<?php echo $imgUrl; ?>" />
+                </figure>
+            <?php
+            }
+        }
+
+        if ($pinCount > 0) {
+            echo '<script type="text/javascript" async="" src="//assets.pinterest.com/js/pinit_main.js"></script>';
+        }
+    }
+
+    /**
+     * Bideoas
+     */
+    if (sizeof($this->bideoasView) > 0) {
+        echo '<a name="bideoa"></a>';
+        foreach ($this->bideoasView as $bideoa) {
+            ?>
+            <figure class="col-xs-12">
+                <?php echo $bideoa["iframe"]; ?>
+            </figure>
+            <?php
+        }
+    }
+
+    /**
+     * Aurkezpena
+     */
+    if (sizeof($this->aurkezpenaView) > 0) {
+        echo '<a name="aurkezpena"></a>';
+        foreach ($this->aurkezpenaView as $aurkezpena) {
+            ?>
+            <figure class="col-xs-12">
+                <?php echo $aurkezpena; ?>
+            </figure>
+            <?php
+        }
+    }
+
+    /**
+     * Estekas
+     */
+    if (sizeof($this->estekasView) > 0) {
+        echo '<a name="esteka"></a>';
+        foreach ($this->estekasView as $estekas) {
+            $class = $estekas['mota'] == 'link' ? 'fa-link' : 'fa-file-sound-o';
+        ?>
+            <figure class="adjunto col-xs-12">
+                <i class="fa <?php echo $class; ?>"></i>
+                <a href="<?php echo $estekas["url"]; ?>"><?php echo $estekas["url"]; ?></a>
+            </figure>
+        <?php
+        }
+    }
+    ?>
+
+</div><!-- END .ficha-content -->
+
+<!-- sidebar.hbs -->
+<div id="sidebar-ficha" class="sidebar col-xs-12 col-sm-4 pull-right bg-standard-grey">
+
+    <!-- bloque-sidebar.hbs -->
+    <?php echo $this->sidebarCaracteristicas; ?>
+    <?php echo $this->sidebarAutor; ?>
+    <?php echo $this->sidebarSocial; ?>
+
+</div>

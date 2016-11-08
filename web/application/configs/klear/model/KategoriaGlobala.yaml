@@ -1,0 +1,92 @@
+production: 
+  class: \Klikasi\Model\KategoriaGlobala
+  fields: 
+    izena: 
+      title: _('Izena')
+      type: text
+      required: true
+      default: true
+    url: 
+      title: _('Url')
+      type: text
+      required: true
+
+    KategoriakRelKategoriaGlobalak: 
+      title: _('Erlazionatutako kategoriak')
+      type: multiselect
+      source:
+        data: mapper
+        config:
+          relationMapper: \Klikasi\Mapper\Sql\KategoriakRelKategoriaGlobalak
+          relatedMapperName: \Klikasi\Mapper\Sql\Kategoria
+          relatedFieldName: izena
+          relationProperty: Kategoria
+      decorators:
+        autocomplete:
+          command: autocompleteKategoria_command
+      options:
+        screens:
+          kategoriaBerriaExternal_screen: true
+          
+    irudia: 
+      title: _('Irudia')
+      type: file
+      source: 
+        data: fso
+        size_limit: 20M
+        options: 
+          hiddenName: true 
+          download: 
+            external: true
+            type: command
+            target: IrudiaDownload_command
+            icon: ui-silk-bullet-disk
+            title: _("Download file")
+            onNull: hide
+          upload: 
+            type: command
+            target: IrudiaUpload_command
+            title: _("Upload file")
+            class: qq-uploader
+            onNull: show
+          preview: 
+            target: IrudiaPreview_command
+            type: command
+            class: filePreview
+            external: 1
+            props: 
+              height: 200
+            crop: 1
+            onNull: hide
+          previewList: 
+            target: IrudiaPreview_command
+            type: command
+            class: filePreview
+            listController: 1
+            external: 1
+            props: 
+              height: 90
+            crop: 1
+            onNull: hide
+            
+    className:
+       title: _('Class Name')
+       type: select
+       defaultValue: 0
+       source:
+         data: inline
+         values:
+            'bg-green': 'Green'
+            'bg-yellow': 'Yellow'
+            'bg-blue': 'Blue'
+            'bg-brown': 'Brown'
+            'bg-orange': 'Orange'
+            'bg-grey': 'Grey'
+            'bg-pink': 'Pink'
+    
+testing: 
+  _extends: production
+staging: 
+  _extends: production
+development: 
+  _extends: production

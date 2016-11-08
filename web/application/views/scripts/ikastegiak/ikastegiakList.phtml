@@ -1,0 +1,39 @@
+<!-- centros.hbs -->
+<div class="col-xs-12 list-centros">
+
+    {{^noBorder}}
+        <div class="border"></div>
+    {{/noBorder}}
+    
+    <div class="col-xs-12 col-sm-8 col-md-4 centro">
+        <figure class="col-xs-4 col-sm-5 col-xs-offset-4 col-sm-offset-0">
+            <img class="img-circle" src="{{irudiaUrl}}" alt="{{izena}}" />
+        </figure>
+
+        <span class="col-xs-12 col-sm-7">
+            <h2>
+                <a href="{{ikastegiaUrl}}">{{izena}}</a>
+            </h2>
+
+            <ul class="list-unstyled list-inline">
+                <li>
+                    {{#egileakUrl}}
+                        <a href="{{egileakUrl}}">
+                           {{autore}} Sortzaile
+                        </a>
+                    {{/egileakUrl}}
+                    {{^egileakUrl}}
+                        {{autore}} Sortzaile
+                    {{/egileakUrl}}
+                </li>
+                <li>{{edukiakCount}} Baliabide</li>
+            </ul>
+        </span>
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-8 cat-featured container-categorias">
+        {{#kategoriak}}
+            {{> kategoriak}}
+        {{/kategoriak}}
+    </div>
+</div>

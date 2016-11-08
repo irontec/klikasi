@@ -1,0 +1,89 @@
+production: 
+  class: \Klikasi\Model\Fitxategia
+  fields: 
+    edukiaId: 
+      title: _('Edukia id')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Klikasi\Mapper\Sql\Edukia
+          fieldName: 
+            fields: 
+              - titulua
+            template: '%titulua%'
+          order: titulua
+      default: true
+    titulua: 
+      title: _('Titulua')
+      type: text
+    klikKopurua: 
+      title: _('Klik kopurua')
+      type: number
+      defaultValue: 0
+      source: 
+        control: Spinner
+    url: 
+      title: _('Url')
+      type: text
+      type: html5
+      source:
+        control: url
+      required: true
+      
+    fitxategia: 
+      title: _('Fitxategia')
+      type: file
+      source: 
+        data: fso
+        size_limit: 20M
+        options: 
+          download: 
+            external: true
+            type: command
+            target: FitxategiaDownload_command
+            icon: ui-silk-bullet-disk
+            title: _("Download file")
+            onNull: hide
+          upload: 
+            type: command
+            target: FitxategiaUpload_command
+            title: _("Upload file")
+            class: qq-uploader
+            onNull: show
+          preview: 
+            target: FitxategiaPreview_command
+            type: command
+            class: filePreview
+            external: 1
+            props: 
+              width: 150
+              height: 150
+            crop: 1
+            onNull: hide
+          previewList: 
+            target: FitxategiaPreview_command
+            type: command
+            class: filePreview
+            listController: 1
+            external: 1
+            props: 
+              width: 30
+              height: 30
+            crop: 1
+            onNull: hide
+    sortzeData: 
+      title: _('Sortze data')
+      type: picker
+      defaultValue: CURRENT_TIMESTAMP
+      source: 
+        control: datetime
+        settings: 
+          disabled: 'false'
+testing: 
+  _extends: production
+staging: 
+  _extends: production
+development: 
+  _extends: production

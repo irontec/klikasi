@@ -1,0 +1,152 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+
+configAnalytics:
+  - &configAnalytics
+    config:
+      profileId: '90758442'
+      username: 'interner.analytics.irontec@gmail.com'
+      password: '4n4l1t1cs.1r0nt3c'
+      maxResults: 15
+      startDate: 'YYYY-01-01'
+      endDate: 'YYYY-12-31'
+      
+production:
+  main:
+    module: klearMatrix
+    defaultScreen: googleCharts_screen
+  screens:
+    googleCharts_screen: &statistics_Link
+      class: ui-silk-chart-bar-link
+      controller: googlecharts
+      title: _('Statistics')
+      chartGroups:
+      
+        group1:
+          title: _('Klikasi')
+          charts:
+          
+            pageTitle:
+              title: _('Top Content')
+              type: Table
+              analytics:
+                <<: *configAnalytics
+                metric:
+                  'ga:pageviews': _('pageviews')
+                  'ga:uniquePageviews': _('uniquePageviews')
+                  'ga:timeOnPage': _('timeOnPage')
+                  'ga:bounces': _('bounces')
+                  'ga:entrances': _('entrances')
+                  'ga:exits': _('exits')
+                  
+                dimension:
+                  'ga:pagePath': _('pagePath')
+              options:
+                width: 900
+            
+            source:
+              title: _('source')
+              type: Table
+              analytics:
+                <<: *configAnalytics
+                metric:
+                  'ga:pageviews': _('pageviews')
+                  'ga:sessions': _('visits')
+                dimension:
+                  'ga:source': _('source')
+              options:
+                width: 400
+                
+            NewReturning :
+              title: _('New vs Returning Users')
+              type: PieChart
+              analytics:
+                <<: *configAnalytics
+                metric:
+                  'ga:sessions': _('visits')
+                dimension:
+                  'ga:userType': _('userType')
+              options:
+                width: 400
+                
+            Keywords: 
+              title: _('Keywords')
+              type: Table
+              analytics:
+                <<: *configAnalytics
+                metric:
+                  'ga:sessions': _('visits')
+                dimension:
+                  'ga:keyword': _('keyword')
+              options:
+                width: 400
+                
+        group2:
+          title: _('Origin of visitors')
+          charts:
+            
+            Browser:
+              title: _('Browser')
+              type: Table
+              analytics:
+                <<: *configAnalytics
+                metric:
+                  'ga:sessions': _('visits')
+                  'ga:sessionDuration': _('sessionDuration') 
+                dimension:
+                  'ga:browser': _('browser')
+                  'ga:browserVersion': _('browserVersion')
+              options:
+                width: 450
+              
+            Device:
+              title: _('Device')
+              type: Table
+              analytics:
+                <<: *configAnalytics
+                metric:
+                  'ga:sessions': _('visits')
+                  'ga:sessionDuration': _('sessionDuration')
+                dimension:
+                  'ga:operatingSystem': _('operatingSystem')
+                  'ga:operatingSystemVersion': _('operatingSystemVersion')
+              options:
+                width: 550
+            
+            Map:
+              title: _('Map')
+              type: GeoChart
+              analytics:
+                <<: *configAnalytics
+                metric:
+                  'ga:sessions': _('visits')
+                dimension:
+                  'ga:country': _('country')
+              options:
+                width: 800
+                
+            country:
+              title: _('country')
+              type: Table
+              analytics:
+                <<: *configAnalytics
+                metric:
+                  'ga:sessions': _('visits')
+                dimension:
+                  'ga:country': _('country')
+              options:
+                width: 400
+               
+        group2:
+          title: 'Social media: Enlaces de interes'
+          comment: '<a href="http://topsy.com/analytics?q1=irontec&via=Topsy">topsy.comy</a>
+                    <a href="http://socialmention.com/search?q=irontec&t=all&btnG=Search">socialmention.com/</a>
+                    <a href="http://www.talkwalker.com/app/project/cc9bdbf5-f5b5-4f6b-a68a-52ea60690341/search##g=SEARCH&c=MEDIA_TYPE&i=964dd836-0d22-415f-b51f-5d443dd569d4&tz=Europe%252FParis">www.talkwalker.com (mikel@irontec / 1234abcd)</a>
+                    <a href="http://empireavenue.com/">empireavenue.com</a>
+                    <a href="http://support.bitly.com/knowledgebase/articles/198514-what-is-the-bitly-info-page">bitly.com</a>
+                    <a href=""></a>'
+                
+testing:
+  _extends: production
+development:
+  _extends: production

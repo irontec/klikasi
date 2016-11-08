@@ -1,0 +1,151 @@
+---
+title : Ikastegiak
+
+subheader-centros :
+  nombre : "Ikastegiak"
+  class : "bg-standard-grey"
+
+centros :
+  - nombre : "Deustuko Ikastola"
+    image : "images/di.jpg"
+    alt : "Deustuko Ikastola"
+    autores : "17"
+    recursos : "78"
+    datos-resumen-categoria :
+      - width : "col-xs-12 col-sm-4"
+        image : "images/mate.jpg"
+        alt : "Universo"
+        class: "destacada"
+        class-caption : "bg-pink"
+        categoria : "Natur zientziak"
+        recursos : "5321"
+      - width : "col-xs-12 col-sm-4"
+        image : "images/mate.jpg"
+        alt : "Universo"
+        class: "destacada"
+        class-caption : "bg-yellow"
+        categoria : "Matematika"
+        recursos : "5321"
+      - width : "col-xs-12 col-sm-4"
+        image : "images/mate.jpg"
+        alt : "Universo"
+        class: "destacada"
+        class-caption : "bg-blue"
+        categoria : "Geografia"
+        recursos : "5321"
+  - nombre : "Lauro Ikastola"
+    image : "images/lauro.jpg"
+    alt : "Lauro Ikastola"
+    autores : "20"
+    recursos : "105"
+    datos-resumen-categoria :
+      - width : "col-xs-12 col-sm-4"
+        image : "images/mate.jpg"
+        alt : "Universo"
+        class: "destacada"
+        class-caption : "bg-orange"
+        categoria : "Biologia"
+        recursos : "5321"
+      - width : "col-xs-12 col-sm-4"
+        image : "images/mate.jpg"
+        alt : "Universo"
+        class: "destacada"
+        class-caption : "bg-grey"
+        categoria : "Matematika"
+        recursos : "5321"
+      - width : "col-xs-12 col-sm-4"
+        image : "images/mate.jpg"
+        alt : "Universo"
+        class: "destacada"
+        class-caption : "bg-brown"
+        categoria : "Geografia"
+        recursos : "5321"
+  - nombre : "Autoeskola Baskonia"
+    image : "images/autoeskola-baskonia.jpg"
+    alt : "Autoeskola Baskonia"
+    autores : "2"
+    recursos : "112"
+    datos-resumen-categoria :
+      - width : "col-xs-12 col-sm-4"
+        image : "images/mate.jpg"
+        alt : "Universo"
+        class: "destacada"
+        class-caption : "bg-pink"
+        categoria : "Natur zientziak"
+        recursos : "5321"
+      - width : "col-xs-12 col-sm-4"
+        image : "images/mate.jpg"
+        alt : "Universo"
+        class: "destacada"
+        class-caption : "bg-yellow"
+        categoria : "Matematika"
+        recursos : "5321"
+      - width : "col-xs-12 col-sm-4"
+        image : "images/mate.jpg"
+        alt : "Universo"
+        class: "destacada"
+        class-caption : "bg-blue"
+        categoria : "Geografia"
+        recursos : "5321"
+  - nombre : "Deustuko Ikastola"
+    image : "images/di.jpg"
+    alt : "Deustuko Ikastola"
+    autores : "17"
+    recursos : "78"
+    datos-resumen-categoria :
+      - width : "col-xs-12 col-sm-4"
+        image : "images/mate.jpg"
+        alt : "Universo"
+        class: "destacada"
+        class-caption : "bg-pink"
+        categoria : "Natur zientziak"
+        recursos : "5321"
+      - width : "col-xs-12 col-sm-4"
+        image : "images/mate.jpg"
+        alt : "Universo"
+        class: "destacada"
+        class-caption : "bg-yellow"
+        categoria : "Matematika"
+        recursos : "5321"
+      - width : "col-xs-12 col-sm-4"
+        image : "images/mate.jpg"
+        alt : "Universo"
+        class: "destacada"
+        class-caption : "bg-blue"
+        categoria : "Geografia"
+        recursos : "5321"
+
+---
+
+<div class="container principal">
+    {{> subheader subheader-centros}}
+    {{#each centros}}
+  <div class="col-xs-12 list-centros">
+    <div class="border"></div>
+    <div class="col-xs-12 col-sm-8 col-md-4 centro">
+      <figure class="col-xs-4 col-sm-5 col-xs-offset-4 col-sm-offset-0"><img class="img-circle" src = '{{image}}' alt = '{{alt}}'/></figure>
+      <span class="col-xs-12 col-sm-7">
+      <h2><a href="#">{{nombre}}</a></h2>
+      <ul class="list-unstyled list-inline">
+        <li>{{autores}} autore</li>
+        <li>{{recursos}} baliabide</li>
+      </ul>
+      </span>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-8 cat-featured container-categorias ">
+        {{#each datos-resumen-categoria}}
+        <div class = 'resumen-categoria {{ width }} {{class}}'>
+          <figure>
+            <img src = '{{image}}' alt = '{{alt}}'/>
+            <figcaption class = 'col-xs-12 categoria {{class-caption}}'>
+              <span class="category"><a href="#">{{categoria}}</a></span>
+              <span class="cantidad-recurso"><strong>{{recursos}}</strong> baliabide</span>
+            </figcaption>
+          </figure>
+        </div>
+        {{/each}}
+    </div>
+  </div>
+  {{/each}}
+  {{> load}}
+</div>

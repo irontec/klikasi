@@ -1,0 +1,71 @@
+<?php
+$currentId = 0;
+$erabiltzaileaId = 0;
+$completName = '';
+
+if ($this->erabiltzailea) {
+    $erabiltzaileaId = $this->erabiltzailea->getId();
+    $completName = $this->erabiltzailea->getCompletName();
+}
+
+if ($this->currentUser) {
+    $currentId = $this->currentUser->getId();
+}
+?>
+<div class="modal fade" id="kontaktua-dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title">Kontaktatu: <?php echo $completName; ?></h4>
+            </div>
+
+            <form class="form-horizontal" role="form">
+                <div class="modal-body">
+                        <input
+                            type="hidden"
+                            name="erabiltzaileaId"
+                            value="<?php echo $erabiltzaileaId; ?>"
+                            />
+
+                        <input
+                            type="hidden"
+                            name="currentId"
+                            value="<?php echo $currentId; ?>"
+                            />
+
+                        <div class="form-group">
+                            <label
+                                class="col-sm-2 control-label"
+                                for="mezua-kontaktua-dialog"
+
+                                >Mezua:</label>
+                            <div class="col-sm-10 elementTextarea">
+                                <textarea
+                                    class="form-control"
+                                    id="mezua-kontaktua-dialog"
+                                    rows="3"
+                                    cols=""
+                                    name="mezuak"
+                                    placeholder="Mezua..."
+                                    ></textarea>
+                            </div>
+                        </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button
+                        type="submit"
+                        class="btn btn-success"
+                        data-action="send"
+                        ><?php echo $this->translate('[es] Enviar mensaje'); ?></button>
+                    <button
+                        class="btn btn-default"
+                        data-action="closed"
+                        ><?php echo $this->translate('[es] Cancelar'); ?></button>
+                </div>
+            </form>
+
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

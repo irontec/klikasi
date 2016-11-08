@@ -1,0 +1,179 @@
+production: 
+  class: \Klikasi\Model\Ikastegia
+  fields: 
+    izena: 
+      title: _('Izena')
+      type: text
+      required: true
+      maxLength: 250
+      default: true
+    deskribapenLaburra: 
+      title: _('Deskribapen laburra')
+      type: text
+      required: true
+      maxLength: 250
+    deskribapena: 
+      title: _('Deskribapena')
+      type: textarea
+    herria: 
+      title: _('Herria')
+      type: text
+      required: true
+      maxLength: 250
+    probintzia: 
+      title: _('Probintzia')
+      type: text
+      required: true
+      maxLength: 250
+    kokapena: 
+      title: _('Kokapena')
+      type: text
+      required: true
+      maxLength: 250
+    kokapenaLat: 
+      title: _('Kokapena lat')
+      type: text
+      required: true
+    kokapenaLng: 
+      title: _('Kokapena lng')
+      type: text
+      required: true
+    mota: 
+      title: _('Mota')
+      type: select
+      defaultValue: ikastetxea
+      source: 
+        data: inline
+        values: 
+          'ikastetxea': _('ikastetxea')
+          'bestelakoa': _('bestelakoa')
+    irudia: 
+      title: _('Irudia')
+      type: file
+      source: 
+        data: fso
+        size_limit: 20M
+        options: 
+          download: 
+            external: true
+            type: command
+            target: ikastegiaIrudiaDownload_command
+            icon: ui-silk-bullet-disk
+            title: _("Download file")
+            onNull: hide
+          upload: 
+            type: command
+            target: ikastegiaIrudiaUpload_command
+            title: _("Upload file")
+            class: qq-uploader
+            onNull: show
+          preview: 
+            target: ikastegiaIrudiaPreview_command
+            type: command
+            class: filePreview
+            external: 1
+            props: 
+              width: 150
+              height: 150
+              crop: false
+            onNull: hide
+          previewList: 
+            target: ikastegiaIrudiaPreview_command
+            type: command
+            class: filePreview
+            listController: 1
+            external: 1
+            props: 
+              width: 30
+              height: 30
+              crop: false
+            onNull: hide
+          delete: 
+            type: setNullFso
+            icon: ui-silk-bin
+            title: _("Delete file")
+            onNull: hide
+    linkedin: 
+      title: _('Linkedin')
+      type: text
+      maxLength: 350
+    facebook: 
+      title: _('Facebook')
+      type: text
+      maxLength: 350
+    twitter: 
+      title: _('Twitter')
+      type: text
+      maxLength: 350
+    google: 
+      title: _('Google')
+      type: text
+      maxLength: 350
+    youtube: 
+      title: _('Youtube')
+      type: text
+      maxLength: 350
+    instagram: 
+      title: _('Instagram')
+      type: text
+      maxLength: 350
+    pinterest: 
+      title: _('Pinterest')
+      type: text
+      maxLength: 350
+    aktibatua: 
+      title: _('Aktibatua')
+      type: select
+      defaultValue: 0
+      source: 
+        data: inline
+        values: 
+          '0': 
+            title: _("No")
+          '1': 
+            title: _("Yes")
+    url: 
+      title: _('Url')
+      type: text
+      required: true
+      maxLength: 250
+    webSite: 
+      title: _('Web site')
+      type: text
+      maxLength: 255
+    sortzeData: 
+      title: _('Sortze data')
+      type: picker
+      defaultValue: CURRENT_TIMESTAMP
+      source: 
+        control: datetime
+        settings: 
+          disabled: 'false'
+    karma: 
+      title: _('Karma')
+      type: number
+      defaultValue: 0
+      source: 
+        control: Spinner
+    flickr: 
+      title: _('Flickr')
+      type: text
+      maxLength: 350
+    ikasleKopurua: 
+      title: _('Ikasle kopurua')
+      type: number
+      defaultValue: 0
+      source: 
+        control: Spinner
+    edukiKopurua: 
+      title: _('Eduki kopurua')
+      type: number
+      defaultValue: 0
+      source: 
+        control: Spinner
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production

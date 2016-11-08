@@ -1,0 +1,102 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+#include ErabiltzaileaList.yaml
+
+
+production: 
+  main: 
+    module: klearMatrix
+    defaultScreen: erabiltzaileenIrudiakList_screen
+  screens: &erabiltzaileenIrudiak_screensLink 
+    erabiltzaileenIrudiakList_screen: &erabiltzaileenIrudiakList_screenLink 
+      controller: list
+      pagination: 
+        items: 25
+      <<: *ErabiltzaileenIrudiak
+      class: ui-silk-text-list-bullets
+      title: _("List of %s %2s", ngettext('Erabiltzaileen irudiak', 'Erabiltzaileen irudiak(s)', 0), "[format| (%parent%)]")
+      fields: &erabiltzaileenIrudiak_fieldsLink 
+        options: 
+          title: _("Options")
+          screens: 
+            erabiltzaileenIrudiakEdit_screen: true
+            erabiltzaileaList_screen: true
+          dialogs: 
+            erabiltzaileenIrudiakDel_dialog: true
+          default: erabiltzaileenIrudiakEdit_screen
+      options: 
+        title: _("Options")
+        screens: 
+          erabiltzaileenIrudiakNew_screen: true
+        dialogs: 
+          erabiltzaileenIrudiakDel_dialog: true
+    erabiltzaileenIrudiakNew_screen: &erabiltzaileenIrudiakNew_screenLink 
+      <<: *ErabiltzaileenIrudiak
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Add %s", ngettext('Erabiltzaileen irudiak', 'Erabiltzaileen irudiak(s)', 1), "[format| (%parent%)]")
+      shortcutOption: N
+      postActionOptions: 
+        screens: 
+          erabiltzaileenIrudiakEdit_screen: true
+      fields: 
+        blacklist: 
+          iden: true
+    erabiltzaileenIrudiakEdit_screen: &erabiltzaileenIrudiakEdit_screenLink 
+      <<: *ErabiltzaileenIrudiak
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      labelOnPostAction: _("Edit %s %2s", ngettext('Erabiltzaileen irudiak', 'Erabiltzaileen irudiak(s)', 1), "[format| (%item%)]")
+      title: _("Edit %s %2s", ngettext('Erabiltzaileen irudiak', 'Erabiltzaileen irudiak(s)', 1), "[format| (%item%)]")
+    #erabiltzailea: 
+    <<: *erabiltzailea_screensLink
+    erabiltzaileaList_screen: 
+      <<: *erabiltzaileaList_screenLink
+      filterField: irudiaId
+      parentOptionCustomizer: 
+        - recordCount
+    erabiltzaileaNew_screen: 
+      <<: *erabiltzaileaNew_screenLink
+      filterField: irudiaId
+    erabiltzaileaEdit_screen: 
+      <<: *erabiltzaileaEdit_screenLink
+      filterField: irudiaId
+
+  dialogs: &erabiltzaileenIrudiak_dialogsLink 
+    erabiltzaileenIrudiakDel_dialog: &erabiltzaileenIrudiakDel_dialogLink 
+      <<: *ErabiltzaileenIrudiak
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('Erabiltzaileen irudiak', 'Erabiltzaileen irudiak(s)', 1))
+      description: _("Do you want to delete this %s?", ngettext('Erabiltzaileen irudiak', 'Erabiltzaileen irudiak(s)', 1))
+      message: _("%s successfully deleted.", ngettext('Erabiltzaileen irudiak', 'Erabiltzaileen irudiak(s)', 1))
+      multiItem: 1
+      labelOnList: 1
+  # erabiltzailea dialogs: 
+    <<: *erabiltzailea_dialogsLink
+  commands: &erabiltzaileenIrudiak_commandsLink 
+    erabiltzaileenIrudiakIrudiaDownload_command: &erabiltzaileenIrudiakIrudiaDownload_commandLink 
+      <<: *ErabiltzaileenIrudiak
+      controller: File
+      action: force-download
+      mainColumn: irudia
+    erabiltzaileenIrudiakIrudiaUpload_command: &erabiltzaileenIrudiakIrudiaUpload_commandLink 
+      <<: *ErabiltzaileenIrudiak
+      controller: File
+      action: upload
+      mainColumn: irudia
+    erabiltzaileenIrudiakIrudiaPreview_command: &erabiltzaileenIrudiakIrudiaPreview_commandLink 
+      <<: *ErabiltzaileenIrudiak
+      controller: File
+      action: preview
+      mainColumn: irudia
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production

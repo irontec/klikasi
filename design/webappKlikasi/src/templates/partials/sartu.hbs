@@ -1,0 +1,36 @@
+---
+component : izena eman
+---
+
+<!-- Modal -->
+<div class="modal fade" id="sartu" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div id="izenaeman" class="modal-content">
+			<div class="modal-header">
+				<button class="itxi" type="button" data-dismiss="modal" aria-hidden="true">×</button>
+				<h3>Izena eman Klikasin</h3>
+			</div>
+			<div class="color-border"></div>
+				{{#each sartu-data}}
+				<div class="modal-body">
+					<div class="inner">
+						<form>
+							{{#each inputs}}	
+							<input id="{{input-id}}" class="{{input-class}}" type="{{input-type}}" placeholder="{{input-placeholder}}">
+							{{/each}}	
+						</form>
+						
+						<div class="info">
+							<p>He olvidado <a href="/es/terms">mi contraseña</a>.</p>
+						</div>	
+					</div>
+				</div>
+						
+				<div class="modal-footer">
+					<p>¿Aún no tienes una cuenta en Klikasi? <a href="/es/login.js?scope=home-hero" data-toggle="modal" data-target="#login-modal" data-dismiss="modal" class="link-primary">Regístrate</a></p>
+				</div>
+				{{/each}}		
+		</div>
+	</div>
+</div>
+

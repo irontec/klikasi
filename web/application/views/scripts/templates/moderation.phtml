@@ -1,0 +1,119 @@
+<body style="width:90%; margin: 0 auto;">
+
+<table style="width:100%; margin: 0 auto; padding:8px;">
+    <tbody>
+        <tr>
+            <td colspan="7">
+                <a
+                    href="{{baseUrl}}"
+                    title="Klikasi"
+                    style="text-decoration: none;"
+                    ><img
+                        src="{{baseUrl}}/images/logo_klikasi.png"
+                        alt="Klikasi"
+                        /></a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a
+                    href="http://www.azkuefundazioa.org"
+                    title="Azkue Fundazioa"
+                    target="_blank"
+                    ><img
+                        src="{{baseUrl}}/images/logo_azkue.png"
+                        alt="Azkue Fundazioa"
+                        /></a>
+            </td>
+            <td style="width: 50px;text-align: center;">
+                <a
+                    href="https://twitter.com/AzkueFundazioa/"
+                    target="_blank"
+                    title="Twitter azkue fundazioa"
+                    ><img src="{{baseUrl}}/img/fontawesome-png/grey/24/twitter.png" alt="Twitter azkue fundazioa" /></a>
+            </td>
+            <td style="width: 50px;text-align: center;">
+                <a
+                    href="https://www.facebook.com/AzkueFundazioa/"
+                    target="_blank"
+                    title="Facebook azkue fundazioa"
+                    ><img src="{{baseUrl}}/img/fontawesome-png/grey/24/facebook.png" alt="Facebook azkue fundazioa" /></a>
+            </td>
+            <td style="width: 50px;text-align: center;">
+                <a
+                    href="http://www.pinterest.com/azkuefundazioa/"
+                    target="_blank"
+                    title="Pinterest azkue fundazioa"
+                    ><img src="{{baseUrl}}/img/fontawesome-png/grey/24/pinterest.png" alt="Pinterest azkue fundazioa" /></a>
+            </td>
+            <td style="width: 50px;text-align: center;">
+                <a
+                    href="https://www.youtube.com/user/AzkueFundazioa/"
+                    target="_blank"
+                    title="Youtube azkue fundazioa"
+                    ><img src="{{baseUrl}}/img/fontawesome-png/grey/24/youtube.png" alt="Youtube azkue fundazioa" /></a>
+            </td>
+            <td style="width: 50px;text-align: center;">
+                <a
+                    href="http://www.azkuefundazioarenegunkaria.org/"
+                    target="_blank"
+                    title="Bloga azkue fundazioa"
+                    style="color: #808080 !important; cursor: auto; border-left: 1px solid #ECECEC;"
+                    >Bloga</a>
+            </td>
+            <td style="width: 50px;text-align: center;">
+                <a
+                    href="{{baseUrl}}/rss"
+                    title="RSS"
+                    ><img src="{{baseUrl}}/img/fontawesome-png/grey/24/rss.png" alt="RSS" /></a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<table style="width:100%; min-width:500px; margin: 0 auto; background: #F6F6F6; padding-bottom: 40px;">
+    <tbody>
+        <tr>
+            <td align="center">
+                <div class="kaixo">
+                    <h1 style="color:black;">Kaixo <span style="color: #007F9F;font-weight: bold;text-shadow: #999 0 0 1px;">{{name}}:</span></h1>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table
+                    class="body"
+                    style="border-right: 1px solid #999; border-bottom: 1px solid #999; width: 90%; min-width:400px;margin:0 auto;background: #fff; padding: 20px; font-size: 14px; box-shadow: 1px 3px 11px #949494;">
+                    <tbody>
+                        <tr>
+                            <td>
+                                {{{body}}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<table style="width:100%; min-width:500px; margin: 0 auto; border-top: 2px solid #fff; background: #F6F6F6;">
+    <tbody>
+        <tr>
+            <td>
+                <div
+                    style="padding: 11px; color: #000; font-size: 10px; width: 300px;">
+                    <p><a
+                        href="<?php echo $this->serverUrl($this->baseUrl('/sartu')); ?>"
+                        style="font-weight: bold;color:#000;"
+                        >Saioa hasi</a> datuak aldatzeko</p>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+    <p class="clear" style="clear: both;display: none;"></p>
+</table>
+
+</body>

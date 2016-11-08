@@ -1,0 +1,524 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+#include ErabiltzaileaList.yaml
+#include IrudiaList.yaml
+#include BideoaList.yaml
+#include AurkezpenaList.yaml
+#include EstekaList.yaml
+#include FitxategiaList.yaml
+
+fixedPositions:
+  - &fixedEduki
+    fixedPositions:
+      group:
+        label: _("Jabetza")
+        fields: 
+          erabiltzaileaId: true
+          ErabiltzaileaRelEdukia: true
+      group0:
+        label: _("Publikatutako ikastegiak")
+        fields:
+          EdukiaRelIkastegia: true
+      group1:
+        label: _("Kategorizazioa")
+        fields:
+          EdukiaRelKategoria: true
+          EtiketaRelEdukia: true
+      group2:
+        label: _("Datu orokorrak")
+        colsPerRow: 4
+        fields:
+          titulua: 2
+          egoera: 2
+          deskribapenLaburra: 4
+          deskribapena: 4
+      group3:
+        label: _("Hartzaileen datuak")
+        colsPerRow: 4
+        fields:
+          urteakNoiztik: 2
+          urteakNoizarte: 2
+          EdukiaRelMaila: 4
+      group4:
+        label: _("Datu gehigarriak")
+        fields:
+          bisitaKopurua: true
+          url: true
+          sortzeData: true
+
+production: 
+  main: 
+    module: klearMatrix
+    defaultScreen: edukiaList_screen
+
+  #---------------
+  #--- SCREENS ---
+  #---------------
+  screens: 
+    edukiaList_screen: &edukiaList_screenLink 
+      controller: list
+      pagination: 
+        items: 25
+      <<: *Edukia
+      title: _("List of %s", ngettext('Edukia', 'Eduki', 0))
+      fields:
+        order:
+          titulua: true
+          erabiltzaileaId: true
+          EdukiaRelIkastegia: true
+          EdukiaRelKategoria: true
+          EtiketaRelEdukia: true
+        blacklist:
+          url: true
+          bisitaKopurua: true
+          deskribapena: true
+          deskribapenLaburra: true
+          ErabiltzaileaRelEdukia: true
+          EdukiaRelKanpaina: true
+          sortzeData: true
+          urteakNoiztik: true
+          urteakNoizarte: true
+          maila: true
+        options: 
+          title: _("Options")
+          screens: 
+            ikastegiakRel_screen: true
+            erabiltzaileaRel_screen: true
+            kategoriakRel_screen: true
+            etiketakRel_screen: true
+            irudiakRel_screen: true
+            bideoakRel_screen: true
+            aurkezpenakRel_screen: true
+            estekakRel_screen: true
+            fitxategiakRel_screen: true
+            edukiaEdit_screen: true
+          dialogs: 
+            edukiaDel_dialog: true
+          default: edukiaEdit_screen
+      options: 
+        title: _("Options")
+        screens: 
+          edukiaNew_screen: true
+        dialogs: 
+          edukiaDel_dialog: true
+
+    edukiaNew_screen: &edukiaNew_screenLink 
+      <<: *Edukia
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Add %s", ngettext('Edukia', 'Edukia(s)', 1))
+      <<: *fixedEduki
+      fields: 
+        blacklist: 
+          sortzeData: true
+          url: true
+          bisitaKopurua: true
+          egoera: true
+          EdukiaRelKanpaina: true
+
+    edukiaEdit_screen: &edukiaEdit_screenLink 
+      <<: *Edukia
+      <<: *fixedEduki
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      title: _("Edit %s", ngettext('Edukia', 'Edukia(s)', 1))
+      fields: 
+        order:
+          titulua: true
+          deskribapenLaburra: true
+          deskribapena: true
+          urteakNoiztik: true
+          erabiltzaileaId: true
+          EdukiaRelIkastegia: true
+          EdukiaRelKategoria: true
+        blacklist: 
+          EdukiaRelKanpaina: true
+        readOnly:
+          url: true
+          bisitaKopurua: true
+          sortzeData: true
+      options:
+        screens: 
+          irudiakRel_screen: true
+          bideoakRel_screen: true
+          aurkezpenakRel_screen: true
+          estekakRel_screen: true
+          fitxategiakRel_screen: true
+
+    # Erlazionatutako ikastegien pantailak
+    ikastegiakRel_screen:
+      <<: *EdukiaRelIkastegia
+      controller: list
+      class: ui-silk-building
+      label: false
+      title: _('"%s" erlazionatutako ikastegiak', '%parent%')
+      filterField: edukiaId
+      parentOptionCustomizer:
+        - recordCount
+
+    # Kolaboratzaileen zerrenda
+    erabiltzaileaRel_screen:
+      <<: *ErabiltzaileaRelEdukia
+      controller: list
+      class: ui-silk-group
+      label: false
+      title: _('"%s"-(r)en kolaboratzaileak', '%parent%')
+      filterField: edukiaId
+      parentOptionCustomizer:
+        - recordCount
+      fields:
+        options: 
+          title: _("Options")
+          dialogs: 
+            erabiltzeakRelDel_dialog: true
+          default: erabiltzeakRelDel_dialog
+      options: 
+        title: _("Options")
+        screens: 
+          erabiltzeakRelNew_screen: true
+        dialogs: 
+          erabiltzeakRelDel_dialog: true
+
+    erabiltzeakRelNew_screen: 
+      <<: *ErabiltzaileaRelEdukia
+      controller: new
+      class: ui-silk-user-add
+      label: true
+      multiInstance: true
+      filterField: edukiaId
+      title: _("Erabiltzailea erlazionatu")
+
+    # Erlazionatutako kategorien kudeaketa
+    kategoriakRel_screen:
+      <<: *EdukiaRelKategoria
+      controller: list
+      class: ui-silk-color-swatch
+      label: false
+      title: _('"%s"-(r)i erlazionatutako kategoriak', '%parent%')
+      filterField: edukiaId
+      parentOptionCustomizer:
+        - recordCount
+      fields:
+        options: 
+          title: _("Options")
+          dialogs: 
+            kategoriakRelDel_dialog: true
+          default: kategoriakRelDel_dialog
+      options: 
+        title: _("Options")
+        screens: 
+          kategoriakRelNew_screen: true
+        dialogs: 
+          kategoriakRelDel_dialog: true
+
+    kategoriakRelNew_screen: 
+      <<: *EdukiaRelKategoria
+      controller: new
+      class: ui-silk-color-swatch
+      label: true
+      multiInstance: true
+      filterField: edukiaId
+      title: _("Add %s", ngettext('Etiketa', 'Etiketak', 1))
+
+    # Erlazionatutako etiketen kudeaketa
+    etiketakRel_screen:
+      <<: *EtiketaRelEdukia
+      controller: list
+      class: ui-silk-tag-blue
+      label: false
+      title: _('"%s" erlazionatutako etiketak', '%parent%')
+      filterField: edukiaId
+      parentOptionCustomizer:
+        - recordCount
+      fields:
+        options: 
+          title: _("Options")
+          dialogs: 
+            etiketakRelDel_dialog: true
+          default: etiketakRelDel_dialog
+      options: 
+        title: _("Options")
+        screens: 
+          etiketakRelNew_screen: true
+        dialogs: 
+          etiketakRelDel_dialog: true
+
+    etiketakRelNew_screen: 
+      <<: *EtiketaRelEdukia
+      controller: new
+      class: ui-silk-tag-blue-add
+      label: true
+      multiInstance: true
+      filterField: edukiaId
+      title: _("Add %s", ngettext('Etiketa', 'Etiketak', 1))
+
+    # Irudiak pantailak
+    irudiakRel_screen:
+      <<: *irudiaList_screenLink
+      title: _('"%s"-(r)en irudiak', '%parent%')
+      filterField: edukiaId
+      class: ui-silk-picture
+      parentOptionCustomizer:
+        - recordCount
+    irudiaNew_screen: 
+      <<: *irudiaNew_screenLink
+      filterField: edukiaId
+      fields: 
+        blacklist: 
+          klikKopurua: true
+          sortzeData: true
+          fitxategia: true
+    irudiaEdit_screen: 
+      <<: *irudiaEdit_screenLink
+      filterField: edukiaId
+      fields: 
+        blacklist: 
+          klikKopurua: true
+          sortzeData: true
+          fitxategia: true
+
+    # Bideoen pantailak
+    bideoakRel_screen:
+      <<: *bideoaList_screenLink
+      title: _('"%s"-(r)en bideoak', '%parent%')
+      filterField: edukiaId
+      class: ui-silk-film
+      parentOptionCustomizer:
+        - recordCount
+    bideoaNew_screen: 
+      <<: *bideoaNew_screenLink
+      filterField: edukiaId
+      fields: 
+        blacklist: 
+          klikKopurua: true
+          sortzeData: true
+    bideoaEdit_screen: 
+      <<: *bideoaEdit_screenLink
+      filterField: edukiaId
+      fields: 
+        fields: 
+        blacklist: 
+          klikKopurua: true
+          sortzeData: true
+
+    # Aurkezpenen pantailak
+    aurkezpenakRel_screen: 
+      <<: *aurkezpenaList_screenLink
+      title: _('"%s"-(r)en aurkezpenak', '%parent%')
+      filterField: edukiaId
+      class: ui-silk-photos
+      parentOptionCustomizer:
+        - recordCount
+    aurkezpenaEdit_screen: 
+      <<: *aurkezpenaEdit_screenLink
+      filterField: edukiaId 
+      fields: 
+        blacklist: 
+          klikKopurua: true
+          sortzeData: true
+    aurkezpenaNew_screen: 
+      <<: *aurkezpenaNew_screenLink
+      filterField: edukiaId
+      fields: 
+        blacklist: 
+          klikKopurua: true
+          sortzeData: true 
+
+    # Esteken pantailak
+    estekakRel_screen: 
+      <<: *estekaList_screenLink
+      title: _('"%s"-(r)en estekak', '%parent%')
+      filterField: edukiaId
+      class: ui-silk-link
+      parentOptionCustomizer:
+        - recordCount
+    estekaNew_screen: 
+      <<: *estekaNew_screenLink
+      filterField: edukiaId
+      fields: 
+        blacklist: 
+          klikKopurua: true
+          sortzeData: true 
+    estekaEdit_screen: 
+      <<: *estekaEdit_screenLink
+      filterField: edukiaId
+      fields: 
+        blacklist: 
+          klikKopurua: true
+          sortzeData: true
+
+    # Fitxategien pantailak
+    fitxategiakRel_screen:
+      <<: *fitxategiaList_screenLink
+      title: _('"%s"-(r)en fitxategiak', '%parent%')
+      filterField: edukiaId
+      class: ui-silk-disk
+      parentOptionCustomizer:
+        - recordCount
+    fitxategiaEdit_screen: 
+      <<: *fitxategiaEdit_screenLink
+      filterField: edukiaId
+      fields: 
+        blacklist: 
+          klikKopurua: true
+          sortzeData: true
+          fitxategia: true 
+    fitxategiaNew_screen: 
+      <<: *fitxategiaNew_screenLink
+      filterField: edukiaId
+      fields: 
+        blacklist: 
+          klikKopurua: true
+          sortzeData: true
+          fitxategia: true
+
+    # Kategoria berria sortzeko botoia
+    kategoriaBerriaExternal_screen:
+      <<: *Kategoria
+      controller: new
+      class: ui-silk-color-swatch
+      label: true
+      title: _(" Kategoria berria sortu")
+      fields: 
+        blacklist: 
+          url: true
+
+    # Etiketa berria sortzeko botoia
+    etiketaBerriaExternal_screen:
+      <<: *Etiketa
+      controller: new
+      class: ui-silk-tag-blue
+      label: true
+      title: _(" Etiketa berria sortu")
+      fields: 
+        blacklist: 
+          url: true
+
+    # Maila berria sortzeko botoia
+    mailaBerriaExternal_screen:
+      <<: *Etiketa
+      controller: new
+      class: ui-silk-medal-gold-1
+      label: true
+      title: _(" Maila berria sortu")
+      fields: 
+        blacklist: 
+          url: true
+
+    # Erabiltzailea berria sortzeko botoia
+    erabiltzaileBerriaExternal_screen:
+      <<: *erabiltzaileaNew_screenLink
+      title: _(" Erabiltzaile berria sortu")
+      class: ui-silk-user-add
+
+  #----------------
+  #--- COMMANDS ---
+  #----------------
+  commands:
+    autocompleteErabiltzailea_command:
+      <<: *autocompleteErabiltzaileaCommand
+      <<: *Erabiltzailea
+    autocompleteErabiltzailea2_command:
+      <<: *autocompleteKolaboratzaileaCommand
+      <<: *Erabiltzailea
+    autocompleteKolaboratzailea_command:
+      <<: *autocompleteKolaboratzaileaCommand
+      <<: *Erabiltzailea
+    autocompleteKategoria_command:
+      <<: *autocompleteKategoriaCommand
+      <<: *Kategoria
+    autocompleteIkastegia_command:
+      <<: *autocompleteIkastegiaCommand
+      <<: *Ikastegia
+    autocompleteEtiketa_command:
+      <<: *autocompleteEtiketaCommand
+      <<: *Etiketa
+    autocompleteMaila_command:
+      <<: *autocompleteMailaCommand
+      <<: *Maila
+
+    # Irudien command-ak
+    IrudiaDownload_command: 
+      <<: *IrudiaDownload_command 
+    IrudiaUpload_command: 
+      <<: *IrudiaUpload_command
+    IrudiaPreview_command: 
+      <<: *IrudiaPreview_command
+
+    # Fitxategien command-ak
+    FitxategiaDownload_command: 
+      <<: *FitxategiaDownload_commandLink
+    FitxategiaUpload_command: 
+      <<: *FitxategiaUpload_commandLink
+    FitxategiaPreview_command: 
+      <<: *FitxategiaPreview_commandLink
+
+  #---------------
+  #--- DIALOGS ---
+  #---------------
+  dialogs: 
+    edukiaDel_dialog: 
+      <<: *Edukia
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('Edukia', 'Edukia(s)', 1))
+      description: _("Do you want to delete this %s?", ngettext('Edukia', 'Edukia(s)', 1))
+      message: _("%s successfully deleted.", ngettext('Edukia', 'Edukia(s)', 1))
+      labelOnList: true
+      multiItem: true
+
+    # Kanpo entitateen ezabatzeko botoia
+    irudiaDel_dialog: 
+      <<: *irudiaDel_screenLink
+    bideoaDel_dialog: 
+      <<: *bideoaDel_dialogLink
+    aurkezpenaDel_dialog: 
+      <<: *aurkezpenaDel_dialogLink
+    estekaDel_dialog: 
+      <<: *estekaDel_dialogLink
+    fitxategiaDel_dialog: 
+      <<: *fitxategiaDel_dialogLink
+
+    kategoriakRelDel_dialog:
+      <<: *EdukiaRelKategoria
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", "Kategoria")
+      description: _("Do you want to delete this %s?", 'Kategoria')
+      message: _("%s successfully deleted.", 'Kategoria')
+      labelOnList: true
+      multiItem: true
+
+    etiketakRelDel_dialog:
+      <<: *EtiketaRelEdukia
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", "etiketa")
+      description: _("Do you want to delete this %s?", 'Etiketa')
+      message: _("%s successfully deleted.", 'Etiketa')
+      labelOnList: true
+      multiItem: true
+
+    erabiltzeakRelDel_dialog:
+      <<: *ErabiltzaileaRelEdukia
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", "erabiltzailearen erlazioa")
+      description: _("Do you want to delete this %s?", 'erabiltzailearen erlazioa')
+      message: _("%s successfully deleted.", 'erlazioa')
+      labelOnList: true
+      multiItem: true
+
+testing: 
+  _extends: production
+staging: 
+  _extends: production
+development: 
+  _extends: production

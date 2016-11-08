@@ -1,0 +1,23 @@
+<?php
+$orria = $this->orria;
+?>
+
+<section class="bloque-evento container">
+    <header class="content">
+        <h2><?php echo $orria->getIzena(); ?></h2>
+    </header>
+
+    <img src="<?php echo $this->baseUrl("image/index/id/" . $orria->getId() . "/view/kanpaina/"); ?>" alt="{{alt}}" />
+
+    <div class="text col-md-10">
+        <?php echo $orria->getDeskribapena(); ?>
+    </div>
+</section>
+
+<section>
+    <?php
+    if (!empty($this->widgetsTmp)) {
+        echo $this->widgetsTmp;
+    }
+    ?>
+</section>

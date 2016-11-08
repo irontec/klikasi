@@ -1,0 +1,65 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+
+production: 
+  main: 
+    module: klearMatrix
+    defaultScreen: emailHistoryList_screen
+  screens: 
+    emailHistoryList_screen: &emailHistoryList_screenLink 
+      controller: list
+      pagination: 
+        items: 25
+      <<: *EmailHistory
+      title: _("List of %s %2s", ngettext('Email history', 'Email history(s)', 0), "[format| (%parent%)]")
+      fields: 
+        options: 
+          title: _("Options")
+          screens: 
+            emailHistoryEdit_screen: true
+          dialogs: 
+            emailHistoryDel_dialog: true
+          default: emailHistoryEdit_screen
+      options: 
+        title: _("Options")
+        screens: 
+          emailHistoryNew_screen: true
+        dialogs: 
+          emailHistoryDel_dialog: true
+    emailHistoryNew_screen: &emailHistoryNew_screenLink 
+      <<: *EmailHistory
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Add %s", ngettext('Email history', 'Email history(s)', 1))
+      shortcutOption: N
+      fields: 
+        blacklist: 
+          sortzeData: true
+    emailHistoryEdit_screen: &emailHistoryEdit_screenLink 
+      <<: *EmailHistory
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      title: _("Edit %s %2s", ngettext('Email history', 'Email history(s)', 1), "[format| (%item%)]")
+      fields: 
+        blacklist: 
+          sortzeData: true
+  dialogs: 
+    emailHistoryDel_dialog: 
+      <<: *EmailHistory
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('Email history', 'Email history(s)', 1))
+      description: _("Do you want to delete this %s?", ngettext('Email history', 'Email history(s)', 1))
+      message: _("%s successfully deleted.", ngettext('Email history', 'Email history(s)', 1))
+      multiItem: 1
+      labelOnList: 1
+testing: 
+  _extends: production
+staging: 
+  _extends: production
+development: 
+  _extends: production

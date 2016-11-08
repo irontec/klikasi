@@ -1,0 +1,15 @@
+  <div id="itemEsqueleton" class="item" style="<?php echo isset($this->visible) ?  '' : 'display:none';?>">
+      <input type="hidden"
+             name="<?php echo isset($this->name) ? $this->name : '';  ?>"
+             value="<?php echo isset($this->content) ? htmlspecialchars($this->content) : '';  ?>" />
+      <figure class="col-xs-12">
+      <?php
+        if (isset($this->content)) {
+            echo isset($this->embed) ? $this->embed : $this->content;
+        }
+      ?>
+      </figure>
+      <div class="col-xs-12">
+          <button class="btn bg-red light remove">Ezabatu</button>
+      </div>
+  </div>

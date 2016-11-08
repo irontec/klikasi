@@ -1,0 +1,89 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+#include NewsletterHashList.yaml
+
+
+production: 
+  main: 
+    module: klearMatrix
+    defaultScreen: newsletterList_screen
+  screens: &newsletter_screensLink 
+    newsletterList_screen: &newsletterList_screenLink 
+      controller: list
+      pagination: 
+        items: 25
+      <<: *Newsletter
+      class: ui-silk-text-list-bullets
+      title: _("List of %s %2s", ngettext('Newsletter', 'Newsletter(s)', 0), "[format| (%parent%)]")
+      fields: &newsletter_fieldsLink 
+        options: 
+          title: _("Options")
+          screens: 
+            newsletterEdit_screen: true
+            newsletterHashList_screen: true
+          dialogs: 
+            newsletterDel_dialog: true
+          default: newsletterEdit_screen
+      options: 
+        title: _("Options")
+        screens: 
+          newsletterNew_screen: true
+        dialogs: 
+          newsletterDel_dialog: true
+    newsletterNew_screen: &newsletterNew_screenLink 
+      <<: *Newsletter
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Add %s", ngettext('Newsletter', 'Newsletter(s)', 1), "[format| (%parent%)]")
+      shortcutOption: N
+      postActionOptions: 
+        screens: 
+          newsletterEdit_screen: true
+      fields: 
+        blacklist: 
+          dateToSend: true
+    newsletterEdit_screen: &newsletterEdit_screenLink 
+      <<: *Newsletter
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      labelOnPostAction: _("Edit %s %2s", ngettext('Newsletter', 'Newsletter(s)', 1), "[format| (%item%)]")
+      title: _("Edit %s %2s", ngettext('Newsletter', 'Newsletter(s)', 1), "[format| (%item%)]")
+      fields: 
+        blacklist: 
+          dateToSend: true
+    #newsletterHash: 
+    <<: *newsletterHash_screensLink
+    newsletterHashList_screen: 
+      <<: *newsletterHashList_screenLink
+      filterField: newsletterId
+      parentOptionCustomizer: 
+        - recordCount
+    newsletterHashNew_screen: 
+      <<: *newsletterHashNew_screenLink
+      filterField: newsletterId
+    newsletterHashEdit_screen: 
+      <<: *newsletterHashEdit_screenLink
+      filterField: newsletterId
+
+  dialogs: &newsletter_dialogsLink 
+    newsletterDel_dialog: &newsletterDel_dialogLink 
+      <<: *Newsletter
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('Newsletter', 'Newsletter(s)', 1))
+      description: _("Do you want to delete this %s?", ngettext('Newsletter', 'Newsletter(s)', 1))
+      message: _("%s successfully deleted.", ngettext('Newsletter', 'Newsletter(s)', 1))
+      multiItem: 1
+      labelOnList: 1
+  # newsletterHash dialogs: 
+    <<: *newsletterHash_dialogsLink
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production

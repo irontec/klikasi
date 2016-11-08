@@ -1,0 +1,16 @@
+production: 
+  class: \Klikasi\Model\Literales
+  fields: 
+    identificativo: 
+      title: _('Identificativo')
+      type: text
+      default: true
+    literaleu: 
+      title: _('Literaleu')
+      type: text
+testing: 
+  _extends: production
+staging: 
+  _extends: production
+development: 
+  _extends: production

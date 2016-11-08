@@ -1,0 +1,42 @@
+<?php
+$orria = $this->orria;
+?>
+<div>
+    <div class="col-xs-12 subheader bg-standard-grey">
+        <h1>Kanpaina</h1>
+    </div>
+</div>
+
+<section class="bloque-evento container">
+    <header>
+        <h2><?php echo $orria->getIzena(); ?></h2>
+    </header>
+
+    <img src="<?php echo $this->baseUrl("image/index/id/" . $orria->getId() . "/view/kanpaina/"); ?>" alt="{{alt}}" />
+
+    <div class="text col-md-10">
+        <?php echo $orria->getDeskribapena(); ?>
+    </div>
+</section>
+
+<section>
+    <?php
+    if (!empty($this->theWinner)) {
+        echo $this->theWinner;
+    }
+
+    if (!empty($this->widgetsTmp)) {
+        echo $this->widgetsTmp;
+    }
+    ?>
+</section>
+
+<div class="col-xs-12">
+    <ul class="pull-right">
+        <li class="no-border">
+            <a href="<?php echo $this->baseUrl("kanpaina/historikoa"); ?>">
+                <?php echo $this->translate("[es] Histórico de campañas"); ?>
+            </a>
+        </li>
+    </ul>
+</div>

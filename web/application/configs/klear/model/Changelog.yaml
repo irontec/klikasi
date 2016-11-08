@@ -1,0 +1,33 @@
+production: 
+  class: \Klikasi\Model\Changelog
+  fields: 
+    startDt: 
+      title: _('Start dt')
+      type: picker
+      defaultValue: CURRENT_TIMESTAMP
+      source: 
+        control: datetime
+        settings: 
+          disabled: 'false'
+      default: true
+    completeDt: 
+      title: _('Complete dt')
+      type: picker
+      source: 
+        control: datetime
+        settings: 
+          disabled: 'false'
+    appliedBy: 
+      title: _('Applied by')
+      type: text
+      required: true
+    description: 
+      title: _('Description')
+      type: text
+      required: true
+testing: 
+  _extends: production
+staging: 
+  _extends: production
+development: 
+  _extends: production

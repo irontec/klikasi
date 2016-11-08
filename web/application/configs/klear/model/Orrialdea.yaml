@@ -1,0 +1,92 @@
+production: 
+  class: \Klikasi\Model\Orrialdea
+  fields: 
+    titulua: 
+      title: _('Titulua')
+      type: text
+      required: true
+      default: true
+    edukia: 
+      title: _('Edukia')
+      type: textarea
+      required: true
+      source: 
+        control: tinymce
+        template: html5
+    publikatua: 
+      title: _('Publikatua')
+      type: select
+      defaultValue: 0
+      source: 
+        data: inline
+        values: 
+          '0': _('Ez')
+          '1': _('Bai')
+    url:
+      title: _('Orrialdearen url-a')
+      type: text
+      required: true
+    sortzeData: 
+      title: _('Sortze data')
+      type: picker
+      defaultValue: CURRENT_TIMESTAMP
+      source: 
+        control: datetime
+        settings: 
+          disabled: 'false'
+    metaTitle: 
+      title: _('Meta title')
+      type: text
+    metaDescription: 
+      title: _('Meta description')
+      type: text
+    metaKeywords: 
+      title: _('Meta keyword')
+      type: text
+    img: 
+      title: _('Img')
+      type: file
+      source: 
+        data: fso
+        size_limit: 20M
+        options: 
+          download: 
+            external: true
+            type: command
+            target: ImgDownload_command
+            icon: ui-silk-bullet-disk
+            title: _("Download file")
+            onNull: hide
+          upload: 
+            type: command
+            target: ImgUpload_command
+            title: _("Upload file")
+            class: qq-uploader
+            onNull: show
+          preview: 
+            target: ImgPreview_command
+            type: command
+            class: filePreview
+            external: 1
+            props: 
+              width: 150
+              height: 150
+              crop: false
+            onNull: hide
+          previewList: 
+            target: ImgPreview_command
+            type: command
+            class: filePreview
+            listController: 1
+            external: 1
+            props: 
+              width: 30
+              height: 30
+              crop: false
+            onNull: hide
+testing: 
+  _extends: production
+staging: 
+  _extends: production
+development: 
+  _extends: production

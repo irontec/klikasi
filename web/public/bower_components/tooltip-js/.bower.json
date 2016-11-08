@@ -1,0 +1,29 @@
+{
+  "name": "tooltip",
+  "version": "2.0.0",
+  "homepage": "https://github.com/jasonlewis/tooltip",
+  "authors": [
+    "Jason Lewis <jason.lewis1991@gmail.com>"
+  ],
+  "keywords": [
+    "tooltip"
+  ],
+  "license": "BSD-2-Clause",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "_release": "2.0.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v2.0.0",
+    "commit": "1d969103c79394ef31c48257afdc540b0c7bf871"
+  },
+  "_source": "git://github.com/jasonlewis/tooltip.git",
+  "_target": "~2.0.0",
+  "_originalSource": "tooltip-js",
+  "_direct": true
+}

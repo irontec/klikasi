@@ -1,0 +1,245 @@
+production: 
+  class: \Klikasi\Model\Kanpaina
+  fields: 
+    izena: 
+      title: _('Izena')
+      type: text
+      required: true
+      maxLength: 250
+      default: true
+    deskribapena: 
+      title: _('Deskribapena')
+      type: textarea
+      required: true
+      source: 
+        control: tinymce
+        template: simple
+    kodea: 
+      title: _('Kodea')
+      type: text
+      maxLength: 250
+    irudia: 
+      title: _('Irudia')
+      type: file
+      source: 
+        data: fso
+        size_limit: 20M
+        options: 
+          download: 
+            external: true
+            type: command
+            target: kanpainaIrudiaDownload_command
+            icon: ui-silk-bullet-disk
+            title: _("Download file")
+            onNull: hide
+          upload: 
+            type: command
+            target: kanpainaIrudiaUpload_command
+            title: _("Upload file")
+            class: qq-uploader
+            onNull: show
+          preview: 
+            target: kanpainaIrudiaPreview_command
+            type: command
+            class: filePreview
+            external: 1
+            props: 
+              width: 150
+              height: 150
+              crop: false
+            onNull: hide
+          previewList: 
+            target: kanpainaIrudiaPreview_command
+            type: command
+            class: filePreview
+            listController: 1
+            external: 1
+            props: 
+              width: 30
+              height: 30
+              crop: false
+            onNull: hide
+          delete: 
+            type: setNullFso
+            icon: ui-silk-bin
+            title: _("Delete file")
+            onNull: hide
+    banerra: 
+      title: _('Banerra')
+      type: file
+      source: 
+        data: fso
+        size_limit: 20M
+        options: 
+          download: 
+            external: true
+            type: command
+            target: kanpainaBanerraDownload_command
+            icon: ui-silk-bullet-disk
+            title: _("Download file")
+            onNull: hide
+          upload: 
+            type: command
+            target: kanpainaBanerraUpload_command
+            title: _("Upload file")
+            class: qq-uploader
+            onNull: show
+          preview: 
+            target: kanpainaBanerraPreview_command
+            type: command
+            class: filePreview
+            external: 1
+            props: 
+              width: 150
+              height: 150
+              crop: false
+            onNull: hide
+          previewList: 
+            target: kanpainaBanerraPreview_command
+            type: command
+            class: filePreview
+            listController: 1
+            external: 1
+            props: 
+              width: 30
+              height: 30
+              crop: false
+            onNull: hide
+          delete: 
+            type: setNullFso
+            icon: ui-silk-bin
+            title: _("Delete file")
+            onNull: hide
+    egoera: 
+      title: _('Egoera')
+      type: select
+      defaultValue: 0
+      source: 
+        data: inline
+        values: 
+          '0': 
+            title: _("No")
+          '1': 
+            title: _("Yes")
+    kanpaina: 
+      title: _('Kanpaina')
+      type: select
+      defaultValue: 0
+      source: 
+        data: inline
+        values: 
+          '0': 
+            title: _("No")
+          '1': 
+            title: _("Yes")
+    hasiera: 
+      title: _('Hasiera')
+      type: picker
+      required: true
+      source: 
+        control: date
+        settings: 
+          disabled: 'false'
+    bukaera: 
+      title: _('Bukaera')
+      type: picker
+      required: true
+      source: 
+        control: date
+        settings: 
+          disabled: 'false'
+    widgetEdukiak: 
+      title: _('Widget edukiak')
+      type: select
+      defaultValue: 0
+      source: 
+        data: inline
+        values: 
+          '0': 
+            title: _("No")
+          '1': 
+            title: _("Yes")
+    widgetEdukiakOrdena: 
+      title: _('Widget edukiak ordena')
+      type: select
+      defaultValue: data
+      source: 
+        data: inline
+        values: 
+          'data': _('data')
+          'karma': _('karma')
+    widgetIkastegiak: 
+      title: _('Widget ikastegiak')
+      type: select
+      defaultValue: 0
+      source: 
+        data: inline
+        values: 
+          '0': 
+            title: _("No")
+          '1': 
+            title: _("Yes")
+    widgetIkastegiakOrdena: 
+      title: _('Widget ikastegiak ordena')
+      type: select
+      defaultValue: karma
+      source: 
+        data: inline
+        values: 
+          'edukiKopurua': _('edukiKopurua')
+          'data': _('data')
+          'karma': _('karma')
+          'erabiltzaileKopurua': _('erabiltzaileKopurua')
+    widgetErabiltzaileak: 
+      title: _('Widget erabiltzaileak')
+      type: select
+      defaultValue: 0
+      source: 
+        data: inline
+        values: 
+          '0': 
+            title: _("No")
+          '1': 
+            title: _("Yes")
+    widgetErabiltzaileakOrdena: 
+      title: _('Widget erabiltzaileak ordena')
+      type: select
+      defaultValue: karma
+      source: 
+        data: inline
+        values: 
+          'edukiKopurua': _('edukiKopurua')
+          'data': _('data')
+          'karma': _('karma')
+    widgetKategoriak: 
+      title: _('Widget kategoriak')
+      type: select
+      defaultValue: 0
+      source: 
+        data: inline
+        values: 
+          '0': 
+            title: _("No")
+          '1': 
+            title: _("Yes")
+    widgetKategoriakOrdena: 
+      title: _('Widget kategoriak ordena')
+      type: select
+      defaultValue: karma
+      source: 
+        data: inline
+        values: 
+          'edukiKopurua': _('edukiKopurua')
+          'data': _('data')
+          'karma': _('karma')
+    url: 
+      title: _('Url')
+      type: text
+      required: true
+      maxLength: 250
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production

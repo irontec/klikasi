@@ -1,0 +1,246 @@
+<table style="width:100%; margin: 0 auto; padding:8px;">
+    <tbody>
+        <tr>
+            <td colspan="7">
+                <a
+                    href="{{baseUrl}}"
+                    title="Klikasi"
+                    style="text-decoration: none;"
+                    ><img
+                        src="{{baseUrl}}/images/logo_klikasi.png"
+                        alt="Klikasi"
+                        /></a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a
+                    href="http://www.azkuefundazioa.org"
+                    title="Azkue Fundazioa"
+                    target="_blank"
+                    ><img
+                        src="{{baseUrl}}/images/logo_azkue.png"
+                        alt="Azkue Fundazioa"
+                        /></a>
+            </td>
+            <td style="width: 50px;text-align: center;">
+                <a
+                    href="https://twitter.com/AzkueFundazioa/"
+                    target="_blank"
+                    title="Twitter azkue fundazioa"
+                    ><img src="{{baseUrl}}/img/fontawesome-png/grey/24/twitter.png" alt="Twitter azkue fundazioa" /></a>
+            </td>
+            <td style="width: 50px;text-align: center;">
+                <a
+                    href="https://www.facebook.com/AzkueFundazioa/"
+                    target="_blank"
+                    title="Facebook azkue fundazioa"
+                    ><img src="{{baseUrl}}/img/fontawesome-png/grey/24/facebook.png" alt="Facebook azkue fundazioa" /></a>
+            </td>
+            <td style="width: 50px;text-align: center;">
+                <a
+                    href="http://www.pinterest.com/azkuefundazioa/"
+                    target="_blank"
+                    title="Pinterest azkue fundazioa"
+                    ><img src="{{baseUrl}}/img/fontawesome-png/grey/24/pinterest.png" alt="Pinterest azkue fundazioa" /></a>
+            </td>
+            <td style="width: 50px;text-align: center;">
+                <a
+                    href="https://www.youtube.com/user/AzkueFundazioa/"
+                    target="_blank"
+                    title="Youtube azkue fundazioa"
+                    ><img src="{{baseUrl}}/img/fontawesome-png/grey/24/youtube.png" alt="Youtube azkue fundazioa" /></a>
+            </td>
+            <td style="width: 50px;text-align: center;">
+                <a
+                    href="http://www.azkuefundazioarenegunkaria.org/"
+                    target="_blank"
+                    title="Bloga azkue fundazioa"
+                    style="color: #808080 !important; cursor: auto; border-left: 1px solid #ECECEC;"
+                    >Bloga</a>
+            </td>
+            <td style="width: 50px;text-align: center;">
+                <a
+                    href="{{baseUrl}}/rss"
+                    title="RSS"
+                    ><img src="{{baseUrl}}/img/fontawesome-png/grey/24/rss.png" alt="RSS" /></a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<table
+    style="width:100%; margin: 0 auto; padding: 0 8px 8px 8px;">
+    <tbody>
+        <tr>
+            <td style="border-top: 15px solid #DDD; color: #232323; background-color: #F6F6F6; border-bottom: solid 1px #DBDBDB;">
+                <h2 style="font-size: 1.15em; font-weight: 200; margin: 0; padding: 15px;line-height: 1.1; color: inherit;">{{title}}</h2>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<table style="width:100%; min-width:500px; margin: 0 auto; padding: 0 8px 8px 8px;">
+    <tbody>
+        <tr>
+            <td>
+                <table
+                    class="body"
+                    style="width: 96%; min-width:400px;margin:0 auto;background: #fff; padding: 20px; font-size: 14px; box-shadow: 1px 3px 11px #949494; margin-top: 15px;">
+                    <tbody>
+                        <tr>
+                            <td>
+                                {{content}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<table style="width:100%; min-width:500px; margin: 0 auto; padding: 0 8px 8px 8px;">
+    <tbody>
+        <tr>
+            <td>
+                <table
+                    class="body"
+                    style="width: 98%; min-width:400px;margin:0 auto;background: #fff; padding: 20px; font-size: 14px; margin-top: 15px;">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <h2 style="font-size: 1.5em; margin: 0; line-height: 1.1; color: #232323;">Baliabide arrakastatsuenak</h2>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <table style="width: 100%;">
+                                    <tbody>
+                                        <tr>
+                                            <td style="width: 100%;display: block; text-align: center; min-width: 300px;">
+                                            {{#edukiak}}
+
+                                                <div  style="width: 400px;display: inline-table;clear: both; padding-top: 8px; padding-bottom: 5px; padding-left: 2px; padding-right: 2px;">
+
+                                                    <div style="background: {{categoryColor}}; width: 100%;">
+                                                        <h2 style="font-size: 20px;margin: 0;padding: 8px; width: 100%;">
+                                                            <a href="{{url}}" title="{{name}}" style="color: #FFF !important; width: 100%;">{{name}}</a>
+                                                        </h2>
+                                                    </div>
+
+                                                    <p style="font-size: 13px; text-align: justify; width: 100%; padding-left: 5px; padding-right: 5px;">{{summary}}</p>
+
+                                                    <span
+                                                        style="border-top: 1px solid {{categoryColor}}; display: block;"
+                                                        >
+                                                        <small
+                                                            style="padding: 10px 15px; display: block; float: right !important;">
+                                                            <span
+                                                                style="border-left: 1px solid {{categoryColor}}; font-size: 12px; padding: 0 5px; color: #808080;"
+                                                                ><img src="{{baseUrl}}/img/fontawesome-png/grey/16/eye.png" />{{views}}</span>
+
+                                                            <span
+                                                                style="border-left: 1px solid {{categoryColor}}; font-size: 12px; padding: 0 5px; color: #808080;"
+                                                                ><img src="{{baseUrl}}/img/fontawesome-png/grey/16/heart-o.png" />{{likes}}</span>
+
+                                                            <span
+                                                                style="border-left: 1px solid {{categoryColor}}; font-size: 12px; padding: 0 5px; color: #808080;"
+                                                                ><img src="{{baseUrl}}/img/fontawesome-png/grey/16/comments.png" />{{comments}}</span>
+
+                                                        </small>
+                                                    </span>
+
+                                                </div>
+
+                                            {{/edukiak}}
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<table style="width:100%; min-width:500px; margin: 0 auto; padding: 0 8px 8px 8px;">
+    <tbody>
+        <tr>
+            <td>
+                <table
+                    class="body"
+                    style="width: 98%; min-width:400px;margin:0 auto;background: #fff; padding: 20px; font-size: 14px; margin-top: 15px;">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <h2 style="font-size: 1.5em; margin: 0; line-height: 1.1; color: #232323;">Ultimos centros registrados [es]</h2>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <table style="width: 100%">
+                                    <tbody>
+                                        <tr>
+                                            <td style="width: 100%;display: block; text-align: center; min-width: 300px;">
+                                                {{#ikastegiak}}
+
+                                                <div style="width: 380px;display: inline-table;clear: both; padding-top: 8px; padding-bottom: 5px; padding-left: 2px; padding-right: 2px;">
+                                                    <figure>
+                                                        <img
+                                                            alt="{{name}}"
+                                                            src="{{img}}"
+                                                            style="max-width: 115px;max-height: 155px;border-radius: 50%;"
+                                                            />
+                                                    </figure>
+
+                                                    <span>
+                                                        <h2
+                                                            style="font-size: 20px;">
+                                                            <a
+                                                                href="{{url}}"
+                                                                title="{{name}}"
+                                                                style="color: #000 !important;"
+                                                                >{{name}}</a>
+                                                        </h2>
+                                                        <p style="font-size: 13px;" >{{summary}}</p>
+                                                    </span>
+                                                </div>
+
+                                    {{/ikastegiak}}
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<table style="width:100%; min-width:500px; margin: 0 auto; border-top: 2px solid #fff; background: #F6F6F6;">
+    <tbody>
+        <tr>
+            <td>
+                <div
+                    style="padding: 11px; color: #000; font-size: 10px; width: 300px;">
+                    <p>Jakinarazpen hauek gehiago jaso nahi ez badituzu, zure profileko konfigurazio atalean aldatu ditzazkezu zure preferentziak.</p>
+                    <p><a
+                        href="{{baseUrl}}/sartu"
+                        style="font-weight: bold;color:#000;"
+                        >Saioa hasi</a> datuak aldatzeko</p>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+    <p class="clear" style="clear: both;display: none;"></p>
+</table>

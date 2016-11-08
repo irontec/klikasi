@@ -1,0 +1,121 @@
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th colspan="5">
+                    <a
+                        href="<?php echo $this->baseUrl('jakinarazpenak/index/mota/iruzkin-berria');?>"
+                        title="Iruzkin Berria"
+                        >Iruzkin Berria</a>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            foreach ($this->iruzkinBerria as $jakinarazpena) {
+
+                $thatUser = $jakinarazpena->getThatUser();
+                $zendDate = $jakinarazpena->getSortzeData(true);
+                $zendDate->setTimezone('Europe/Madrid');
+                
+                $trClass = '';
+
+                if ($jakinarazpena->getEgoera() == 'onartua') {
+                    $trClass = ' success';
+                } elseif ($jakinarazpena->getEgoera() == 'ezOnartua') {
+                    $trClass = ' danger';
+                }
+
+                ?>
+                <tr
+                    class="<?php echo $jakinarazpena->getIkusita() == 0 ? 'isNew' : 'isView'; echo $trClass; ?>"
+                    data-jakinarazpena="<?php echo $jakinarazpena->getId(); ?>"
+                    >
+                    <td class="izena-thatUser" data-thatUser="<?php echo $thatUser->getId(); ?>">
+                        <a
+                            href="<?php echo $thatUser->urlProfile(); ?>"
+                            title="<?php echo $thatUser->getCompletName(); ?>"
+                            ><?php echo $this->ErabiltzaileIrudia($thatUser, 22, true);?> <?php echo $thatUser->getCompletName(); ?></a>
+                    </td>
+                    <td>
+                        <?php
+                        $iruzkina = new \Klikasi\Mapper\Sql\Iruzkina();
+                        $iruzkina = $iruzkina->find($jakinarazpena->getIdKanpotarra());
+
+                        if (empty($iruzkina)) {
+                            if (!empty($jakinarazpena->getJakinarazpenakGroup())) {
+                                foreach ($jakinarazpena->getJakinarazpenakGroup() as $jakinarazpenakGroup) {
+                                    $jakinarazpenakGroup->delete();
+                                }
+                            }
+                            $jakinarazpena->delete();
+                            continue;
+                        }
+                        ?>
+                        <a
+                            href="<?php echo $iruzkina->getEdukia()->edukiaUrl(); ?>"
+                            title="<?php echo $iruzkina->getEdukia()->getTitulua(); ?>"
+                            ><?php echo $iruzkina->getIruzkin(); ?></a>
+                    </td>
+                    <td>
+                        <?php echo $zendDate->toString("y'eko' MMMM'ren' dd'a' HH:mm:ss", "eu"); ?>
+                    </td>
+                    <td>
+                        <?php echo ucfirst(strtolower($iruzkina->getEgoera())); ?>
+                    </td>
+                    <td>
+                        <?php
+                        if ($iruzkina->getEgoera() == 'onartzeko') {
+                            ?>
+                            <button
+                                data-action="accept"
+                                data-instance="iruzkinBerria"
+                                data-jakinarazpena="<?php echo $jakinarazpena->getId(); ?>"
+                                class="btn btn-default"
+                                title="<?php echo $this->translate('[es] Aceptar'); ?>"
+                                ><i class="fa fa-thumbs-o-up" style="position: static;"></i></button>
+                            <button
+                                data-action="reject"
+                                data-instance="iruzkinBerria"
+                                data-jakinarazpena="<?php echo $jakinarazpena->getId(); ?>"
+                                class="btn btn-default"
+                                title="<?php echo $this->translate('[es] Rechazar'); ?>"
+                                ><i class="fa fa-thumbs-o-down" style="position: static;"></i></button>
+                            <?php
+                        }
+                        ?>
+                        <button
+                            data-action="viewContent"
+                            data-instance="iruzkinBerria"
+                            data-jakinarazpena="<?php echo $jakinarazpena->getId(); ?>"
+                            class="btn btn-default"
+                            title="<?php echo $this->translate('[es] Ver Contenido'); ?>"
+                            ><i class="fa fa-external-link" style="position: static;"></i></button>
+                        <button
+                            data-action="deleteNotification"
+                            data-instance="iruzkinBerria"
+                            data-jakinarazpena="<?php echo $jakinarazpena->getId(); ?>"
+                            class="btn btn-default"
+                            title="<?php echo $this->translate('[es] Eliminar Notificación');?>"
+                            ><i class="fa fa-trash-o" style="position: static;"></i></button>
+                        <?php
+                        if ($jakinarazpena->getIkusita() == 0) {
+                            ?>
+                            <button
+                                data-action="markView"
+                                data-instance="iruzkinBerria"
+                                data-jakinarazpena="<?php echo $jakinarazpena->getId(); ?>"
+                                class="btn btn-default"
+                                title="<?php echo $this->translate('[es] Marcar como vista'); ?>"
+                                ><i class="fa fa-eye" style="position: static;"></i></button>
+                            <?php
+                        }
+                        ?>
+                    </td>
+                </tr>
+                <?php
+            }
+            ?>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,47 @@
+---
+component : tab-recursos
+---
+
+<section id = 'tab-recursos' class = 'tab-recursos col-xs-12'>
+
+	<!-- Nav tabs -->
+	<ul class="nav nav-tabs">
+	  <li class="active no-mar-l"><a href="#rec" data-toggle="tab">Recursos ({{num-recursos}}) <i class = 'fa fa-bars visible-xs pull-right'></i></a></li>
+	  <li><a href="#rValidados" data-toggle="tab">Recursos validados ({{num-recursos-validados}}) <i class = 'fa fa-bars visible-xs pull-right'></i></a></li>
+	  <li><a href="#rFavoritos" data-toggle="tab">Recursos favoritos ({{num-recursos-favoritos}}) <i class = 'fa fa-bars visible-xs pull-right'></i></a></li>
+	  <li><a href="#rComentados" data-toggle="tab">Recursos comentados ({{num-recursos-comentados}}) <i class = 'fa fa-bars visible-xs pull-right'></i></a></li>
+	</ul>
+
+	<!-- Tab panes -->
+	<div class="tab-content">
+	  <div class="tab-pane active" id="rec">
+	  	<div class = 'container-filter'>
+	  		{{#each fichas-recursos}}
+	  			{{> resumen_ficha}}
+	  		{{/each}}
+	  	</div>
+	  </div>
+	  <div class="tab-pane" id="rValidados">
+	  	<div class = 'container-filter'>
+	  		{{#each fichas-recursos-validados}}
+	  			{{> resumen_ficha}}
+	  		{{/each}}
+	  	</div>
+	  </div>
+	  <div class="tab-pane" id="rFavoritos">
+	  	<div class = 'container-filter'>
+	  		{{#each fichas-recursos-favoritos}}
+	  			{{> resumen_ficha}}
+	  		{{/each}}
+	  	</div>
+	  </div>
+	  <div class="tab-pane" id="rComentados">
+	  	<div class = 'container-filter'>
+	  		{{#each fichas-recursos-comentados}}
+	  			{{> resumen_ficha}}
+	  		{{/each}}
+	  	</div>
+	  </div>
+	</div>
+
+</section>

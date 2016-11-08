@@ -1,0 +1,25 @@
+production: 
+  class: \Klikasi\Model\Laguntza
+  fields: 
+    titulua: 
+      title: _('Titulua')
+      type: text
+      required: true
+      default: true
+    laguntza: 
+      title: _('Laguntza testua')
+      type: textarea
+      required: true
+      source: 
+        control: tinymce
+        template: html5
+    iden: 
+      title: _('Identifikatzailea')
+      type: text
+      required: true
+testing: 
+  _extends: production
+staging: 
+  _extends: production
+development: 
+  _extends: production

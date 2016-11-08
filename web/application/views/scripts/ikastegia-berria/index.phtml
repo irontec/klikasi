@@ -1,0 +1,190 @@
+<div class=""><!-- col-xs-12 col-sm-6 -->
+
+    <form
+        role="form"
+        class="form-horizontal edukiak-igo "
+        autocomplete="off"
+        method="POST"
+        id="ikastegiaBerria-form"
+        >
+
+        <div class="container">
+            <div class="row ikastegi-berria-form">
+
+            <div class="row">
+                <div class="col-xs-10 col-sm-10">
+                    <div class="alert alert-danger hide" id="ikastegia-errors"></div>
+                </div>
+            </div>
+
+                <div class="col-xs-12 col-sm-5 pull-left">
+
+                    <div class="element-group">
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="izena"
+                            name="izena"
+                            placeholder="Izena"
+                            />
+                    </div>
+
+                    <div class="element-group">
+                        <textarea
+                            class="form-control"
+                            id="deskribapenLaburra"
+                            placeholder="Deskribapen laburra"
+                            name="deskribapenLaburra"
+                            rows="3"
+                            ></textarea>
+
+                            <span
+                                class="help-block msg">
+                                Labur itzazu <span class="countCharactes"></span> karakteretan baliabidearen gaia.
+                                </span>
+                    </div>
+
+                    <div class="element-group">
+                        <textarea
+                            class="form-control"
+                            id="deskribapena"
+                            placeholder="Deskribapena"
+                            name="deskribapena"
+                            rows="3"
+                            ></textarea>
+                    </div>
+
+                    <div class="element-group">
+                        <textarea
+                            class="form-control"
+                            id="norZara"
+                            placeholder="Nor zara"
+                            name="norZara"
+                            rows="3"
+                            ></textarea>
+                    </div>
+
+                    <div class="element-group">
+                        <span class="select"><i class="fa fa-chevron-down"></i>
+                            <select class="form-control" id="mota" name="mota">
+                                <option disabled selected  style='display:none;'>Ikastegi mota</option>
+                                <option value="ikastetxea">Ikastegia</option>
+                                <option value="bestelakoa">Bestelakoa</option>
+                            </select>
+                        </span>
+                    </div>
+
+                    <div class="element-group">
+                        <span class="select"><i class="fa fa-chevron-down"></i>
+                            <select class="form-control" id="ikastegimota" name="ikastegimota">
+                                <optgroup label="Mota">
+                                    <option disabled selected  style='display:none;'>Bestelako motak</option>
+                                    <?php
+                                    foreach ($this->ikastegiMota as $mota) {
+                                    ?>
+                                        <option value="<?php echo $mota->getId(); ?>"><?php echo $mota->getIzena(); ?></option>
+                                    <?php
+                                    } //end foreach
+                                    ?>
+                                </optgroup>
+                            </select>
+                        </span>
+                    </div>
+
+                </div><!-- .col-xs-12.col-sm-6.pull-left -->
+
+                <div class="col-xs-12 col-sm-5">
+                    <div class="element-group">
+                        <div id="irudia-custom">
+                        <?php
+                            $irudiaUrl = 'http://placehold.it/200x200';
+                            ?>
+                            <div id="changeCustomAvatar">
+                                <div id="avatarPreview">
+                                    <div id="previewContent" class="col-xs-6">
+                                        <img
+                                            id="cropimage"
+                                            alt=""
+                                            src="<?php echo $irudiaUrl; ?>"
+                                            />
+                                    </div>
+
+                                    <div id="actionContent" class="col-xs-6">
+                                        <input
+                                            type="file"
+                                            name="avatar"
+                                            id="avatar"
+                                            class="hide"
+                                            />
+
+                                        <button
+                                            id="button-file-avatar"
+                                            class="btn btn-default"
+                                            ><?php echo $this->translate('[es] Seleccionar Avatar'); ?></button>
+                                    </div>
+
+                                    <div id="results-avatar" class="hide">
+                                        <input
+                                            type="hidden"
+                                            name="changeAvatar"
+                                            id="changeAvatar"
+                                            value="false"
+                                            />
+                                        <input
+                                            type="hidden"
+                                            name="tmpName"
+                                            id="tmpName"
+                                            />
+                                        <input
+                                            type="hidden"
+                                            name="cropX"
+                                            class="cropX"
+                                            />
+                                        <input
+                                            type="hidden"
+                                            name="cropY"
+                                            class="cropX"
+                                            />
+                                        <input
+                                            type="hidden"
+                                            name="cropW"
+                                            class="cropW"
+                                            />
+                                        <input
+                                            type="hidden"
+                                            name="cropH"
+                                            class="cropH"
+                                            />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="element-group clearfix">
+                        <input
+                            type="hidden"
+                            class="form-control"
+                            id="kokapena"
+                            name="kokapena"
+                            placeholder="Kokapena"
+                            data-plugin="gmaps"
+                            />
+                    </div>
+
+                </div><!-- .col-xs-12.col-sm-6 -->
+
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 text-center">
+
+                        <button
+                            class="btn-bidali bg-red light"
+                            id="ikastegiaBerria-submit"
+                            >Bidali</button>
+                    </div>
+                </div>
+
+            </div><!-- .row -->
+        </div><!-- .container -->
+
+    </form>
+</div>

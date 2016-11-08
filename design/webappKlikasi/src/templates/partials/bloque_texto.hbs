@@ -1,0 +1,15 @@
+---
+component : bloque-texto
+---
+
+<div class = 'container {{class}}'>
+	<header class = 'content {{class-header}}'>
+		<h2>{{title}}</h2>
+		{{#if subtitle}}<small>{{subtitle}}</small>{{/if}}
+	</header>
+	<div class = 'row'>
+		<div class = 'col-xs-12 col-sm-10'>
+			{{{text}}}
+		</div>
+	</div>
+</div>

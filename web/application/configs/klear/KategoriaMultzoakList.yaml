@@ -1,0 +1,149 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+
+production: 
+  main: 
+    module: klearMatrix
+    defaultScreen: kategoriaMultzoaList_screen
+  screens: 
+    kategoriaMultzoaList_screen: &kategoriaMultzoaList_screenLink 
+      controller: list
+      pagination: 
+        items: 25
+      <<: *KategoriaGlobala
+      title: _("List of %s", ngettext('Kategoria multzoa', 'Kategoria multzoak', 0))
+      fields:
+        blacklist:
+          url: true 
+        options: 
+          title: _("Options")
+          screens: 
+#            kategoriaRel_screen: true
+            kategoriaMultzoaEdit_screen: true
+          dialogs: 
+            kategoriaMultzoaDel_dialog: true
+          default: kategoriaMultzoaEdit_screen
+      options: 
+        title: _("Options")
+        screens: 
+          kategoriaMultzoaNew_screen: true
+        dialogs: 
+          kategoriaMultzoaDel_dialog: true
+
+    kategoriaMultzoaNew_screen: &kategoriaMultzoaNew_screenLink 
+      <<: *KategoriaGlobala
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Add %s", ngettext('Kategoria multzoa', 'Kategoria multzoak', 1))
+      fields: 
+        blacklist: 
+          url: true
+
+    kategoriaMultzoaEdit_screen: &kategoriaMultzoaEdit_screenLink 
+      <<: *KategoriaGlobala
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      fields:
+        order:
+          izena: true
+          KategoriakRelKategoriaGlobalak: true
+        readOnly:
+          url: true
+      title: _("Edit %s", ngettext('Kategoria multzoa', 'Kategoria multzoak', 1))
+
+    # Kategoria multzoari lotutako kategorien zerrenda
+    kategoriaRel_screen:
+      <<: *KategoriakRelKategoriaGlobalak
+      controller: list
+      pagination: 
+        items: 25
+      title: _("%s-ri lotutako kategoriak","%parent%")
+      filterField: kategoriaGlobalaId
+      class: ui-silk-color-swatch
+      parentOptionCustomizer:
+        - recordCount
+      fields:
+        options: 
+          title: _("Options")
+          dialogs: 
+            erlazioaDel_dialog: true
+          default: erlazioaDel_dialog
+      options: 
+        title: _("Options")
+        screens: 
+          erlazioNew_screen: true
+        dialogs: 
+          erlazioaDel_dialog: true
+
+    erlazioNew_screen: 
+      <<: *KategoriakRelKategoriaGlobalak
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Kategoria berria erlazionatu")
+      filterField: kategoriaGlobalaId
+
+    kategoriaBerriaExternal_screen:
+      <<: *Kategoria
+      controller: new
+      class: ui-silk-color-swatch
+      label: true
+      title: _(" Kategoria berria sortu")
+      fields: 
+        blacklist: 
+          url: true
+
+  commands:
+    autocompleteKategoria_command:
+      <<: *autocompleteKategoriaCommand
+      <<: *Kategoria
+      
+    IrudiaDownload_command: 
+      <<: *KategoriaGlobala
+      controller: File
+      action: force-download
+      mainColumn: irudia
+    IrudiaUpload_command: 
+      <<: *KategoriaGlobala
+      controller: File
+      action: upload
+      mainColumn: irudia
+    IrudiaPreview_command: 
+      <<: *KategoriaGlobala
+      controller: File
+      action: preview
+      mainColumn: irudia
+
+  dialogs: 
+    kategoriaMultzoaDel_dialog: 
+      <<: *KategoriaGlobala
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('Kategoria multzoa', 'Kategoria multzoak', 1))
+      description: _("Do you want to delete this %s?", ngettext('Kategoria multzoa', 'Kategoria multzoak', 1))
+      message: _("%s successfully deleted.", ngettext('Kategoria multzoa', 'Kategoria multzoak', 1))
+      labelOnList: true
+      multiItem: true
+
+    erlazioaDel_dialog:
+      <<: *KategoriakRelKategoriaGlobalak
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('Erlazioa', 'Erlazioa', 1))
+      description: _("Do you want to delete this %s?", ngettext('Erlazioa', 'Erlazioa', 1))
+      message: _("%s successfully deleted.", ngettext('Erlazioa', 'Erlazioa', 1))
+      labelOnList: true
+      multiItem: true
+
+testing: 
+  _extends: production
+staging: 
+  _extends: production
+development: 
+  _extends: production

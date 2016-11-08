@@ -1,0 +1,20 @@
+<?php echo $this->render("header.phtml"); ?>
+
+<body>
+
+    <?php echo $this->render("menua.phtml"); ?>
+
+    <div class="container">
+        <div class="col-xs-12 subheader bg-standard-grey">
+            <h2>Ikastegiak</h2>
+        </div>
+    </div><!-- .container -->
+
+    <?php
+        echo $this->layout()->content;
+
+        echo $this->render("footer.phtml");
+    ?>
+
+</body>
+</html>

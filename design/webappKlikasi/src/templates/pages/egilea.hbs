@@ -1,0 +1,90 @@
+---
+title : "Egilearen izena 1"
+
+subheader-data :
+  nombre : "Egileak"
+  class : "bg-standard-grey"
+
+egilea-data :
+  nombre : "Egilearen izena 1"
+  puesto : "Ematen duen ikasgaia"
+  centro : "IES Ibarrekolanda"
+  imagen : "images/frodo.png"
+  alt : "Egilea"
+  editable : 0
+  text : "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque iaculis sem. Sed at ligula turpis. Suspendisse malesuada viverra ultrices. Vestibulum tempor sapien sodales ornare imperdiet. Morbi nec ante dolor. Praesent at sodales tellus, ut convallis augue. Curabitur suscipit lacus vel metus scelerisque hendrerit.</p>"
+
+datos-resumen-fichas :
+  num-recursos : 3
+  num-recursos-validados : 0
+  num-recursos-favoritos : 0
+  num-recursos-comentados : 0
+  fichas-recursos :
+    - width : "col-xs-12 col-sm-6 col-md-4"
+      image : "images/universo.jpg"
+      alt : "Universo"
+      class-caption : "bg-green"
+      icons-list :
+        - icon : "fa-folder"
+        - icon : "fa-volume-up"
+      categoria : "Natur zientziak"
+      title : "Unibertsoa"
+      text : "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>"
+      edad-min : "11"
+      edad-max : "14"
+      curso : "D.B.H. 2"
+      autor : "Egilearen izena"
+      centro : "Deustuko Ikastola"
+      num-leido : 69
+      num-megusta : 40
+      num-comentario : 1233
+      classFilterIsotope: Ikusienak
+    - width : "col-xs-12 col-sm-6 col-md-4"
+      image : "images/universo.jpg"
+      alt : "Universo"
+      class-caption : "bg-green"
+      icons-list :
+        - icon : "fa-folder"
+        - icon : "fa-volume-up"
+      categoria : "Natur zientziak"
+      title : "Unibertsoa"
+      text : "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>"
+      edad-min : "11"
+      edad-max : "14"
+      curso : "D.B.H. 2"
+      autor : "Egilearen izena"
+      centro : "Deustuko Ikastola"
+      num-leido : 68
+      num-megusta : 41
+      num-comentario : 1233
+      classFilterIsotope: Ikusienak
+    - width : "col-xs-12 col-sm-6 col-md-4"
+      image : "images/universo.jpg"
+      alt : "Universo"
+      class-caption : "bg-green"
+      icons-list :
+        - icon : "fa-folder"
+        - icon : "fa-volume-up"
+      categoria : "Natur zientziak"
+      title : "Unibertsoa"
+      text : "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>"
+      edad-min : "11"
+      edad-max : "14"
+      curso : "D.B.H. 2"
+      autor : "Egilearen izena"
+      centro : "Deustuko Ikastola"
+      num-leido : 67
+      num-megusta : 42
+      num-comentario : 1233
+      classFilterIsotope: Ikusienak
+
+---
+
+<div class = 'container'>
+	{{> subheader subheader-data}}
+
+	{{> bloque_egilea egilea-data }}
+
+  {{> tab_recursos datos-resumen-fichas}}
+</div>
+

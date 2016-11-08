@@ -1,0 +1,60 @@
+production: 
+  class: \Klikasi\Model\EdukiaRelKanpaina
+  fields: 
+    kanpainaId: 
+      title: _('Kanpaina')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Klikasi\Mapper\Sql\Kanpaina
+          fieldName: 
+            fields: 
+              - izena
+            template: '%izena%'
+          order: izena
+      default: true
+    edukiaId: 
+      title: _('Edukia')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Klikasi\Mapper\Sql\Edukia
+          fieldName: 
+            fields: 
+              - titulua
+            template: '%titulua%'
+          order: titulua
+      decorators:
+        autocomplete:
+          command: autocompleteEdukia_command
+
+    edukia:
+      title: _('Edukia')
+      type: ghost
+      dirty: true
+      source:
+        field: edukiaId
+        class: \Klikasi\Klear\Ghost\KanpainaEdukia
+        method: getData
+
+    irabazlea: 
+      title: _('Irabazlea')
+      type: select
+      defaultValue: 0
+      source: 
+        data: inline
+        values: 
+          '0': 
+            title: _("Ez")
+          '1': 
+            title: _("Bai")
+testing: 
+  _extends: production
+staging: 
+  _extends: production
+development: 
+  _extends: production

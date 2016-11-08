@@ -1,0 +1,306 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+
+fixedPositions:
+  - &fixedIkas
+    fixedPositions:
+      group:
+        label: _("Datu orokorrak")
+        colsPerRow: 6
+        fields:
+          izena: 2
+          mota: 2
+          aktibatua: 2
+          deskribapenLaburra: 6
+          deskribapena: 6
+      grupa:
+        label: _("Informazio gehigarria")
+        fields:
+          IkastegiaRelMota: true
+          IkastegiaRelGaiak: true
+      group1:
+        label: _("Kokapena")
+        colsPerRow: 4
+        fields:
+          herria: 2
+          probintzia: 2
+          kokapena: 4
+      group2:
+        label: _("Sare sozialak")
+        colsPerRow: 4
+        fields:
+          google: 2
+          linkedin: 2
+          facebook: 2
+          twitter: 2
+          instagram: 2
+          pinterest: 2
+          youtube: 2
+          webSite: 2
+          flickr: 2
+      group3:
+        label: _("Estatistika")
+        colsPerRow: 4
+        fields:
+          karma: 2
+          ikasleKopurua: 2
+          EdukiKopurua: 2
+
+  - &fixedErlazio
+    fixedPositions:
+      group:
+        label: _("Erlazioaren datuak")
+        fields:
+          administratzailea: true
+          jabea: true
+          egoera: true
+
+production: 
+  main: 
+    module: klearMatrix
+    defaultScreen: ikastegiaList_screen
+  screens: 
+    ikastegiaList_screen: &ikastegiaList_screenLink 
+      
+      controller: list
+      pagination: 
+        items: 25
+      <<: *Ikastegia
+      title: _("List of %s", ngettext('Ikastegia', 'Ikastegia(s)', 0))
+      fields: 
+        order:
+          irudia: true
+          izena: true
+          mota: true
+          IkastegiaRelGaiak: true
+          IkastegiaRelMota: true
+          aktibatua: true
+        blacklist:
+          deskribapenLaburra: true
+          deskribapena: true
+          herria: true
+          probintzia: true
+          url: true
+          facebook: true
+          linkedin: true
+          twitter: true
+          google: true
+          youtube: true
+          instagram: true
+          pinterest: true
+          sortzeData: true
+          webSite: true
+        options: 
+          title: _("Options")
+          screens: 
+            edukiaExternalLink_screen: true
+            erabiltzaileakRel_screen: true
+            ikastegiaEdit_screen: true
+          dialogs: 
+            ikastegiaDel_dialog: true
+            ikastegiaModeration_dialog: true
+          default: ikastegiaEdit_screen
+      options: 
+        title: _("Options")
+        screens: 
+          ikastegiaNew_screen: true
+        dialogs: 
+          ikastegiaDel_dialog: true
+
+    ikastegiaNew_screen: &ikastegiaNew_screenLink 
+      <<: *Ikastegia
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Add %s", ngettext('Ikastegia', 'Ikastegia(s)', 1))
+      <<: *fixedIkas
+      fields: 
+        blacklist:
+          karma: true
+          edukiKopurua: true
+          ikasleKopurua: true 
+          url: true
+          sortzeData: true
+
+    ikastegiaEdit_screen: &ikastegiaEdit_screenLink 
+      <<: *Ikastegia
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      title: _("Edit %s", ngettext('Ikastegia', 'Ikastegia(s)', 1))
+      <<: *fixedIkas
+      fields: 
+        readOnly:
+          karma: true
+          edukiKopurua: true
+          ikasleKopurua: true
+
+        blacklist: 
+          sortzeData: true
+          url: true
+        order: 
+          izena: true
+          IkastegiaRelMota: true
+          irudia: true
+          herria: true
+      options:
+        screens: 
+          edukiaExternalLink_screen: true
+          erabiltzaileakRel_screen: true
+
+    # Ikastegiari lotutako erabiltzaileen zerrenda
+    erabiltzaileakRel_screen:
+      <<: *ErabiltzaileaRelIkastegia
+      controller: list
+      pagination: 
+        items: 25
+      <<: *Ikastegia
+      title: _("%s-ri lotutako gendea","%parent%")
+      filterField: ikastegiaId
+      class: ui-silk-group
+      parentOptionCustomizer:
+        - recordCount
+      fields:
+        options: 
+          title: _("Options")
+          screens: 
+            erlazioaEdit_screen: true
+          dialogs: 
+            erlazioaDel_dialog: true
+          default: erlazioaEdit_screen
+      options: 
+        title: _("Options")
+        screens: 
+          erlazioNew_screen: true
+        dialogs: 
+          erlazioaDel_dialog: true
+
+    erlazioNew_screen: 
+      <<: *ErabiltzaileaRelIkastegia
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Pertsona berria erlazionatu")
+      filterField: ikastegiaId
+      <<: *fixedErlazio
+
+    erlazioaEdit_screen: &erabiltzaileaEdit_screenLink 
+      <<: *ErabiltzaileaRelIkastegia
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      title: _("Edit %s", ngettext('Erabiltzailea', 'Erabiltzailea(s)', 1))
+      filterField: ikastegiaId
+      <<: *fixedErlazio
+
+    ############
+    # EXTERNALAK
+    ############
+     
+    # pertsona bakoitzaren edukien zerrenda ikusteko
+    edukiaExternalLink_screen:
+      class: ui-silk-layout-content
+      title: _("%s-(r)en edukien zerrenda", "%parent%")
+      label: false
+      external:
+        file: EdukiaList
+        screen: edukiaList_screen
+        searchby: EdukiaRelIkastegia
+        noiden: true
+      showOnlyOnNotNull: true
+
+    motaBerriaExternal_screen:
+      <<: *IkastegiMota
+      controller: new
+      class: ui-silk-brick
+      title: _(" Mota berria sortu")
+      label: true
+      fields:
+        blacklist:
+          url: true
+
+    gaiBerriaExternal_screen:
+      <<: *IkastegiGaiak
+      controller: new
+      class: ui-silk-page-green
+      title: _(" Gai berria sortu")
+      label: true
+      fields:
+        blacklist:
+          url: true
+
+  dialogs:
+  
+    ikastegiaModeration_dialog:
+      <<: *Ikastegia
+      filterField: aktibatua
+      parentOptionCustomizer:
+        - \Klikasi\Klear\Customize\OptionCustomizer
+      title: _('Contactar con quien propone este centro')
+      label: true
+      controller: klear-custom-moderation-ikastegiak
+      action: moderation
+      class: ui-silk-email-go
+      module: default
+   
+    ikastegiaDel_dialog: 
+      <<: *Ikastegia
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('Ikastegia', 'Ikastegia(s)', 1))
+      description: _("Do you want to delete this %s?", ngettext('Ikastegia', 'Ikastegia(s)', 1))
+      message: _("%s successfully deleted.", ngettext('Ikastegia', 'Ikastegia(s)', 1))
+      labelOnList: true
+      multiItem: true
+
+    # Erlazioa ezabatu
+    erlazioaDel_dialog: 
+      <<: *ErabiltzaileaRelIkastegia
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Erlazioa ezabatu")
+      description: _("Ziur zaude erlazioa ezabatu nahi duzula?")
+      message: _("Erlazioa ezabatu da.")
+      labelOnList: true
+      multiItem: true
+
+  commands: 
+    IrudiaDownload_command: 
+      <<: *Ikastegia
+      controller: File
+      action: force-download
+      mainColumn: irudia
+    IrudiaUpload_command: 
+      <<: *Ikastegia
+      controller: File
+      action: upload
+      mainColumn: irudia
+    IrudiaPreview_command: 
+      <<: *Ikastegia
+      controller: File
+      action: preview
+      mainColumn: irudia
+
+    # Erabiltzaileak autokompletatu
+    autocompleteErabiltzailea_command:
+      <<: *autocompleteErabiltzaileaCommand
+      <<: *Erabiltzailea
+
+    autocompleteGaia_command:
+      <<: *autocompleteGaiaCommand
+      <<: *IkastegiGaiak
+
+    autocompleteMota_command:
+      <<: *autocompleteMotaCommand
+      <<: *IkastegiMota
+
+testing: 
+  _extends: production
+staging: 
+  _extends: production
+development: 
+  _extends: production

@@ -1,0 +1,35 @@
+<div class="container principal">
+    <div class="col-xs-12 subheader bg-standard-grey">
+        <h1><?php echo $this->translate("[es] Histórico de campañas"); ?></h1>
+    </div>
+
+    <div class="container">
+        <div class="col-xs-12">
+            <br />
+            <?php
+            foreach ($this->kanpainak as $kanpaina) {
+            ?>
+            <div class="elem col-sm-4 text-center">
+                <div class="content type-image-text">
+                    <figure>
+                        <?php
+                        if (isset($kanpaina['image'])) {
+                        ?>
+                            <img src="<?php echo $kanpaina['image']; ?>" alt="<?php echo $kanpaina['alt']; ?>">
+                        <?php
+                        } //end if
+                        ?>
+                        <a href="<?php echo $kanpaina['url']; ?>">
+                            <figcaption>
+                                <h4><?php echo $kanpaina['title']; ?></h4>
+                            </figcaption>
+                        </a>
+                    </figure>
+                </div>
+            </div>
+            <?php
+            }
+            ?>
+        </div>
+    </div>
+</div>

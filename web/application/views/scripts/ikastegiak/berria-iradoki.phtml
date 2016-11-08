@@ -1,0 +1,20 @@
+<div class="berriaIradoki col-xs-12 subheader bg-standard-grey">
+
+    <h1>Ikastegi berria iradoki</h1>
+
+</div>
+<div class="col-xs-12">
+
+    <div class="row-fluid">
+        <?php echo $this->alertMessage($this->erroreMezuak, $this->flashmezuak, $this->alertWarning); ?>
+    </div>
+
+    <?php
+    if ($this->success) {
+        echo "<div class='alert alert-success'>Gorde da zure iradokizuna</div>";
+    } else {
+        echo $this->berria;
+    }
+    ?>
+
+</div><!-- END .berriaIradoki -->
